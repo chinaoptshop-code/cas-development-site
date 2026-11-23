@@ -285,6 +285,25 @@ await check('owner-project-save', 'OWNER', '/kabinet/admin#projects', W, async p
   if (await p.inputValue('[data-f] [name=next_step]') !== 'Приймання електрики й сантехніки') throw new Error('не збережено');
   if (!(await p.$eval('[data-dirty]', e => e.hidden))) throw new Error('позначка лишилась після збереження');
 });
+// «Новий проєкт»: клієнта можна вписати самому («+ Новий клієнт») — поля імені й телефону зʼявляються лише тоді; проєкт створюється з новим клієнтом
+await check('owner-project-new-client', 'OWNER', '/kabinet/admin#projects', W, async p => {
+  const w = p.viewportSize().width;
+  await see(p, '#admView', 'Квартира, тестовий обʼєкт');
+  await p.click('#admView [data-new]'); await see(p, '[data-nf]');
+  if (await p.isVisible('[data-nf] [name=nc_name]')) throw new Error('поля нового клієнта видно до вибору');
+  await p.selectOption('[data-nf] [name=client_id]', 'new');
+  if (!(await p.isVisible('[data-nf] [name=nc_name]')) || !(await p.isVisible('[data-nf] [name=nc_phone]'))) throw new Error('немає полів нового клієнта');
+  await p.fill('[data-nf] [name=title]', 'Будинок нового клієнта ' + w);
+  await p.click('[data-nf] button[type=submit]');
+  await see(p, '[data-nf] [data-e]', 'імʼя нового клієнта'); // без імені — підказка, запиту немає
+  await p.fill('[data-nf] [name=nc_name]', 'Новий Клієнт UI ' + w); await p.fill('[data-nf] [name=nc_phone]', '067 000 13 ' + (w === 402 ? '01' : '02'));
+  if (shotsDir) await p.screenshot({ path: join(shotsDir, `owner-project-new-client-form-${w}.jpg`), type: 'jpeg', quality: 60, fullPage: true });
+  await p.click('[data-nf] button[type=submit]'); await see(p, '[data-save]');
+  await see(p, '#admView .tb', 'Новий Клієнт UI ' + w);
+  // повернення до списку клієнтів форми: новий клієнт тепер у переліку
+  await p.click('[data-back]'); await p.click('#admView [data-new]'); await see(p, '[data-nf]');
+  if (!/Новий Клієнт UI/.test(await p.textContent('[data-nf] [name=client_id]'))) throw new Error('нового клієнта немає в списку форми');
+});
 // Контакти обʼєкта: пошук у довіднику → привʼязка з роллю → видно в картці; прораб бачить контакт у своєму кабінеті
 await check('owner-project-contacts', 'OWNER', '/kabinet/admin#projects', [1440], async p => {
   await p.locator('#admView .clk', { hasText: 'Квартира, тестовий обʼєкт' }).first().click(); await see(p, '[data-pct]');

@@ -136,6 +136,63 @@ await it('заявка без телефону → клієнт «crm»; пра�
   eq((await call(env, 'POST', '/api/admin/projects', { cookie: ck.OWNER, body: { type: 'from_lead', order_id: 999999 } })).status, 404);
 });
 
+describe('Новий проєкт із клієнтом, якого менеджер вписав сам (POST /api/admin/projects {type: \'project\', new_client})');
+const NP = (body, cookie = ck.OWNER) => call(env, 'POST', '/api/admin/projects', { cookie, body: { type: 'project', title: 'Будинок, тест', service: 'arch', ...body } });
+await it('імʼя + номер → клієнт provider phone, проєкт на ньому; той самий номер удруге — той самий клієнт, імʼя не переписуємо', async () => {
+  const before = (await q1('SELECT COUNT(*) AS n FROM clients')).n;
+  const r = await NP({ new_client: { name: 'Новий Клієнт', phone: '067 555 00 11' }, area: 550 });
+  eq(r.status, 200);
+  const c = await q1('SELECT * FROM clients WHERE id = ?', r.data.client_id);
+  eq([c.provider, c.provider_id, c.name, c.phone], ['phone', '+380675550011', 'Новий Клієнт', '+380675550011']);
+  eq((await q1('SELECT client_id, service, area FROM projects WHERE id = ?', r.data.id)), { client_id: c.id, service: 'arch', area: 550 });
+  const r2 = await NP({ new_client: { name: 'Інше імʼя', phone: '+380675550011' }, title: 'Другий обʼєкт' });
+  eq([r2.status, r2.data.client_id], [200, c.id]);
+  eq((await q1('SELECT name FROM clients WHERE id = ?', c.id)).name, 'Новий Клієнт');
+  eq((await q1('SELECT COUNT(*) AS n FROM clients')).n, before + 1);
+  const a = await q1("SELECT after FROM audit_log WHERE action = 'project.create' AND entity_id = ?", String(r.data.id));
+  ok(/"new_client":true/.test(a.after), 'аудит позначає нового клієнта');
+});
+await it('клієнт входить за цим номером через бота — бачить проєкт; без номера → клієнт «crm», щоразу окремий', async () => {
+  const { upsertClient } = await import('../../functions/_lib.js');
+  const c = await upsertClient(env, { provider: 'phone', provider_id: '+380675550011', name: 'Новий Клієнт' });
+  const r = await call(env, 'GET', '/api/account/projects', { cookie: await login(env, c.id) });
+  eq(r.data.projects.length, 2);
+  const a = await NP({ new_client: { name: 'Без номера' } }), b = await NP({ new_client: { name: 'Без номера', phone: '  ' } });
+  eq([a.status, b.status], [200, 200]);
+  ok(a.data.client_id !== b.data.client_id, 'без номера клієнтів не зливаємо');
+  const ca = await q1('SELECT provider, provider_id, phone FROM clients WHERE id = ?', a.data.client_id);
+  ok(ca.provider === 'crm' && /^manual-/.test(ca.provider_id) && ca.phone == null, 'crm manual-…');
+});
+await it('номер, підтверджений входом через бота → наявний акаунт; телефону з профілю не віримо; міжнародний номер приймаємо', async () => {
+  const prof = await addClient(env, { id: 7101, name: 'Профіль з номером', phone: '+380931110022' });
+  const r = await NP({ new_client: { name: 'Клієнт', phone: '0931110022' } });
+  ok(r.status === 200 && r.data.client_id !== prof, 'не прикріплено до чужого профілю');
+  const real = await addClient(env, { id: 7102, name: 'Справжній' });
+  await DB.prepare("INSERT INTO login_requests (token, phone, browser_hash, status, client_id, created_at, expires_at) VALUES ('t-nc', '+380931110033', 'h', 'used', ?, 1, 2)").bind(real).run();
+  eq((await NP({ new_client: { name: 'Клієнт', phone: '+38 093 111 00 33' } })).data.client_id, real);
+  const us = await NP({ new_client: { name: 'Client Abroad', phone: '+1 (212) 555-01-00' } });
+  eq((await q1('SELECT provider_id FROM clients WHERE id = ?', us.data.client_id)).provider_id, '+12125550100');
+});
+await it('помилки: без імені, кривий номер, не обʼєкт → 422/404 і жодного нового клієнта чи проєкту; невалідний проєкт клієнта не створює', async () => {
+  const n = async () => [(await q1('SELECT COUNT(*) AS n FROM clients')).n, (await q1('SELECT COUNT(*) AS n FROM projects')).n];
+  const before = await n();
+  eq((await NP({ new_client: { name: '  ', phone: '0671112233' } })).status, 422);
+  eq((await NP({ new_client: { name: 'Клієнт', phone: '12345' } })).status, 422);
+  eq((await NP({ new_client: 'Клієнт' })).status, 404);
+  eq((await NP({ new_client: ['Клієнт'] })).status, 404);
+  eq((await NP({})).status, 404);
+  eq((await NP({ new_client: { name: 'Клієнт', phone: '0671112244' }, title: '' })).status, 422, 'проєкт без назви');
+  eq((await NP({ new_client: { name: 'Клієнт', phone: '0671112244' }, camera_url: 'http://x' })).status, 422, 'камера не https');
+  eq(await n(), before);
+});
+await it('client_id має пріоритет над new_client; права: дизайнер без projects.edit — 403; сума договору без finance.edit — 403', async () => {
+  const cl = await addClient(env, { id: 7103, name: 'Наявний' });
+  const r = await NP({ client_id: cl, new_client: { name: 'Зайвий', phone: '0671112255' } });
+  eq([r.status, r.data.client_id], [200, cl]);
+  eq(await q1("SELECT 1 AS x FROM clients WHERE provider_id = '+380671112255'"), null);
+  eq((await NP({ new_client: { name: 'Клієнт' } }, ck.DES)).status, 403);
+});
+
 describe('«Надіслати КП»: текст мовою заявки (10 мов), журнал без надсилання з сервера');
 await it('kp_text у списку: uk — «від $2 550 ($30/м²)»; en — кома в тисячах; усі 10 мов без порожніх місць', async () => {
   const r = (await rows()).rows.find(x => x.id === L1);
