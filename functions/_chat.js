@@ -363,9 +363,15 @@ export const HANDOFF = dict({
   complaint: 'Скарга', complex: 'Складне питання', other: 'Інше',
 });
 // «Потрібна людина»: стан waiting + сповіщення власнику й менеджерам (адресати заявок) — одразу, у будь-який час
-export async function handoff(env, s, code, reason) {
+// renotify (воркер, 23.11.2026): розмова вже waiting, але зʼявилось нове для людини (клієнт обрав час дзвінка) — сповістити ще раз.
+//   Лише з reason (що саме змінилось); стан staff/closed — ні (бот туди не пише, 409 раніше).
+export async function handoff(env, s, code, reason, renotify = false) {
   const u = await env.DB.prepare("UPDATE chat_sessions SET state = 'waiting', handoff_reason = ?, last_at = datetime('now') WHERE id = ? AND state IN ('bot', 'closed')").bind(code || 'other', s.id).run();
-  if (!u.meta.changes) return 0;
+  if (!u.meta.changes) {
+    if (!(renotify && reason)) return 0;
+    const w = await env.DB.prepare("UPDATE chat_sessions SET handoff_reason = ?, last_at = datetime('now') WHERE id = ? AND state = 'waiting'").bind(code || 'other', s.id).run();
+    if (!w.meta.changes) return 0;
+  }
   const last = await env.DB.prepare("SELECT text FROM chat_messages WHERE session_id = ? AND role = 'user' AND text IS NOT NULL ORDER BY id DESC LIMIT 1").bind(s.id).first();
   const text = [`🙋 <b>Чат на сайті: потрібна людина</b>`, `Розмова #${s.id} · ${escHtml((s.lang || 'uk').toUpperCase())} · ${escHtml(s.page || '/')}`,
     `Причина: ${escHtml(HANDOFF[code || 'other'])}${reason ? ' — ' + escHtml(str(reason, 200)) : ''}`, last ? `Останнє: «${escHtml(str(last.text, 300))}»` : null].filter(Boolean).join('\n');

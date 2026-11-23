@@ -4,7 +4,8 @@
 //   Кожну видану розмову блокуємо на lock секунд (типово 120): другий воркер її не отримає, поки не мине час або не прийде відповідь.
 //   → {items: [{sid, lang, page, state, lead: {number}|null, lock_until, last_user_id, history: [...], pending: [...]}], online_set: true}
 //   history — до 30 останніх повідомлень розмови, крім pending (відповіді бота й людини, системні, вже відповідені повідомлення відвідувача), pending — повідомлення відвідувача без відповіді (до 20), з файлами {id, name, mime, kind, size}.
-// POST {sid, reply_to, text?, audio?: {mime, data (base64), dur}, estimate?, handoff?, handoff_reason?, reason?} — відповідь у розмову.
+// POST {sid, reply_to, text?, audio?: {mime, data (base64), dur}, estimate?, handoff?, handoff_reason?, reason?, renotify?} — відповідь у розмову.
+//   renotify: true (лише з handoff і reason) — розмова вже waiting, а для людини є нове (обраний час дзвінка): сповістити ще раз.
 //   reply_to — id ОСТАННЬОГО повідомлення відвідувача з pending: якщо відтоді прийшло нове — 409 {conflict, last_user_id} (перечитати чергу).
 //   Стан staff або closed — 409 {state} (людина вже веде розмову). handoff: true — стан waiting і сповіщення (handoff_reason: asks_human | big_project | complaint | complex | other; reason — коротко своїми словами) власнику й менеджерам у Telegram.
 // POST {sid, typing: true} — «друкує…» ще 30 с і продовжити блокування; POST {sid, release: true} — зняти блокування без відповіді.
@@ -86,7 +87,7 @@ export const onRequestPost = ({ request, env }) => wrap(async () => {
   await env.DB.prepare("UPDATE chat_sessions SET answered_upto = MAX(answered_upto, ?), lock_until = NULL, typing_until = NULL, last_bot_at = datetime('now'), last_at = datetime('now') WHERE id = ?")
     .bind(replyTo, s.id).run();
   let notified = 0;
-  if (d.handoff === true) notified = await handoff(env, s, d.handoff_reason, d.reason);
+  if (d.handoff === true) notified = await handoff(env, s, d.handoff_reason, d.reason, d.renotify === true);
   const fresh = await env.DB.prepare('SELECT state FROM chat_sessions WHERE id = ?').bind(s.id).first();
   return json({ ok: true, id, state: fresh.state, notified });
 });
