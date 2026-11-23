@@ -8,8 +8,8 @@
 Що робить apply() (ідемпотентно; генератори — landing.py — викликають її перед chrome.apply()):
   • form#of: поле телефону — першим, type=tel, inputmode=tel, autocomplete=tel, підказка +380; «Імʼя (необовʼязково)»;
     площа й коментар — у згорнутому <details class="o-more"> «Додати коментар»; кнопка «дієслово + результат»
-    («Отримати розрахунок»); під нею лише ряд іконок Telegram · Viber · WhatsApp · WeChat (.lq-alt, між <!--lqx--> і <!--/lqx-->;
-    Михайло 21.11.2026 — без тексту «Або напишіть», він лише aria-label групи). Стандартну примітку .o-note («Передзвонимо й порахуємо…») і рядок довіри .lq-tr
+    («Отримати розрахунок»); під нею — нічого: ряд іконок .lq-alt (між <!--lqx--> і <!--/lqx-->) apply() прибирає (Михайло 24.11.2026:
+    іконки месенджерів лише у футері праворуч). Стандартну примітку .o-note («Передзвонимо й порахуємо…») і рядок довіри .lq-tr
     (150+ проєктів…) прибрано (Михайло 08.11.2026) — apply() їх видаляє; власну примітку сторінки (інший текст) лишає.
   • Швидка заявка в один рядок (form.lq, між <!--lq--> і <!--/lq-->) — у hero лендингів послуг одразу після кнопок
     (.w.hero .btns), з рядком месенджерів; стандартна кнопка «Отримати кошторис» над нею стає «Подзвонити» (tel:, вторинна).
@@ -23,8 +23,9 @@
   • Стилі — у /assets/site-chrome.v1.css (розділ «Легка заявка»); старий інлайн <style id="lead-ui"> прибираємо.
 Надсилання, перевірку номера, маску, стани «надсилаємо…/дякуємо» і події Clarity (`lead_submit`, `lead_start`, `lead_msg`)
 робить спільний /assets/lead-form.v1.js. Без поп-апів і exit-intent.
-Контакти поруч із формою #zayavka на ПК ≥1024 px (телефон, Telegram/WhatsApp/Viber, адреса, години; Михайло 16.11.2026) — aside.of-ct
-будує lead-form.v1.js (абсолютно в правій половині .w, без зміни потоку — CLS 0); тексти 9 мов — sync_js() (див. нижче).
+Форма у вікні (Михайло 24.11.2026): секцію #zayavka з JS ховає CSS, lead-form.v1.js переносить її вміст (H2, form#of, #oOk) у <dialog class="fdl">,
+яке відкривають усі посилання на #zayavka (кнопка футера «Розрахувати проєкт», «Заявка» в шапці, «Залишити номер», .lq-go, сцени, калькулятор,
+адреса …#zayavka); без JS секція видима. Реферальна програма — форма на місці (data-fd="0", no_dialog). Картки контактів біля форми (aside.of-ct) немає.
 "Гід з цінами" (.gd-slot, tools/guide/build.py) — не друга форма, а кнопка «Отримати гід з цінами» до #zayavka з контекстом (data-form=guide);
 після 2xx у кожному блоці успіху — години відповіді й кнопка Telegram (тексти T[мова] after/gd/gd_msg → AF у lead-form.v1.js, sync_js()).
 Форму з data-lf="keep" (власна форма сторінки, landing.py "form_html") не переписуємо.
@@ -117,16 +118,6 @@ def lang_of(s):
 def alt_label(lang):
     """Підпис ряду месенджерів під кнопкою («Або напишіть») — лише aria-label групи, без двокрапки."""
     return re.sub(r'[\s:：]+$', '', T[lang]['alt'])
-
-
-def extras(lang):
-    """Під кнопкою форми — лише ряд іконок Telegram · Viber · WhatsApp · WeChat (Михайло 21.11.2026; раніше «Або напишіть: …» текстом),
-    як на картці біля форми: назва — aria-label/title, «Або напишіть» — aria-label групи; WeChat (a[data-wx]) копіює номер, без JS — weixin://."""
-    links = ''.join(f'<a class="bi bi-{n.split()[0].lower()}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
-                    + (f' data-wx="{WECHAT}"' if u.startswith('weixin:') else '') + f' aria-label="{a(n)}" title="{a(n)}"></a>' for n, u in MSG)
-    import flags
-    links += flags.chat_icon(lang)  # чат на сайті — лише іконкою, коли CHAT_PUBLIC (tools/site/flags.py)
-    return f'<!--lqx--><p class="lq-alt" role="group" aria-label="{a(alt_label(lang))}">{links}</p><!--/lqx-->'
 
 
 # стандартні примітки під кнопкою (усі мови) — прибираємо; власна примітка сторінки (інший текст) лишається
@@ -228,15 +219,11 @@ def upgrade_form(s, lang):
     else:
         s = s[:lo] + re.sub(r'(<details class="o-more"><summary>)([^<]*)', lambda x: x.group(1) + _keep(x.group(2), e(t['more'])), s[lo:hi], count=1) + s[hi:]
         hi = s.find('</form>', lo)
-    # під кнопкою — лише ряд іконок месенджерів (стандартна примітка й рядок довіри — прибрані, Михайло 08.11.2026; іконки — 21.11.2026)
+    # під кнопкою — нічого: ряд іконок месенджерів прибрано (Михайло 24.11.2026: «вони дублюються по 3 рази» — іконки лише у футері праворуч);
+    # стандартна примітка й рядок довіри — прибрані раніше (Михайло 08.11.2026)
     f = s[lo:hi]
     f = X_RX.sub('', f)
     f = NOTE_RX.sub(lambda m: '' if _NB(m.group(1)) in STD_NOTES else m.group(0), f)
-    x = extras(lang)
-    if NOTE_RX.search(f):
-        f = NOTE_RX.sub(lambda m: m.group(0) + x, f, count=1)
-    else:
-        f = re.sub(r'(<button[^>]*\bid="oBtn"[^>]*>.*?</button>)', lambda m: m.group(1) + x, f, count=1, flags=re.S)
     return s[:lo] + f + s[hi:]
 
 
@@ -246,7 +233,7 @@ def quick_html(lang, service, source, form='quick-hero', idp='lq'):
             f'<label class="lq-l" for="{idp}P">{e(t["q"])}</label>'
             f'<div class="lq-r"><input id="{idp}P" type="tel" inputmode="tel" autocomplete="tel" placeholder="{a(t.get("ph", "+380 97 123 45 67"))}" aria-describedby="{idp}E">'
             f'<button class="lq-b" type="submit">{e(t["send"])}</button></div>'
-            f'<div class="lq-e" id="{idp}E" role="alert"></div>{extras(lang)}</form>'
+            f'<div class="lq-e" id="{idp}E" role="alert"></div></form>'
             f'<div class="lq-ok" role="status" tabindex="-1" hidden>{e(t["ok"])}</div><!--/lq-->')
 
 
@@ -387,6 +374,16 @@ def add_slots(s, rel):
     return s
 
 
+FD_RX = re.compile(r'<section id="zayavka"(?: data-fd="0")?>')
+
+
+def no_dialog(s):
+    """Форма — суть сторінки (реферальна програма, data-form="referral"): секція #zayavka лишається на місці, без вікна (data-fd="0" —
+    lead-form.v1.js і CSS «Вікно заявки» її не ховають; кнопка футера веде на форму мови). Решта сторінок — форма у вікні. Ідемпотентно."""
+    keep = re.search(r'<form\b[^>]*\bid="of"[^>]*\bdata-form="referral"', s)
+    return FD_RX.sub('<section id="zayavka" data-fd="0">' if keep else '<section id="zayavka">', s, count=1)
+
+
 def apply(s, rel):
     rel = rel.replace(os.sep, '/')
     if rel in SKIP:
@@ -394,7 +391,8 @@ def apply(s, rel):
     s = STYLE_RX.sub('', s)
     if 'data-lf="keep"' in s:  # власна форма сторінки (landing.py "form_html", напр. реферальна): не переписуємо, без швидкої заявки
         s = QUICK_RX.sub('', s)
-        s = X_RX.sub(lambda m: extras(lang_of(s)), s)  # ряд месенджерів під кнопкою (згенерована частина) — і у власній формі
+        s = X_RX.sub('', s)  # ряду месенджерів під кнопкою немає й у власній формі (Михайло 24.11.2026)
+        s = no_dialog(s)  # реферальна програма: форма — суть сторінки, лишається на місці (без вікна)
         s = hero_call(s, lang_of(s))  # але перша кнопка hero — «Подзвонити», як на інших мовах контактів (QA 03.11.2026)
     elif 'id="of"' in s or '<!--lq-->' in s:
         lang = lang_of(s)
@@ -408,32 +406,9 @@ def apply(s, rel):
     return s
 
 
-# ── контакти поруч із формою #zayavka на ПК (Михайло 16.11.2026): блок будує /assets/lead-form.v1.js (у HTML його немає —
-# лендинги на межі бюджету 64 КБ); тексти — сюди з рядка «Офіс»/«Години»/«Телефон» секції contacts у <мова>-contact*.json і chrome.T
-# (contacts, msg), адреса з індексом 03186 (факт із CLAUDE.md). sync_js() пише словник CT між /*ct*/ і /*/ct*/ у lead-form.v1.js.
-CONTACT_PAGES = dict(uk='uk-contact', ru='ru-kontakty', en='en-contact', es='es-contacto', zh='zh-contact', pl='pl-kontakt',
-                     de='de-kontakt', fr='fr-contact', pt='pt-contacto', ar='ar-contact')
-ADDR = dict(uk='вул. Антоновича, 44, Київ, 03186', ru='ул. Антоновича, 44, Киев, 03186', en='44 Antonovycha St, Kyiv 03186, Ukraine',
-            es='Calle Antonovycha 44, 03186 Kiev, Ucrania', zh='乌克兰基辅 Antonovycha 街 44 号，03186', pl='ul. Antonowycza 44, 03186 Kijów, Ukraina',
-            de='Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine', fr='44, rue Antonovytcha, 03186 Kyiv, Ukraine', pt='Rua Antonovycha, 44, 03186 Kyiv, Ucrânia', ar='شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا')
+# ── контакти поруч із формою #zayavka (aside.of-ct, Михайло 16.11.2026) прибрано (Михайло 24.11.2026: «цей блок… видалити разом з іконками»):
+# форма — у вікні, телефон і адреса — у футері; словника CT у lead-form.v1.js більше немає.
 JS = os.path.join(ROOT, 'assets', 'lead-form.v1.js')
-CT_RX = re.compile(r'/\*ct\*/.*?/\*/ct\*/', re.S)
-
-
-def ct_js():
-    import json
-    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    import chrome
-    rows = []
-    for l, f in CONTACT_PAGES.items():
-        p = json.load(open(os.path.join(ROOT, 'tools', 'site', 'pages', f + '.json'), encoding='utf-8'))
-        r = next(x for x in p['sections'] if x.get('t') == 'contacts')['rows']
-        office = next(x for x in r if str(x[2] or '').startswith('https://maps.'))
-        hours = next(x for x in r if '10:00' in x[1])
-        phone = next(x for x in r if str(x[2] or '').startswith('tel:'))
-        d = [chrome.T[l]['contacts'], phone[0], chrome.T[l]['msg'], office[0], ADDR[l], hours[0], hours[1]]
-        rows.append(f'    {l}: {json.dumps(d, ensure_ascii=False)}')
-    return '/*ct*/\n  var CT = {\n' + ',\n'.join(rows) + '\n  };\n  /*/ct*/'
 
 
 # після 2xx (Михайло 16.11.2026): рядок «Відповідаємо Пн–Пт 10:00–20:00. Якщо терміново — напишіть у Telegram» + кнопка Telegram,
@@ -449,7 +424,7 @@ def af_js():
 
 def sync_js(check=False):
     s = open(JS, encoding='utf-8').read()
-    new = AF_RX.sub(lambda m: af_js(), CT_RX.sub(lambda m: ct_js(), s, count=1), count=1)
+    new = AF_RX.sub(lambda m: af_js(), s, count=1)
     if new != s and not check:
         open(JS, 'w', encoding='utf-8').write(new)
     return new == s
@@ -479,7 +454,7 @@ if __name__ == '__main__':
             else:
                 open(p, 'w', encoding='utf-8').write(new); n += 1
     if not sync_js('--check' in sys.argv):
-        bad.append('assets/lead-form.v1.js (контакти біля форми — CT, тексти після успіху й гіда — AF)')
+        bad.append('assets/lead-form.v1.js (тексти після успіху й гіда — AF)')
     if '--check' in sys.argv:
         print('\n'.join(bad) if bad else 'Форми заявки: OK')
         sys.exit(1 if bad else 0)

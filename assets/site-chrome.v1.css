@@ -236,11 +236,8 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 details.o-more>summary{cursor:pointer;display:inline-block;list-style:none;padding:6px 0;color:var(--ac,#bf9148);font-size:var(--fs-small,.8125rem);font-weight:600}
 details.o-more>summary::-webkit-details-marker{display:none}details.o-more>summary::after,details.o-more[open]>summary::after{content:none!important;display:none!important}
 details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before{content:"− "}details.o-more>*+*{margin-top:12px}
-.lq-alt,.lq-tr{font-size:var(--fs-small,.8125rem);line-height:1.5;margin:6px 0 0;color:var(--mu,#8a837c);max-width:34em}
-/* під кнопкою форми — лише ряд іконок Telegram · Viber · WhatsApp · WeChat (Михайло 21.11.2026), як на картці біля форми (.of-ct-m): ≥ 44 px, назва — aria-label/title */
-.lq-alt{display:flex;flex-wrap:wrap;gap:.5rem}
-.lq-alt a{display:inline-flex;align-items:center;justify-content:center;flex:none;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:.75rem;text-decoration:none}.lq-alt a:hover,.lq-alt a:focus-visible{border-color:var(--ac,#bf9148)}.lq-alt .bi::before{width:1.375rem;height:1.375rem}
-:is(.lq,#of) :is(.o-note,.lq-alt,.lq-tr,.lq-l){font-size:var(--fs-small,.8125rem);line-height:1.5}:is(.lq,#of) .lq-tr{margin:6px 0 0}:is(.lq,#of) .lq-alt{margin:12px 0 0}.lq .o-note{margin:8px 0 0}.lq :is(.o-note,.lq-alt){color:var(--mu,#8a837c)}
+.lq-tr{font-size:var(--fs-small,.8125rem);line-height:1.5;margin:6px 0 0;color:var(--mu,#8a837c);max-width:34em}
+:is(.lq,#of) :is(.o-note,.lq-tr,.lq-l){font-size:var(--fs-small,.8125rem);line-height:1.5}:is(.lq,#of) .lq-tr{margin:6px 0 0}.lq .o-note{margin:8px 0 0}.lq .o-note{color:var(--mu,#8a837c)}
 .lq-slot:empty{margin:0;padding:0}.lq-slot{margin:28px 0 0}.lq-slot .lq{margin:0;max-width:620px;padding:18px 20px;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:12px;background:rgba(191,145,72,.05)}
 .lq-slot .lq-ok{margin:0}.cta .lq-slot{margin:0 0 16px}.cta .lq-slot .lq{padding:0;border:0;background:none}
 /* місце швидкої заявки до ліниво зібраної форми (lead-form.v1.js будує її за ~3 екрани): резерв висоти — без стрибка вмісту при швидкій прокрутці (CLS). Значення — мінімальні виміряні висоти форм (360–1440 px) */
@@ -1093,23 +1090,76 @@ html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
 a[data-lb]{cursor:zoom-in}
 .gal figure{position:relative}.gal figcaption a::after{content:"";position:absolute;inset:0}
 
-/* ══ Контакти поруч із формою #zayavka на ПК (Михайло 16.11.2026) — aside.of-ct будує /assets/lead-form.v1.js (≥1024 px; top/left — від form#of);
-   абсолютно в правій половині .w: потік сторінки не змінюється (CLS 0); телефон (<1024 px) — без блоку */
-.of-ct{display:none}
-@media (min-width:1024px){
-  #zayavka>.of-ct-w{position:relative}
-  #zayavka .of-ct{display:grid;position:absolute;align-content:start;gap:1.125rem;padding:1.5rem 1.75rem;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:14px;background:rgba(191,145,72,.04);box-sizing:border-box}
-  .of-ct-r{display:grid;gap:.25rem;min-width:0}
-  .of-ct-l{font-size:var(--fs-small,.8125rem);color:var(--mu,#8a837c);line-height:1.4}
-  .of-ct-v{color:var(--tx,#ede8df);line-height:1.5;overflow-wrap:anywhere}
-  a.of-ct-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.375rem;font-weight:600;color:var(--tx,#ede8df);text-decoration:none;white-space:nowrap}
-  a.of-ct-tel:hover{color:var(--ac,#bf9148)}
-  .of-ct-m{display:flex;flex-wrap:wrap;gap:.5rem}
-  .of-ct-m a{display:inline-flex;align-items:center;justify-content:center;flex:none;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:.75rem;text-decoration:none} /* лише іконки, як у футері (21.11.2026) */
-  .of-ct-m a:hover,.of-ct-m a:focus-visible{border-color:var(--ac,#bf9148)}
-  .of-ct-m .bi::before{width:1.375rem;height:1.375rem}
+/* ══ Вікно заявки (Михайло 24.11.2026: «прибрати… і збоку зробити кнопку "Розрахувати проєкт", після натискання якої відкриється вже вікно
+   розрахунку»): секція #zayavka з JS схована (правило й у crit.v1.css — без мигання), її вміст lead-form.v1.js переносить у dialog.fdl;
+   без JS і без <dialog> (html.nofd) — секція на місці; реферальна (data-fd="0") і Оздоба (.ozd-sec) — без вікна. Відкрите вікно — top layer
+   (над шапкою, кружечками й cookies); прокрутка сторінки під ним — без overflow:hidden на <html>: саме вікно — шар на весь екран із прокруткою,
+   вміст на 1 px вищий за вікно + overscroll-behavior:contain (колесо й свайп не йдуть на сторінку). ПК — картка 34rem по центру, телефон — нижня
+   шторка на всю ширину з safe-area; поля ≥ 16 px (загальне правило), ✕ 44 px; reduced-motion — без анімації. */
+.js:not(.nofd) #zayavka:not([data-fd="0"]):not(.ozd-sec):not(dialog){display:none}
+html body dialog.fdl{position:fixed;inset:0;z-index:2147483000;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;box-sizing:border-box;
+  background:transparent;color:var(--tx,#ede8df);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+html body dialog.fdl:not([open]){display:none}
+dialog.fdl::backdrop{background:rgba(6,5,5,.76)}
+.fdl-in{display:grid;place-items:center;min-height:calc(100% + 1px);box-sizing:border-box;
+  padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.fdl-c{position:relative;width:min(100%,34rem);box-sizing:border-box;padding:1.75rem 1.75rem 1.75rem;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:14px;
+  background:var(--bg2,#100e0c);box-shadow:0 24px 60px rgba(0,0,0,.45);text-align:start}
+.fdl-c>h2{margin:0 0 .5rem;padding-inline-end:3rem;font-size:clamp(1.5rem,1.2rem + 1vw,2rem);line-height:1.15}
+.fdl-c>h2+p{margin:0 0 1rem;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
+.fdl-c>h2+form{margin-top:1rem}
+.fdl-c form,.fdl-c .ok{max-width:none;margin-inline:0}
+.fdl-c form button[type=submit]{width:100%;min-height:48px}
+.fdl-c .ok{margin-top:1rem}
+.fdl-x{position:absolute;top:.75rem;inset-inline-end:.75rem;display:grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:1px solid var(--ln,rgba(191,145,72,.3));
+  border-radius:50%;background:transparent;color:var(--tx,#ede8df);font:400 1.625rem/1 var(--M,"Manrope","Manrope Fallback",sans-serif);cursor:pointer}
+.fdl-x:hover,.fdl-x:focus-visible{border-color:var(--ac,#bf9148);color:var(--ac,#bf9148)}
+.fdl-x:focus-visible{outline:2px solid var(--ac,#bf9148);outline-offset:2px}
+@media(max-width:767px){
+  .fdl-in{place-items:end stretch;padding:max(12px,env(safe-area-inset-top,0px)) 0 0}
+  .fdl-c{width:100%;border-width:1px 0 0;border-radius:14px 14px 0 0;
+    padding:1.5rem max(16px,env(safe-area-inset-right,0px)) calc(1.5rem + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .fdl-x{top:.5rem;inset-inline-end:max(.5rem,env(safe-area-inset-right,0px))}
 }
-@media (horizontal-viewport-segments:2){#zayavka .of-ct{display:none}} /* двоекранні: форма — в одному сегменті, без блоку через шарнір */
+@media(prefers-reduced-motion:no-preference){
+  dialog.fdl[open] .fdl-c{animation:fdlIn .22s cubic-bezier(.2,.7,.2,1)}
+  dialog.fdl[open]::backdrop{animation:fdlBg .22s ease-out}
+}
+@keyframes fdlIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fdlBg{from{opacity:0}to{opacity:1}}
+/* кнопка «Розрахувати проєкт» у футері (chrome.footer, FOOT_CTA) — заливка, ≥ 44 px; стилі свої (футер є й на сторінках без .btn шаблону) */
+.scf a.scf-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.625rem;box-sizing:border-box;border:1px solid var(--c-ac);border-radius:999px;
+  background:var(--c-ac);color:#140f08;font-size:.875rem;font-weight:600;letter-spacing:.02em;line-height:1.2;text-align:center;text-decoration:none;white-space:nowrap;transition:filter .18s ease}
+.scf a.scf-cta:hover{filter:brightness(1.08);color:#140f08}
+.scf a.scf-cta:focus-visible{outline:2px solid #f3d7a6;outline-offset:3px}
+/* футер без підпису студії й заголовка «Контакти» (Михайло 24.11.2026: «залиш лише CAS Development і графічно вирівняй з іншим текстом»):
+   ліворуч — логотип, під ним адреса · телефон (один лівий край); праворуч — «Розрахувати проєкт» і ряд іконок; ПК ≥ 1100 px — один ряд по центру,
+   760–1099 — логотип і кнопка, іконки другим рядом; телефон — колонкою, кнопка на всю ширину */
+html body .scf-top{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-items:center}
+html body .scf-top>.scf-brand{display:grid;gap:0;justify-items:start;min-width:0;grid-row:auto}
+.scf-brand .scf-col{display:flex;flex-wrap:wrap;align-items:center;gap:0 1.25rem;min-width:0}
+.scf-brand address{line-height:1.45}
+.scf-top>.scf-cta{justify-self:stretch}
+@media(min-width:760px){
+  html body .scf-top{grid-template-columns:minmax(0,1fr) auto;gap:20px 32px}
+  .scf-top>.scf-cta{justify-self:end}
+  html body .scf-top>.scf-ms{grid-column:1/-1}
+}
+@media(min-width:1100px){
+  html body .scf-top{grid-template-columns:minmax(0,1fr) auto auto;gap:24px}
+  html body .scf-top>.scf-ms{grid-column:auto}
+}
+/* іконка чату «блимає» (Михайло 24.11.2026: «іконка "чат з помічником" нехай блимає, привертає увагу» — прямий виняток із «без пульсацій»):
+   раз на 4 с — кільце-хвиля від кружечка бота (a.mb-bot) і іконки чату у футері + коротке «моргання» значка; лише transform/opacity
+   псевдоелементів (без layout, CLS 0). Клас .ch-on ставить site-chrome.v1.js: поки чат не відкривали (localStorage cas_chat_seen / розмова cas_chat),
+   іконку видно (IntersectionObserver) і вкладка активна; reduced-motion — нічого. */
+@media(prefers-reduced-motion:no-preference){
+  .scf-soc a[data-chat].ch-on{position:relative}
+  a[data-chat].ch-on::after{content:"";position:absolute;inset:-1px;border:2px solid #bf9148;border-radius:inherit;pointer-events:none;opacity:0;animation:chAtt 4s cubic-bezier(.2,.7,.2,1) infinite}
+  a[data-chat].ch-on::before{animation:chIco 4s ease-in-out infinite}
+}
+@keyframes chAtt{0%{opacity:.95;transform:scale(1)}32%{opacity:0;transform:scale(1.5)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes chIco{0%,18%,100%{opacity:1}6%,12%{opacity:.35}}
 /* ══ Курсор-супутник (ПК) і хвиля дотику (тач) — Михайло 20.11.2026; логіка — pointerFx() у /assets/ui-polish.v1.js, UI-kit /styleguide/#pointer ══
    .cur — кільце 28 px за курсором (лише transform; збільшення — масштаб внутрішнього кола, без layout), над посиланнями — 52 px із заливкою,
    «→»/«←»/«+» — ::after. .tap — хвиля від точки дотику (Web Animations). Обидва fixed, aria-hidden, pointer-events:none: не впливають на тап-цілі

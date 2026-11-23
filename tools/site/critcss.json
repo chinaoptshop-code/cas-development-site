@@ -450,4 +450,12 @@
 ".crumbs+.hxl",
 ".scf-top>.scf-col:last-child",
 ".gal figure",
-".gal figcaption a::after"]
+".gal figcaption a::after",
+".js:not(.nofd) #zayavka:not([data-fd=\"0\"]):not(.ozd-sec):not(dialog)",
+".scf a.scf-cta",
+"html body .scf-top",
+"html body .scf-top>.scf-brand",
+".scf-brand .scf-col",
+".scf-brand address",
+".scf-top>.scf-cta",
+"html body .scf-top>.scf-ms"]

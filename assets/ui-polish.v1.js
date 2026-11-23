@@ -239,7 +239,7 @@ function pointerFx(){
  if(RM||!W.matchMedia||!W.requestAnimationFrame||/^\/(?:[a-z]{2}\/)?(?:kabinet|tury\/)/.test(location.pathname))return;
  var fine=W.matchMedia('(hover:hover) and (pointer:fine)').matches,coarse=W.matchMedia('(pointer:coarse)').matches;
  if(!fine&&!coarse)return;
- var HIDE='input,textarea,select,video,iframe,canvas,[contenteditable],.maplibregl-map,.cmap,[data-cas-map],section.bz .bz-fig,section.bz svg,.clb',
+ var HIDE='input,textarea,select,video,iframe,canvas,[contenteditable],.maplibregl-map,.cmap,[data-cas-map],section.bz .bz-fig,section.bz svg,.clb,dialog',
   GO='.xs-st a[href],.xs-cv a[href],.xs-svc .xs-c,.gal figure',LINK='a[href],button,summary,label,[role=button]',
   TAP='.btn,.lq-go,.lq-b,.c-b,.cmp-more,.sch-cta,.mbar a,.mbar button,.la-tab a,.rel a,.xs-st a,.xs-cv a,.xs-svc .xs-c,.gal figure,[data-c="x"]';
  function mk(c){var e=d.createElement('div');e.className=c;e.setAttribute('aria-hidden','true');e.appendChild(d.createElement('i'));d.body.appendChild(e);return e}

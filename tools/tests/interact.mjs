@@ -462,9 +462,15 @@ await test('пігулка «Звʼязатися»: меню й Esc', '/remont-
   await p.keyboard.press('Escape'); await p.waitForTimeout(150);
   must(!(await p.locator('.mbar.open').count()), 'Esc не закрив');
 });
+// Вікно заявки (Михайло 24.11.2026): форма — у dialog.fdl, відкриває кнопка «Розрахувати проєкт» у футері (і всі посилання на #zayavka)
+const fdOpen = p => p.evaluate(() => { const d = document.querySelector('dialog.fdl'); return !!(d && d.open); });
+const openFd = async p => {
+  await p.locator('.scf-cta').scrollIntoViewIfNeeded(); await p.click('.scf-cta'); await p.waitForTimeout(400);
+  must(await fdOpen(p), 'кнопка футера не відкрила вікно заявки');
+};
 await test('форма: порожній телефон не надсилається; 500 — без успіху; 200 — успіх', '/remont-kvartyr-kyiv', 402, async p => {
   posts = []; apiStatus = 500;
-  await p.locator('#of').scrollIntoViewIfNeeded();
+  await openFd(p);
   await p.click('#oBtn'); await p.waitForTimeout(500);
   must(posts.length === 0, 'порожня форма надіслана');
   await p.fill('#oPhone', '0671234567');
@@ -472,9 +478,11 @@ await test('форма: порожній телефон не надсилаєт�
   must(posts.length === 1, 'заявку не надіслано (' + posts.length + ')');
   const okVis = async () => p.evaluate(() => [...document.querySelectorAll('#oOk,.lq-ok')].some(e => e.offsetParent && getComputedStyle(e).display !== 'none' && e.textContent.trim().length > 5));
   must(!(await okVis()), 'успіх показано при 500');
+  must(await fdOpen(p) && await p.locator('#oErr').textContent() !== '', 'при 500 вікно закрилось або немає тексту помилки');
   apiStatus = 200;
   await p.click('#oBtn'); await p.waitForTimeout(1500);
   must(await okVis(), 'успіх не показано при 200');
+  must(await fdOpen(p) && await p.evaluate(() => document.activeElement && document.activeElement.id === 'oOk'), 'після успіху: вікно відкрите, фокус на «дякуємо»');
   const af = await p.evaluate(() => { const x = document.querySelector('#oOk .lf-after'), a = x && x.querySelector('a.lf-tg'); return x ? { t: x.textContent, h: a && a.getAttribute('href'), v: !!x.offsetParent, hh: a ? a.getBoundingClientRect().height : 0 } : null; });
   must(af && af.v && /Пн–Пт 10:00–20:00/.test(af.t) && /терміново/.test(af.t), 'після успіху немає рядка «Відповідаємо Пн–Пт 10:00–20:00…»: ' + JSON.stringify(af));
   must(af.h === 'https://t.me/+380978667755' && af.hh >= 44, 'кнопка Telegram після успіху: ' + JSON.stringify(af));
@@ -484,33 +492,45 @@ await test('форма: порожній телефон не надсилаєт�
 // Перехід на …#zayavka з ІНШОЇ сторінки: сторінка стає на місце одразу (без плавної прокрутки ~10 000 px), шапка видима й не перекриває ціль;
 // у межах сторінки прокрутка до якоря лишається плавною (html.sb), reduced-motion — миттєво завжди.
 const hashRec = () => { window.__ys = []; const f = () => { window.__ys.push(Math.round(scrollY)); requestAnimationFrame(f); }; requestAnimationFrame(f); };
-for (const [path, w] of [['/remont-kvartyr-kyiv', 402], ['/', 1440], ['/ar/', 402], ['/contact', 402], ['/en/apartment-interior-design', 1440]]) await test('якір з іншої сторінки: #zayavka одразу на місці, шапка не перекриває', '/about', w, async p => {
+// …#zayavka (кнопка футера сторінки без форми, посилання ззовні): одразу відкрите вікно заявки, сторінка не прокручується, якір прибрано з адреси
+for (const [path, w] of [['/remont-kvartyr-kyiv', 402], ['/', 1440], ['/ar/', 402], ['/contact', 402], ['/en/apartment-interior-design', 1440]]) await test('#zayavka з іншої сторінки: одразу вікно заявки, без прокрутки', '/about', w, async p => {
   await p.addInitScript(hashRec);
   await p.goto(BASE + path + '#zayavka', { waitUntil: 'load' });
+  await p.waitForTimeout(800);
+  const r = await p.evaluate(() => ({ y: scrollY, hash: location.hash, foc: document.activeElement && document.activeElement.id, sec: getComputedStyle(document.getElementById('zayavka')).display }));
+  must(await fdOpen(p), 'вікно заявки не відкрилось');
+  must(r.y < 50 && r.hash === '' && r.foc === 'oPhone' && r.sec === 'none', 'після відкриття: ' + JSON.stringify(r));
+  await p.goBack().catch(() => {}); await p.waitForTimeout(400);
+  must(!(await fdOpen(p)) && p.url().endsWith(path), '«Назад» не закрив вікно або пішов зі сторінки: ' + p.url());
+});
+// Перехід на інший якір (не форму) з ІНШОЇ сторінки: сторінка стає на місце одразу, шапка видима й не перекриває ціль
+for (const [path, w] of [['/remont-kvartyr-kyiv', 402], ['/budivnytstvo-budynkiv-kyiv', 1440]]) await test('якір з іншої сторінки: одразу на місці, шапка не перекриває', '/about', w, async p => {
+  await p.addInitScript(hashRec);
+  await p.goto(BASE + path + '#build-anim', { waitUntil: 'load' });
   await p.waitForTimeout(1200);
-  const r = await p.evaluate(() => { const ys = window.__ys, y = scrollY, el = document.getElementById('zayavka').getBoundingClientRect(), h = document.querySelector('.sch').getBoundingClientRect();
-    return { mid: new Set(ys.filter(v => v > y * 0.1 && v < y * 0.9)).size, y, top: Math.round(el.top), hb: Math.round(h.bottom), end: y + innerHeight >= document.documentElement.scrollHeight - 2,
+  const r = await p.evaluate(() => { const ys = window.__ys, y = scrollY, el = document.getElementById('build-anim').getBoundingClientRect(), h = document.querySelector('.sch').getBoundingClientRect();
+    return { mid: new Set(ys.filter(v => v > y * 0.1 && v < y * 0.9)).size, y, top: Math.round(el.top), hb: Math.round(h.bottom),
       sb: getComputedStyle(document.documentElement).scrollBehavior, cls: document.documentElement.classList.contains('sb'), vh: innerHeight }; });
-  must(r.y > 1000, 'сторінка не перейшла до #zayavka: y=' + r.y);
+  must(r.y > 500, 'сторінка не перейшла до якоря: y=' + r.y);
   must(r.mid <= 2, `плавна прокрутка при завантаженні з якорем: ${r.mid} проміжних положень`);
   must(r.hb > 0, 'шапка схована після переходу на якір');
-  must((r.top >= r.hb - 1 && r.top < r.vh * 0.5) || (r.end && r.top < r.vh * 0.5), `#zayavka не під шапкою: top=${r.top}, шапка до ${r.hb}`);
+  must(r.top >= r.hb - 1 && r.top < r.vh * 0.5, `якір не під шапкою: top=${r.top}, шапка до ${r.hb}`);
   must(r.cls && r.sb === 'smooth', 'після завантаження плавність у межах сторінки не ввімкнулась: ' + r.sb);
 });
 await test('якір у межах сторінки: прокрутка плавна (html.sb одразу, без #)', '/remont-kvartyr-kyiv', 1440, async p => {
   must(await p.evaluate(() => document.documentElement.classList.contains('sb') && getComputedStyle(document.documentElement).scrollBehavior === 'smooth'), 'немає html.sb / scroll-behavior:smooth');
   await p.evaluate(hashRec);
-  await p.evaluate(() => { location.hash = '#zayavka'; });
+  await p.evaluate(() => { document.querySelector('.scf').id = 't-end'; location.hash = '#t-end'; }); // далека ціль (форма тепер у вікні — #zayavka не прокручує)
   await p.waitForTimeout(1800);
   const r = await p.evaluate(() => ({ n: new Set(window.__ys.filter(v => v > scrollY * 0.1 && v < scrollY * 0.9)).size, y: scrollY }));
   must(r.y > 1000 && r.n >= 5, `перехід у межах сторінки не плавний: ${r.n} проміжних положень, y=${r.y}`);
 });
 await test('якір, reduced-motion: миттєво і з іншої сторінки, і в межах сторінки', '/about', 402, async p => {
   await p.addInitScript(hashRec);
-  await p.goto(BASE + '/remont-kvartyr-kyiv#zayavka', { waitUntil: 'load' });
+  await p.goto(BASE + '/remont-kvartyr-kyiv#build-anim', { waitUntil: 'load' });
   await p.waitForTimeout(800);
   const r = await p.evaluate(() => ({ mid: new Set(window.__ys.filter(v => v > scrollY * 0.1 && v < scrollY * 0.9)).size, y: scrollY, sb: getComputedStyle(document.documentElement).scrollBehavior }));
-  must(r.y > 1000 && r.mid <= 2 && r.sb === 'auto', `reduced-motion: ${r.mid} проміжних положень, scroll-behavior ${r.sb}`);
+  must(r.y > 500 && r.mid <= 2 && r.sb === 'auto', `reduced-motion: ${r.mid} проміжних положень, scroll-behavior ${r.sb}`);
 }, { reducedMotion: 'reduce' });
 // Safari без scroll anchoring (емуляція html{overflow-anchor:none}): видимий вміст не зсувається сам, коли вище довантажуються стилі сцени,
 // секції з content-visibility:auto отримують справжню висоту або ініціалізується карусель «Наші проєкти» (резерв висоти + cvSize() в ui-polish.v1.js).
@@ -527,17 +547,17 @@ for (const path of ['/', '/en/', '/ar/', '/remont-kvartyr-kyiv']) for (const w o
   // 1) одразу після load — стрибок до останньої секції перед формою
   await p.goto(BASE + path, { waitUntil: 'load' }); await p.waitForTimeout(250);
   await p.mouse.move(200, 300);
-  await p.evaluate(() => { const e = document.querySelector('.xs-covers') || document.getElementById('zayavka'); window.scrollTo({ top: e.getBoundingClientRect().top + scrollY - 60, behavior: 'instant' }); window.__mark(); });
+  await p.evaluate(() => { const e = document.querySelector('.xs-covers') || document.querySelector('.scf'); window.scrollTo({ top: e.getBoundingClientRect().top + scrollY - 60, behavior: 'instant' }); window.__mark(); });
   await p.mouse.wheel(0, 1); await p.waitForTimeout(2500);
   let r = await p.evaluate(() => window.__sh);
   must(Math.abs(r.max) <= 4, `після стрибка до секції вміст зсунувся на ${r.max} px (${r.who})`);
-  // 2) сторінку відкрито з #zayavka; далі — прокрутка вгору кроками (секції й сцена вище отримують справжню висоту)
-  await p.goto(BASE + '/404.html'); await p.goto(BASE + path + '#zayavka', { waitUntil: 'load' }); await p.waitForTimeout(250);
+  // 2) одразу після load — стрибок у кінець сторінки (форма тепер у вікні); далі — прокрутка вгору кроками (секції й сцена вище отримують справжню висоту)
+  await p.goto(BASE + '/404.html'); await p.goto(BASE + path, { waitUntil: 'load' }); await p.evaluate(() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' })); await p.waitForTimeout(250);
   await p.mouse.move(200, 300); await p.mouse.wheel(0, -1);
   for (let i = 0; i < 40; i++) { const top = await p.evaluate(() => { window.scrollBy({ top: -400, behavior: 'instant' }); window.__mark(); return scrollY <= 0; }); await p.waitForTimeout(120); if (top) break; }
   await p.waitForTimeout(600);
   r = await p.evaluate(() => window.__sh);
-  must(Math.abs(r.max) <= 4, `прокрутка вгору з #zayavka: вміст зсунувся на ${r.max} px (${r.who})`);
+  must(Math.abs(r.max) <= 4, `прокрутка вгору з кінця сторінки: вміст зсунувся на ${r.max} px (${r.who})`);
 });
 // Повільна мережа: CSS/дані сцени приходять, коли людина вже всередині блоку (верх блоку вище екрана; на телефоні блок головної вищий за екран).
 // Сцена збирається на місці (висоту тримає резерв site-chrome.v1.css) — раніше чекала, доки блок вийде з кадру, і не зʼявлялась (так падав і perf.mjs --inp).
@@ -604,14 +624,15 @@ for (const [path, vp] of [['/konfigurator', [852, 393]], ['/konfigurator', [932,
   await p.locator('#kfSw .sw').nth(1).tap(); await p.waitForTimeout(300);
   must(await p.locator('#kfSw .sw').nth(1).getAttribute('aria-pressed') === 'true', 'матеріал не вибрано');
 });
-await test('.lq-go → #zayavka з контекстом сцени', '/budivnytstvo-budynkiv-kyiv', 1440, async p => {
+await test('.lq-go → вікно заявки з контекстом сцени', '/budivnytstvo-budynkiv-kyiv', 1440, async p => {
   await wakeup(p);
   const go = p.locator('.lq-go').first();
   await p.evaluate(() => scrollTo(0, document.documentElement.scrollHeight / 2)); await p.waitForTimeout(1500);
   if (!(await go.count())) throw new Error('немає .lq-go');
   await go.scrollIntoViewIfNeeded(); await go.click(); await p.waitForTimeout(1200);
   const y = await p.locator('#of').evaluate(e => e.getBoundingClientRect().top);
-  must(y > -50 && y < 900, 'форма не у видимій зоні після .lq-go: ' + Math.round(y));
+  must(await fdOpen(p) && y > -50 && y < 900, 'вікно заявки не відкрилось після .lq-go: ' + Math.round(y));
+  must(await p.evaluate(() => document.activeElement.id === 'oPhone'), 'після .lq-go фокус не на телефоні');
   const inScene = await go.evaluate(e => !!e.closest('section.bz[data-bz]'));
   if (inScene) must((await p.inputValue('#oMsg')).length > 5, 'конфігурація сцени не перенесена в #oMsg');
 });
@@ -993,7 +1014,7 @@ await test('зовнішнє джерело: прийшли з Google → інш
   must(!('ref_host' in c), 'без зовнішнього referrer — ref_host: ' + c.ref_host);
 });
 // «Гід з цінами» (16.11.2026): не друга форма, а кнопка → єдина форма #zayavka з контекстом; після 2xx — «Завантажити гід»
-for (const [path, w, re] of [['/ru/kalkulyator-remonta', 402, /гид по ценам/], ['/vartist-remontu-kvartyry-kyiv', 1440, /гід з цінами/]]) await test('«Гід з цінами»: кнопка → #zayavka, контекст guide, без другої форми; 200 — посилання на PDF', path, w, async p => {
+for (const [path, w, re] of [['/ru/kalkulyator-remonta', 402, /гид по ценам/], ['/vartist-remontu-kvartyry-kyiv', 1440, /гід з цінами/]]) await test('«Гід з цінами»: кнопка → вікно заявки, контекст guide, без другої форми; 200 — посилання на PDF', path, w, async p => {
   await p.evaluate(() => document.querySelector('.gd-slot').scrollIntoView({ block: 'center' })); await p.waitForTimeout(800);
   must(await p.locator('form').evaluateAll(fs => fs.filter(f => f.offsetParent && f.id !== 'of' && !f.closest('header,.sch,.qz,dialog')).length) === 0, 'на сторінці друга форма');
   must(!(await p.locator('.gd-slot form').count()), 'у гіді лишилась форма');
@@ -1002,7 +1023,7 @@ for (const [path, w, re] of [['/ru/kalkulyator-remonta', 402, /гид по це�
   must((await go.boundingBox()).height >= 44, 'кнопка гіда < 44 px');
   await go.click(); await p.waitForTimeout(1200);
   const y = await p.locator('#oPhone').evaluate(e => e.getBoundingClientRect().top);
-  must(y > -50 && y < 900, 'форма не у видимій зоні після кнопки гіда: ' + Math.round(y));
+  must(await fdOpen(p) && y > -50 && y < 900, 'вікно заявки не відкрилось після кнопки гіда: ' + Math.round(y));
   must(re.test((await p.inputValue('#oMsg')).toLowerCase()), 'коментар «Хочу гід…» не в формі');
   const b = await submitOf(p);
   must(b.form === 'guide' && /#guide$/.test(b.source) && b.service === 'Гід з цінами', 'контекст гіда: ' + JSON.stringify(b));
@@ -1049,11 +1070,14 @@ await test('курсор-супутник (ПК): зʼявляється піс�
   const nav = await p.locator('header .sch-nav a').first().boundingBox();
   await p.mouse.move(nav.x + nav.width / 2, nav.y + nav.height / 2, { steps: 6 }); await p.waitForTimeout(450);
   c = await curSt(p); must(c.on && c.big && !c.g && c.w >= 50, 'над посиланням меню — велике кільце без стрілки: ' + JSON.stringify(c));
-  await p.locator('#oPhone').scrollIntoViewIfNeeded(); const f = await p.locator('#oPhone').boundingBox();
+  await openFd(p); const f = await p.locator('#oPhone').boundingBox();
   await p.mouse.move(f.x + 40, f.y + f.height / 2, { steps: 4 }); await p.waitForTimeout(450);
   c = await curSt(p); must(!c.on, 'над полем форми кільце має зникати: ' + JSON.stringify(c));
-  await p.mouse.move(f.x - 40, f.y - 70, { steps: 4 }); await p.waitForTimeout(450);
-  c = await curSt(p); must(c.on, 'після поля форми кільце не повернулось: ' + JSON.stringify(c));
+  await p.mouse.move(f.x - 60, f.y - 70, { steps: 4 }); await p.waitForTimeout(450);
+  c = await curSt(p); must(!c.on, 'над вікном заявки (top layer) кільце має бути сховане: ' + JSON.stringify(c));
+  await p.keyboard.press('Escape'); await p.waitForTimeout(300); must(!(await fdOpen(p)), 'Esc не закрив вікно');
+  await p.mouse.move(f.x - 40, f.y - 90, { steps: 4 }); await p.waitForTimeout(450);
+  c = await curSt(p); must(c.on, 'після вікна кільце не повернулось: ' + JSON.stringify(c));
   const y0 = c.y; await p.mouse.wheel(0, -300); await p.waitForTimeout(350);
   must((await curSt(p)).y === y0, 'кільце рухається під час прокрутки без руху миші');
 });
@@ -1282,7 +1306,7 @@ const WX = '+380 63 866 77 55', CLIP = { permissions: ['clipboard-read', 'clipbo
 const wxTip = p => p.evaluate(() => { const t = document.querySelector('.wx-t'); return t ? { on: t.classList.contains('on'), txt: t.textContent, live: t.getAttribute('aria-live'), pos: getComputedStyle(t).position } : null; });
 const icoRow = (p, sel) => p.evaluate(sel => [...document.querySelectorAll(sel + ' a')].map(a => { const r = a.getBoundingClientRect();
   return { k: (a.className.match(/bi-(\w+)/) || [])[1], w: Math.round(r.width), h: Math.round(r.height), txt: a.textContent.trim(), lab: a.getAttribute('aria-label') || '', href: a.getAttribute('href'), wx: a.getAttribute('data-wx') }; }), sel);
-await test('WeChat: є у футері й біля форми, клік копіює номер; Behance — у футері; без підпису «Месенджери»', '/', 1440, async p => {
+await test('WeChat: є у футері, клік копіює номер; Behance — у футері; без підпису «Месенджери»; біля форми іконок немає', '/', 1440, async p => {
   const f = await icoRow(p, '.scf-soc');
   must(f.map(x => x.k).join() === 'telegram,viber,whatsapp,instagram,youtube,linkedin,tiktok,behance,wechat,chat', 'футер: ' + f.map(x => x.k));
   must(f.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'футер: кнопки не іконки ≥ 44 px: ' + JSON.stringify(f));
@@ -1295,13 +1319,9 @@ await test('WeChat: є у футері й біля форми, клік копі
   must(tip && tip.on && tip.live === 'polite' && tip.pos === 'fixed' && /Номер WeChat скопійовано/.test(tip.txt) && tip.txt.includes(WX), 'підказка: ' + JSON.stringify(tip));
   must((await p.evaluate(() => navigator.clipboard.readText())) === WX, 'буфер: ' + await p.evaluate(() => navigator.clipboard.readText()));
   must(p.url().startsWith('http'), 'сторінка пішла з сайту: ' + p.url());
-  // картка контактів біля форми (≥ 1024 px)
-  await p.evaluate(() => { navigator.clipboard.writeText(''); document.getElementById('zayavka').scrollIntoView(); }); await p.waitForTimeout(800);
-  const c = await icoRow(p, '#zayavka .of-ct-m');
-  must(/^telegram,whatsapp,viber,wechat(,chat)?$/.test(c.map(x => x.k).join()) && c.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'картка біля форми: ' + JSON.stringify(c));
-  must(!(await p.evaluate(() => [...document.querySelectorAll('#zayavka .of-ct-l')].some(l => /Месенджери/.test(l.textContent)))), 'картка: підпис «Месенджери» лишився');
-  await p.click('#zayavka .of-ct-m .bi-wechat'); await p.waitForTimeout(300);
-  must((await p.evaluate(() => navigator.clipboard.readText())) === WX && (await wxTip(p)).on, 'картка: WeChat не скопіював номер');
+  // картки контактів біля форми й іконок під кнопкою немає (Михайло 24.11.2026)
+  await openFd(p);
+  must(!(await p.locator('.of-ct, .lq-alt, dialog.fdl a.bi').count()), 'біля форми лишилися картка контактів або іконки месенджерів');
 }, CLIP);
 await test('WeChat на /contact (en): лише іконки з Behance і WeChat, підказка англійською', '/en/contact', 402, async p => {
   const r = await icoRow(p, '.xs-msg');
@@ -1313,21 +1333,77 @@ await test('WeChat на /contact (en): лише іконки з Behance і WeCha
   must(tip && tip.on && /WeChat number copied/.test(tip.txt), 'підказка en: ' + JSON.stringify(tip));
   must((await p.evaluate(() => navigator.clipboard.readText())) === WX, 'буфер (тач)');
 }, CLIP);
-// Лише іконки (Михайло 21.11.2026): під кнопкою форми — ряд Telegram · Viber · WhatsApp · WeChat без тексту «Або напишіть» (лише aria-label групи);
-// мобільне меню шапки — іконки (+ WeChat, Instagram); меню пігулки — ряд іконок (tel: першою) і текстова кнопка «Залишити номер»
-const ALT = { '/': 'Або напишіть', '/en/': 'Or message us', '/ar/': 'أو راسلنا' };
-for (const path of Object.keys(ALT)) for (const w of [402, 1440]) await test('форма: під кнопкою лише іконки месенджерів', path, w, async p => {
-  await p.locator('#oBtn').scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
-  const r = await icoRow(p, '#of .lq-alt');
-  must(r.map(x => x.k).join() === 'telegram,viber,whatsapp,wechat,chat', 'іконки: ' + r.map(x => x.k));
-  must(r.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'не іконки ≥ 44 px з aria-label: ' + JSON.stringify(r));
-  must(r.find(x => x.k === 'wechat').wx === WX, 'WeChat без data-wx');
-  const g = await p.evaluate(() => { const a = document.querySelector('#of .lq-alt'), b = document.getElementById('oBtn').getBoundingClientRect(), r = a.getBoundingClientRect();
-    return { txt: a.textContent.trim(), lab: a.getAttribute('aria-label'), role: a.getAttribute('role'), form: document.getElementById('of').innerText, below: r.top >= b.bottom - 1, vis: r.height > 0 }; });
-  must(!g.txt && g.role === 'group' && g.lab === ALT[path], 'група: ' + JSON.stringify({ txt: g.txt, lab: g.lab, role: g.role }));
-  must(!g.form.includes(ALT[path]) && g.below && g.vis, 'текст «' + ALT[path] + '» лишився у формі або ряд не під кнопкою');
-  must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
+// Іконки месенджерів і соцмереж — лише у футері праворуч (Михайло 24.11.2026: «вони дублюються по 3 рази»); у меню кружечка й мобільному меню шапки — як і раніше.
+// Футер без підпису студії й заголовка «Контакти» (10 мов), кнопка «Розрахувати проєкт» відкриває вікно; ✕/Esc/тло/«Назад», фокус назад на кнопку
+const NOTAG = /Студія дизайну|Студия дизайна|design, renovation and turnkey|Estudio|设计|Studio projektowe|Studio für|Studio de|Estúdio|استوديو/;
+for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 1440], ['/ar/', 402], ['/ar/', 1440], ['/zh/', 402], ['/de/', 1440], ['/pl/', 402], ['/fr/', 1440], ['/es/', 402], ['/pt/', 1440], ['/ru/', 402]]) await test('футер: лише логотип, адреса й телефон; кнопка «Розрахувати проєкт» → вікно; іконки — лише у футері', path, w, async p => {
+  const r = await p.evaluate(() => { const f = document.querySelector('.scf-top'), b = f.querySelector('.scf-cta'), br = b.getBoundingClientRect(), lg = f.querySelector('.sch-logo').getBoundingClientRect(), ad = f.querySelector('address').getBoundingClientRect();
+    return { txt: f.innerText, p: f.querySelectorAll('.scf-brand p, .scf-col > b').length, h: Math.round(br.height), bg: getComputedStyle(b).backgroundColor, href: b.getAttribute('href'), lab: b.textContent.trim(), lx: Math.round(lg.left), ax: Math.round(ad.left), lr: Math.round(lg.right), ar: Math.round(ad.right), rtl: document.documentElement.dir === 'rtl',
+      icons: [...document.querySelectorAll('a.bi')].filter(a => a.offsetParent && !a.closest('.scf, .sch-menu, .mbar')).length, sw: document.documentElement.scrollWidth <= innerWidth + 1 }; });
+  must(!r.p && !NOTAG.test(r.txt) && !/^(?:Контакти|Контакты|Contacts?|Contacto|Kontakt|Contactos|联系方式|التواصل)$/m.test(r.txt), 'у футері лишився підпис студії або «Контакти»: ' + r.txt.slice(0, 200));
+  must(r.h >= 44 && r.bg !== 'rgba(0, 0, 0, 0)' && r.href === '#zayavka' && r.lab, 'кнопка футера: ' + JSON.stringify(r));
+  must(r.rtl ? Math.abs(r.lr - r.ar) <= 2 : Math.abs(r.lx - r.ax) <= 2, 'логотип і адреса не на одній лінії: ' + JSON.stringify(r));
+  must(r.icons === 0, 'іконки месенджерів поза футером і меню: ' + r.icons);
+  must(r.sw, 'горизонтальна прокрутка');
+  const btn = p.locator('.scf-cta');
+  await openFd(p);
+  const d = await p.evaluate(() => { const g = document.querySelector('dialog.fdl'), c = g.querySelector('.fdl-c').getBoundingClientRect(), x = g.querySelector('.fdl-x').getBoundingClientRect(), t = document.getElementById(g.getAttribute('aria-labelledby'));
+    return { modal: g.matches(':modal'), lab: t && t.textContent.trim(), foc: document.activeElement.id, c: [c.left, c.right, c.bottom, innerWidth, innerHeight], x: [x.width, x.height], html: getComputedStyle(document.documentElement).overflow + getComputedStyle(document.body).overflow,
+      top: (() => { const e = document.elementFromPoint(c.left + 20, c.bottom - 20); return e && !!e.closest('dialog.fdl'); })(), fs: parseFloat(getComputedStyle(document.getElementById('oPhone')).fontSize) }; });
+  must(d.modal && d.lab && d.foc === 'oPhone', 'вікно: ' + JSON.stringify(d));
+  must(d.x[0] >= 44 && d.x[1] >= 44 && d.top && d.fs >= 16 && d.c[0] >= 0 && d.c[1] <= d.c[3] + 0.5 && d.c[2] <= d.c[4] + 1.5, 'вікно: ✕ < 44, щось поверх, поле < 16 px або за краєм: ' + JSON.stringify(d));
+  must(!/hidden/.test(d.html), 'overflow:hidden на html/body: ' + d.html);
+  await p.keyboard.press('Tab'); await p.keyboard.press('Shift+Tab'); await p.keyboard.press('Shift+Tab'); await p.waitForTimeout(100);
+  must(await p.evaluate(() => !!document.activeElement.closest('dialog.fdl')), 'фокус вийшов з вікна');
+  await p.click('.fdl-x'); await p.waitForTimeout(300);
+  must(!(await fdOpen(p)) && await btn.evaluate(b => document.activeElement === b), '✕: вікно не закрилось або фокус не на кнопці');
+  await btn.click(); await p.waitForTimeout(300); await p.keyboard.press('Escape'); await p.waitForTimeout(300);
+  must(!(await fdOpen(p)), 'Esc не закрив вікно');
+  await btn.click(); await p.waitForTimeout(300); await p.mouse.click(3, 3); await p.waitForTimeout(300);
+  must(!(await fdOpen(p)), 'клік по тлу не закрив вікно');
+  const u0 = p.url(); await btn.click(); await p.waitForTimeout(300); await p.goBack(); await p.waitForTimeout(400);
+  must(!(await fdOpen(p)) && p.url() === u0, '«Назад» не закрив вікно або пішов зі сторінки: ' + p.url());
 });
+await test('вікно заявки: «Заявка» в шапці (ПК) відкриває вікно, «Назад» після закриття хрестиком не лишає зайвого запису', '/remont-kvartyr-kyiv', 1440, async p => {
+  await p.click('a.sch-cta'); await p.waitForTimeout(300);
+  must(await fdOpen(p), '«Заявка» в шапці не відкрила вікно');
+  await p.click('.fdl-x'); await p.waitForTimeout(400);
+  must(!(await fdOpen(p)) && p.url().endsWith('/remont-kvartyr-kyiv'), 'після ✕: ' + p.url());
+  await p.click('a.sch-cta'); await p.waitForTimeout(300); must(await fdOpen(p), 'вдруге вікно не відкрилось');
+});
+await test('вікно заявки: «Залишити номер» у меню кружечка → вікно, фокус на телефоні; поле й кнопку видно', '/', 402, async p => {
+  await p.click('.mbar .mb-tg'); await p.waitForTimeout(300); await p.click('.mbar .mb-lead'); await p.waitForTimeout(400);
+  must(await fdOpen(p), '«Залишити номер» не відкрив вікно');
+  const r = await p.evaluate(() => { const b = document.getElementById('oBtn').getBoundingClientRect(), f = document.getElementById('oPhone').getBoundingClientRect(); return { foc: document.activeElement.id, b: b.bottom, f: f.top, vh: innerHeight, menu: document.querySelector('.mbar').classList.contains('open') }; });
+  must(r.foc === 'oPhone' && r.f >= 0 && r.b <= r.vh && !r.menu, 'вікно на телефоні: ' + JSON.stringify(r));
+});
+await test('вікно заявки, reduced-motion: без анімації появи', '/', 402, async p => {
+  await openFd(p);
+  must(await p.evaluate(() => getComputedStyle(document.querySelector('.fdl-c')).animationName === 'none'), 'анімація при reduced-motion');
+}, { reducedMotion: 'reduce' });
+await test('реферальна програма: форма на місці, без вікна; кнопка футера — на форму контактів', '/referalna-prohrama', 402, async p => {
+  must(await p.locator('#zayavka #of').isVisible() || await p.evaluate(() => getComputedStyle(document.getElementById('zayavka')).display !== 'none'), 'форму реферальної сховано');
+  must(!(await p.locator('dialog.fdl').count()) && /\/contact#zayavka$/.test(await p.getAttribute('.scf-cta', 'href')), 'реферальна: ' + await p.getAttribute('.scf-cta', 'href'));
+});
+await test('без JS: секція #zayavka з формою видима', '/remont-kvartyr-kyiv', 402, async p => {
+  must(await p.locator('#zayavka #of').isVisible() && await p.locator('#oPhone').isVisible(), 'без JS форма схована');
+}, { javaScriptEnabled: false });
+// Іконка чату «блимає» (Михайло 24.11.2026): кружечок бота й іконка у футері — .ch-on, поки чат не відкривали; після відкриття — більше ніколи; reduced-motion — ні
+await test('чат: іконка блимає, перестає після відкриття чату', '/', 402, async p => {
+  await p.waitForFunction(() => document.querySelector('a.mb-bot.ch-on'), null, { timeout: 8000 });
+  must(await p.evaluate(() => getComputedStyle(document.querySelector('a.mb-bot'), '::after').animationName === 'chAtt'), 'кружечок бота без анімації');
+  must(!(await p.evaluate(() => document.querySelector('.scf-soc a[data-chat]').classList.contains('ch-on'))), 'іконка у футері поза екраном блимає');
+  await p.evaluate(() => document.querySelector('.scf-soc a[data-chat]').scrollIntoView({ block: 'center' }));
+  must(await p.waitForFunction(() => document.querySelector('.scf-soc a[data-chat]').classList.contains('ch-on'), null, { timeout: 3000 }).then(() => true, () => false), 'іконка у футері на екрані не блимає');
+  await p.evaluate(() => { const a = document.querySelector('a.mb-bot'); a.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true })); }); await p.waitForTimeout(300);
+  must(await p.evaluate(() => !document.querySelector('a[data-chat].ch-on') && localStorage.getItem('cas_chat_seen') === '1'), 'після відкриття чату блимає далі');
+  await p.goto(BASE + '/', { waitUntil: 'load' }); await p.waitForTimeout(3000);
+  must(!(await p.locator('a[data-chat].ch-on').count()), 'після перезавантаження знову блимає');
+});
+await test('чат, reduced-motion: іконка не блимає', '/', 402, async p => {
+  await p.waitForTimeout(3000);
+  must(!(await p.locator('a[data-chat].ch-on').count()) && await p.evaluate(() => getComputedStyle(document.querySelector('a.mb-bot'), '::after').animationName) === 'none', 'блимає при reduced-motion');
+}, { reducedMotion: 'reduce' });
 for (const w of [344, 402]) await test('мобільне меню шапки: месенджери — лише іконки', '/', w, async p => {
   await p.click('.sch-burger'); await p.waitForTimeout(400);
   await p.locator('.sch-mmsg').scrollIntoViewIfNeeded();

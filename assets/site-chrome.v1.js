@@ -1087,7 +1087,7 @@
   if (d.readyState === 'complete') idle(); else W.addEventListener('load', idle);
 })(window, document);
 /* Чат на сайті (23.11.2026; Михайло: «не віконце, а іконка»): чат — лише іконка a[data-chat] у рядах месенджерів (меню пігулки «Звʼязатися», футер,
-   мобільне меню шапки, під формою .lq-alt і біля форми .of-ct-m); панель розмови (/assets/chat.v1.{js,css}) вантажиться й відкривається тільки
+   мобільне меню шапки; рядів під формою й біля неї з 24.11.2026 немає); панель розмови (/assets/chat.v1.{js,css}) вантажиться й відкривається тільки
    після тапу по іконці — сама ніколи. CHAT_PUBLIC (tools/site/flags.py) = True — іконки ставить генератор; поки False — нічого немає, крім
    режиму перевірки ?chat=1 (запамʼятовується в sessionStorage cas_chat): тоді іконки додає цей блок у ті самі ряди. Кабінет — без чату. */
 (function (W, d) {
@@ -1116,8 +1116,28 @@
     var a = e.target.closest && e.target.closest('a[data-chat]');
     if (!a) return;
     e.preventDefault();
+    attStop();
     load().then(function (c) { if (c) c.open(a); }, function () { location.href = 'https://t.me/+380978667755'; });
   });
+  // «блимає» (Михайло 24.11.2026: «іконка "чат з помічником" нехай блимає, привертає увагу»): кружечок бота й іконка чату у футері — клас .ch-on
+  // (кільце-хвиля раз на 4 с, CSS «іконка чату блимає» у site-chrome.v1.css), лише поки іконку видно й вкладка активна; назавжди стоп, щойно
+  // людина відкрила чат (localStorage cas_chat_seen; є розмова cas_chat — теж); reduced-motion — нічого. Старт — після load в idle.
+  var SEEN = 'cas_chat_seen', seen = false, aio = null, ATT = 'a.mb-bot[data-chat],.scf-soc a[data-chat]';
+  try { seen = !!(W.localStorage.getItem(SEEN) || W.localStorage.getItem('cas_chat')); } catch (e) { /* noop */ }
+  function attEach(f) { [].forEach.call(d.querySelectorAll(ATT), f); }
+  function attSync() { attEach(function (a) { a.classList.toggle('ch-on', !seen && !!a._chv && !d.hidden); }); }
+  function attStop() {
+    if (!seen) { seen = true; try { W.localStorage.setItem(SEEN, '1'); } catch (e) { /* noop */ } }
+    if (aio) { aio.disconnect(); aio = null; }
+    attSync();
+  }
+  function attStart() {
+    if (seen || aio || !('IntersectionObserver' in W) || (W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    aio = new IntersectionObserver(function (es) { es.forEach(function (x) { x.target._chv = x.isIntersecting; }); attSync(); });
+    attEach(function (a) { aio.observe(a); });
+    d.addEventListener('visibilitychange', attSync);
+  }
+  W.casChatSeen = attStop; // панель чату (chat.v1.js) і тести
   // та сама іконка в рядах месенджерів, де її ще немає: у режимі перевірки ?chat=1 — у всіх (як при CHAT_PUBLIC = True — tools/site/flags.py chat_icon),
   // при CHAT_PUBLIC — лише в рядах, які будує lead-form.v1.js (.lq-alt, .of-ct-m біля форми); статичні генератор уже має
   // circle — кружечок бота поруч із кружечком дзвінка в куті телефона (.mbar[data-one] a.mb-bot; іконка — CSS-маска), інакше — іконка ряду
@@ -1127,16 +1147,14 @@
     return a;
   }
   function put() {
-    [].forEach.call(d.querySelectorAll('.scf-soc,.sch-mmsg,.lq-alt,.of-ct-m'), function (r) { if (!r.querySelector('a[data-chat]')) r.appendChild(icon(false)); });
+    [].forEach.call(d.querySelectorAll('.scf-soc,.sch-mmsg'), function (r) { if (!r.querySelector('a[data-chat]')) r.appendChild(icon(false)); });
     var b = d.querySelector('.mbar[data-one]');
     if (b && !b.querySelector('a.mb-bot')) b.insertBefore(icon(true), b.querySelector('.mb-tg'));
   }
   function start() {
-    put();
-    // ряди біля форми lead-form.v1.js будує, коли форма близько до екрана, — дописуємо іконку й туди
-    // при CHAT_PUBLIC стежимо лише за блоком форми (сцени й каруселі вставляють вузли — їх не чіпаємо)
-    var root = on ? d.body : (d.getElementById('zayavka') || (d.getElementById('of') || {}).parentNode);
-    if (W.MutationObserver && root) { var q = 0; new MutationObserver(function () { if (!q) q = requestAnimationFrame(function () { q = 0; put(); }); }).observe(root, { childList: true, subtree: true }); }
+    put(); // рядів біля форми (.lq-alt, .of-ct-m) більше немає (Михайло 24.11.2026) — стежити за DOM не треба
+    var go = function () { (W.requestIdleCallback || function (f) { setTimeout(f, 200); })(attStart, { timeout: 2500 }); };
+    if (d.readyState === 'complete') go(); else W.addEventListener('load', go);
   }
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', start); else start();
 })(window, document);

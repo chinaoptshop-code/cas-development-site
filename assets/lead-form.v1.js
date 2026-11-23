@@ -236,27 +236,6 @@
   }
   function focusEl(el) { if (!el) return; try { el.focus({ preventScroll: false }); } catch (x) { el.focus(); } }
   function el(tag, cls, text) { var x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
-  // під кнопкою — лише ряд іконок Telegram · Viber · WhatsApp · WeChat (Михайло 21.11.2026; як tools/site/leadform.py extras) — для форм, які будує скрипт:
-  // назва — aria-label/title, «Або напишіть» — aria-label групи; WeChat (a[data-wx]) копіює номер — обробник у site-chrome.v1.js
-  function extras() {
-    var f = document.createDocumentFragment(), p = el('p', 'lq-alt');
-    p.setAttribute('role', 'group'); p.setAttribute('aria-label', t.alt.replace(/[\s:：]+$/, ''));
-    MSG.concat([['WeChat +380 63 866 77 55', 'weixin://']]).forEach(function (m) {
-      var k = m[0].split(' ')[0].toLowerCase(), a = el('a', 'bi bi-' + k); a.href = m[1];
-      if (/^https:/.test(m[1])) { a.target = '_blank'; a.rel = 'noopener'; }
-      if (k === 'wechat') a.setAttribute('data-wx', '+380 63 866 77 55');
-      a.setAttribute('aria-label', m[0]); a.title = m[0];
-      p.appendChild(a);
-    });
-    f.appendChild(p);
-    return f;
-  }
-  // клік на месенджер біля форми — теж контакт: рахуємо в Clarity
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('.lq-alt a');
-    if (a) clarity('lead_msg', (a.getAttribute('aria-label') || a.textContent).trim().split(' ')[0].toLowerCase(), 'lead_msg_app');
-  });
-
   var $ = function (id) { return document.getElementById(id); };
   var val = function (id) { var x = $(id); return x ? x.value.trim() : ''; };
   var form = $('of');
@@ -317,7 +296,6 @@
     row.appendChild(inp); row.appendChild(b);
     var er = el('div', 'lq-e'); er.id = id + 'E'; er.setAttribute('role', 'alert');
     f.appendChild(lb); f.appendChild(row); f.appendChild(er);
-    if (!end) f.appendChild(extras());
     var ok = el('div', 'lq-ok', t.ok); ok.setAttribute('role', 'status'); ok.setAttribute('tabindex', '-1'); ok.hidden = true;
     slot.appendChild(f); slot.appendChild(ok);
     wire(f);
@@ -474,77 +452,79 @@
     });
   }
 
-  /* ---------- 2б. контакти поруч із формою #zayavka на ПК (≥1024 px; Михайло 16.11.2026: права половина була порожня) ----------
-     Телефон, месенджери (ті самі посилання, що в шапці/футері), адреса й години роботи. Тексти — CT нижче, їх пише
-     tools/site/leadform.py (sync_js) з <мова>-contact*.json і chrome.T — руками не правити. У HTML блоку немає (лендинги на межі
-     бюджету 64 КБ): скрипт ставить <aside class="of-ct"> абсолютно в праву частину .w — потік сторінки не змінюється (CLS 0).
-     Телефон (<1024 px) — без блоку; на сторінках контактів (.xs-contacts) — теж без нього. */
-  /*ct*/
-  var CT = {
-    uk: ["Контакти", "Телефон", "Месенджери", "Офіс", "вул. Антоновича, 44, Київ, 03186", "Години роботи", "Пн–Пт 10:00–20:00 · Сб–Нд — вихідні · онлайн 24/7"],
-    ru: ["Контакты", "Телефон", "Мессенджеры", "Офис", "ул. Антоновича, 44, Киев, 03186", "Часы работы", "Пн–Пт 10:00–20:00 · Сб–Вс — выходные · онлайн 24/7"],
-    en: ["Contacts", "Phone", "Messengers", "Office", "44 Antonovycha St, Kyiv 03186, Ukraine", "Hours", "Mon–Fri 10:00–20:00 · Sat–Sun closed · online enquiries 24/7"],
-    es: ["Contacto", "Teléfono", "Mensajería", "Oficina", "Calle Antonovycha 44, 03186 Kiev, Ucrania", "Horario", "Lun–Vie 10:00–20:00 · Sáb–Dom cerrado · online 24/7"],
-    zh: ["联系方式", "电话", "即时通讯", "办公室", "乌克兰基辅 Antonovycha 街 44 号，03186", "营业时间", "周一至周五 10:00–20:00 · 周六、周日休息 · 线上 24/7"],
-    pl: ["Kontakt", "Telefon", "Komunikatory", "Biuro", "ul. Antonowycza 44, 03186 Kijów, Ukraina", "Godziny pracy", "Pn–Pt 10:00–20:00 · Sb–Nd nieczynne · online 24/7"],
-    de: ["Kontakt", "Telefon", "Messenger", "Büro", "Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine", "Öffnungszeiten", "Mo–Fr 10:00–20:00 · Sa–So geschlossen · online 24/7"],
-    fr: ["Contact", "Téléphone", "Messageries", "Bureau", "44, rue Antonovytcha, 03186 Kyiv, Ukraine", "Horaires", "Lun–ven 10:00–20:00 · sam–dim fermé · en ligne 24/7"],
-    pt: ["Contactos", "Telefone", "Mensagens", "Escritório", "Rua Antonovycha, 44, 03186 Kyiv, Ucrânia", "Horário", "Seg–Sex 10:00–20:00 · Sáb–Dom encerrado · online 24/7"],
-    ar: ["التواصل", "الهاتف", "تطبيقات المراسلة", "المكتب", "شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا", "ساعات العمل", "الاثنين–الجمعة 10:00–20:00 · السبت–الأحد عطلة · أونلاين 24/7"]
-  };
-  /*/ct*/
-  (function () {
-    var sec = $('zayavka'), f = $('of');
-    if (!sec || !f || !sec.contains(f) || document.querySelector('.xs-contacts') || !window.matchMedia) return;
-    var w = f.parentNode, mq = window.matchMedia('(min-width:1024px)'), box = null;
-    function place() {
-      if (!box || !mq.matches) return;
-      var rtl = getComputedStyle(w).direction === 'rtl', cs = getComputedStyle(w), gap = 64;
-      var pl = parseFloat(cs.paddingLeft) || 0, pr = parseFloat(cs.paddingRight) || 0, W = w.clientWidth;
-      var rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-      var avail = rtl ? f.offsetLeft - gap - pl : W - pr - (f.offsetLeft + f.offsetWidth + gap);
-      box.style.top = f.offsetTop + 'px';
-      box.style.width = Math.max(0, Math.min(avail, 26 * rem)) + 'px';
-      if (rtl) box.style.right = (W - f.offsetLeft + gap) + 'px';
-      else box.style.left = (f.offsetLeft + f.offsetWidth + gap) + 'px';
+  /* ---------- 2б. форма у вікні (Михайло 24.11.2026: «збоку зробити кнопку "Розрахувати проєкт", після натискання якої відкриється вже вікно
+     розрахунку»; картку контактів біля форми й ряд іконок під кнопкою прибрано — іконки лише у футері) ----------
+     Секцію <section id="zayavka"> з JS ховає CSS («Вікно заявки» у site-chrome.v1.css, є й у crit.v1.css); тут її вміст (H2, form#of, #oOk) переїздить
+     у <dialog class="fdl"> у кінці <body> — форма та сама одна (data-service/data-source, успіх лише після 2xx). Вікно відкривають усі посилання
+     на #zayavka (обробник 3: кнопка футера, «Заявка» в шапці, «Залишити номер», .lq-go, сцени, калькулятор, «Гід з цінами») і адреса …#zayavka.
+     showModal — top layer над шапкою, кружечками й cookies; фокус усередині й назад на кнопку; ✕, Esc, тло, «Назад» браузера (pushState, як лайтбокс).
+     Прокрутка сторінки під вікном — без overflow:hidden на <html>: вікно саме — прокручуваний шар на весь екран (вміст на 1 px вищий + overscroll-behavior).
+     Без <dialog> — html.nofd: секція на місці, як раніше. Реферальна (data-fd="0"), Оздоба (.ozd-sec) і конфігуратор (свій dialog) — без змін. */
+  var XL = { uk: 'Закрити', ru: 'Закрыть', en: 'Close', es: 'Cerrar', zh: '关闭', pl: 'Zamknij', de: 'Schließen', fr: 'Fermer', pt: 'Fechar', ar: 'إغلاق' };
+  var H = document.documentElement, sec = $('zayavka'), dlg = null, opener = null, pushed = false, popWait = false, byPop = false;
+  var canDlg = !!(window.HTMLDialogElement && typeof HTMLDialogElement.prototype.showModal === 'function');
+  var fdOn = !!(form && sec && sec.tagName === 'SECTION' && sec.contains(form) && sec.getAttribute('data-fd') !== '0' && !sec.classList.contains('ozd-sec'));
+  if (fdOn && !canDlg) { fdOn = false; H.classList.add('nofd'); }
+  function fdPush() { try { if (!pushed) { history.pushState({ fdl: 1 }, ''); pushed = true; } } catch (x) {} }
+  if (fdOn) {
+    dlg = el('dialog', 'fdl');
+    var fin = el('div', 'fdl-in'), card = el('div', 'fdl-c'), fx = el('button', 'fdl-x', '×');
+    fx.type = 'button'; fx.setAttribute('aria-label', XL[lang] || XL.en); fx.title = XL[lang] || XL.en;
+    var sw = sec.querySelector('.w') || sec, h2 = sw.querySelector('h2');
+    if (h2) { if (!h2.id) h2.id = 'fdlT'; dlg.setAttribute('aria-labelledby', h2.id); }
+    card.appendChild(fx);
+    while (sw.firstChild) card.appendChild(sw.firstChild);
+    fin.appendChild(card); dlg.appendChild(fin); document.body.appendChild(dlg);
+    fx.addEventListener('click', function () { fdClose(); });
+    // тло: клік поза карткою (саме вікно на весь екран або обгортка)
+    dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target === fin) fdClose(); });
+    dlg.addEventListener('close', function () {
+      H.classList.remove('fdl-on');
+      var b = opener && opener.isConnected && opener.offsetParent !== null ? opener : null; opener = null;
+      if (b) try { b.focus({ preventScroll: true }); } catch (x) {}
+      if (pushed) { pushed = false; if (!byPop) try { popWait = true; history.back(); } catch (x) { popWait = false; } }
+      byPop = false;
+    });
+    window.addEventListener('popstate', function () {
+      if (popWait) { popWait = false; if (dlg.open) fdPush(); return; } // наш history.back() після закриття
+      if (dlg.open) { pushed = false; byPop = true; dlg.close(); }
+    });
+  }
+  function fdClose() { if (dlg && dlg.open) dlg.close(); }
+  // відкрити вікно; фокус — на телефон (як раніше після прокрутки), після успіху — на блок «дякуємо»
+  function fdOpen(a) {
+    if (!dlg) return false;
+    if (!dlg.open) {
+      opener = a && a.focus ? a : document.activeElement;
+      try { dlg.showModal(); } catch (x) { return false; }
+      H.classList.add('fdl-on');
+      dlg.scrollTop = 0;
+      if (!popWait) fdPush();
+      clarity('lead_open', (a && (a.getAttribute('data-form') || a.className)) || 'link', 'lead_open_from');
     }
-    function build() {
-      if (box || !mq.matches) return place();
-      var c = CT[lang] || CT.en || CT.uk;
-      box = el('aside', 'of-ct'); box.setAttribute('aria-label', c[0]);
-      var row = function (lab, body) { var d = el('div', 'of-ct-r'); if (lab) d.appendChild(el('span', 'of-ct-l', lab)); d.appendChild(body); box.appendChild(d); };
-      var tel = el('a', 'of-ct-tel', '+380 97 866 77 55'); tel.href = 'tel:+380978667755'; tel.dir = 'ltr';
-      row(c[1], tel);
-      // месенджери — лише іконки, як у футері (Михайло 21.11.2026: без підпису «Месенджери»); назва — aria-label/title, підпис c[2] — aria-label ряду.
-      // WeChat: клік копіює номер і показує підказку (wxCopy у site-chrome.v1.js, делегований обробник a[data-wx]); без JS — weixin://
-      var ms = el('div', 'of-ct-m'); ms.setAttribute('role', 'group'); ms.setAttribute('aria-label', c[2]);
-      [['Telegram', 'https://t.me/+380978667755', 'telegram'], ['WhatsApp', 'https://wa.me/380978667755', 'whatsapp'], ['Viber', 'viber://chat?number=%2B380978667755', 'viber'],
-       ['WeChat +380 63 866 77 55', 'weixin://', 'wechat']].forEach(function (m) {
-        var a = el('a', 'bi bi-' + m[2]); a.href = m[1]; if (/^http/.test(m[1])) { a.target = '_blank'; a.rel = 'noopener'; }
-        a.setAttribute('aria-label', m[0]); a.title = m[0]; if (m[2] === 'wechat') a.setAttribute('data-wx', '+380 63 866 77 55');
-        a.addEventListener('click', function () { clarity('lead_msg', m[0].split(' ')[0], 'lead_msg'); });
-        ms.appendChild(a);
-      });
-      row('', ms);
-      row(c[3], el('span', 'of-ct-v', c[4]));
-      row(c[5], el('span', 'of-ct-v', c[6]));
-      w.classList.add('of-ct-w');
-      w.appendChild(box);
-      place();
-    }
-    // Safari/WebKit запускає defer-скрипти до повного site-chrome.v1.css (кінець <body>): без нього .of-ct-w ще static і offsetTop форми —
-    // від <body> (блок опинявся на десятки тисяч px нижче, сторінка ×4 довша). Будуємо після CSS; Chrome — одразу.
-    var l = document.querySelector('link[href*="/assets/site-chrome.v1.css"]');
-    if (!l || l.sheet) build();
-    else { var k = 0, go = function () { if (!k++) build(); }; l.addEventListener('load', go); l.addEventListener('error', go); window.addEventListener('load', go); }
-    if (mq.addEventListener) mq.addEventListener('change', build);
-    window.addEventListener('resize', place, { passive: true });
-  })();
+    var ph = $('oPhone'), ok = $('oOk'), t0 = form.style.display === 'none' && ok ? ok : ph;
+    if (t0) try { t0.focus({ preventScroll: true }); } catch (x) { t0.focus(); }
+    return true;
+  }
+  window.casLeadOpen = fdOpen;
+  // сторінку відкрито з …#zayavka (кнопка футера сторінки без форми, посилання ззовні) — одразу вікно; якір прибираємо з адреси
+  function fromHash() {
+    if (!dlg || location.hash !== '#zayavka') return;
+    try { history.replaceState(history.state, '', location.pathname + location.search); } catch (x) {}
+    fdOpen(null);
+  }
+  if (dlg) { fromHash(); window.addEventListener('hashchange', fromHash); }
 
   /* ---------- 3. «Залишити номер» (нижня панель) і кнопки-якорі #zayavka / #lead: прокрутка й фокус на телефоні ---------- */
   document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
     var a = e.target.closest && e.target.closest('a.mb-lead, a[href="#zayavka"]:not([data-chat]), a[href="#lead"]:not([data-chat])'); // іконки чату (a[data-chat] → #zayavka лише без JS) відкривають панель
+    if (!a && dlg) { // форма цієї ж сторінки повною адресою (/contact#zayavka на /contact)
+      a = e.target.closest && e.target.closest('a[href$="#zayavka"]:not([data-chat])');
+      if (a && (a.host !== location.host || a.pathname.replace(/\.html$/, '') !== location.pathname.replace(/\.html$/, ''))) a = null;
+    }
     if (!a) return;
+    if (dlg && !(a.getAttribute('href') === '#lead' && document.querySelector('form.lq'))) { e.preventDefault(); fdOpen(a); return; } // вікно заявки (2б)
     var vis = function (x) { return !!x && x.offsetParent !== null && getComputedStyle(x).visibility !== 'hidden'; };
     if (!document.querySelector('form.lq') && !$('oPhone')) buildAll(); // місця .lq-slot ще не зібрані (далеко від екрана)
     var lq = document.querySelector('form.lq input[type="tel"]');

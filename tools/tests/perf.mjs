@@ -113,6 +113,7 @@ const ACTS = [
   { name: 'лайтбокс: наступне фото', path: '/proekty/monpark', prep: async (p, hit) => { await center(p, 'a[data-lb]', 0); await p.waitForTimeout(900); await hit('a[data-lb] >> nth=0'); await p.waitForTimeout(1200); }, key: 'ArrowRight' },
   { name: 'лайтбокс: закрити', path: '/proekty/monpark', prep: async (p, hit) => { await center(p, 'a[data-lb]', 0); await p.waitForTimeout(900); await hit('a[data-lb] >> nth=0'); await p.waitForTimeout(1200); }, key: 'Escape' },
   { name: '«Звʼязатися»: меню', path: '/remont-kvartyr-kyiv', only: 'phone', sel: '.mbar .mb-tg' },
+  { name: 'вікно заявки: відкрити (кнопка футера)', path: '/remont-kvartyr-kyiv', prep: p => center(p, '.scf-cta'), sel: '.scf-cta' }, // Михайло 24.11.2026: форма — у вікні
   { name: 'квіз: варіант відповіді', path: '/remont-kvartyr-kyiv', prep: async p => { await p.mouse.wheel(0, 300); await p.waitForTimeout(400); await p.locator('[data-quiz]').first().scrollIntoViewIfNeeded(); await p.waitForSelector('.qz button, .qz label', { timeout: 10000 }); await center(p, '.qz button, .qz label'); await p.waitForTimeout(500); }, sel: '.qz button, .qz label', opt: true },
   { name: 'калькулятор: цифра в полі площі', path: '/kalkuliator-remontu', prep: async p => { await center(p, '#cArea'); await p.locator('#cArea').focus(); }, key: '7' },
   { name: 'FAQ: відкрити питання', path: '/about', prep: async p => { await center(p, 'details summary'); await p.waitForTimeout(300); }, sel: 'main details:not(.sch-ld) > summary', opt: true },

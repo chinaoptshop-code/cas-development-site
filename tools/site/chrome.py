@@ -461,7 +461,15 @@ def header(lang, path, alts, tools='', cta_href=None):
     )
 
 
-def footer(lang, alts):
+# Кнопка «Розрахувати проєкт» у футері (Михайло 24.11.2026: «збоку зробити кнопку "Розрахувати проєкт", після натискання якої відкриється
+# вже вікно розрахунку»): форма заявки — вікно (lead-form.v1.js, dialog.fdl), кнопка — посилання на #zayavka цієї сторінки або форми мови
+FOOT_CTA = {'uk': 'Розрахувати проєкт', 'ru': 'Рассчитать проект', 'en': 'Estimate your project', 'es': 'Calcular su proyecto',
+            'zh': '估算项目费用', 'pl': 'Wyceń projekt', 'de': 'Projekt kalkulieren', 'fr': 'Chiffrer votre projet',
+            'pt': 'Orçamentar o projeto', 'ar': 'احسب تكلفة مشروعك'}
+
+
+def footer(lang, alts, cta=None):
+    """cta — href кнопки «Розрахувати проєкт» (None — без кнопки: кабінет, Оздоба)."""
     # target="_blank" без rel="noopener": браузери ставлять noopener для _blank самі (HTML, 2021+), а бюджет HTML 64 КБ (22.11.2026)
     t = T[lang]
     # месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026); назва — aria-label і title;
@@ -481,9 +489,11 @@ def footer(lang, alts):
         '<!--chrome:f--><footer class="scf">\n'
         '<div class="scf-in">\n'
         '  <div class="scf-top">\n'
-        f'    <div class="scf-brand">{LOGO.format(home=HOME[lang], label=t["home_label"])}<p>{t["tagline"]}</p></div>\n'
-        f'    <div class="scf-col"><b>{t["contacts"]}</b><address>{t["address"]}</address><a class="scf-tel" href="tel:{PHONE}">{PHONE_TXT}</a></div>\n'
-        f'    <div class="scf-col scf-ms"><div class="scf-soc" role="group" aria-label="{t["msg"]} · {soc_l}">{soc}</div></div>\n'
+        # без підпису студії й заголовка «Контакти» (Михайло 24.11.2026): логотип, адреса й телефон — один блок, «Контакти» — aria-label групи
+        f'    <div class="scf-brand">{LOGO.format(home=HOME[lang], label=t["home_label"])}'
+        f'<div class="scf-col" role="group" aria-label="{t["contacts"]}"><address>{t["address"]}</address><a class="scf-tel" href="tel:{PHONE}">{PHONE_TXT}</a></div></div>\n'
+        + (f'    <a class="btn main scf-cta" href="{cta}">{FOOT_CTA.get(lang, FOOT_CTA["en"])}</a>\n' if cta else '')
+        + f'    <div class="scf-col scf-ms"><div class="scf-soc" role="group" aria-label="{t["msg"]} · {soc_l}">{soc}</div></div>\n'
         '  </div>\n'
         f'  <details class="scf-svc"><summary>{t["svc"]}</summary><nav class="scf-svc-g" aria-label="{t["svc_label"]}">{groups}</nav></details>\n'
         f'  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="{t["lang"]}">{langs}</div>'
@@ -1095,7 +1105,10 @@ def apply(s, rel):
     else:
         cta = None
     h = header(lang, path, alts, tools, cta)
-    f = footer(lang, alts)
+    # «Розрахувати проєкт» у футері: форма цієї сторінки (вікно) або форма мови; Оздоба (прихована, своя форма) і реферальна (своя форма) — без вікна
+    fcta = None if ozd or rel.startswith(('ozdoba', 'kabinet')) else (
+        '#zayavka' if 'id="zayavka"' in s and 'data-fd="0"' not in s else T[lang]['cta_href'])
+    f = footer(lang, alts, fcta)
     # шапка
     for rx in OLD_HEADERS:
         m = rx.search(s)
