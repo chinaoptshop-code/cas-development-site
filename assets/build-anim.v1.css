@@ -530,3 +530,14 @@
 .bz-fig>svg{cursor:grab;-webkit-user-select:none;user-select:none}.bz-gc{display:none;position:absolute;inset:0;z-index:2;cursor:grabbing} /* .bz-gc — лише на час перетягування мишею */
 .bz-fig>svg[data-scz=p],.bz-fig>svg[data-scz=n]{cursor:pointer} /* чверті кадру — етапи (casGest) */
 @media(max-width:767px){.bz.bz-cmp .bz-side>.sc-hint{bottom:calc(100% + 66px)}} /* телефон: підказка жестів поверх кадру — над кнопками огляду */
+/* ← енкодер → в одному ряду в усіх сценах (Михайло 24.11.2026 «лиши тільки стрілки і лінію прогресу»): стрілки — кругла icon-кнопка design kit (44 px),
+   ряд .bz-ctl лишається лише під «Пиріг шарів» (телефон, повна сцена); на ПК і в компактній сцені головних його немає */
+.bz-hd{gap:10px}
+.bz .bz-hd>:is(.bz-pv,.bz-nx){width:var(--ic,44px);height:var(--ic,44px);font-size:18px;flex:none}
+.bz .bz-hd>.sc-enc{margin:0 4px;order:2}.bz .bz-hd>.bz-pv{order:1}.bz .bz-hd>.bz-nx{order:3}.bz .bz-hd>.bz-xb{order:4}
+.bz-ctl.bz-ctl1{justify-content:center}
+.bz-cmp .bz-ctl.bz-ctl1{display:none}
+@media(min-width:768px){.bz-ctl.bz-ctl1{display:none}}
+/* телефон, повна сцена: заклик «Порахувати мій ремонт →» — кнопка-дія на всю ширину під енкодером і текстом етапу, а не поверх низу кадру
+   (там кнопки огляду моделі «+ − ↺» — перекривались); місце під неї в панелі зарезервоване завжди (видима з останнього етапу) — висота блоку не змінюється */
+@media(max-width:767px){.bz:not(.bz-cmp):not(.bz-rm) .bz-go{position:static;order:9;align-self:stretch;width:100%;margin-top:4px}}

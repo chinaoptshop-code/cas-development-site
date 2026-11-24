@@ -191,11 +191,24 @@ code{font-size:.92em}
 </div>
 </section>
 
-<section id="buttons"><h2>Кнопки і стани</h2>
-<div class="sg-c"><div class="sg-meta"><code>a.btn.main</code> · <code>a.btn</code><p>Головна дія (заявка, кошторис) — <code>.btn.main</code>, одна на екран; другорядна (телефон, портфоліо) — <code>.btn</code>. Ряд кнопок — <code>.btns</code>. Hover: підйом на 1px і підсвітка; натискання — легке стискання.</p></div>
-<div class="sg-demo"><div class="btns"><a class="btn main" href="#buttons">Отримати кошторис</a><a class="btn" href="#buttons">+380 97 866 77 55</a></div>
-<p class="sg-note" style="margin:14px 0 6px">Перший екран лендингу (над компактною формою «Залиште номер»): лише вторинна <code>a.btn</code> «Подзвонити» → <code>tel:+380978667755</code> — головна дія там сама форма (Михайло 01.11.2026; ставить <code>tools/site/leadform.py</code>, тексти інших мов — <code>landing.call</code> у <code>tools/site/lang/*.json</code>).</p><div class="btns"><a class="btn" href="tel:+380978667755">Подзвонити</a></div>
-<div class="btns" style="margin-top:14px"><a class="btn main sg-hover" href="#buttons">hover (імітація)</a><a class="btn sg-focus" href="#buttons">focus-visible (імітація)</a><button class="btn" type="button" disabled>disabled</button><a class="btn" href="#buttons" aria-disabled="true">aria-disabled</a></div></div></div>
+<section id="buttons"><h2>Кнопки — design kit</h2>
+<div class="sg-c"><div class="sg-meta"><code>--bt-h</code> · <code>--bt-px</code> · <code>--bt-fs</code> · <code>--chip-h</code> · <code>--ic</code><p>Михайло 24.11.2026: «маленька кнопка, потім велика, зробити Design kit кнопок». П'ять варіантів на одних змінних (кінець <code>/assets/site-chrome.v1.css</code>, ряд налаштувань сцен — кінець <code>/assets/scene-ui.v1.css</code>). Висота primary/secondary — 48 px (<code>--bt-h: 3rem</code>), кегль 14 px, вага 600, округлі (pill); chip — 44 px, 13 px, вага 500; icon — коло 44 px. Нових «особливих» розмірів не додавати.</p></div>
+<div class="sg-demo">
+<p class="sg-note"><b>primary</b> — латунна заливка, одна головна дія блоку: <code>.btn.main</code>, <code>#oBtn</code>, <code>#cSend</code>, <code>.lq-go</code>, <code>.scf-cta</code>, <code>.bz-go</code>, «Далі» квізу. <b>secondary</b> — контур: <code>.btn</code>, «Назад» квізу.</p>
+<div class="btns"><a class="btn main" href="#buttons">Отримати кошторис</a><a class="btn" href="#buttons">Подзвонити</a></div>
+<div class="btns" style="margin-top:14px"><a class="btn main sg-hover" href="#buttons">hover (імітація)</a><a class="btn sg-focus" href="#buttons">focus-visible (імітація)</a><button class="btn" type="button" disabled>disabled</button><a class="btn" href="#buttons" aria-disabled="true">aria-disabled</a></div>
+<p class="sg-note" style="margin:18px 0 6px"><b>ghost</b> — посилання зі стрілкою («Усі послуги →», «Налаштувати свій будинок →»): не кнопка — без рамки й заливки, латунний текст 14 px / 600, тап-зона ≥ 44 px.</p>
+<p><a class="sc-more" href="#buttons">Налаштувати свій будинок →</a></p>
+<p class="sg-note" style="margin:18px 0 6px"><b>chip</b> — перемикачі й фільтри (ряд налаштувань сцен <code>.la-seg</code> / <code>.bz-mats</code> / <code>.bz-xb</code>, <code>.seg</code> калькулятора й квізу, вкладки сцен <code>.la-tab</code>, «Читати далі» <code>.c-b</code>, «Показати ще» <code>.cmp-more</code>): 44 px, вибраний — латунна заливка (рентген — бірюзова). Ряд налаштувань сцени — над кадром, під заголовком, однаковий у всіх сценах і мовах.</p>
+<div class="seg" role="group" aria-label="Приклад"><button type="button" aria-pressed="true">Україна</button><button type="button" aria-pressed="false">Європа</button></div>
+<p class="sg-note" style="margin:18px 0 6px"><b>icon</b> — коло 44 px: стрілки ← → сцен (завжди поруч з енкодером: ← енкодер →), ‹ › каруселей і лайтбокса, ✕, «+ − ↺» огляду моделі.</p>
+<p class="sg-note" style="margin:18px 0 6px"><b>Ширина на телефоні (≤ 767 px), одне правило</b>: кнопка-дія блоку — на всю ширину контейнера (і самотня secondary, як «Відкрити комплекс →»); пара в hero «Подзвонити» / «Порахувати» — один ряд 50/50. На ПК — за вмістом, не вужча за <code>--bt-min</code> (11rem). Сусідні кнопки на сторінці — однакової висоти.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:16px;margin-top:10px">
+<div style="border:1px solid rgba(120,200,120,.5);border-radius:14px;padding:14px;max-width:24rem"><p class="sg-note" style="margin:0 0 10px">Правильно (телефон): обидві дії — 48 px на всю ширину</p><a class="btn" href="#buttons" style="width:100%">Відкрити комплекс →</a><a class="btn main" href="#buttons" style="width:100%;margin-top:12px">Розрахувати проєкт</a></div>
+<div style="border:1px solid rgba(220,110,110,.55);border-radius:14px;padding:14px;max-width:24rem"><p class="sg-note" style="margin:0 0 10px">Неправильно: «маленька кнопка, потім велика» — різна ширина й висота</p><a href="#buttons" style="display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1px solid #BF9148;border-radius:999px;color:inherit;text-decoration:none;font-size:13px">Відкрити комплекс →</a><a href="#buttons" style="display:flex;align-items:center;justify-content:center;min-height:56px;margin-top:12px;border-radius:999px;background:#BF9148;color:#140f08;text-decoration:none;font-size:15px">Розрахувати проєкт</a></div>
+</div>
+<p class="sg-note" style="margin:14px 0 0">Перевірка — <code>node tools/tests/interact.mjs</code> «кнопки: design kit…» (/, /services, ремонт, будівництво, /contact, стаття, /en/, /ar/ на 402 і 1440).</p>
+</div></div>
 </section>
 
 <section id="facts"><h2>Ціна, факти, лічильник</h2>

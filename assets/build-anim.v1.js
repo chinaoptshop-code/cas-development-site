@@ -1304,7 +1304,9 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       layers.forEach(function (l) { l.k = -1; }); if (sc) render(cur);
       if (user) cl('build_anim_xray', v ? 'on' : 'off');
     }
-    ctl.appendChild(prev); if (!enc) ctl.appendChild(nav); ctl.appendChild(pb); ctl.appendChild(next);
+    // стрілки ← → — поруч з енкодером, в одному ряду (Михайло 24.11.2026 «лиши тільки стрілки і лінію прогресу»): ← енкодер →; знизу лишається лише «Пиріг шарів» (телефон)
+    if (enc) { hd.insertBefore(prev, hd.firstChild); hd.insertBefore(next, enc.sr); ctl.classList.add('bz-ctl1'); ctl.appendChild(pb); }
+    else { ctl.appendChild(prev); ctl.appendChild(nav); ctl.appendChild(pb); ctl.appendChild(next); }
     var btns = [];
     nav.addEventListener('keydown', function (e) {
       var i = btns.indexOf(d.activeElement); if (i < 0) return;

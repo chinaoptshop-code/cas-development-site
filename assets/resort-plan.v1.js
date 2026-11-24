@@ -361,7 +361,10 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     }
     else if (!RM && W.casEnc) { // повна сторінка: той самий енкодер зупинок (генплан → обʼєкти), що й на головних; кнопки паузи немає (24.11.2026)
       var en = W.casEnc({ n: NST, go: function (i) { clearInterval(timer); goStop(i); }, title: function (i) { return i < 0 ? sec.querySelector('h2').textContent : i ? D.o[STOPS[i - 1]] : planT(); }, label: sec.querySelector('h2').textContent });
-      apw.classList.add('rp-enc'); apw.appendChild(en.el); apw.appendChild(en.sr); sdU = function (k, f) { en.set(k, f); };
+      // ← енкодер → — як в інших сценах (стрілки поруч з енкодером, 24.11.2026); RTL: ‹ › дзеркаляться самі
+      var ep = el('button', 'la-prev', '‹'), ex = el('button', 'la-next', '›'); ep.type = ex.type = 'button'; ep.setAttribute('aria-label', U.step + ' −'); ex.setAttribute('aria-label', U.step + ' +');
+      ep.addEventListener('click', function () { clearInterval(timer); goStop(curStop() - 1); }); ex.addEventListener('click', function () { clearInterval(timer); goStop(curStop() + 1); });
+      apw.classList.add('rp-enc'); apw.appendChild(ep); apw.appendChild(en.el); apw.appendChild(ex); apw.appendChild(en.sr); sdU = function (k, f) { en.set(k, f); };
     }
     sec.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && focus) close(); });
     sec.classList.add('rp-on');

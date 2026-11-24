@@ -673,7 +673,9 @@
     }
     lab();
     function poke(ms) { quiet = Math.max(quiet, now() + ms); }
-    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(function (e) { o.root.addEventListener(e, function () { touched = true; poke(9000); }, { passive: true }); });
+    // фаза перехоплення: енкодер (.sc-enc) і кнопки сцен зупиняють спливання своїх клавіш (stopPropagation), а дія людини має глушити автопрогравання 9 с —
+    // інакше Home/End на енкодері: стрибок на етап 1, а через ~1 с автопрогравання крокувало далі (етап 2)
+    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(function (e) { o.root.addEventListener(e, function () { touched = true; poke(9000); }, { passive: true, capture: true }); });
     if (!cmp) W.addEventListener('scroll', function () { if (live) poke(3000); }, { passive: true });
     function tog() {
       if (ended) { ended = false; user = false; o.restart(); } else user = !user;
@@ -865,7 +867,7 @@
       if (!raf) raf = requestAnimationFrame(function () { setTimeout(function () { raf = 0; if (want !== ext) o.go(want); }, 0); });
     }
     function pick2() { if (!raf) raf = requestAnimationFrame(function () { setTimeout(function () { raf = 0; o.go(want); }, 0); }); }
-    function at(x) { var r = e.getBoundingClientRect(), f = (x - r.left) / Math.max(1, r.width); if (rtl()) f = 1 - f; return Math.round(Math.max(0, Math.min(1, f)) * (N - 1)); }
+    function at(x) { var r = e.getBoundingClientRect(), k = 12, f = (x - r.left - k) / Math.max(1, r.width - 2 * k); /* доріжка відступає на радіус ручки (--ek) — ручка не обрізається краєм */ if (rtl()) f = 1 - f; return Math.round(Math.max(0, Math.min(1, f)) * (N - 1)); }
     e.addEventListener('pointerdown', function (ev) {
       if (ev.button) return; pt = ev.pointerType; x0 = ev.clientX; y0 = ev.clientY; drag = pt === 'mouse' ? 2 : 1; // тач: спершу 1 — чекаємо, горизонталь це чи прокрутка
       try { e.setPointerCapture(ev.pointerId); } catch (x) { }
@@ -913,7 +915,9 @@
     hd.appendChild(en.el); hd.appendChild(en.sr);
     var bb = o.nav.querySelectorAll('button'); // ← → як у «Будинку з нуля» (RTL — віддзеркалює CSS)
     if (bb.length > 1) [[bb[0], 'sc-prev', '←'], [bb[bb.length - 1], 'sc-next', '→']].forEach(function (x) { x[0].classList.add(x[1]); x[0].innerHTML = '<span class="sc-ar" aria-hidden="true">' + x[2] + '</span>'; });
-    side.appendChild(hd); side.appendChild(o.cap); side.appendChild(o.nav);
+    // стрілки — в одному ряду з енкодером (← енкодер →), як у повних сценах; ряд o.nav лишається в DOM (обробники сцени), видимих кнопок у ньому немає
+    if (bb.length > 1) { hd.classList.add('la-nav'); hd.insertBefore(bb[0], en.el); hd.insertBefore(bb[bb.length - 1], en.sr); }
+    side.appendChild(hd); side.appendChild(o.cap); side.appendChild(o.nav); if (!o.nav.querySelector('button:not(.sc-ap)')) o.nav.style.display = 'none'; // порожній ряд — у панелі, схований (не лишається зайвим елементом сітки кадру)
     if (o.foot) {
       side.appendChild(o.foot);
       [].forEach.call(o.foot.querySelectorAll('a.btn'), function (a) { a.classList.remove('btn', 'main'); a.classList.add('sc-more'); if (!/→$/.test(a.textContent)) a.textContent += ' →'; });

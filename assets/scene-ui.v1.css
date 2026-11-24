@@ -100,28 +100,51 @@
 /* Енкодер етапів (casEnc у site-chrome.v1.js; Михайло 24.11.2026 «замість нумерації постав енкодер»): у всіх сценах — компактних і повних —
    лише ← → і цей повзунок: поділка на кожен етап (пройдені — латунні), ручка 24 px у тап-зоні 44 px, бульбашка «3 · назва» — під час
    перетягування й фокуса з клавіатури. Без N вузлів: поділки — градієнт від --n, заливка — clip-path від --f, ручка — transform від --p */
-.sc-enc{--n:2;--p:0;--f:0;position:relative;flex:1 1 auto;min-width:6rem;height:44px;container-type:inline-size;cursor:pointer;touch-action:pan-y;outline:none;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
-.sc-et,.sc-ef{position:absolute;left:0;right:0;top:50%;height:12px;margin-top:-6px;pointer-events:none}
+.sc-enc{--n:2;--p:0;--f:0;--ek:12px;position:relative;flex:1 1 auto;min-width:6rem;height:44px;container-type:inline-size;cursor:pointer;touch-action:pan-y;outline:none;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.sc-et,.sc-ef{position:absolute;left:var(--ek);right:var(--ek);top:50%;height:12px;margin-top:-6px;pointer-events:none}
 .sc-et{background:linear-gradient(var(--ln,rgba(191,145,72,.3)),var(--ln,rgba(191,145,72,.3))) 0 50%/100% 2px no-repeat,
   linear-gradient(90deg,rgba(237,232,223,.32) 0 1px,transparent 1px) 0 50%/calc((100% - 1px) / (var(--n) - 1)) 8px repeat-x}
-.sc-ef{position:absolute;inset:0;height:auto;margin:0;background:linear-gradient(var(--ac,#BF9148),var(--ac,#BF9148)) 0 50%/100% 2px no-repeat,
+.sc-ef{position:absolute;inset:0;left:0;right:0;height:auto;margin:0;background:linear-gradient(var(--ac,#BF9148),var(--ac,#BF9148)) 0 50%/100% 2px no-repeat,
   linear-gradient(90deg,var(--ac,#BF9148) 0 1px,transparent 1px) 0 50%/calc((100% - 1px) / (var(--n) - 1)) 12px repeat-x;
   clip-path:inset(0 calc((1 - var(--f)) * 100% - 1px) 0 0);transition:clip-path .3s var(--ease-out,ease)}
 [dir=rtl] .sc-ef{clip-path:inset(0 0 0 calc((1 - var(--f)) * 100% - 1px))}
-.sc-ek{position:absolute;top:50%;left:0;width:24px;height:24px;margin:-12px 0 0 -12px;box-sizing:border-box;border-radius:50%;border:2px solid var(--ac,#BF9148);background:var(--bg,#080709);
-  box-shadow:0 0 0 4px rgba(8,7,9,.55);transform:translateX(calc(var(--p) * 100cqw));transition:transform .3s var(--ease-out,ease),background-color .15s ease;pointer-events:none}
-[dir=rtl] .sc-ek{left:auto;right:0;margin:-12px -12px 0 0;transform:translateX(calc(var(--p) * -100cqw))}
+.sc-ek{position:absolute;top:50%;left:var(--ek);width:24px;height:24px;margin:-12px 0 0 -12px;box-sizing:border-box;border-radius:50%;border:2px solid var(--ac,#BF9148);background:var(--bg,#080709);
+  box-shadow:0 0 0 4px rgba(8,7,9,.55);transform:translateX(calc(var(--p) * (100cqw - 2 * var(--ek))));transition:transform .3s var(--ease-out,ease),background-color .15s ease;pointer-events:none}
+[dir=rtl] .sc-ek{left:auto;right:var(--ek);margin:-12px -12px 0 0;transform:translateX(calc(var(--p) * (2 * var(--ek) - 100cqw)))}
 .sc-enc:hover .sc-ek,.sc-enc.is-drag .sc-ek{background:var(--ac,#BF9148)}
 .sc-enc:focus-visible .sc-ek{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 .sc-eb{position:absolute;bottom:calc(100% - 4px);left:0;max-width:min(16rem,80cqw);padding:4px 10px;border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:999px;background:rgba(8,7,9,.94);
   color:var(--tx,#EDE8DF);font:600 var(--fs-small,.8125rem)/1.3 var(--ff);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none;opacity:0;
-  transform:translateX(clamp(0px,calc(var(--p) * 100cqw - 50%),calc(100cqw - 100%)));transition:opacity .15s ease}
-[dir=rtl] .sc-eb{left:auto;right:0;transform:translateX(clamp(calc(-100cqw + 100%),calc(var(--p) * -100cqw + 50%),0px))}
+  transform:translateX(clamp(0px,calc(var(--ek) + var(--p) * (100cqw - 2 * var(--ek)) - 50%),calc(100cqw - 100%)));transition:opacity .15s ease}
+[dir=rtl] .sc-eb{left:auto;right:0;transform:translateX(clamp(calc(-100cqw + 100%),calc(var(--p) * (2 * var(--ek) - 100cqw) - var(--ek) + 50%),0px))}
 .sc-enc.is-drag .sc-eb,.sc-enc:focus-visible .sc-eb{opacity:1}
 .sc-esr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media(prefers-reduced-motion:reduce){.sc-ef,.sc-ek{transition:none}}
 .sc-hd>.sc-enc,.bz-hd>.sc-enc{flex:1 1 auto}
-.la-nav>.sc-enc{flex:1 1 auto;margin:0 6px}.rp-apw.rp-enc{flex:1 1 12rem;display:flex}
+.la-nav>.sc-enc{flex:1 1 auto;margin:0 6px;order:2}.rp-apw.rp-enc{flex:1 1 12rem;display:flex}
 /* телефон: панель компактної сцени однакової висоти на всіх вкладках перемикача (без рядка номерів текст етапу й ціна різної довжини давали +40 px
    між вкладками; interact.mjs «перемикач сцен головної…» ≤ 30 px); низькі екрани (≤ 700 px) — як були */
 @media(max-width:767px) and (min-height:701px){.bz-cmp .bz-side,.la-cmp .sc-side{min-height:19.5rem;box-sizing:border-box}}
+/* ← енкодер → одним рядом і в компактних сценах (casSide, 24.11.2026): стрілки — icon-кнопки design kit 44 px */
+.sc-side .sc-hd.la-nav{flex-wrap:nowrap;gap:10px}
+.sc-side .sc-hd.la-nav button{width:var(--ic,44px);height:var(--ic,44px)}
+.la-nav>:is(.la-prev,.sc-prev){order:1}.la-nav>:is(.la-next,.sc-next){order:3}
+/* ══ Ряд налаштувань сцени — chip design kit (Михайло 24.11.2026 до знімка сцени «Квартира»: «окремі налаштування фічі на усі сторінки» — один вигляд):
+   «Будинок/Квартира» (.bz-mats, .bz-xb, .bz-cb), «Ландшафт/Ресторан/Будинок на воді» (.la-seg), «Комплекс» (.rp-ctl), «Пропустити анімацію» —
+   висота --chip-h (44 px), кегль 13 px, вага 500, pill, рамка --ln; вибраний — латунна заливка (рентген — бірюзова, як лінії мереж на кадрі). Ряд — над кадром, під заголовком */
+.bz :is(.bz-mats button,.la-seg button,.rp-ctl button),.bz .bz-xb,.bz .bz-mats .bz-cb,.bz .bz-skip{box-sizing:border-box;min-height:var(--chip-h,44px);min-width:var(--chip-h,44px);padding:0 var(--chip-px,1rem);
+  border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:999px;background:rgba(16,14,12,.72);color:var(--tx,#EDE8DF);box-shadow:none;
+  font:500 var(--chip-fs,.8125rem)/1.2 var(--ff,inherit);letter-spacing:0;line-height:1.2;display:inline-flex;align-items:center;justify-content:center}
+.bz :is(.bz-mats button,.la-seg button,.rp-ctl button)[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
+.bz .bz-xb{border-color:rgba(127,211,217,.5);color:#bfe9ec}.bz .bz-xb[aria-pressed=true]{background:#7fd3d9;border-color:#7fd3d9;color:#080709}
+.bz .bz-mats .bz-cb{border-color:var(--ac,#BF9148);color:var(--ac,#BF9148);display:block;line-height:calc(var(--chip-h,44px) - 2px)}
+.bz .bz-mats .bz-cb[aria-expanded=true]{background:var(--ac,#BF9148);color:#080709}
+.bz .bz-skip{border-color:var(--ac,#BF9148);background:var(--bg2,#100e0c)}
+.bz .bz-mats{gap:6px}
+@media(hover:hover){.bz :is(.bz-mats button,.la-seg button,.rp-ctl button):not([aria-pressed=true]):hover{border-color:var(--ac,#BF9148)}}
+.bz :is(.bz-mats button,.la-seg button,.rp-ctl button,.bz-xb,.bz-skip):focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+@media(max-width:767px){
+  .bz:not(.bz-cmp) .bz-mats{top:0;min-height:var(--chip-h,44px)}
+  .bz:not(.bz-cmp) .bz-fig{padding-top:calc(var(--chip-h,44px) + 8px)}
+  .bz .bz-lg{top:calc(var(--chip-h,44px) + 8px)}
+}

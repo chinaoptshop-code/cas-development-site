@@ -762,29 +762,36 @@ await test('один шрифт: текст і заголовки — Manrope, C
 });
 // Сцени (Михайло 24.11.2026 «Номери етапів під сценою… лиши тільки стрілки і лінію прогресу» → «замість нумерації постав енкодер»):
 // у панелі — ← → і енкодер (role=slider, aria-valuetext «Етап i з N: назва»); немає рядка номерів, кнопки паузи й лічильника «01 / N»
-for (const [u, w, tab] of [['/', 402, 0], ['/', 1440, 2], ['/ar/', 402, 0], ['/budivnytstvo-budynkiv-kyiv', 1440, -1], ['/landshaftnyi-dyzain-kyiv', 1440, -1]]) await test('сцена: лише стрілки й енкодер — без номерів, паузи й лічильника', u, w, async p => {
+for (const [u, w, tab] of [['/', 402, 0], ['/', 1440, 2], ['/ar/', 402, 0], ['/budivnytstvo-budynkiv-kyiv', 1440, -1], ['/landshaftnyi-dyzain-kyiv', 1440, -1], ['/remont-kvartyr-kyiv', 1440, -1], ['/remont-kvartyr-kyiv', 402, -1], ['/ar/turnkey-renovation', 402, -1]]) await test('сцена: лише стрілки й енкодер — без номерів, паузи й лічильника', u, w, async p => {
   await wakeup(p);
   await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
   await p.locator('section.bz').first().scrollIntoViewIfNeeded(); await p.waitForSelector('section.bz .sc-enc', { timeout: 15000 });
   if (tab > 0) await scTab(p, tab);
   const r = await p.evaluate(`(()=>{const s=${SCN},e=s.querySelector('.sc-enc'),vis=q=>[...s.querySelectorAll(q)].filter(x=>x.getClientRects().length&&getComputedStyle(x).visibility!=='hidden');
     const r=e.getBoundingClientRect();return {nums:vis('.sc-n,.bz-nav .bz-b,.bz-nav').length,pause:vis('.sc-ap,.bz-ap,.la-play').length,ct:vis('.sc-ct,.bz-ct,.la-cnt').length,
-    arrows:vis('.bz-nx,.sc-next,.la-next,.bz-pv,.sc-prev,.la-prev').length,role:e.getAttribute('role'),vt:e.getAttribute('aria-valuetext')||'',h:Math.round(r.height),max:+e.getAttribute('aria-valuemax')}})()`);
+    arrows:vis('.bz-nx,.sc-next,.la-next,.bz-pv,.sc-prev,.la-prev').length,row:vis('.bz-nx,.sc-next,.la-next,.bz-pv,.sc-prev,.la-prev').filter(x=>{const b=x.getBoundingClientRect();return Math.abs(b.top+b.height/2-r.top-r.height/2)<=12&&b.width>=44&&b.height>=44}).length,role:e.getAttribute('role'),vt:e.getAttribute('aria-valuetext')||'',h:Math.round(r.height),max:+e.getAttribute('aria-valuemax')}})()`);
   must(!r.nums && !r.pause && !r.ct, 'у панелі сцени лишились номери/пауза/лічильник: ' + JSON.stringify(r));
-  must(r.arrows >= 2, 'немає стрілок ← →: ' + JSON.stringify(r));
+  must(r.arrows >= 2 && r.row >= 2, 'немає стрілок ← → (≥ 44 px) в одному ряду з енкодером: ' + JSON.stringify(r));
   must(r.role === 'slider' && r.max > 1 && /\d/.test(r.vt) && r.h >= 44, 'енкодер: ' + JSON.stringify(r));
   // клавіші з фокусом: End → останній, Home → перший; тап по лінії — етап під пальцем
   // повна sticky-сцена: go() плавно прокручує доріжку, casDrive доганяє етап — чекаємо до 20 с
   const val = v => p.waitForFunction(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')===${v}`, null, { timeout: 40000 }).then(() => v).catch(() => p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`));
   const still = () => p.evaluate(async () => { let y = -1; for (let i = 0; i < 80 && y !== scrollY; i++) { y = scrollY; await new Promise(ok => setTimeout(ok, 400)); } }); // плавна прокрутка доріжки дійшла
   await p.evaluate(`${SCN}.querySelector('.sc-enc').focus()`);
-  if (await p.evaluate(`${SCN}.querySelector('.sc-enc').getAttribute('data-st')`) === 'on') await p.keyboard.press(' '); // пауза автопрогравання — пробіл на енкодері
-  must(await p.evaluate(`${SCN}.querySelector('.sc-enc').getAttribute('data-st')`) !== 'on', 'пробіл на енкодері не поставив автопрогравання на паузу');
+  // без паузи: дія з енкодером сама глушить автопрогравання на 9 с (casAuto слухає у фазі перехоплення) — сцена не перестрибує з 1-го етапу на 2-й
   await p.keyboard.press('End'); await still();
   const v1 = await val(r.max);
   await p.keyboard.press('Home'); await still();
   const v2 = await val(1);
-  must(v1 === r.max && v2 === 1, `Home/End: ${v1}, ${v2} (N=${r.max})`);
+  await p.waitForTimeout(1500);
+  const v3 = +await p.evaluate(`${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`);
+  must(v1 === r.max && v2 === 1 && v3 === 1, `Home/End: ${v1}, ${v2}, через 1.5 с — ${v3} (N=${r.max})`);
+  // пробіл на енкодері — пауза / відтворення автопрогравання
+  const st0 = await p.evaluate(`${SCN}.querySelector('.sc-enc').getAttribute('data-st')`);
+  if (st0) { await p.keyboard.press(' '); must(await p.evaluate(`${SCN}.querySelector('.sc-enc').getAttribute('data-st')`) !== st0, 'пробіл на енкодері не перемкнув автопрогравання'); }
+  // ручка цілком у межах енкодера на першому й останньому етапі (не обрізана краєм)
+  const kb = await p.evaluate(`(()=>{const e=${SCN}.querySelector('.sc-enc'),k=e.querySelector('.sc-ek').getBoundingClientRect(),r=e.getBoundingClientRect();return [Math.round(k.left-r.left),Math.round(r.right-k.right)]})()`);
+  must(kb[0] >= 0 && kb[1] >= 0, 'ручка енкодера виходить за край: ' + kb);
 });
 // ar (RTL): «$2 500», не «2 500$» — ціни у видимому тексті й data-xs в ізоляті LTR U+2066…U+2069 (chrome.price_iso, як iso() у calc.v1.js)
 for (const u of ['/ar/interior-design', '/ar/interior-design-worldwide', '/ar/apartment-renovation-cost']) {
@@ -1734,6 +1741,31 @@ for (const [path, w, tz] of [['/', 344, 'Europe/Kyiv'], ['/', 402, 'Europe/Kyiv'
   await p.reload({ waitUntil: 'load' }); const n0 = rq.length; await p.mouse.wheel(0, 300); await p.waitForTimeout(800);
   must(rq.length === n0, 'після «Відхилити» з футера Clarity вантажиться');
 }, { timezoneId: tz });
+// Кнопки — design kit (Михайло 24.11.2026: «маленька кнопка, потім велика, зробити Design kit кнопок»): усі видимі primary/secondary — однієї висоти (±1 px),
+// на телефоні кнопка-дія блоку — на всю ширину свого контейнера, пара в hero — 50/50; тап-цілі ≥ 44 px
+for (const u of ['/', '/services', '/remont-kvartyr-kyiv', '/budivnytstvo-budynkiv-kyiv', '/contact', '/blog/akustyka-open-space-bez-hluhykh-peregorodok', '/en/', '/ar/']) for (const w of [402, 1440]) await test(`кнопки: design kit — одна висота, ширина за правилом (${u}, ${w})`, u, w, async p => {
+  await p.evaluate(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += 700) { scrollTo({ top: y, behavior: 'instant' }); await new Promise(ok => setTimeout(ok, 60)); } scrollTo({ top: 0, behavior: 'instant' }); });
+  await p.waitForTimeout(400);
+  const r = await p.evaluate(phone => {
+    const vis = e => { if (!e.getClientRects().length) return false; for (let x = e; x; x = x.parentElement) { const c = getComputedStyle(x); if (c.visibility === 'hidden' || c.display === 'none' || +c.opacity === 0) return false; } const b = e.getBoundingClientRect(); return b.width > 0 && b.height > 0; };
+    const bs = [...document.querySelectorAll('main :is(.btn,.bz-go,.qz-b), .scf a.scf-cta')].filter(vis).filter(e => !e.closest('[data-c] .cmp-x,.ux-rest,[hidden]'));
+    const hs = bs.map(e => Math.round(e.getBoundingClientRect().height)), h0 = hs.slice().sort((a, b) => a - b)[hs.length >> 1];
+    const bad = [], small = [];
+    bs.forEach((e, i) => {
+      const b = e.getBoundingClientRect(), t = e.textContent.trim().slice(0, 30);
+      if (Math.abs(hs[i] - h0) > 1) bad.push(`висота ${hs[i]} ≠ ${h0}: ${t}`);
+      if (b.height < 44 || b.width < 44) small.push(t);
+      if (!phone) return;
+      const par = e.parentElement, pc = getComputedStyle(par), pw = par.getBoundingClientRect().width - parseFloat(pc.paddingLeft) - parseFloat(pc.paddingRight) - parseFloat(pc.borderLeftWidth) - parseFloat(pc.borderRightWidth);
+      const sib = [...par.children].filter(x => x !== e && x.matches('.btn') && vis(x));
+      if (e.closest('.hero .btns') && sib.length) { if (Math.abs(b.width - sib[0].getBoundingClientRect().width) > 2) bad.push(`пара hero не 50/50: ${t}`); }
+      else if (b.width < pw - 2) bad.push(`ширина ${Math.round(b.width)} < ${Math.round(pw)}: ${t}`);
+    });
+    return { n: bs.length, h0, bad: bad.slice(0, 6), small: small.slice(0, 4) };
+  }, w < 768);
+  must(r.n > 0, 'немає видимих кнопок');
+  must(!r.bad.length && !r.small.length, JSON.stringify(r));
+});
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nВзаємодії: ALL OK');
 process.exit(fails ? 1 : 0);
