@@ -56,7 +56,7 @@ async function test(name, path, w, fn, opt) {
     await page.goto(BASE + path, { waitUntil: 'load' });
     await page.waitForTimeout(300);
     await fn(page);
-  } catch (e) { errs.push(String(e.message || e).split('\n')[0]); }
+  } catch (e) { errs.push(process.env.FULLERR ? String(e.message || e).slice(0, 2000) : String(e.message || e).split('\n')[0]); }
   if (errs.length) fails++;
   console.log(`  ${errs.length ? '✗' : '✓'} ${name} (${path} @${w})${errs.length ? '\n      ' + [...new Set(errs)].join('\n      ') : ''}`);
   await ctx.close();
@@ -728,6 +728,8 @@ for (const u of ['/ar/interior-design', '/ar/interior-design-worldwide', '/ar/ap
   });
 }
 // калькулятор — кілька позицій одразу (Михайло 20.11.2026): плитки #cIt [data-k] (aria-pressed), уточнення #cV [data-k] [data-p], площа #cArea, сотки #cLand
+// «Отримати точний кошторис» відкриває вікно заявки (24.11.2026): перевіряємо й закриваємо (Esc), щоб далі клацати калькулятор
+const cSendEsc = async (p, ms = 300) => { await p.click('#cSend'); await p.waitForTimeout(ms); must(await fdOpen(p), 'калькулятор не відкрив вікно заявки'); await p.keyboard.press('Escape'); await p.waitForTimeout(150); };
 const cTile = (p, k) => p.locator(`#cIt [data-k="${k}"]`);
 const cOn = async (p, k) => (await cTile(p, k).getAttribute('aria-pressed')) === 'true';
 const cOnly = async (p, ...ks) => { for (const k of ['design', 'reno', 'furn', 'build', 'arch', 'land']) if ((await cOn(p, k)) !== ks.includes(k)) await cTile(p, k).click(); await p.waitForTimeout(150); };
@@ -767,16 +769,16 @@ await test('калькулятор: 0 → «—», дизайн для 10 м² �
   must(/кошторис/.test(await p.textContent('#cSum')), 'ландшафт у Європі не «за кошторисом»');
   await p.click('#cReg [data-r="0"]'); await p.fill('#cLand', '12.5'); await p.waitForTimeout(150);
   must(nb(await p.textContent('#cSum')) === '$625', 'ландшафт 12,5 сотки ≠ $625');
-  await p.click('#cSend'); await p.waitForTimeout(300);
+  await cSendEsc(p);
   must((await p.inputValue('#oArea')) === '1250', 'сотки не перетворено на м² у формі');
   const ms = await p.inputValue('#oMsg'), sv = await p.getAttribute('#of', 'data-service');
   must(/Україна/.test(ms) && /Ландшафт/.test(ms) && /Ландшафт/.test(sv) && /Україна/.test(sv), 'регіон/послуга не в формі: ' + ms + ' | ' + sv);
   await cOnly(p, 'reno'); await cVar(p, 'reno', 'reno');
   must(await p.locator('#cArea').isVisible() && (await p.inputValue('#cArea')) === '10' && await p.locator('#cLandW').isHidden(), 'поле м² не повернулось після соток');
   await p.click('#cReg [data-r="1"]');
-  await set('60'); await p.click('#cSend'); await p.waitForTimeout(300);
+  await set('60'); await cSendEsc(p);
   const m1 = await p.inputValue('#oMsg'); must(/Європа/.test(m1) && /Європа/.test(await p.getAttribute('#of', 'data-service')), 'Європа не в формі');
-  await set('80'); await p.click('#cSend'); await p.waitForTimeout(300);
+  await set('80'); await cSendEsc(p);
   must((await p.inputValue('#oMsg')) !== m1 && (await p.inputValue('#oArea')) === '80', 'повторний розрахунок не оновив форму');
 });
 await test('калькулятор: кома, помилка й стеля поля, розбивка рядками, Enter, підписи для читалки', '/kalkuliator-remontu', 402, async p => {
@@ -805,7 +807,7 @@ for (const [path, rx] of [['/ru/kalkulyator-remonta', /Калькулятор/],
     must(/\$/.test(await p.textContent('#cSum')), 'немає суми');
     await p.fill('#cArea', '80,5'); await p.waitForTimeout(120);
     must((await p.textContent('#cSum')).replace(/\D/g, '') === String(81 * 550), 'кома: ' + await p.textContent('#cSum'));
-    await p.click('#cSend'); await p.waitForTimeout(300);
+    await cSendEsc(p);
     must(rx.test(await p.getAttribute('#of', 'data-service')) && (await p.getAttribute('#of', 'data-form')) === 'calc', 'послуга/місце не в формі');
     must((await p.inputValue('#oArea')) === '81' && /\$/.test(await p.inputValue('#oMsg')), 'площа/розрахунок не в формі');
   });
@@ -839,7 +841,7 @@ await test('калькулятор (ar, RTL): мінімум дизайну — 
     return out; });
   must(r.row.iso && r.row.ok, 'рядок результату: «$» не ліворуч від числа — ' + JSON.stringify(r.row.t));
   must(r.note.iso && r.note.ok, 'примітка: «$» не ліворуч від числа — ' + JSON.stringify(r.note.t));
-  await p.click('#cSend'); await p.waitForTimeout(400);
+  await cSendEsc(p, 400);
   must(!/[⁦⁩]/.test(await p.inputValue('#oMsg')), 'службові знаки напрямку потрапили в коментар заявки');
 });
 await test('калькулятор (ar, RTL): Європа й ландшафт', '/ar/renovation-calculator', 402, async p => {
@@ -1249,7 +1251,7 @@ await test('калькулятор, тип будинку зі ставкою: �
   must((await cDigits(p)) === String(60 * 350 + 720) && await p.locator('#cPlus').isHidden(), 'сума з типом: ' + await p.textContent('#cSum'));
   must(cNb(await cTile(p, 'build').locator('small').textContent()) === 'від $350/м²', 'плитка будівництва: ' + await cTile(p, 'build').textContent());
   must(cNb(await p.locator('#cHt [data-t="frame"] small').textContent()) === 'від $350/м²' && cNb(await p.locator('#cHt [data-t="sandwich"] small').textContent()) === 'від $250/м²' && /\$600/.test(await p.locator('#cHt [data-t=""] small').textContent()), 'підписи кнопок типів');
-  await p.click('#cSend'); await p.waitForTimeout(300);
+  await cSendEsc(p);
   let sv = await p.getAttribute('#of', 'data-service'), msg = cNb(await p.inputValue('#oMsg'));
   must(sv === 'Калькулятор: Будівництво будинку (коробка) · Каркасний деревʼяний + Архітектурний проєкт будинку · Україна' && sv.length <= 200, 'data-service: ' + sv);
   must(/Будівництво будинку \(коробка\) · Каркасний деревʼяний · 60 м² × \$350\/м²: \$21 000/.test(msg) && /= від \$21 720/.test(msg) && (await p.inputValue('#oArea')) === '60', '#oMsg: ' + msg);
@@ -1259,7 +1261,7 @@ await test('калькулятор, тип будинку зі ставкою: �
   rows = cNb(await p.locator('#cRows li').allTextContents().then(a => a.join(' | ')));
   must(/Будівництво будинку \(коробка\) · Каркасний деревʼяний\s*за кошторисом/.test(rows) && (await cDigits(p)) === '720' && await p.locator('#cPlus').isVisible(), 'тип без ставки: ' + rows + ' / ' + await p.textContent('#cSum'));
   must((await p.locator('#cHt [data-t="frame"] small').textContent()) === 'за кошторисом', 'підпис типу без ставки');
-  await p.click('#cSend'); await p.waitForTimeout(300); msg = cNb(await p.inputValue('#oMsg'));
+  await cSendEsc(p); msg = cNb(await p.inputValue('#oMsg'));
   must(/Каркасний деревʼяний: за кошторисом/.test(msg) && /= від \$720 \+ позиції за кошторисом/.test(msg), '#oMsg (без ставки): ' + msg);
   await p.evaluate(() => document.getElementById('calc').scrollIntoView()); await cType(p, '');
   must((await cDigits(p)) === String(60 * 600 + 60 * 12) && !/Каркасний/.test(await p.textContent('#cRows')), '«ще не визначились» не повернув базову суму');
@@ -1280,7 +1282,7 @@ await test('калькулятор, тип будинку і посилання 
   must((await cDigits(p)) === String(60 * 550), 'Європа, коробка: ' + await p.textContent('#cSum'));
   await cVar(p, 'build', 'key');
   must((await cDigits(p)) === String(60 * 1500) && cNb(await p.locator('#cHt [data-t="frame"] small').textContent()) === 'від $1 500/м²', 'Європа, під ключ: ' + await p.textContent('#cSum'));
-  await p.click('#cSend'); await p.waitForTimeout(300);
+  await cSendEsc(p);
   must(/Будинок під ключ з оздобленням · Каркасний деревʼяний · Європа$/.test(await p.getAttribute('#of', 'data-service')) && /Каркасний деревʼяний · 60 м² × \$1[\s  ]500\/м²: \$90[\s  ]000/.test(await p.inputValue('#oMsg')), 'заявка: ' + await p.getAttribute('#of', 'data-service') + ' / ' + await p.inputValue('#oMsg'));
   // старі посилання: без t або з невідомим t — як раніше
   await p.goto(p.url().replace(/\?.*$/, '?k=housekey&t=nope'), { waitUntil: 'load' }); await p.waitForTimeout(300);
@@ -1294,7 +1296,7 @@ await test('калькулятор (ar, RTL), тип будинку: назва 
   must((await cDigits(p)) === String(60 * 1200) && /⁦\$1[\s  ]200⁩/.test(await p.textContent('#cRows')), 'ar: Європа, СІП під ключ: ' + JSON.stringify(await p.textContent('#cRows')));
   await p.click('#cReg [data-r="0"]'); await p.waitForTimeout(120);
   must((await cDigits(p)) === String(60 * 750) && /⁦\$750⁩/.test(await p.textContent('#cRows')), 'ar: рядок зі ставкою типу: ' + JSON.stringify(await p.textContent('#cRows')));
-  await p.click('#cSend'); await p.waitForTimeout(300);
+  await cSendEsc(p);
   must(/ألواح SIP/.test(await p.getAttribute('#of', 'data-service')) && /ألواح SIP/.test(await p.inputValue('#oMsg')) && !/[⁦⁩]/.test(await p.inputValue('#oMsg')), 'ar: заявка без типу або зі службовими знаками');
   must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'ar: горизонтальна прокрутка');
 });
@@ -1334,8 +1336,9 @@ await test('WeChat: є у футері, клік копіює номер; Behanc
   must(f.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'футер: кнопки не іконки ≥ 44 px: ' + JSON.stringify(f));
   must(f.find(x => x.k === 'behance').href === 'https://www.behance.net/mykhailol2' && f.find(x => x.k === 'wechat').wx === WX && f.find(x => x.k === 'wechat').lab.includes(WX), 'футер: Behance / WeChat');
   must(!(await p.evaluate(() => [...document.querySelectorAll('.scf b')].some(b => /Месенджери/.test(b.textContent)))), 'футер: підпис «Месенджери» лишився');
-  const top = await p.evaluate(() => { const s = document.querySelector('.scf-soc').getBoundingClientRect(), r = document.querySelector('.scf-soc').closest('.scf-top').getBoundingClientRect(); return [s.top - r.top, s.height]; });
-  must(top[0] <= 2 && top[1] < 60, 'футер: ряд іконок не вгорі колонки або в два ряди на 1440: ' + top);
+  // футер (Михайло 24.11.2026): ряд іконок — один ряд, по центру з кнопкою «Розрахувати проєкт»
+  const top = await p.evaluate(() => { const s = document.querySelector('.scf-soc').getBoundingClientRect(), b = document.querySelector('.scf-cta').getBoundingClientRect(); return [Math.round(Math.abs((s.top + s.bottom) / 2 - (b.top + b.bottom) / 2)), s.height]; });
+  must(top[0] <= 2 && top[1] < 60, 'футер: ряд іконок не по центру з кнопкою або в два ряди на 1440: ' + top);
   await p.locator('.scf-soc .bi-wechat').scrollIntoViewIfNeeded(); await p.click('.scf-soc .bi-wechat'); await p.waitForTimeout(300);
   let tip = await wxTip(p);
   must(tip && tip.on && tip.live === 'polite' && tip.pos === 'fixed' && /Номер WeChat скопійовано/.test(tip.txt) && tip.txt.includes(WX), 'підказка: ' + JSON.stringify(tip));
@@ -1453,7 +1456,7 @@ for (const [path, w] of [['/', 402], ['/', 320], ['/ar/', 402], ['/ar/', 344], [
 for (const [path, w, h] of [['/', 344, 740], ['/', 402, 874], ['/ar/', 344, 740], ['/ar/', 402, 874], ['/en/apartment-renovation-cost', 430, 932], ['/services', 360, 640]]) await test('кружечки: дзвінок і бот поруч, ≥ 44 px, без перекриття', path, [w, h], async p => {
   const r = await p.evaluate(() => [...document.querySelectorAll('.mbar[data-one] > .mb-bot, .mbar[data-one] > .mb-tg')].map(e => { const b = e.getBoundingClientRect(), cs = getComputedStyle(e);
     return { c: e.className, x: b.left, r: b.right, t: b.top, b: b.bottom, w: b.width, h: b.height, rad: cs.borderRadius, txt: e.textContent.trim(), lab: e.getAttribute('aria-label') || '', ti: e.getAttribute('title') || '', vw: innerWidth, vh: innerHeight, rtl: document.documentElement.dir === 'rtl' }; }));
-  must(r.length === 2 && r[0].c === 'mb-bot' && r[1].c === 'mb-tg', 'кружечки: ' + JSON.stringify(r.map(x => x.c)));
+  must(r.length === 2 && r[0].c.split(' ')[0] === 'mb-bot' && r[1].c.split(' ')[0] === 'mb-tg', 'кружечки: ' + JSON.stringify(r.map(x => x.c)));
   must(r.every(x => x.w >= 44 && x.h >= 44 && Math.abs(x.w - x.h) < 1 && Math.abs(x.w - r[0].w) < 1 && /50%|9999|28px/.test(x.rad)), 'не круглі / різні / < 44 px: ' + JSON.stringify(r));
   must(r.every(x => !x.txt && x.lab && x.ti), 'видимий текст або без aria-label/title: ' + JSON.stringify(r.map(x => [x.txt, x.lab])));
   must(r.every(x => x.x >= 8 && x.r <= x.vw - 8 && x.b <= x.vh - 8), 'за краєм екрана: ' + JSON.stringify(r));

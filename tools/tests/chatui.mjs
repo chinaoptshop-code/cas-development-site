@@ -138,7 +138,7 @@ for (const w of [402, 1440]) {
       await page.locator('.scf-soc').scrollIntoViewIfNeeded(); await shot(page, 'chat-icon-footer');
     } else {
       const c = await page.$$eval('.mbar[data-one] > .mb-bot, .mbar[data-one] > .mb-tg', xs => xs.map(x => ({ c: x.className, l: x.getAttribute('aria-label'), r: x.getBoundingClientRect().toJSON() })));
-      ok(c.length === 2 && c[0].c === 'mb-bot' && c[1].c === 'mb-tg', 'бот, потім дзвінок: ' + JSON.stringify(c));
+      ok(c.length === 2 && c[0].c.split(' ')[0] === 'mb-bot' && c[1].c.split(' ')[0] === 'mb-tg', 'бот, потім дзвінок: ' + JSON.stringify(c));
       ok(c.every(x => x.r.width >= 44 && x.r.height >= 44 && Math.abs(x.r.width - x.r.height) < 1 && x.r.left >= 0 && x.r.right <= w && x.l), 'кружечки ≥ 44 px у межах екрана з aria-label');
       ok(c[0].r.right <= c[1].r.left - 4 && Math.abs(c[0].r.top - c[1].r.top) < 1, 'кружечки не перекриваються, в один ряд');
       await page.click('.mbar[data-one] .mb-tg'); await page.waitForTimeout(250);
