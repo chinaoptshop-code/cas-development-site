@@ -34,7 +34,8 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
   @media(min-width:1600px){:root{--hst-n:7}}
   @media(min-width:2200px){:root{--hst-g:14px}}
   :root{--hst-w:calc((100vw - (var(--hst-n) - 1) * var(--hst-g)) / var(--hst-n))}
-  html body .hx.hx-home .hero{min-height:max(20rem,min(100vh,calc(100vh - var(--sch-h,64px) - var(--hst-w) * 1.25 - 16px)));min-height:max(20rem,min(100svh,calc(100svh - var(--sch-h,64px) - var(--hst-w) * 1.25 - 16px)));box-sizing:border-box}
+  /* з 24.11.2026 (простора карусель проєктів — другим екраном): hero головних на ПК — увесь перший екран (100svh − шапка), як на телефоні */
+  html body .hx.hx-home .hero{min-height:max(20rem,calc(100vh - var(--sch-h,64px)));min-height:max(20rem,calc(100svh - var(--sch-h,64px)));box-sizing:border-box}
   html body main>.hx-home+section.xs-strip>.w{max-width:none;padding-inline:0;margin-inline:0}
   html body main>.hx-home+section.xs-strip .xs-st{grid-auto-columns:var(--hst-w);gap:var(--hst-g)}
 }
@@ -260,3 +261,29 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
   .xs-tx>:first-child{margin-top:0}.xs-tx>:last-child{margin-bottom:0}
   .js .xs-tx[data-c]{padding-bottom:calc(var(--xp) + 60px)}.xs-tx>.c-b{bottom:var(--xp);inset-inline-start:var(--xp)} /* «Читати далі» — у рамці, місце під неї зарезервоване (без зсуву) */
 }
+
+/* ══ «Простора» карусель проєктів головних (Михайло 24.11.2026: «Перша сторінка простора, класно… карусель в стилі першого екрану — маленький підпис
+   проекту і відео зум анімація першого фото проекту і далі сайт робив би таким „просторим“»; rich.covers "spacious"): другий екран — великі кадри
+   на всю ширину вікна; телефон — один кадр ~72svh на всю ширину (наступний — свайпом / стрілкою), ПК — кадри 44 % ширини × ~68svh (видно 2 і край третього);
+   унизу кадру — градієнт як у плиток і маленький підпис (назва + місто · площа), як H1 + рядок hero, але дрібніше. Ken Burns (scale 1 → 1.08 за 9 с) — лише
+   на видимому кадрі (.kb ставить spacious() у ui-polish.v1.js), лише transform; reduced-motion — без руху. Ширини кадрів — слот «sp» у tools/site/sharp.py */
+html body main>section.xs-spc>.w{max-width:none;padding-inline:0;margin-inline:0}
+.xs-spc .xs-head{box-sizing:border-box;width:min(100%,var(--cw,1200px));margin:0 auto 1.5rem;padding-inline:16px}
+.xs-spc .xs-cvsp{grid-auto-columns:100%;gap:0;scroll-padding-inline:0}
+.xs-cvsp>a{border:0;border-radius:0;height:72vh;height:72svh;min-height:22rem;max-height:52rem}
+.xs-cvsp img{height:100%;aspect-ratio:auto;object-fit:cover;transform:scale(1);transform-origin:50% 55%;transition:transform .8s ease-out;will-change:auto}
+.xs-cvsp>a.kb img{transform:scale(1.08);transition:transform 9s linear}
+.xs-cvsp span{padding:7rem 16px 1.5rem;background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.6) 40%,rgba(8,7,9,.94));text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.xs-cvsp b{font-size:1.375rem;line-height:1.15;letter-spacing:.01em}
+.xs-cvsp small{display:block;margin-top:.375rem;font-size:.8125rem;letter-spacing:.08em;color:#d8d0c4}
+@media(min-width:768px){
+  .xs-spc .xs-cvsp{grid-auto-columns:44%;gap:12px;padding-inline:max(16px,calc((100% - var(--cw,1200px)) / 2 + 16px));scroll-padding-inline:max(16px,calc((100% - var(--cw,1200px)) / 2 + 16px))}
+  .xs-cvsp>a{height:68vh;height:68svh;min-height:24rem;max-height:60rem;border-radius:14px}
+  .xs-cvsp span{padding:8rem 1.5rem 1.5rem}
+  .xs-cvsp b{font-size:1.5rem}
+}
+@media(prefers-reduced-motion:reduce){.xs-cvsp img,.xs-cvsp>a.kb img{transform:none;transition:none}}
+/* простір головних (той самий запит): більше повітря між секціями — 5rem телефон / 7rem ПК (решта сторінок — загальна шкала --sp-sec) */
+main>.hx-home~section{--sp-sec:5rem}
+@media(min-width:768px){main>.hx-home~section{--sp-sec:7rem}}
+main>.hx-home~section .xs-head,main>.hx-home~section>.w>h2{margin-bottom:1.75rem}

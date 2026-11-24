@@ -26,101 +26,63 @@
  },
  "sections": [
   {
-   "t": "strip",
-   "label": "صور مشاريعنا",
+   "t": "covers",
+   "h2": "مشاريعنا",
+   "more": [
+    "/portfolio",
+    "جميع المشاريع"
+   ],
    "items": [
     {
-     "img": "img/p/1rJCChE1lDiB_j-900.webp",
-     "srcset": "/img/p/1rJCChE1lDiB_j-400.webp 400w, /img/p/1rJCChE1lDiB_j-900.webp 900w",
-     "alt": "غرفة المعيشة — Linden Penthouse",
-     "label": "Linden Penthouse",
-     "href": "/proekty/linden-penthouse"
+     "href": "/proekty/petrivtsi-house",
+     "img": "img/p/1N5oaUn_7eYM7i-900.webp",
+     "srcset": "/img/p/1N5oaUn_7eYM7i-400.webp 400w, /img/p/1N5oaUn_7eYM7i-900.webp 900w",
+     "alt": "غرفة معيشة مع مدفأة — Petrivtsi House, مشروع CAS Development",
+     "name": "Petrivtsi House",
+     "loc": "بيتريفتسي · 320 م²"
     },
     {
-     "img": "img/p/1m9fVTTPjd6nQs-900.webp",
-     "srcset": "/img/p/1m9fVTTPjd6nQs-400.webp 400w, /img/p/1m9fVTTPjd6nQs-900.webp 900w",
-     "alt": "غرفة المعيشة — Hoda Estate",
-     "label": "Hoda Estate",
-     "href": "/proekty/hoda-estate"
+     "href": "/proekty/hoda-estate",
+     "img": "img/p/1f3m1_qf4mDosh-900.webp",
+     "srcset": "/img/p/1f3m1_qf4mDosh-400.webp 400w, /img/p/1f3m1_qf4mDosh-900.webp 900w",
+     "alt": "غرفة المعيشة — Hoda Estate, مشروع CAS Development",
+     "name": "Hoda Estate",
+     "loc": "الكاربات · 180 م²"
     },
     {
-     "img": "img/p/11Hotk9uWWN_pE-900.webp",
-     "srcset": "/img/p/11Hotk9uWWN_pE-400.webp 400w, /img/p/11Hotk9uWWN_pE-900.webp 900w",
-     "alt": "مكتب مفتوح — Office Chicago",
-     "label": "Office Chicago",
-     "href": "/proekty/office-chicago"
+     "href": "/proekty/usa-house",
+     "img": "img/p/1vWmbYVTmViGgW-900.webp",
+     "srcset": "/img/p/1vWmbYVTmViGgW-400.webp 400w, /img/p/1vWmbYVTmViGgW-900.webp 900w",
+     "alt": "غرفة المعيشة — USA House, مشروع CAS Development",
+     "name": "USA House",
+     "loc": "الولايات المتحدة · 420 م²"
     },
     {
-     "img": "img/p/1co4thni1Q8_1J-900.webp",
-     "srcset": "/img/p/1co4thni1Q8_1J-400.webp 400w, /img/p/1co4thni1Q8_1J-900.webp 900w",
-     "alt": "غرفة معيشة مع مدفأة — Petrivtsi House",
-     "label": "Petrivtsi House",
-     "href": "/proekty/petrivtsi-house"
+     "href": "/proekty/pidgirland",
+     "img": "img/p/1IPpJjg5VkUVC8-900.webp",
+     "srcset": "/img/p/1IPpJjg5VkUVC8-400.webp 400w, /img/p/1IPpJjg5VkUVC8-900.webp 900w",
+     "alt": "غرفة المعيشة — Pidgirland, مشروع CAS Development",
+     "name": "Pidgirland",
+     "loc": "منطقة كييف · 260 م²"
     },
     {
-     "img": "img/p/1R7JHtKFpuMJSl-900.webp",
-     "srcset": "/img/p/1R7JHtKFpuMJSl-400.webp 400w, /img/p/1R7JHtKFpuMJSl-900.webp 900w",
-     "alt": "أكواخ فوق الماء — Kitana Beach",
-     "label": "Kitana Beach",
-     "href": "/proekty/kitana-beach"
+     "href": "/proekty/hodos-villa",
+     "img": "img/p/1xskjqBvCXgXuL-900.webp",
+     "srcset": "/img/p/1xskjqBvCXgXuL-400.webp 400w, /img/p/1xskjqBvCXgXuL-900.webp 900w",
+     "alt": "غرفة الطعام — Hodos Villa, مشروع CAS Development",
+     "name": "Hodos Villa",
+     "loc": "كييف · 500 م²"
     },
     {
-     "img": "img/p/1n0e2qfyf_vo9a-900.webp",
-     "srcset": "/img/p/1n0e2qfyf_vo9a-400.webp 400w, /img/p/1n0e2qfyf_vo9a-900.webp 900w",
-     "alt": "غرفة نوم — Tetris Hall",
-     "label": "Tetris Hall",
-     "href": "/proekty/tetris-hall"
-    },
-    {
-     "img": "img/p/1ey5Jil8hIa-6r-900.webp",
-     "srcset": "/img/p/1ey5Jil8hIa-6r-400.webp 400w, /img/p/1ey5Jil8hIa-6r-900.webp 900w",
-     "alt": "غرفة المعيشة — Pidgirland",
-     "label": "Pidgirland",
-     "href": "/proekty/pidgirland"
-    },
-    {
-     "img": "img/p/1jS6hUJuy_cM08-900.webp",
-     "srcset": "/img/p/1jS6hUJuy_cM08-400.webp 400w, /img/p/1jS6hUJuy_cM08-900.webp 900w",
-     "alt": "غرفة معيشة مع مدفأة — Hodos Villa",
-     "label": "Hodos Villa",
-     "href": "/proekty/hodos-villa"
-    },
-    {
-     "img": "img/p/1432efN35q6M6V-900.webp",
-     "srcset": "/img/p/1432efN35q6M6V-400.webp 400w, /img/p/1432efN35q6M6V-900.webp 900w",
-     "alt": "صالة المطعم — Yacht Restaurant",
-     "label": "Yacht Restaurant",
-     "href": "/proekty/yacht-restaurant"
-    },
-    {
-     "img": "img/p/1f8h2r5MBlLLf_-900.webp",
-     "srcset": "/img/p/1f8h2r5MBlLLf_-400.webp 400w, /img/p/1f8h2r5MBlLLf_-900.webp 900w",
-     "alt": "المطبخ — Linden Penthouse",
-     "label": "Linden Penthouse",
-     "href": "/proekty/linden-penthouse"
-    },
-    {
-     "img": "img/p/1FRa0FI6iMHK5L-900.webp",
-     "srcset": "/img/p/1FRa0FI6iMHK5L-400.webp 400w, /img/p/1FRa0FI6iMHK5L-900.webp 900w",
-     "alt": "غرفة معيشة وطعام — Hoda Estate",
-     "label": "Hoda Estate",
-     "href": "/proekty/hoda-estate"
-    },
-    {
-     "img": "img/p/1MP_RPGiZ7XjIO-900.webp",
-     "srcset": "/img/p/1MP_RPGiZ7XjIO-400.webp 400w, /img/p/1MP_RPGiZ7XjIO-900.webp 900w",
-     "alt": "غرفة الطعام — Pidgirland",
-     "label": "Pidgirland",
-     "href": "/proekty/pidgirland"
-    },
-    {
-     "img": "img/p/1OGn3TXnLkQenE-900.webp",
-     "srcset": "/img/p/1OGn3TXnLkQenE-400.webp 400w, /img/p/1OGn3TXnLkQenE-900.webp 900w",
-     "alt": "صالة المطعم — Yacht Restaurant",
-     "label": "Yacht Restaurant",
-     "href": "/proekty/yacht-restaurant"
+     "href": "/proekty/linden-penthouse",
+     "img": "img/p/1WCwE-qMQJujwW-900.webp",
+     "srcset": "/img/p/1WCwE-qMQJujwW-400.webp 400w, /img/p/1WCwE-qMQJujwW-900.webp 900w",
+     "alt": "غرفة المعيشة — Linden Penthouse, مشروع CAS Development",
+     "name": "Linden Penthouse",
+     "loc": "كييف · 210 م²"
     }
-   ]
+   ],
+   "spacious": true
   },
   {
    "t": "svc",
@@ -220,64 +182,6 @@
      ],
      "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
      "alt": "صالة مطعم Monpark بعد الافتتاح — من تنفيذ CAS Development"
-    }
-   ]
-  },
-  {
-   "t": "covers",
-   "h2": "مشاريعنا",
-   "more": [
-    "/portfolio",
-    "جميع المشاريع"
-   ],
-   "items": [
-    {
-     "href": "/proekty/petrivtsi-house",
-     "img": "img/p/1N5oaUn_7eYM7i-900.webp",
-     "srcset": "/img/p/1N5oaUn_7eYM7i-400.webp 400w, /img/p/1N5oaUn_7eYM7i-900.webp 900w",
-     "alt": "غرفة معيشة مع مدفأة — Petrivtsi House, مشروع CAS Development",
-     "name": "Petrivtsi House",
-     "loc": "بيتريفتسي · 320 م²"
-    },
-    {
-     "href": "/proekty/hoda-estate",
-     "img": "img/p/1f3m1_qf4mDosh-900.webp",
-     "srcset": "/img/p/1f3m1_qf4mDosh-400.webp 400w, /img/p/1f3m1_qf4mDosh-900.webp 900w",
-     "alt": "غرفة المعيشة — Hoda Estate, مشروع CAS Development",
-     "name": "Hoda Estate",
-     "loc": "الكاربات · 180 م²"
-    },
-    {
-     "href": "/proekty/usa-house",
-     "img": "img/p/1vWmbYVTmViGgW-900.webp",
-     "srcset": "/img/p/1vWmbYVTmViGgW-400.webp 400w, /img/p/1vWmbYVTmViGgW-900.webp 900w",
-     "alt": "غرفة المعيشة — USA House, مشروع CAS Development",
-     "name": "USA House",
-     "loc": "الولايات المتحدة · 420 م²"
-    },
-    {
-     "href": "/proekty/pidgirland",
-     "img": "img/p/1IPpJjg5VkUVC8-900.webp",
-     "srcset": "/img/p/1IPpJjg5VkUVC8-400.webp 400w, /img/p/1IPpJjg5VkUVC8-900.webp 900w",
-     "alt": "غرفة المعيشة — Pidgirland, مشروع CAS Development",
-     "name": "Pidgirland",
-     "loc": "منطقة كييف · 260 م²"
-    },
-    {
-     "href": "/proekty/hodos-villa",
-     "img": "img/p/1xskjqBvCXgXuL-900.webp",
-     "srcset": "/img/p/1xskjqBvCXgXuL-400.webp 400w, /img/p/1xskjqBvCXgXuL-900.webp 900w",
-     "alt": "غرفة الطعام — Hodos Villa, مشروع CAS Development",
-     "name": "Hodos Villa",
-     "loc": "كييف · 500 م²"
-    },
-    {
-     "href": "/proekty/linden-penthouse",
-     "img": "img/p/1WCwE-qMQJujwW-900.webp",
-     "srcset": "/img/p/1WCwE-qMQJujwW-400.webp 400w, /img/p/1WCwE-qMQJujwW-900.webp 900w",
-     "alt": "غرفة المعيشة — Linden Penthouse, مشروع CAS Development",
-     "name": "Linden Penthouse",
-     "loc": "كييف · 210 م²"
     }
    ]
   }

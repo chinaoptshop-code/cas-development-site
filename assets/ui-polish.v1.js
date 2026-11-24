@@ -91,7 +91,7 @@ function imgFade(){
    фокусі, тачі/колесі (9 с); кнопки паузи немає ніде (Михайло 23.11.2026: «прибери… з зупинкою анімації»; під hero — з 11.11.2026); prefers-reduced-motion — статично. Висота блоку не змінюється (CLS 0). Михайло 03.11.2026. */
 function marquee(){
  if(RM||!('IntersectionObserver' in W)||!W.requestAnimationFrame)return;
- var list=$$('.xs-st,.vgrid,.strip,.xs-cv,.xs-bl');if(!list.length)return; // .xs-bl — «Бренди, з якими працюємо» (rich.py brands, 21.11.2026)
+ var list=$$('.xs-st,.vgrid,.strip,.xs-cv:not(.xs-cvsp),.xs-bl');if(!list.length)return; // .xs-cvsp (простора карусель головних) — не безперервна стрічка, а кадр за кадром (spacious()); .xs-bl — «Бренди, з якими працюємо» (rich.py brands, 21.11.2026)
  var st=d.createElement('style');
  st.textContent='.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
  d.head.appendChild(st);
@@ -166,6 +166,35 @@ function carousel(){
   // середина фото першої картки відносно верху ряду → --cvy (картка «Що ми робимо» — фото зверху, текст нижче; обкладинка проєкту — фото на всю картку)
   function mid(){var im=sc.querySelector('img'),r=sc.getBoundingClientRect(),q=(im||sc).getBoundingClientRect();if(q.height>0)nav.style.setProperty('--cvy',Math.round(q.top-r.top+q.height/2)+'px')}
   if('ResizeObserver' in W)new ResizeObserver(mid).observe(sc);else W.requestAnimationFrame(mid);
+ });
+}
+/* «Простора» карусель проєктів головних (.xs-cvsp, Михайло 24.11.2026; rich.covers "spacious"): кадр за кадром замість безперервної стрічки —
+   великий кадр змінюється раз на 7 с (плавна прокрутка до наступного, після останнього — до першого), лише коли карусель видно ≥ 40 % і вкладка активна;
+   пауза 9 с після дотику, перетягування, колеса, стрілок ‹ › (carousel() шле wheel) і клавіш; фокус із клавіатури — пауза, доки фокус усередині; під курсором миші не зупиняється.
+   Ken Burns: клас .kb (CSS: scale 1 → 1.08 за 9 с, лише transform) — тільки на кадрі, видимому ≥ 60 % у каруселі, поки карусель на екрані й вкладка активна.
+   reduced-motion — ні автозміни, ні руху. Стрілки, свайп і перетягування мишкою — carousel() і dragScroll(), як в інших каруселях. */
+function spacious(){
+ $$('.xs-cvsp').forEach(function(sc){
+  if(sc.__sp||RM||!('IntersectionObserver' in W))return;sc.__sp=1;
+  var items=Array.prototype.filter.call(sc.children,function(c){return c.tagName==='A'}),rat=[],live=false,hold=0,kf=false;
+  if(items.length<2)return;
+  function upd(){items.forEach(function(it,i){var on=live&&!d.hidden&&(rat[i]||0)>=.6;if(it.classList.contains('kb')!==on)it.classList.toggle('kb',on)})}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){rat[items.indexOf(e.target)]=e.intersectionRatio});upd()},{root:sc,threshold:[0,.6,1]});
+  items.forEach(function(it){io.observe(it)});
+  new IntersectionObserver(function(es){live=es[es.length-1].intersectionRatio>=.4;upd()},{threshold:[0,.4,.8]}).observe(sc);
+  d.addEventListener('visibilitychange',upd);
+  function pause(){hold=Date.now()+9000}
+  ['touchstart','pointerdown','wheel','keydown'].forEach(function(n){sc.addEventListener(n,pause,{passive:true})});
+  sc.addEventListener('focusin',function(e){var k=false;try{k=e.target.matches(':focus-visible')}catch(_){k=true}if(k)kf=true});
+  sc.addEventListener('focusout',function(){if(kf){kf=false;pause()}});
+  setInterval(function(){
+   if(!live||d.hidden||kf||Date.now()<hold)return;
+   var cur=0,best=-1;rat.forEach(function(r,i){if(r>best+.01){best=r;cur=i}});
+   var n=(cur+1)%items.length,a=items[n],z=items[0],rtl=W.getComputedStyle(sc).direction==='rtl';
+   var dx=rtl?(a.offsetLeft+a.offsetWidth)-(z.offsetLeft+z.offsetWidth):a.offsetLeft-z.offsetLeft;
+   if(n&&sc.scrollWidth-sc.clientWidth-Math.abs(sc.scrollLeft)<4)dx=0; // кінець ряду (на ПК видно кілька кадрів) — знову з першого
+   sc.scrollTo({left:dx,behavior:'smooth'});
+  },7000);
  });
 }
 /* Слайд-шоу фону hero головних (Михайло 09.11.2026; список — data-hs на picture.hx-bg, ставить tools/site/rich.py HERO_SLIDES):
@@ -364,7 +393,7 @@ function cvSize(){
  W.addEventListener('resize',function(){if(W.innerWidth===w0)return;w0=W.innerWidth;clearTimeout(t);t=setTimeout(all,250)},{passive:true});
 }
 // кожен блок — окремою задачею (TBT: на /portfolio одна задача була 140–170 мс на телефоні CPU ×4; аудит швидкості 16.11.2026)
-function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,dragScroll,heroSlides,pointerFx,cvSize];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
+function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,spacious,stripTap,dragScroll,heroSlides,pointerFx,cvSize];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
 // Safari/WebKit запускає defer-скрипти до повного site-chrome.v1.css у кінці <body>: стрічки й каруселі міряють ширину — чекаємо на CSS (Chrome — одразу)
 function css(go){var l=d.querySelector('link[href*="/assets/site-chrome.v1.css"]');if(!l||l.sheet)return go();var k=0,f=function(){if(!k++)go()};l.addEventListener('load',f);l.addEventListener('error',f);W.addEventListener('load',f)}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',function(){css(run)});else css(run);

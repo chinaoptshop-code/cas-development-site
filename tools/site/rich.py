@@ -207,7 +207,17 @@ def svc(x):
     return wrap(x, head(x) + '<div class="xs-sv">' + ''.join(cards) + '</div>' + note, 'xs-svc')
 
 
+# «Простора» карусель проєктів головних (Михайло 24.11.2026: «Перша сторінка простора, класно… я б подивився як карусель виглядала якби була
+# в стилі першого екрану — маленький підпис проекту і відео зум анімація першого фото проекту і далі сайт робив би таким „просторим“»):
+# "spacious": true у секції covers <мова>-index.json — одна карусель проєктів одразу під hero (замість стрічки малих фото й окремого блоку «Наші проєкти»
+# внизу — без дублювання): великий кадр на всю ширину (телефон ~72svh, ПК — кадри ~44vw × 68svh), унизу градієнт і маленький підпис «Назва» + «місто · площа»
+# (лише з даних кейсу), кадр — посилання на проєкт цілком. Ken Burns (scale 1 → 1.08 лише на видимому кадрі), автозміна кадру й пауза — spacious() у ui-polish.v1.js;
+# srcset/sizes — слот «sp» у sharp.py. Стилі — .xs-spc у sections.v1.css.
 def covers(x):
+    if x.get('spacious'):
+        it = ''.join(f'<a href="{a(c["href"])}">{img(c, c.get("alt", ""), "100vw")}'
+                     f'<span><b>{e(c["name"])}</b>' + (f'<small>{e(c["loc"])}</small>' if c.get('loc') else '') + '</span></a>' for c in x['items'])
+        return wrap(x, head(x) + f'<div class="xs-cv xs-cvsp">{it}</div>', 'xs-covers xs-spc')
     it = ''.join(f'<a href="{a(c["href"])}">{img(c, c.get("alt", ""), "(max-width:767px) 46vw, 340px")}'
                  f'<span><b>{e(c["name"])}</b>' + (f'<small>{e(c["loc"])}</small>' if c.get('loc') else '') + '</span></a>' for c in x['items'])
     return wrap(x, head(x) + f'<div class="xs-cv">{it}</div>', 'xs-covers')

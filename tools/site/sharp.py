@@ -12,7 +12,7 @@
 <source type="image/avif"> з тими самими srcset/sizes — деплой (tools/img/picture.py).
 
 Слоти: strip (.xs-st; головна — .hx-home), proj (.xs-proj .xs-st, портфоліо: коротко data-p — лише ширини для ПК 1x/2x і телефона 3x, відкладено site-chrome.v1.js),
-covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли),
+covers (.xs-cv), sp (.xs-cvsp — простора карусель головних), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли),
 gal (.gal лендингів), af / agf (фото статей блогу), tph (фото на сторінках дизайнера, captions.py),
 hxl (hero лендингів, tools/site/ux.py _hero_photo: телефон — кадр 4:5 у блоці ≤125vw заввишки, ПК — 2:1 у блоці ≤50vw; слот = 100vw, srcset ставить ux.py).
 Перевірка: python3 tools/site/sharp.py --check (сторінки, де apply() щось змінив би).
@@ -64,6 +64,14 @@ def w_covers(vw):
     if vw <= 1099: return (c - 24) / 3
     if vw <= 1699: return (c - 36) / 4
     return (c - 48) / 5
+
+
+def w_sp(vw):
+    """«Простора» карусель проєктів головних (sections.v1.css .xs-cvsp, 24.11.2026): телефон — кадр на всю ширину вікна × 72svh (типовий телефон —
+    висота ≈ 2.17 × ширина, кадр ≈ 0.62:1 — вужчий за файл 4:5, тож обрізка по ширині: × 0.8 / 0.62); ПК — 44 % ряду × 68svh (кадр ширший за 4:5 —
+    без обрізки по ширині). × 1.08 — запас під Ken Burns (scale до 1.08)."""
+    if vw <= 767: return vw * .8 / .62 * 1.08
+    return .44 * (vw - 32) * 1.08
 
 
 def w_split(vw):
@@ -142,7 +150,7 @@ def family(src):
 BPS = [424, 599, 767, 1023, 1099, 1366, 1699, 2199]
 SLOT_BPS = {'strip': [767, 1023, 1366, 2199], 'covers': [767, 1099, 1366, 1699], 'split': [767, 1023, 1366],
             'af': [800, 1366], 'agf': [800, 1366], 'tph': [767],
-            'svc': [599, 767, 1099, 1366]}
+            'svc': [599, 767, 1099, 1366], 'sp': [767]}
 
 
 def _fmt(v):
@@ -205,6 +213,7 @@ def _slot(anc):
     """anc — класи предків від найближчого. → (слот, індекс предка-контейнера)"""
     for k, c in enumerate(anc):
         if 'xs-st' in c: return (('projw' if 'wd' in anc[0] else 'proj') if any('xs-proj' in x for x in anc[k:]) else 'strip'), k
+        if 'xs-cvsp' in c: return 'sp', k
         if 'xs-cv' in c: return 'covers', k
         if 'xs-sv' in c: return 'svc', k
         if 'xs-pic' in c: return 'split', k
@@ -274,6 +283,7 @@ def fix(tag, slot, home, i=0, n=1):
         return tag
     if slot == 'strip': fn = lambda vw: cov(w_strip(vw, home), .8)
     elif slot == 'covers': fn = lambda vw: cov(w_covers(vw), .8)
+    elif slot == 'sp': fn = w_sp
     elif slot == 'split': fn = w_split
     elif slot == 'svc': fn = lambda vw: cov(*w_svc(vw, i, n, home))
     elif slot == 'gal':  # коротко (бюджет HTML лендингів 64 КБ): srcset лише коли src (900) замалий — «900w, найменша достатня»; × обрізка 4:3

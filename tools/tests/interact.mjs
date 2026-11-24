@@ -164,8 +164,9 @@ await test('карусель «Наші проєкти»: під курсоро�
   await row.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(600);
   const bb = await row.boundingBox();
   await p.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2); await p.waitForTimeout(400);
+  // простора карусель (24.11.2026): кадр за кадром раз на 7 с — під курсором наступний кадр однаково настає
   const h0 = await row.evaluate(e => e.scrollLeft);
-  await p.waitForFunction(([s, v]) => Math.abs(document.querySelector(s).scrollLeft - v) > 8, ['.xs-cv', h0], { timeout: 6000 }).catch(() => {});
+  await p.waitForFunction(([s, v]) => Math.abs(document.querySelector(s).scrollLeft - v) > 8, ['.xs-cv', h0], { timeout: 12000 }).catch(() => {});
   must(Math.abs(await row.evaluate(e => e.scrollLeft) - h0) > 8, 'під курсором карусель зупинилась');
   const a0 = await row.evaluate(e => e.scrollLeft);
   await p.locator('.xs-covers .cv-r').first().click(); await p.waitForTimeout(900);
@@ -174,7 +175,7 @@ await test('карусель «Наші проєкти»: під курсоро�
   const s2 = await row.evaluate(e => e.scrollLeft);
   must(s1 - a0 > 20 && s1 - s2 > 20, `стрілки не гортають (${a0}→${s1}→${s2})`);
 });
-for (const [path, sel] of [['/', '.hx-home~.xs-strip .xs-st'], ['/', '.xs-cv'], ['/about', '.xs-bl'], ['/ar/', '.xs-cv']]) await test('перетягування мишкою тягне ряд, клік після нього не відкриває посилання: ' + sel, path, 1440, async p => {
+for (const [path, sel] of [['/', '.xs-cv'], ['/about', '.xs-bl'], ['/ar/', '.xs-cv'], ['/portfolio', '.xs-st']]) await test('перетягування мишкою тягне ряд, клік після нього не відкриває посилання: ' + sel, path, 1440, async p => {
   await wakeup(p);
   const row = p.locator(sel).first();
   await row.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(1200);
@@ -193,49 +194,61 @@ for (const [path, sel] of [['/', '.hx-home~.xs-strip .xs-st'], ['/', '.xs-cv'], 
   must(!(await row.evaluate(e => e.classList.contains('dg'))), 'клас .dg лишився після перетягування');
   must(await p.locator('#lb.on, .lb.on, [data-lb-open]').count() === 0, 'після перетягування відкрився лайтбокс');
 });
-// стрічка під hero головних (Михайло 11.11.2026): без кнопки паузи, автопрокрутка, кадри — посилання на кейс своєї мови; тап відкриває, свайп — ні
-for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 1440]]) await test('стрічка фото під hero: кадри-посилання, тап/свайп, без паузи', path, w, async p => {
+// «Простора» карусель проєктів головних (Михайло 24.11.2026: «карусель в стилі першого екрану — маленький підпис проекту і відео зум анімація першого фото проекту»):
+// одразу під hero (стрічки малих фото й окремого блоку «Наші проєкти» внизу немає); телефон — один кадр на всю ширину ~72svh, ПК — великі кадри; підпис «назва + місто · площа»,
+// кадр — посилання на кейс своєї мови; Ken Burns (scale > 1) лише на видимому кадрі й лише transform; ‹ › гортають; свайп не відкриває, тап — відкриває; без кнопки паузи
+for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 402], ['/de/', 1440]]) await test('простора карусель проєктів: кадр, підпис, посилання, Ken Burns, ‹ ›, свайп/тап', path, w, async p => {
   const pre = path === '/' ? '' : path.replace(/\/$/, '');
-  const sc = p.locator('.hx-home~.xs-strip .xs-st').first();
-  await p.waitForTimeout(700);
-  must(await p.locator('.xs-strip .mq-ap, .xs-strip .mq-bar, .hx-home~.xs-strip button').count() === 0, 'у стрічки є кнопка паузи');
-  const bad = await sc.evaluate((e, pre) => [...e.querySelectorAll(':scope>a')].filter(a => !a.classList.contains('mq-c')).filter(a => !(a.getAttribute('href').startsWith(pre + '/proekty/') || a.getAttribute('href') === pre + '/portfolio') || !a.getAttribute('aria-label')).length + (e.querySelector(':scope>figure') ? 1 : 0), pre);
-  must(bad === 0, `кадри без посилання/aria-label своєї мови: ${bad}`);
-  await sc.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(400);
-  if (w > 600) await p.mouse.move(5, 5);
-  // автопрокрутка (~25 px/с) — очікування стану, не фіксована пауза: під навантаженням кадри рідшають (крок кадру ≤ 50 мс), а marquee() стартує
-  // лише після повного CSS і IntersectionObserver — за 1,5 с стрічка встигала зсунутись на ≤ 5 px. Суть та сама: стрічка їде сама, без дій людини.
-  await p.waitForFunction(e => e.classList.contains('mq-run'), await sc.elementHandle(), { timeout: 10000 }).catch(() => {});
-  const s0 = await sc.evaluate(e => Math.abs(e.scrollLeft));
-  const s1 = await p.waitForFunction(([e, s0]) => { const v = Math.abs(e.scrollLeft); return v - s0 > 5 && v; }, [await sc.elementHandle(), s0], { timeout: 10000, polling: 100 }).then(h => h.jsonValue()).catch(() => sc.evaluate(e => Math.abs(e.scrollLeft)));
-  must(s1 - s0 > 5, `автопрокрутка стоїть (${s0}→${s1} за 10 с)`);
-  const bb = await sc.boundingBox();
-  const cx = bb.x + bb.width * 0.3, cy = bb.y + bb.height * 0.5;
-  // свайп / перетягування — без переходу
-  const url0 = p.url();
+  must(await p.locator('.xs-strip').count() === 0, 'на головній лишилась стрічка малих фото');
+  must(await p.locator('main section.xs-covers').count() === 1, 'карусель проєктів не одна (дублювання)');
+  must(await p.evaluate(() => { const h = document.querySelector('.hx-home'); let n = h && h.nextElementSibling; while (n && n.tagName !== 'SECTION') n = n.nextElementSibling; return !!n && n.classList.contains('xs-spc'); }), 'карусель — не одразу під hero');
+  const sc = p.locator('.xs-cvsp').first();
+  await sc.evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(1800);
+  must(await p.locator('.xs-spc .mq-ap, .xs-spc .mq-bar, .xs-spc .cv-p').count() === 0, 'у каруселі є кнопка паузи');
+  const r = await sc.evaluate((e, pre) => {
+    const a = [...e.querySelectorAll(':scope>a')], W = innerWidth, H = innerHeight, b0 = a[0].getBoundingClientRect();
+    const bad = a.filter(x => !x.getAttribute('href').startsWith(pre + '/proekty/') || !x.querySelector('span b') || !x.querySelector('span small')).length;
+    const kb = a.filter(x => x.classList.contains('kb'));
+    const vis = x => { const b = x.getBoundingClientRect(), s = e.getBoundingClientRect(); return Math.max(0, Math.min(b.right, s.right) - Math.max(b.left, s.left)) / b.width; };
+    const sc = x => { const m = getComputedStyle(x.querySelector('img')).transform; return m === 'none' ? 1 : new DOMMatrix(m).a; };
+    const tp = getComputedStyle(a[0].querySelector('img')).transitionProperty;
+    return { n: a.length, bad, w: Math.round(b0.width), h: Math.round(b0.height), W, H, kb: kb.length, kbVis: kb.every(x => vis(x) >= .6), other: a.filter(x => !x.classList.contains('kb')).map(sc).filter(v => v > 1.001).length, kbScale: kb.length ? sc(kb[0]) : 0, tp,
+      fs: parseFloat(getComputedStyle(a[0].querySelector('b')).fontSize), h1: parseFloat(getComputedStyle(document.querySelector('h1')).fontSize) };
+  }, pre);
+  must(r.n >= 4 && !r.bad, 'кадри без посилання на кейс своєї мови чи без підпису: ' + JSON.stringify(r));
+  if (w < 600) must(Math.abs(r.w - r.W) <= 2 && r.h >= .6 * r.H && r.h <= .8 * r.H, 'телефон: кадр не на всю ширину / не ~72svh: ' + JSON.stringify(r));
+  else must(r.h >= .55 * r.H && r.w >= .35 * r.W, 'ПК: кадр замалий: ' + JSON.stringify(r));
+  must(r.fs < r.h1, 'підпис кадру не дрібніший за H1');
+  must(r.kb === 1 && r.kbVis && !r.other && r.kbScale > 1.001 && /^transform$/.test(r.tp), 'Ken Burns: ' + JSON.stringify(r));
+  // ‹ › гортають
+  const s0 = await sc.evaluate(e => e.scrollLeft);
+  await p.locator('.xs-spc .cv-r').first().click(); await p.waitForTimeout(900);
+  const s1 = await sc.evaluate(e => e.scrollLeft);
+  must(Math.abs(s1 - s0) > 50, `стрілка › не гортає (${s0}→${s1})`);
+  // свайп / перетягування — без переходу; тап / клік — кейс кадру
+  const bb = await sc.boundingBox(), cy = bb.y + bb.height * .5, url0 = p.url();
+  const cx = Math.min(bb.x + bb.width * .5, 300);
   if (w < 600) {
     const cdp = await p.context().newCDPSession(p);
-    const pt = x => [{ x, y: cy }];
-    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: pt(cx + 120) });
-    for (let i = 1; i <= 8; i++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: pt(cx + 120 - i * 25) }); await p.waitForTimeout(16); }
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: cx + 100, y: cy }] });
+    for (let i = 1; i <= 8; i++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: cx + 100 - i * 25, y: cy }] }); await p.waitForTimeout(16); }
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
-  } else {
-    await p.mouse.move(cx + 120, cy); await p.mouse.down(); await p.mouse.move(cx, cy, { steps: 8 }); await p.mouse.up();
-  }
-  await p.waitForTimeout(700);
+  } else { await p.mouse.move(cx + 100, cy); await p.mouse.down(); await p.mouse.move(cx - 100, cy, { steps: 8 }); await p.mouse.up(); }
+  await p.waitForTimeout(900);
   must(p.url() === url0, `свайп відкрив ${p.url()}`);
-  // інерція свайпу під навантаженням триває довше: чекаємо, поки стрічка стане (2 заміри поспіль без зсуву), інакше кадр під точкою зміниться
-  // між пошуком href і тапом, а тап по стрічці, що ще їде, Chrome лише зупиняє (click немає)
   await p.waitForFunction(e => { const v = e.scrollLeft, k = e.__st || (e.__st = { v: NaN, n: 0 }); k.n = Math.abs(v - k.v) < 1 ? k.n + 1 : 0; k.v = v; return k.n >= 2; }, await sc.elementHandle(), { timeout: 8000, polling: 150 }).catch(() => {});
-  // тап / клік — відкриває кейс кадру під пальцем
-  // точка — центр кадру, найближчого до 30 % ширини (позиція стрічки після автопрокрутки різна: фіксована точка потрапляла в проміжок між кадрами)
-  const tx = await sc.evaluate((e, x) => { const W = innerWidth, r = [...e.querySelectorAll(':scope>a')].map(a => a.getBoundingClientRect()).filter(b => b.left >= 0 && b.right <= W); r.sort((a, b) => Math.abs(a.left + a.width / 2 - x) - Math.abs(b.left + b.width / 2 - x)); return r.length ? r[0].left + r[0].width / 2 : x; }, cx);
-  const href = await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.closest('a')?.getAttribute('href'), [tx, cy]);
+  const href = await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.closest('a')?.getAttribute('href'), [cx, cy]);
   must(href, 'під точкою немає посилання');
-  if (w < 600) await p.touchscreen.tap(tx, cy); else await p.mouse.click(tx, cy);
+  if (w < 600) await p.touchscreen.tap(cx, cy); else await p.mouse.click(cx, cy);
   await p.waitForURL(u => new URL(u).pathname.replace(/\.html$/, '') === href.replace(/\.html$/, ''), { timeout: 5000 }).catch(() => {});
   must(new URL(p.url()).pathname.replace(/\.html$/, '') === href, `тап: ${p.url()} замість ${href}`);
 });
+await test('простора карусель, reduced-motion: без Ken Burns і автозміни', '/', 402, async p => {
+  const sc = p.locator('.xs-cvsp').first();
+  await sc.evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(2000);
+  const r = await sc.evaluate(e => ({ kb: e.querySelectorAll('.kb').length, t: getComputedStyle(e.querySelector('img')).transform }));
+  must(!r.kb && (r.t === 'none' || r.t === 'matrix(1, 0, 0, 1, 0, 0)'), 'рух при reduced-motion: ' + JSON.stringify(r));
+}, { reducedMotion: 'reduce' });
 for (const w of [402, 1440]) await test('сцена на головній: клік у правій чверті, ←/→, перемикач сцен без переходу', '/', w, async p => {
   await wakeup(p);
   const sec = p.locator('#build-anim');
@@ -1177,7 +1190,8 @@ await test('курсор-супутник (ПК): зʼявляється піс�
   must(await p.evaluate(() => getComputedStyle(document.body).cursor !== 'none' && getComputedStyle(document.documentElement).cursor !== 'none'), 'рідний курсор сховано');
   await p.mouse.move(300, 500); await p.mouse.move(420, 520, { steps: 5 }); await p.waitForTimeout(450);
   c = await curSt(p); must(c.on && !c.big && c.w >= 26 && c.w <= 30 && Math.abs(c.x - 420) <= 2 && Math.abs(c.y - 520) <= 2, 'кільце не наздогнало курсор над порожнім місцем: ' + JSON.stringify(c));
-  const cov = await p.locator('.xs-st a').first().boundingBox();
+  await p.locator('.xs-cv').first().evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(300);
+  const cov = await p.locator('.xs-cv a').first().boundingBox();
   await p.mouse.move(cov.x + cov.width / 2, cov.y + cov.height / 2, { steps: 6 }); await p.waitForTimeout(450);
   c = await curSt(p); must(c.on && c.big && c.g === 'g' && c.w >= 50, 'над обкладинкою проєкту — велике кільце зі стрілкою: ' + JSON.stringify(c));
   must(await p.evaluate(() => /[→\u2192]/.test(getComputedStyle(document.querySelector('.cur'), '::after').content)), 'у кільці над обкладинкою немає «→»');

@@ -458,8 +458,8 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
 .ozd-more>summary{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:1px solid rgba(191,145,72,.45);border-radius:999px;color:var(--ac,#BF9148);font:600 .8125rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;list-style:none}
 .ozd-more>summary::-webkit-details-marker{display:none}
 .ozd-more>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .4s var(--ease-out)}
-:root{--sp-sec:2.75rem}
-@media(min-width:768px){:root{--sp-sec:3.5rem}}
+:root{--sp-sec:3.25rem}
+@media(min-width:768px){:root{--sp-sec:4.25rem}}
 @media(max-width:767px){html:root{--fs-small:.8125rem}
 html body :is(.btn,.lq-b){font-size:.875rem}}
 html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]),.pmap,#karta,#faq){padding-block:var(--sp-sec)}
@@ -632,3 +632,5 @@ html body .scf-top>.scf-ms{grid-column:auto}}
 .cur::after{content:"";position:absolute;left:-26px;top:-26px;width:52px;height:52px;display:grid;place-items:center;color:#f3eee6;font:500 1.125rem/1 "Manrope","Manrope Fallback",system-ui,sans-serif;opacity:0;transition:opacity .15s ease}
 @media(prefers-reduced-motion:reduce){.cur,.tap{display:none}}
 .bi-chat::before{background-image:url(/assets/brand/chat.svg)}
+:root{--bt-h:3rem;--bt-px:1.5rem;--bt-fs:.875rem;--bt-fw:600;--bt-r:999px;--bt-min:11rem;--chip-h:2.75rem;--chip-px:1rem;--chip-fs:.8125rem;--ic:2.75rem}
+.sch-cta{min-height:var(--chip-h)}
