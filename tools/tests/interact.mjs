@@ -777,12 +777,14 @@ for (const [u, w, tab] of [['/', 402, 0], ['/', 1440, 2], ['/ar/', 402, 0], ['/b
   // повна sticky-сцена: go() плавно прокручує доріжку, casDrive доганяє етап — чекаємо до 20 с
   const val = v => p.waitForFunction(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')===${v}`, null, { timeout: 40000 }).then(() => v).catch(() => p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`));
   const still = () => p.evaluate(async () => { let y = -1; for (let i = 0; i < 80 && y !== scrollY; i++) { y = scrollY; await new Promise(ok => setTimeout(ok, 400)); } }); // плавна прокрутка доріжки дійшла
-  await p.evaluate(`${SCN}.querySelector('.sc-enc').focus()`); await p.keyboard.press('End'); await still();
+  await p.evaluate(`${SCN}.querySelector('.sc-enc').focus()`);
+  if (await p.evaluate(`${SCN}.querySelector('.sc-enc').getAttribute('data-st')`) === 'on') await p.keyboard.press(' '); // пауза автопрогравання — пробіл на енкодері
+  must(await p.evaluate(`${SCN}.querySelector('.sc-enc').getAttribute('data-st')`) !== 'on', 'пробіл на енкодері не поставив автопрогравання на паузу');
+  await p.keyboard.press('End'); await still();
   const v1 = await val(r.max);
   await p.keyboard.press('Home'); await still();
   const v2 = await val(1);
-  // повний «Ландшафт» (casDrive доріжки .la-run): довгий стрибок назад осідає на етапі 1–2 — так само, як і кнопка ‹ з етапу 2 (давнє, не енкодер)
-  must(v1 === r.max && (v2 === 1 || (/landshaft/.test(u) && v2 === 2)), `Home/End: ${v1}, ${v2} (N=${r.max})`);
+  must(v1 === r.max && v2 === 1, `Home/End: ${v1}, ${v2} (N=${r.max})`);
 });
 // ar (RTL): «$2 500», не «2 500$» — ціни у видимому тексті й data-xs в ізоляті LTR U+2066…U+2069 (chrome.price_iso, як iso() у calc.v1.js)
 for (const u of ['/ar/interior-design', '/ar/interior-design-worldwide', '/ar/apartment-renovation-cost']) {

@@ -46,7 +46,7 @@
 | blog/pyrih-stiny-pidlohy-i-pokrivli-pryvatnoho-budynku.html | article | 63.3 | 17.4 | 0.0 | 0.6 | 0 | 545 |
 | blog/tekhnolohiia-budivnytstva-budynku-z-hazobloku-pokrokovo.html | article | 63.2 | 17.1 | 0.0 | 0.6 | 0 | 553 |
 | zh/blog.html | other | 62.5 | 16.4 | 0.5 | 0.6 | 3 | 581 |
-| ru/stoimost-remonta-kvartiry-kiev.html | land | 62.1 | 16.8 | 0.3 | 2.9 | 1 | 695 |
+| ru/stoimost-remonta-kvartiry-kiev.html | land | 62.1 | 16.9 | 0.3 | 2.9 | 1 | 695 |
 | blog/inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit.html | article | 60.8 | 16.5 | 0.0 | 0.6 | 0 | 506 |
 | vartist-remontu-kvartyry-kyiv.html | land | 60.7 | 16.7 | 0.3 | 3.0 | 1 | 688 |
 | blog/remont-i-budivnytstvo-v-yevropi-z-ukrainskoiu-komandoiu.html | article | 60.2 | 16.3 | 0.0 | 0.6 | 0 | 540 |
@@ -239,7 +239,7 @@
 | ozdoba/unitaz-pidvisnyi-bezobidkovyi-matovi-kolory-591.html | other | 57.7 | 15.5 | 32.1 | 0.8 | 14 | 338 |
 | ozdoba/vytiazhka-nastinna-chorna-z-zolotystoiu-okantovkoiu-523.html | other | 57.7 | 15.4 | 32.1 | 0.8 | 14 | 335 |
 | ozdoba/vytiazhka-nastinna-t-podibna-chorna-90-522.html | other | 57.7 | 15.5 | 32.1 | 0.8 | 14 | 336 |
-| ozdoba/zmishuvach-dlia-vanny-pidlohovyi-brashovane-zoloto-434.html | other | 57.7 | 15.4 | 32.1 | 0.8 | 14 | 337 |
+| ozdoba/zmishuvach-dlia-vanny-pidlohovyi-brashovane-zoloto-434.html | other | 57.7 | 15.5 | 32.1 | 0.8 | 14 | 337 |
 | ozdoba/zmishuvach-kukhonnyi-z-pruzhynnoiu-liikoiu-chornyi-520.html | other | 57.7 | 15.4 | 32.1 | 0.8 | 14 | 336 |
 | budivnytstvo-budynkiv-kyiv.html | land | 57.6 | 15.3 | 0.0 | 0.6 | 0 | 639 |
 | ozdoba/bra-dlia-spalni-z-podviinym-abazhurom-121.html | other | 57.6 | 15.5 | 32.1 | 0.8 | 14 | 335 |
@@ -273,7 +273,7 @@
 | ozdoba/stilets-banketnyi-shtabelovanyi-bordo-414.html | other | 57.6 | 15.5 | 32.1 | 0.8 | 14 | 339 |
 | ozdoba/svitylnyk-stelovyi-nakladnyi-bilyi-metal-i-133.html | other | 57.6 | 15.5 | 32.1 | 0.8 | 14 | 338 |
 | ozdoba/torsher-khvyliastyi-z-plafonom-hrybom-olyvkovyi-581.html | other | 57.6 | 15.5 | 32.1 | 0.8 | 14 | 337 |
-| ozdoba/tumba-prylizhkova-chorna-z-videnskym-pletinniam-68.html | other | 57.6 | 15.4 | 32.1 | 0.8 | 14 | 337 |
+| ozdoba/tumba-prylizhkova-chorna-z-videnskym-pletinniam-68.html | other | 57.6 | 15.5 | 32.1 | 0.8 | 14 | 337 |
 | ozdoba/unitaz-rozumnyi-pidlohovyi-chornyi-matovyi-156.html | other | 57.6 | 15.5 | 32.1 | 0.8 | 14 | 336 |
 | ozdoba/upor-dvernyi-pidlohovyi-chornyi-z-humoiu-438.html | other | 57.6 | 15.5 | 32.1 | 0.8 | 14 | 338 |
 | ozdoba/3d-panel-rizblena-z-latunnymy-shpylkamy-39.html | other | 57.5 | 15.5 | 32.1 | 0.8 | 14 | 339 |
@@ -463,7 +463,7 @@
 | blog/shcho-vkhodyt-u-dyzain-proekt-budynku.html | article | 45.2 | 11.6 | 0.0 | 0.6 | 0 | 426 |
 | ar/apartment-renovation-cost.html | land | 45.1 | 11.3 | 0.0 | 2.8 | 0 | 534 |
 | dyzain-interieru-budynku-kyiv.html | land | 45.0 | 11.2 | 0.0 | 0.6 | 0 | 543 |
-| proekty/yacht-vip.html | land | 45.0 | 9.1 | 1.9 | 0.6 | 0 | 372 |
+| proekty/yacht-vip.html | land | 45.0 | 9.0 | 1.9 | 0.6 | 0 | 372 |
 | ru/dizayn-interera-doma-kiev.html | land | 44.9 | 11.3 | 0.0 | 0.6 | 0 | 543 |
 | ru/landshaftnyy-dizayn-kiev.html | land | 44.9 | 12.1 | 0.0 | 1.3 | 0 | 590 |
 | ru/onlain-kontrol.html | land | 44.8 | 10.7 | 0.0 | 0.6 | 0 | 647 |
@@ -740,7 +740,7 @@
 | zh/renovation-calculator.html | land | 35.7 | 10.8 | 0.0 | 2.1 | 0 | 541 |
 | ar/apartment-renovation-novopecherski-lypky.html | land | 35.6 | 8.9 | 0.0 | 0.6 | 0 | 422 |
 | ar/interior-design-cost.html | land | 35.6 | 8.9 | 0.0 | 0.6 | 0 | 466 |
-| en/turnkey-house-koncha-zaspa.html | land | 35.6 | 9.7 | 0.0 | 0.6 | 0 | 547 |
+| en/turnkey-house-koncha-zaspa.html | land | 35.6 | 9.8 | 0.0 | 0.6 | 0 | 547 |
 | ar/apartment-renovation-linden-luxury-residences.html | land | 35.5 | 8.9 | 0.0 | 0.6 | 0 | 422 |
 | ar/apartment-replanning.html | land | 35.5 | 8.9 | 0.0 | 0.6 | 0 | 461 |
 | remont-vannoi-kimnaty-kyiv.html | land | 35.5 | 9.2 | 0.0 | 0.6 | 0 | 445 |
@@ -838,7 +838,7 @@
 | en/general-contractor-kyiv.html | land | 33.1 | 8.8 | 0.0 | 0.6 | 0 | 476 |
 | fr/design-renovation-ukraine.html | land | 33.1 | 8.6 | 0.0 | 0.6 | 0 | 482 |
 | pl/remont-mieszkan.html | land | 33.1 | 8.9 | 0.0 | 0.6 | 0 | 441 |
-| pt/design-remodelacao-ucrania.html | land | 33.1 | 8.6 | 0.0 | 0.6 | 0 | 485 |
+| pt/design-remodelacao-ucrania.html | land | 33.1 | 8.5 | 0.0 | 0.6 | 0 | 485 |
 | ar/aerated-concrete-house.html | land | 33.0 | 8.3 | 0.0 | 0.6 | 0 | 413 |
 | fr/entreprise-generale.html | land | 33.0 | 8.7 | 0.0 | 0.6 | 0 | 458 |
 | pt/empreiteiro-geral.html | land | 33.0 | 8.6 | 0.0 | 0.6 | 0 | 463 |
@@ -1020,7 +1020,7 @@
 | es/reforma-piso-bulvar-fontaniv.html | land | 31.6 | 8.4 | 0.0 | 0.6 | 0 | 425 |
 | es/reforma-piso-greenville-pechersk.html | land | 31.6 | 8.3 | 0.0 | 0.6 | 0 | 424 |
 | es/reforma-piso-rusaniv-residence.html | land | 31.6 | 8.4 | 0.0 | 0.6 | 0 | 425 |
-| es/reforma-piso-taryan-towers.html | land | 31.6 | 8.4 | 0.0 | 0.6 | 0 | 425 |
+| es/reforma-piso-taryan-towers.html | land | 31.6 | 8.5 | 0.0 | 0.6 | 0 | 425 |
 | es/reforma-premium.html | land | 31.6 | 8.4 | 0.0 | 0.6 | 0 | 448 |
 | fr/renovation-appartement-hvardiiskyi.html | land | 31.6 | 8.4 | 0.0 | 0.6 | 0 | 423 |
 | fr/renovation-appartement-respublika.html | land | 31.6 | 8.3 | 0.0 | 0.6 | 0 | 424 |
@@ -1233,7 +1233,7 @@
 | zh/apartment-renovation-greenville-pechersk.html | land | 29.7 | 8.5 | 0.0 | 0.6 | 0 | 423 |
 | zh/apartment-renovation-maxima-residence.html | land | 29.7 | 8.5 | 0.0 | 0.6 | 0 | 424 |
 | zh/apartment-renovation-nordica-residence.html | land | 29.7 | 8.6 | 0.0 | 0.6 | 0 | 423 |
-| zh/apartment-renovation-rusaniv-residence.html | land | 29.7 | 8.5 | 0.0 | 0.6 | 0 | 425 |
+| zh/apartment-renovation-rusaniv-residence.html | land | 29.7 | 8.6 | 0.0 | 0.6 | 0 | 425 |
 | zh/interior-design-cost.html | land | 29.7 | 8.6 | 0.0 | 0.6 | 0 | 467 |
 | en/commercial-renovation.html | land | 29.6 | 7.6 | 0.0 | 0.6 | 0 | 441 |
 | fr/design-amenagement-boutique.html | land | 29.6 | 8.0 | 0.0 | 0.6 | 0 | 412 |
@@ -1245,7 +1245,7 @@
 | zh/apartment-renovation-a136-highlight-tower.html | land | 29.6 | 8.4 | 0.0 | 0.6 | 0 | 425 |
 | zh/apartment-renovation-edeldorf-hills.html | land | 29.6 | 8.6 | 0.0 | 0.6 | 0 | 423 |
 | zh/apartment-replanning.html | land | 29.6 | 8.6 | 0.0 | 0.6 | 0 | 462 |
-| ar/cosmetic-renovation.html | land | 29.5 | 7.6 | 0.0 | 0.6 | 0 | 394 |
+| ar/cosmetic-renovation.html | land | 29.5 | 7.7 | 0.0 | 0.6 | 0 | 394 |
 | en/aerated-concrete-house.html | land | 29.5 | 7.9 | 0.0 | 0.6 | 0 | 424 |
 | en/office-fit-out.html | land | 29.5 | 7.8 | 0.0 | 0.6 | 0 | 422 |
 | en/renovation-construction-europe.html | land | 29.5 | 7.8 | 0.0 | 0.6 | 0 | 424 |
@@ -1371,7 +1371,7 @@
 | pt/design-remodelacao-ternopil.html | land | 28.9 | 7.8 | 0.0 | 0.6 | 0 | 396 |
 | pt/design-remodelacao-vyshneve.html | land | 28.9 | 7.8 | 0.0 | 0.6 | 0 | 399 |
 | zh/apartment-renovation-senat.html | land | 28.9 | 8.5 | 0.0 | 0.6 | 0 | 424 |
-| de/haussanierung.html | land | 28.8 | 7.6 | 0.0 | 0.6 | 0 | 426 |
+| de/haussanierung.html | land | 28.8 | 7.7 | 0.0 | 0.6 | 0 | 426 |
 | de/innenarchitektur-renovierung-kropywnyzkyj.html | land | 28.8 | 7.9 | 0.0 | 0.6 | 0 | 397 |
 | de/innenarchitektur-renovierung-tschernihiw.html | land | 28.8 | 7.9 | 0.0 | 0.6 | 0 | 398 |
 | de/innenarchitektur-renovierung-uschhorod.html | land | 28.8 | 7.9 | 0.0 | 0.6 | 0 | 397 |
@@ -1429,7 +1429,7 @@
 | de/innenarchitektur-renovierung-wyschhorod.html | land | 28.5 | 7.8 | 0.0 | 0.6 | 0 | 399 |
 | es/diseno-reforma-cherkasy.html | land | 28.5 | 7.8 | 0.0 | 0.6 | 0 | 396 |
 | es/diseno-reforma-odesa.html | land | 28.5 | 7.8 | 0.0 | 0.6 | 0 | 392 |
-| es/diseno-reforma-rivne.html | land | 28.5 | 7.7 | 0.0 | 0.6 | 0 | 396 |
+| es/diseno-reforma-rivne.html | land | 28.5 | 7.8 | 0.0 | 0.6 | 0 | 396 |
 | fr/realisation-projet.html | land | 28.5 | 7.8 | 0.0 | 0.6 | 0 | 401 |
 | pl/dom-modulowy.html | land | 28.5 | 8.1 | 0.0 | 0.6 | 0 | 423 |
 | pl/nadzor-autorski-i-techniczny.html | land | 28.5 | 7.8 | 0.0 | 0.6 | 0 | 413 |
@@ -1567,7 +1567,7 @@
 | zh/modular-house.html | land | 27.2 | 8.2 | 0.0 | 0.6 | 0 | 420 |
 | de/schoenheitsreparaturen.html | land | 27.1 | 7.4 | 0.0 | 0.6 | 0 | 396 |
 | es/obra-gruesa-piso.html | land | 27.1 | 7.3 | 0.0 | 0.6 | 0 | 396 |
-| zh/bathroom-renovation.html | land | 27.1 | 7.8 | 0.0 | 0.6 | 0 | 416 |
+| zh/bathroom-renovation.html | land | 27.1 | 7.9 | 0.0 | 0.6 | 0 | 416 |
 | zh/contact.html | land | 27.1 | 7.9 | 0.0 | 0.6 | 0 | 355 |
 | zh/design-renovation-brovary.html | land | 27.1 | 8.1 | 0.0 | 0.6 | 0 | 398 |
 | zh/design-renovation-hostomel.html | land | 27.1 | 8.1 | 0.0 | 0.6 | 0 | 397 |
@@ -1598,7 +1598,7 @@
 | zh/design-renovation-cherkasy.html | land | 26.7 | 8.0 | 0.0 | 0.6 | 0 | 395 |
 | zh/design-renovation-lviv.html | land | 26.7 | 8.1 | 0.0 | 0.6 | 0 | 392 |
 | zh/design-renovation-obukhiv.html | land | 26.7 | 8.0 | 0.0 | 0.6 | 0 | 397 |
-| zh/design-renovation-odesa.html | land | 26.7 | 8.0 | 0.0 | 0.6 | 0 | 391 |
+| zh/design-renovation-odesa.html | land | 26.7 | 8.1 | 0.0 | 0.6 | 0 | 391 |
 | zh/design-renovation-ternopil.html | land | 26.7 | 7.9 | 0.0 | 0.6 | 0 | 395 |
 | zh/design-renovation-vyshneve.html | land | 26.7 | 8.0 | 0.0 | 0.6 | 0 | 398 |
 | zh/design-renovation-dnipro.html | land | 26.6 | 7.9 | 0.0 | 0.6 | 0 | 393 |
@@ -1642,7 +1642,7 @@
 | de/tury.html | other | 22.1 | 5.2 | 0.8 | 0.0 | 0 | 328 |
 | en/tury.html | other | 22.0 | 5.1 | 0.8 | 0.0 | 0 | 330 |
 | zh/tury.html | other | 21.8 | 5.5 | 0.8 | 0.0 | 0 | 327 |
-| pt/privacidade.html | land | 21.7 | 6.9 | 0.2 | 0.6 | 3 | 252 |
+| pt/privacidade.html | land | 21.7 | 7.0 | 0.2 | 0.6 | 3 | 252 |
 | de/datenschutz.html | land | 21.6 | 7.0 | 0.2 | 0.6 | 3 | 253 |
 | es/privacidad.html | land | 21.5 | 6.9 | 0.2 | 0.6 | 3 | 252 |
 | pl/polityka-prywatnosci.html | land | 21.4 | 7.1 | 0.2 | 0.6 | 3 | 254 |
