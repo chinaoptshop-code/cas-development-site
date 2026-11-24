@@ -8,7 +8,7 @@
 @font-face{font-family:"Cormorant Garamond Text";font-weight:300 700;src:url(data:font/woff2;base64,d09GMgABAAAAAAE4AAoAAAAAAnwAAADxAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAANAoYNgE2AiQDBgsGAAQgBWYHLhvdAWCeBXbjU8PJtOZCCHBAodln4TKU8ZDtbW9m50qnbPwGYUARLMF/5/DnPPYkTX4LRhB259p17XWt5PSgnJL1yyEpOZTjv5f03/WNMAgJCmpyAPxsCbcdSCD8hL8FFGGew5OUcjmtf1eUOYKFQj3L8vIs5HswMb7rE/kOMwBggERD1wS6MlBKMO5VTb9ClklQCBQWgAJB7douuwGB4Gc4009+WvuHvzfP9jouAU2CYECKWdddBAAgzDoCqQRIAACURyBsKEZa2WiiNsKNK6XT0d0ZmaYo9WPUByAJBJkUkaiaafmO4UGppJmr17vtg80A);unicode-range:U+202F}
 @font-face{font-family:"Cormorant Garamond Text";font-style:italic;font-weight:300 700;src:url(data:font/woff2;base64,d09GMgABAAAAAAE4AAoAAAAAAnwAAADxAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAANAoYNgE2AiQDBgsGAAQgBWYHLhvdAWCeBXbjU8PJtOZCCHBAodln4TKU8ZDtbW9m50qnbPwGYUARLMF/5/DnPPYkTX4LRhB259p17XWt5PSgnJL1yyEpOZTjv5f03/WNMAgJCmpyAPxsCbcdSCD8hL8FFGGew5OUcjmtf1eUOYKFQj3L8vIs5HswMb7rE/kOMwBggERD1wS6MlBKMO5VTb9ClklQCBQWgAJB7douuwGB4Gc4009+WvuHvzfP9jouAU2CYECKWdddBAAgzDoCqQRIAACURyBsKEZa2WiiNsKNK6XT0d0ZmaYo9WPUByAJBJkUkaiaafmO4UGppJmr17vtg80A);unicode-range:U+202F}
 @font-face{font-family:"CAS NN";src:url(data:font/woff2;base64,d09GMgABAAAAAAE4AAoAAAAAAnwAAADxAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAANAoYNgE2AiQDBgsGAAQgBWYHLhvdAWCeBXbjU8PJtOZCCHBAodln4TKU8ZDtbW9m50qnbPwGYUARLMF/5/DnPPYkTX4LRhB259p17XWt5PSgnJL1yyEpOZTjv5f03/WNMAgJCmpyAPxsCbcdSCD8hL8FFGGew5OUcjmtf1eUOYKFQj3L8vIs5HswMb7rE/kOMwBggERD1wS6MlBKMO5VTb9ClklQCBQWgAJB7douuwGB4Gc4009+WvuHvzfP9jouAU2CYECKWdddBAAgzDoCqQRIAACURyBsKEZa2WiiNsKNK6XT0d0ZmaYo9WPUByAJBJkUkaiaafmO4UGppJmr17vtg80A);unicode-range:U+202F}
-:root{--sch-h:calc(64px + env(safe-area-inset-top,0px));--ease-out:cubic-bezier(.2,.7,.2,1);--ff:"Cormorant Garamond Text","Cormorant Text Fallback",Georgia,serif}
+:root{--sch-h:calc(64px + env(safe-area-inset-top,0px));--ease-out:cubic-bezier(.2,.7,.2,1);--ff:"Cormorant Garamond Text","Cormorant Text Fallback",Georgia,serif;--ff1:"Cormorant Garamond Text"}
 html{scroll-padding-top:calc(var(--sch-h) + 12px)}
 html:not(.sb){scroll-behavior:auto!important}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
@@ -28,7 +28,7 @@ body{padding-top:var(--sch-h)}
   text-transform:uppercase;white-space:nowrap;color:var(--c-tx);text-decoration:none}
 .sch-logo em{font-style:normal;color:var(--c-ac)}
 .sch-nav{display:none}
-.sch-nav a{position:relative;padding:10px 0;font-size:.75rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;color:var(--c-mu);text-decoration:none;transition:color .2s}
+.sch-nav a{position:relative;padding:10px 0;font-size:.75rem;font-weight:var(--nav-w,600);letter-spacing:var(--nav-ls,.13em);text-transform:uppercase;white-space:nowrap;color:var(--c-mu);text-decoration:none;transition:color .2s}
 .sch-nav a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:1px;background:var(--c-ac);transform:scaleX(0);transform-origin:left;transition:transform .25s}
 .sch-nav a:hover,.sch-nav a[aria-current]{color:var(--c-tx)}
 .sch-nav a:hover::after,.sch-nav a[aria-current]::after{transform:scaleX(1)}
@@ -179,7 +179,7 @@ main details:not([class*="sch"])>summary{padding-block:12px;margin-block:-12px}
 .sch-lang .sch-ld-m .sch-ld-on{color:var(--c-ac)}
 .sch-ld-on b{color:var(--c-ac)}
 .sch-mlang{flex-wrap:wrap}
-html:lang(zh) body,html:lang(zh) body *{font-family:"Cormorant Garamond Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","WenQuanYi Micro Hei",sans-serif!important}
+html:lang(zh) body,html:lang(zh) body *{font-family:var(--ff1),"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","WenQuanYi Micro Hei",sans-serif!important}
 html:lang(zh) :is(h1,h2,h3,.price,.facts b){font-family:"Cormorant Garamond","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif!important;font-weight:400}
 html:lang(zh) .sch-nav a,html:lang(zh) .sch-cta{letter-spacing:.06em}
 html:lang(ar) body,html:lang(ar) body *{font-family:"CAS NN","Cormorant Garamond Text","Noto Naskh Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif!important}

@@ -135,7 +135,7 @@ KAB_FONTS_CSS = ''.join(
     'ascent-override:110.5%;descent-override:31.1%;line-gap-override:0%}'
     '@font-face{font-family:"Cormorant Fallback";src:local("Times New Roman"),local("Times"),local("Liberation Serif");'
     'size-adjust:96.1%;ascent-override:96.1%;descent-override:29.9%;line-gap-override:0%}'
-    ':root:root{--ff:"Manrope","Manrope Fallback",system-ui,sans-serif}')
+    ':root:root{--ff:"Manrope","Manrope Fallback",system-ui,sans-serif;--ff1:"Manrope";--nav-w:500;--nav-ls:.18em}')
 KAB_FONTS_TAG = f'<style id="cas-fonts">{KAB_FONTS_CSS}</style>'
 FONTS_RX = re.compile(r'<style id="cas-fonts">.*?</style>', re.S)
 
