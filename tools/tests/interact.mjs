@@ -611,7 +611,8 @@ for (const [path, w, dy] of [['/', 402, 31], ['/remont-kvartyr-kyiv', 402, 200],
   await p.waitForTimeout(500);
   const before = await p.evaluate(() => ({ cls: window.__cls, nx: Math.round(document.getElementById('build-anim').nextElementSibling.getBoundingClientRect().top), built: !!document.querySelector('#build-anim .bz-nx') }));
   must(!before.built, 'сцена зібралась до приходу CSS/даних — тест не перевіряє збірку в кадрі');
-  await p.waitForSelector('#build-anim .bz-nx', { timeout: 8000 });
+  // головна на телефоні (з 24.11.2026 без рядка номерів блок нижчий за екран): видно низ блоку й вміст під ним — збірка чекає наступної прокрутки (правило CLAUDE.md)
+  if (!(await p.waitForSelector('#build-anim .bz-nx', { timeout: 4000 }).catch(() => null))) { await p.mouse.wheel(0, 2); await p.waitForSelector('#build-anim .bz-nx', { timeout: 8000 }); }
   await p.waitForTimeout(900);
   const after = await p.evaluate(() => ({ cls: window.__cls, nx: Math.round(document.getElementById('build-anim').nextElementSibling.getBoundingClientRect().top) }));
   must(after.cls - before.cls <= 0.05, 'CLS збірки в кадрі ' + (after.cls - before.cls).toFixed(3));
@@ -769,10 +770,12 @@ for (const [u, w, tab] of [['/', 402, 0], ['/', 1440, 2], ['/ar/', 402, 0], ['/b
   must(r.arrows >= 2, 'немає стрілок ← →: ' + JSON.stringify(r));
   must(r.role === 'slider' && r.max > 1 && /\d/.test(r.vt) && r.h >= 44, 'енкодер: ' + JSON.stringify(r));
   // клавіші з фокусом: End → останній, Home → перший; тап по лінії — етап під пальцем
-  await p.evaluate(`${SCN}.querySelector('.sc-enc').focus()`); await p.keyboard.press('End'); await p.waitForTimeout(u === '/' || u === '/ar/' ? 700 : 3000);
-  const v1 = await p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`);
-  await p.keyboard.press('Home'); await p.waitForTimeout(u === '/' || u === '/ar/' ? 700 : 3000);
-  const v2 = await p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`);
+  // повна sticky-сцена: go() плавно прокручує доріжку, casDrive доганяє етап — чекаємо до 20 с
+  const val = v => p.waitForFunction(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')===${v}`, null, { timeout: 20000 }).then(() => v).catch(() => p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`));
+  await p.evaluate(`${SCN}.querySelector('.sc-enc').focus()`); await p.keyboard.press('End');
+  const v1 = await val(r.max);
+  await p.keyboard.press('Home');
+  const v2 = await val(1);
   must(v1 === r.max && v2 === 1, `Home/End: ${v1}, ${v2} (N=${r.max})`);
 });
 // ar (RTL): «$2 500», не «2 500$» — ціни у видимому тексті й data-xs в ізоляті LTR U+2066…U+2069 (chrome.price_iso, як iso() у calc.v1.js)
@@ -1404,7 +1407,7 @@ const icoRow = (p, sel) => p.evaluate(sel => [...document.querySelectorAll(sel +
   return { k: (a.className.match(/bi-(\w+)/) || [])[1], w: Math.round(r.width), h: Math.round(r.height), txt: a.textContent.trim(), lab: a.getAttribute('aria-label') || '', href: a.getAttribute('href'), wx: a.getAttribute('data-wx') }; }), sel);
 await test('WeChat: є у футері, клік копіює номер; Behance — у футері; без підпису «Месенджери»; біля форми іконок немає', '/', 1440, async p => {
   const f = await icoRow(p, '.scf-soc');
-  must(f.map(x => x.k).join() === 'telegram,viber,whatsapp,instagram,youtube,linkedin,tiktok,behance,wechat,chat', 'футер: ' + f.map(x => x.k));
+  must(f.map(x => x.k).join() === 'tel,telegram,viber,whatsapp,instagram,youtube,linkedin,tiktok,behance,wechat,chat', 'футер: ' + f.map(x => x.k));
   must(f.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'футер: кнопки не іконки ≥ 44 px: ' + JSON.stringify(f));
   must(f.find(x => x.k === 'behance').href === 'https://www.behance.net/mykhailol2' && f.find(x => x.k === 'wechat').wx === WX && f.find(x => x.k === 'wechat').lab.includes(WX), 'футер: Behance / WeChat');
   must(!(await p.evaluate(() => [...document.querySelectorAll('.scf b')].some(b => /Месенджери/.test(b.textContent)))), 'футер: підпис «Месенджери» лишився');

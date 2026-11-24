@@ -122,3 +122,6 @@
 @media(prefers-reduced-motion:reduce){.sc-ef,.sc-ek{transition:none}}
 .sc-hd>.sc-enc,.bz-hd>.sc-enc{flex:1 1 auto}
 .la-nav>.sc-enc{flex:1 1 auto;margin:0 6px}.rp-apw.rp-enc{flex:1 1 12rem;display:flex}
+/* телефон: панель компактної сцени однакової висоти на всіх вкладках перемикача (без рядка номерів текст етапу й ціна різної довжини давали +40 px
+   між вкладками; interact.mjs «перемикач сцен головної…» ≤ 30 px); низькі екрани (≤ 700 px) — як були */
+@media(max-width:767px) and (min-height:701px){.bz-cmp .bz-side,.la-cmp .sc-side{min-height:19.5rem;box-sizing:border-box}}

@@ -529,124 +529,91 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(prefers-reduced-motion:no-preference) and (max-width:1099px){.bz:is([data-la],[data-rs]){--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:1399px){.bz[data-wh]{--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:900px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .7 + 671px)}}
-@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(40vh,340px) + clamp(17.5rem,calc(557px - 69vw),20rem) + 8px + var(--bzr,0px));height:calc(min(40svh,340px) + clamp(17.5rem,calc(557px - 69vw),20rem) + 8px + var(--bzr,0px))} /* панель (енкодер, текст етапу, ← →, ціна; з 24.11.2026 без рядка номерів — −5rem) вища на вузьких (переноси): 402+ — 17.5rem, 344 — 20rem; переноси тексту етапу й ціни мовами — --bzr (блок bzr нижче, tools/tests/bzres.mjs) */
+@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(40vh,340px) + clamp(20rem,calc(597px - 69vw),22.5rem) + 8px + var(--bzr,0px));height:calc(min(40svh,340px) + clamp(20rem,calc(597px - 69vw),22.5rem) + 8px + var(--bzr,0px))} /* панель (енкодер, текст етапу, ← →, ціна; з 24.11.2026 без рядка номерів — −5rem) вища на вузьких (переноси): 402+ — 20rem, 344 — 22.5rem; ≥ 701 px заввишки панель ≥ 19.5rem — scene-ui.v1.css; переноси тексту етапу й ціни мовами — --bzr (блок bzr нижче, tools/tests/bzres.mjs) */
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .45 + 836px)}
   .bz:is([data-la],[data-rs]){--lx:162px}.bz[data-wh]{--lx:162px}}
 /*bzr*/ /* ЗГЕНЕРОВАНО tools/tests/bzres.mjs --write: поправка резерву компактної сцени головних за мовою й шириною (--bzr, у формулі резерву @media(max-width:767px)); руками не правити */
-@media(max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru),:lang(en),:lang(de),:lang(fr)){--bzr:27px}.bz[data-bz-c]:is(:lang(es),:lang(pt)){--bzr:30px}.bz[data-bz-c]:lang(zh){--bzr:-32px}.bz[data-bz-c]:lang(pl){--bzr:47px}.bz[data-bz-c]:lang(ar){--bzr:8px}}
-@media(min-width:321px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:29px}}
-@media(min-width:327px) and (max-width:767px){.bz[data-bz-c]:lang(ar){--bzr:-9px}}
-@media(min-width:331px) and (max-width:767px){.bz[data-bz-c]:lang(uk){--bzr:9px}}
-@media(min-width:332px) and (max-width:767px){.bz[data-bz-c]:lang(ru){--bzr:9px}.bz[data-bz-c]:lang(fr){--bzr:10px}}
-@media(min-width:335px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:10px}}
-@media(min-width:343px) and (max-width:767px){.bz[data-bz-c]:lang(de){--bzr:10px}}
-@media(min-width:353px) and (max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru)){--bzr:16px}.bz[data-bz-c]:lang(zh){--bzr:-25px}.bz[data-bz-c]:lang(pl){--bzr:36px}}
-@media(min-width:354px) and (max-width:767px){.bz[data-bz-c]:is(:lang(es),:lang(de),:lang(fr)){--bzr:17px}.bz[data-bz-c]:lang(pt){--bzr:36px}.bz[data-bz-c]:lang(ar){--bzr:-4px}}
-@media(min-width:355px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:17px}}
-@media(min-width:357px) and (max-width:767px){.bz[data-bz-c]:lang(ar){--bzr:-20px}}
-@media(min-width:360px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:21px}}
-@media(min-width:363px) and (max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru)){--bzr:23px}.bz[data-bz-c]:lang(pl){--bzr:43px}}
-@media(min-width:364px) and (max-width:767px){.bz[data-bz-c]:is(:lang(es),:lang(fr)){--bzr:24px}.bz[data-bz-c]:lang(zh){--bzr:-18px}.bz[data-bz-c]:lang(de){--bzr:21px}}
-@media(min-width:365px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:22px}}
-@media(min-width:366px) and (max-width:767px){.bz[data-bz-c]:lang(de){--bzr:4px}}
-@media(min-width:367px) and (max-width:767px){.bz[data-bz-c]:lang(ar){--bzr:-13px}}
-@media(min-width:368px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:6px}}
-@media(min-width:370px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:28px}}
-@media(min-width:373px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:49px}}
-@media(min-width:374px) and (max-width:767px){.bz[data-bz-c]:lang(uk){--bzr:30px}.bz[data-bz-c]:lang(ru){--bzr:29px}.bz[data-bz-c]:is(:lang(es),:lang(fr)){--bzr:31px}.bz[data-bz-c]:lang(zh){--bzr:-11px}}
-@media(min-width:375px) and (max-width:767px){.bz[data-bz-c]:lang(de){--bzr:11px}}
-@media(min-width:377px) and (max-width:767px){.bz[data-bz-c]:lang(ar){--bzr:-6px}}
-@media(min-width:378px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:-8px}}
-@media(min-width:379px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:31px}}
-@media(min-width:380px) and (max-width:767px){.bz[data-bz-c]:lang(ru){--bzr:14px}.bz[data-bz-c]:lang(pl){--bzr:13px}}
-@media(min-width:381px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:35px}}
-@media(min-width:382px) and (max-width:767px){.bz[data-bz-c]:lang(uk){--bzr:-5px}}
-@media(min-width:384px) and (max-width:767px){.bz[data-bz-c]:lang(zh){--bzr:-5px}.bz[data-bz-c]:lang(fr){--bzr:38px}}
-@media(min-width:385px) and (max-width:767px){.bz[data-bz-c]:lang(es){--bzr:38px}}
-@media(min-width:386px) and (max-width:767px){.bz[data-bz-c]:lang(de){--bzr:18px}}
-@media(min-width:388px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:-1px}.bz[data-bz-c]:lang(ar){--bzr:1px}}
-@media(min-width:389px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:20px}}
-@media(min-width:390px) and (max-width:767px){.bz[data-bz-c]:lang(ru){--bzr:21px}.bz[data-bz-c]:lang(zh){--bzr:-20px}}
-@media(min-width:391px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:42px}}
-@media(min-width:393px) and (max-width:767px){.bz[data-bz-c]:lang(uk){--bzr:2px}}
-@media(min-width:395px) and (max-width:767px){.bz[data-bz-c]:lang(es){--bzr:44px}.bz[data-bz-c]:lang(fr){--bzr:45px}}
-@media(min-width:396px) and (max-width:767px){.bz[data-bz-c]:lang(de){--bzr:24px}}
-@media(min-width:398px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:4px}.bz[data-bz-c]:lang(ar){--bzr:7px}}
-@media(min-width:399px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:25px}}
-@media(min-width:400px) and (max-width:767px){.bz[data-bz-c]:lang(ru){--bzr:25px}.bz[data-bz-c]:lang(zh){--bzr:-15px}}
-@media(min-width:401px) and (max-width:767px){.bz[data-bz-c]:lang(ru){--bzr:5px}.bz[data-bz-c]:lang(pt){--bzr:46px}}
-@media(min-width:418px) and (max-width:767px){.bz[data-bz-c]:lang(fr){--bzr:26px}}
-@media(min-width:430px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:26px}}
-@media(min-width:449px) and (max-width:767px){.bz[data-bz-c]:lang(de){--bzr:5px}}
-@media(min-width:451px) and (max-width:767px){.bz[data-bz-c]:lang(es){--bzr:26px}}
-@media(min-width:465px) and (max-width:767px){.bz[data-bz-c]:lang(es){--bzr:5px}}
-@media(min-width:481px) and (max-width:767px){.bz[data-bz-c]:lang(fr){--bzr:5px}}
-@media(min-width:501px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:5px}}
-@media(min-width:502px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:5px}}
-@media(min-width:511px) and (max-width:767px){.bz[data-bz-c]:lang(ar){--bzr:-12px}}
-@media(min-width:537px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:-15px}}
-@media(min-width:538px) and (max-width:767px){.bz[data-bz-c]:lang(uk){--bzr:-15px}}
-@media(min-width:544px) and (max-width:767px){.bz[data-bz-c]:lang(ru){--bzr:-15px}}
-@media(min-width:611px) and (max-width:767px){.bz[data-bz-c]:lang(fr){--bzr:-15px}}
-@media(min-width:620px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:-15px}}
-@media(min-width:645px) and (max-width:767px){.bz[data-bz-c]:lang(de){--bzr:-15px}}
-@media(min-width:658px) and (max-width:767px){.bz[data-bz-c]:lang(es){--bzr:-15px}}
-@media(min-width:682px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:-15px}}
-@media(min-width:740px) and (max-width:767px){.bz[data-bz-c]:lang(zh){--bzr:-35px}}
-@media(max-width:767px) and (max-height:700px){.bz[data-bz-c]:is(:lang(uk),:lang(en),:lang(ar)){--bzr:3px}.bz[data-bz-c]:is(:lang(ru),:lang(de),:lang(pt)){--bzr:21px}.bz[data-bz-c]:lang(es){--bzr:20px}.bz[data-bz-c]:lang(zh){--bzr:-36px}.bz[data-bz-c]:lang(pl){--bzr:22px}.bz[data-bz-c]:lang(fr){--bzr:5px}}
-@media(min-width:327px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-18px}}
-@media(min-width:331px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:5px}}
-@media(min-width:332px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:3px}}
-@media(min-width:334px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-34px}}
-@media(min-width:336px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pt){--bzr:5px}}
-@media(min-width:340px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:5px}}
-@media(min-width:345px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-15px}}
-@media(min-width:353px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:8px}.bz[data-bz-c]:lang(ru){--bzr:7px}.bz[data-bz-c]:is(:lang(es),:lang(de),:lang(fr),:lang(pt)){--bzr:12px}.bz[data-bz-c]:lang(pl){--bzr:26px}.bz[data-bz-c]:lang(ar){--bzr:-27px}}
-@media(min-width:354px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-8px}.bz[data-bz-c]:lang(zh){--bzr:-29px}}
-@media(min-width:355px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-8px}.bz[data-bz-c]:lang(pl){--bzr:13px}}
-@media(min-width:357px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-6px}}
-@media(min-width:363px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:is(:lang(es),:lang(fr),:lang(pt)){--bzr:19px}.bz[data-bz-c]:lang(de){--bzr:17px}}
-@media(min-width:364px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:is(:lang(ru),:lang(en)){--bzr:-1px}.bz[data-bz-c]:lang(zh){--bzr:-25px}.bz[data-bz-c]:lang(ar){--bzr:-20px}}
-@media(min-width:365px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(zh){--bzr:-40px}.bz[data-bz-c]:lang(pl){--bzr:20px}}
-@media(min-width:366px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:0px}}
-@media(min-width:367px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:1px}}
-@media(min-width:373px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:is(:lang(es),:lang(fr)){--bzr:26px}.bz[data-bz-c]:lang(pt){--bzr:25px}}
-@media(min-width:374px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-13px}}
-@media(min-width:375px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:6px}.bz[data-bz-c]:lang(en){--bzr:4px}.bz[data-bz-c]:lang(zh){--bzr:-33px}}
-@media(min-width:376px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:7px}}
-@media(min-width:377px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:6px}}
-@media(min-width:378px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-13px}.bz[data-bz-c]:lang(pl){--bzr:25px}}
-@media(min-width:380px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pl){--bzr:8px}}
-@media(min-width:382px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-10px}}
-@media(min-width:383px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:33px}}
-@media(min-width:384px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-6px}}
-@media(min-width:385px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:13px}.bz[data-bz-c]:lang(pt){--bzr:32px}}
-@media(min-width:386px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:33px}.bz[data-bz-c]:lang(zh){--bzr:-26px}.bz[data-bz-c]:lang(de){--bzr:14px}}
-@media(min-width:387px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-6px}}
-@media(min-width:390px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pl){--bzr:15px}}
-@media(min-width:392px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-3px}}
-@media(min-width:394px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:40px}.bz[data-bz-c]:lang(ar){--bzr:1px}}
-@media(min-width:395px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:19px}.bz[data-bz-c]:lang(pt){--bzr:38px}}
-@media(min-width:396px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:39px}.bz[data-bz-c]:lang(zh){--bzr:-20px}.bz[data-bz-c]:lang(de){--bzr:19px}}
-@media(min-width:397px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:0px}}
-@media(min-width:401px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:1px}.bz[data-bz-c]:lang(pl){--bzr:20px}}
-@media(min-width:402px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:1px}.bz[data-bz-c]:lang(pt){--bzr:22px}}
-@media(min-width:418px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:22px}}
-@media(min-width:419px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:1px}}
-@media(min-width:421px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:22px}}
-@media(min-width:465px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:1px}}
-@media(min-width:469px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pl){--bzr:1px}}
-@media(min-width:477px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-15px}}
-@media(min-width:481px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:1px}}
-@media(min-width:501px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-18px}.bz[data-bz-c]:lang(pt){--bzr:1px}}
-@media(min-width:502px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-18px}}
-@media(min-width:508px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-18px}}
-@media(min-width:569px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:-18px}}
-@media(min-width:578px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pt){--bzr:-18px}}
-@media(min-width:601px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:-18px}}
-@media(min-width:613px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:-18px}}
-@media(min-width:635px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pl){--bzr:-18px}}
-@media(min-width:690px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(zh){--bzr:-36px}}
+@media(max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru),:lang(en),:lang(de),:lang(fr)){--bzr:-13px}.bz[data-bz-c]:is(:lang(es),:lang(pt)){--bzr:-10px}.bz[data-bz-c]:is(:lang(zh),:lang(ar)){--bzr:-31px}.bz[data-bz-c]:lang(pl){--bzr:7px}}
+@media(min-width:321px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:-11px}}
+@media(min-width:331px) and (max-width:767px){.bz[data-bz-c]:lang(uk){--bzr:-31px}}
+@media(min-width:332px) and (max-width:767px){.bz[data-bz-c]:lang(ru){--bzr:-31px}.bz[data-bz-c]:lang(fr){--bzr:-30px}}
+@media(min-width:335px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:-30px}}
+@media(min-width:343px) and (max-width:767px){.bz[data-bz-c]:lang(de){--bzr:-30px}}
+@media(min-width:353px) and (max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru),:lang(zh),:lang(ar)){--bzr:-24px}.bz[data-bz-c]:lang(pl){--bzr:-4px}}
+@media(min-width:354px) and (max-width:767px){.bz[data-bz-c]:is(:lang(es),:lang(de),:lang(fr)){--bzr:-23px}.bz[data-bz-c]:lang(pt){--bzr:-4px}}
+@media(min-width:355px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:-23px}}
+@media(min-width:360px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:-19px}}
+@media(min-width:363px) and (max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru)){--bzr:-17px}.bz[data-bz-c]:lang(pl){--bzr:3px}}
+@media(min-width:364px) and (max-width:767px){.bz[data-bz-c]:is(:lang(es),:lang(de),:lang(fr)){--bzr:-16px}.bz[data-bz-c]:is(:lang(zh),:lang(ar)){--bzr:-17px}}
+@media(min-width:365px) and (max-width:767px){.bz[data-bz-c]:lang(en){--bzr:-16px}}
+@media(min-width:370px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:-12px}}
+@media(min-width:373px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:9px}}
+@media(min-width:374px) and (max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru),:lang(zh),:lang(ar)){--bzr:-10px}.bz[data-bz-c]:is(:lang(es),:lang(fr)){--bzr:-9px}}
+@media(min-width:375px) and (max-width:767px){.bz[data-bz-c]:is(:lang(en),:lang(de)){--bzr:-9px}}
+@media(min-width:379px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:-6px}}
+@media(min-width:381px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:-5px}}
+@media(min-width:384px) and (max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru),:lang(zh),:lang(ar)){--bzr:-3px}.bz[data-bz-c]:lang(fr){--bzr:-2px}}
+@media(min-width:385px) and (max-width:767px){.bz[data-bz-c]:is(:lang(en),:lang(es),:lang(de)){--bzr:-2px}}
+@media(min-width:390px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:1px}}
+@media(min-width:391px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:2px}}
+@media(min-width:394px) and (max-width:767px){.bz[data-bz-c]:is(:lang(uk),:lang(ru),:lang(zh),:lang(ar)){--bzr:4px}}
+@media(min-width:395px) and (max-width:767px){.bz[data-bz-c]:is(:lang(en),:lang(es),:lang(de)){--bzr:4px}.bz[data-bz-c]:lang(fr){--bzr:5px}}
+@media(min-width:400px) and (max-width:767px){.bz[data-bz-c]:lang(pl){--bzr:6px}}
+@media(min-width:401px) and (max-width:767px){.bz[data-bz-c]:lang(pt){--bzr:6px}}
+@media(max-width:767px) and (max-height:700px){.bz[data-bz-c]:is(:lang(uk),:lang(en),:lang(ar)){--bzr:-37px}.bz[data-bz-c]:is(:lang(ru),:lang(de),:lang(pt)){--bzr:-19px}.bz[data-bz-c]:lang(es){--bzr:-20px}.bz[data-bz-c]:lang(zh){--bzr:-76px}.bz[data-bz-c]:lang(pl){--bzr:-18px}.bz[data-bz-c]:lang(fr){--bzr:-35px}}
+@media(min-width:327px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-58px}}
+@media(min-width:331px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:-35px}}
+@media(min-width:332px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-37px}}
+@media(min-width:334px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-74px}}
+@media(min-width:336px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pt){--bzr:-35px}}
+@media(min-width:340px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:-35px}}
+@media(min-width:345px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-55px}}
+@media(min-width:353px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-32px}.bz[data-bz-c]:lang(ru){--bzr:-33px}.bz[data-bz-c]:is(:lang(es),:lang(de),:lang(fr),:lang(pt)){--bzr:-28px}.bz[data-bz-c]:lang(pl){--bzr:-14px}.bz[data-bz-c]:lang(ar){--bzr:-67px}}
+@media(min-width:354px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-48px}.bz[data-bz-c]:lang(zh){--bzr:-69px}}
+@media(min-width:355px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-48px}.bz[data-bz-c]:lang(pl){--bzr:-27px}}
+@media(min-width:357px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-46px}}
+@media(min-width:363px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:is(:lang(es),:lang(fr),:lang(pt)){--bzr:-21px}.bz[data-bz-c]:lang(de){--bzr:-23px}}
+@media(min-width:364px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:is(:lang(ru),:lang(en)){--bzr:-41px}.bz[data-bz-c]:lang(zh){--bzr:-65px}.bz[data-bz-c]:lang(ar){--bzr:-60px}}
+@media(min-width:365px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(zh){--bzr:-80px}.bz[data-bz-c]:lang(pl){--bzr:-20px}}
+@media(min-width:366px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:-40px}}
+@media(min-width:367px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-39px}}
+@media(min-width:373px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:is(:lang(es),:lang(fr)){--bzr:-14px}.bz[data-bz-c]:lang(pt){--bzr:-15px}}
+@media(min-width:374px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-53px}}
+@media(min-width:375px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-34px}.bz[data-bz-c]:lang(en){--bzr:-36px}.bz[data-bz-c]:lang(zh){--bzr:-73px}}
+@media(min-width:376px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:-33px}}
+@media(min-width:377px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-34px}}
+@media(min-width:378px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-53px}.bz[data-bz-c]:lang(pl){--bzr:-15px}}
+@media(min-width:380px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pl){--bzr:-32px}}
+@media(min-width:382px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-50px}}
+@media(min-width:383px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:-7px}}
+@media(min-width:384px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-46px}}
+@media(min-width:385px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-27px}.bz[data-bz-c]:lang(pt){--bzr:-8px}}
+@media(min-width:386px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:-7px}.bz[data-bz-c]:lang(zh){--bzr:-66px}.bz[data-bz-c]:lang(de){--bzr:-26px}}
+@media(min-width:387px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-46px}}
+@media(min-width:390px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pl){--bzr:-25px}}
+@media(min-width:392px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-43px}}
+@media(min-width:394px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:0px}.bz[data-bz-c]:lang(ar){--bzr:-39px}}
+@media(min-width:395px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-21px}.bz[data-bz-c]:lang(pt){--bzr:-2px}}
+@media(min-width:396px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:-1px}.bz[data-bz-c]:lang(zh){--bzr:-60px}.bz[data-bz-c]:lang(de){--bzr:-21px}}
+@media(min-width:397px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-40px}}
+@media(min-width:401px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-39px}.bz[data-bz-c]:lang(pl){--bzr:-20px}}
+@media(min-width:402px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-39px}.bz[data-bz-c]:lang(pt){--bzr:-18px}}
+@media(min-width:418px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:-18px}}
+@media(min-width:419px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:-39px}}
+@media(min-width:421px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:-18px}}
+@media(min-width:465px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:-39px}}
+@media(min-width:469px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pl){--bzr:-39px}}
+@media(min-width:477px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ar){--bzr:-55px}}
+@media(min-width:481px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:-39px}}
+@media(min-width:501px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(en){--bzr:-58px}.bz[data-bz-c]:lang(pt){--bzr:-39px}}
+@media(min-width:502px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(uk){--bzr:-58px}}
+@media(min-width:508px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(ru){--bzr:-58px}}
+@media(min-width:569px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(fr){--bzr:-58px}}
+@media(min-width:578px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pt){--bzr:-58px}}
+@media(min-width:601px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(de){--bzr:-58px}}
+@media(min-width:613px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(es){--bzr:-58px}}
+@media(min-width:635px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(pl){--bzr:-58px}}
+@media(min-width:690px) and (max-width:767px) and (max-height:700px){.bz[data-bz-c]:lang(zh){--bzr:-76px}}
 /*/bzr*/
 /* перемикач сцен головних без стрибка (19.11.2026): H2 усіх шести вкладок — з тим самим відступом (блок «Будинок» мав 10 px, підтягнуті сцени — 24),
    на телефоні H2 резервує 2 рядки (лише «Будинок з нуля…» вміщався в один: +27 px у решти); решту різниці (панелі етапів, довгі назви мовами)
