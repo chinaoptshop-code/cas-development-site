@@ -168,16 +168,21 @@ FONT_RX = re.compile(r'<link rel="preload" href="/fonts/[\w.-]+\.woff2" as="font
 
 
 def fonts(s, lang):
-    """Preload шрифтів за мовою: кирилиця (uk/ru), латиниця (en/es/pl/de/fr), жодного (zh/ar — системні шрифти)."""
+    """Preload шрифтів за мовою: кирилиця (uk/ru), латиниця (en/es/pl/de/fr/pt), zh/ar — без preload (основний текст —
+    системні CJK/арабські шрифти; латиниця й цифри — Cormorant, підтягується за unicode-range).
+    Один шрифт на публічному сайті (24.11.2026): лише файли Cormorant Garamond — текст ("Cormorant Garamond Text") і заголовки
+    беруть ті самі файли; кабінет (/kabinet…, Manrope) — як раніше."""
     kind = meta(lang).get('fonts', 'latin')
     if not FONT_RX.search(s):
         return s
-    want = {'latin': ['manrope-latin.woff2', 'cormorant-latin.woff2']}.get(kind, [])
+    kab = 'id="cas-fonts">' in s and '"Manrope"' in s.split('id="cas-fonts">', 1)[1].split('</style>', 1)[0]
+    want = {'latin': ['manrope-latin.woff2', 'cormorant-latin.woff2'] if kab else ['cormorant-latin.woff2']}.get(kind, [])
     if kind == 'cyrillic':
         # пробіли, цифри й розділові знаки — у латинських файлах (unicode-range), тож вони потрібні кожній uk/ru-сторінці;
         # без preload вони приходять пізніше за кирилицю — текст перебудовується двічі (CLS 0,2–0,6 на /portfolio, аудит 26.10.2026).
         # Курсив кирилиці — лише якщо він є в H1 (<em>): інакше перенесення рядка H1 після підвантаження зсуває всю сторінку.
-        want = ['manrope-cyrillic.woff2', 'cormorant-cyrillic.woff2', 'manrope-latin.woff2', 'cormorant-latin.woff2']
+        want = (['manrope-cyrillic.woff2', 'cormorant-cyrillic.woff2', 'manrope-latin.woff2', 'cormorant-latin.woff2'] if kab
+                else ['cormorant-cyrillic.woff2', 'cormorant-latin.woff2'])
         h1 = re.search(r'<h1\b.*?</h1>', s, re.S)
         if h1 and '<em' in h1.group(0):
             want.append('cormorant-italic-cyrillic.woff2')

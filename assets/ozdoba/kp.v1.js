@@ -66,10 +66,10 @@
   var CSS = [
     '#kpDoc{position:fixed;inset:0;z-index:2000;overflow:auto;background:rgba(5,4,6,.82);-webkit-overflow-scrolling:touch}',
     '#kpDoc .kp-bar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:10px 12px;background:#100e0c;border-bottom:1px solid rgba(191,145,72,.3)}',
-    '#kpDoc .kp-bar button{font:600 14px/1 Manrope,"Manrope Fallback",sans-serif;border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer;border:1px solid #BF9148;background:#BF9148;color:#1B1408}',
+    '#kpDoc .kp-bar button{font:600 14px/1 "Cormorant Garamond Text",Georgia,serif;border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer;border:1px solid #BF9148;background:#BF9148;color:#1B1408}',
     '#kpDoc .kp-bar button.g{background:none;color:#EDE8DF;border-color:rgba(191,145,72,.4)}',
-    '#kpDoc .kp-bar small{flex-basis:100%;text-align:center;color:#938c84;font:12px/1.3 Manrope,"Manrope Fallback",sans-serif}',
-    '.kp-page{box-sizing:border-box;width:min(210mm,100%);margin:14px auto 40px;background:#fff;color:#1d1a16;padding:22px 18px;font:13px/1.45 Manrope,"Manrope Fallback",Arial,sans-serif;border-radius:6px}',
+    '#kpDoc .kp-bar small{flex-basis:100%;text-align:center;color:#938c84;font:12px/1.3 "Cormorant Garamond Text",Georgia,serif}',
+    '.kp-page{box-sizing:border-box;width:min(210mm,100%);margin:14px auto 40px;background:#fff;color:#1d1a16;padding:22px 18px;font:13px/1.45 "Cormorant Garamond Text",Georgia,serif;border-radius:6px}',
     '.kp-page *{box-sizing:border-box}',
     '.kp-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;border-bottom:2px solid #BF9148;padding-bottom:12px;margin-bottom:14px}',
     '.kp-logo{font:600 26px/1 "Cormorant Garamond","Cormorant Fallback",Georgia,serif;letter-spacing:.01em;color:#17120e}.kp-logo em{color:#BF9148;font-style:normal}',

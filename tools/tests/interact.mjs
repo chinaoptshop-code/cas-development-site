@@ -720,6 +720,35 @@ await test('роздільник тисяч U+202F видно: 0.2em у сумі
     must(!bad.length, `${u || 'калькулятор'}: U+202F ${bad.slice(0, 4).join(', ')}em — має бути 0.2em (блок /*nn*/ у site-chrome.v1.css після основних @font-face)`);
   }
 });
+// Один шрифт на публічному сайті (Михайло 24.11.2026): видимий текст (p, a, button, input, li, span…) — Cormorant Garamond
+// (текст — "Cormorant Garamond Text", заголовки — "Cormorant Garamond"); zh — Cormorant перед CJK, ar — "CAS NN", далі Cormorant;
+// жодного запиту manrope-*.woff2 (Manrope — лише кабінет, chrome.KAB_FONTS_CSS)
+await test('один шрифт: видимий текст — Cormorant Garamond, без запитів manrope (uk, послуги, лендинг, блог, проєкт, en, zh, ar)', '/', 402, async p => {
+  for (const u of ['/', '/services', '/remont-kvartyr-kyiv', '/blog/avtorskyi-nahliad-navishcho', '/proekty/monpark', '/en/', '/zh/', '/ar/']) {
+    if (u !== '/') { await p.goto(BASE + u, { waitUntil: 'load' }); await p.waitForTimeout(200); }
+    const r = await p.evaluate(async () => {
+      await document.fonts.ready;
+      const ar = document.documentElement.lang === 'ar', bad = [];
+      let n = 0;
+      for (const e of document.querySelectorAll('p, a, button, input, textarea, select, li, span, label, summary, small, b, strong, h1, h2, h3, figcaption, td, th, dd, dt')) {
+        if (e.closest('svg, script, style, template, noscript') || !e.getClientRects().length) continue;
+        const own = e.matches('input, textarea, select') ? 'x' : [...e.childNodes].filter(c => c.nodeType === 3).map(c => c.nodeValue).join('');
+        if (!/[\p{L}\p{N}]/u.test(own)) continue; // лише символи-іконки (‹ › ✕) — свій стек
+        const cs = getComputedStyle(e);
+        if (cs.visibility === 'hidden' || +cs.opacity === 0) continue;
+        n++;
+        const ff = cs.fontFamily.replace(/["']/g, '').split(',').map(x => x.trim());
+        const first = ar && ff[0] === 'CAS NN' ? ff[1] : ff[0];
+        if (!/^Cormorant Garamond/.test(first || '')) bad.push(`${e.tagName.toLowerCase()}.${e.className || ''}: ${cs.fontFamily.slice(0, 50)}`);
+      }
+      const fonts = performance.getEntriesByType('resource').map(x => x.name).filter(x => /manrope/i.test(x));
+      return { n, bad, fonts };
+    });
+    must(r.n > 20, `${u}: замало видимих текстових елементів (${r.n})`);
+    must(!r.bad.length, `${u}: не Cormorant — ${[...new Set(r.bad)].slice(0, 4).join(' | ')}`);
+    must(!r.fonts.length, `${u}: вантажиться Manrope — ${r.fonts.join(', ')}`);
+  }
+});
 // ar (RTL): «$2 500», не «2 500$» — ціни у видимому тексті й data-xs в ізоляті LTR U+2066…U+2069 (chrome.price_iso, як iso() у calc.v1.js)
 for (const u of ['/ar/interior-design', '/ar/interior-design-worldwide', '/ar/apartment-renovation-cost']) {
   await test('ar: знак $ ліворуч від числа (ізолят LTR) — рядок ціни hero, текст, data-xs', u, 402, async p => {

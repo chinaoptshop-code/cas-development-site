@@ -12,7 +12,7 @@
 .okd-head h3{margin:0;font-size:var(--fs-h3);font-weight:400;font-family:"Cormorant Garamond","Cormorant Fallback",serif;line-height:1.15}
 .okd-top{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:flex-end;justify-content:space-between}
 .okd-big{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:clamp(2.2rem,1.8rem + 1.4vw,3rem);line-height:1;color:var(--ac)}
-.okd-big small{display:block;font-family:inherit;font-size:var(--fs-small);color:var(--mu);font-family:"Manrope","Manrope Fallback",sans-serif;margin-bottom:4px}
+.okd-big small{display:block;font-family:inherit;font-size:var(--fs-small);color:var(--mu);font-family:var(--ff);margin-bottom:4px}
 .okd-chips{display:flex;flex-wrap:wrap;gap:6px}
 .okd-chips span{border:1px solid var(--ln);border-radius:999px;padding:4px 11px;font-size:var(--fs-small);color:var(--mu)}
 .okd-chips b{color:var(--tx)}

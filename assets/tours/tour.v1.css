@@ -1,14 +1,14 @@
-/* CAS 3D-тури — у стилі сайту: фон #080709, текст #EDE8DF, акцент #BF9148, Cormorant Garamond + Manrope */
-@font-face{font-family:Manrope;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Manrope;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+/* CAS 3D-тури — у стилі сайту: фон #080709, текст #EDE8DF, акцент #BF9148, один шрифт — Cormorant Garamond (текст — "Cormorant Garamond Text" із size-adjust, як на сайті; Михайло 24.11.2026) */
+@font-face{font-family:"Cormorant Garamond Text";font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-cyrillic.woff2) format('woff2');size-adjust:118%;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Cormorant Garamond Text";font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin.woff2) format('woff2');size-adjust:118%;unicode-range:U+0000-00FF,U+2000-206F}
 @font-face{font-family:'Cormorant Garamond';font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:'Cormorant Garamond';font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
-@font-face{font-family:Manrope;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20C0,U+2C60-2C7F,U+A720-A7FF} /* pl, de, fr (16.11.2026) */
+@font-face{font-family:"Cormorant Garamond Text";font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin-ext.woff2) format('woff2');size-adjust:118%;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20C0,U+2C60-2C7F,U+A720-A7FF} /* pl, de, fr (16.11.2026) */
 @font-face{font-family:'Cormorant Garamond';font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20C0,U+2C60-2C7F,U+A720-A7FF}
-:root{--t-bg:#080709;--t-sf:#181620;--t-tx:#EDE8DF;--t-mu:#938c84;--t-ac:#BF9148;--t-D:'Cormorant Garamond',Georgia,serif;--t-M:Manrope,system-ui,sans-serif}
+:root{--t-bg:#080709;--t-sf:#181620;--t-tx:#EDE8DF;--t-mu:#938c84;--t-ac:#BF9148;--t-D:'Cormorant Garamond',Georgia,serif;--t-M:'Cormorant Garamond Text',Georgia,serif}
 
 /* ── переглядач ── */
-html,body{margin:0;height:100%;background:var(--t-bg);color:var(--t-tx)}body{font:15px/1.45 var(--t-M)} /* корінь 16 px, як на решті сайту: шапка, футер і rem-розміри однакові (16.11.2026) */
+html,body{margin:0;height:100%;background:var(--t-bg);color:var(--t-tx)}body{font:500 15px/1.45 var(--t-M);font-variant-numeric:lining-nums} /* корінь 16 px, як на решті сайту: шапка, футер і rem-розміри однакові (16.11.2026) */
 a-scene{transition:opacity .25s}
 body.fading a-scene{opacity:.15}
 .ui{position:fixed;top:0;left:0;right:0;display:flex;gap:14px;align-items:center;padding:14px 18px;

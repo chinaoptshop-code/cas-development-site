@@ -209,7 +209,7 @@ def head_bits():
 
 BASE_CSS = (':root{--bg:#080709;--bg2:#100e0c;--tx:#EDE8DF;--mu:#938c84;--ac:#BF9148;--ln:rgba(191,145,72,.22)}'
             '*{box-sizing:border-box}html{scroll-behavior:smooth}'
-            'body{margin:0;background:var(--bg);color:var(--tx);font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;line-height:1.65;font-size:var(--fs-body)}'
+            'body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--ff);line-height:1.65;font-size:var(--fs-body)}'
             'a{color:inherit}.w{max-width:1080px;margin:0 auto;padding:0 16px}'
             '.crumbs{font-size:var(--fs-small);color:var(--mu);padding:14px 0 0}.crumbs a{text-decoration:none}'
             'h1,h2,h3{font-family:\'Cormorant Garamond\',\'Cormorant Fallback\',Georgia,serif;font-weight:300;line-height:1.15;margin:0}'
@@ -264,7 +264,7 @@ def page(lang, v):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 {fonts}
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>

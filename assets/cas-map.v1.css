@@ -4,7 +4,7 @@
 .cmap-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .6s ease}
 .cmap-ready .cmap-poster{opacity:0;pointer-events:none}
 .cmap .cmap-cv{position:absolute;inset:0;width:100%;height:100%}
-.cmap-go{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;min-height:44px;padding:10px 20px;border:1px solid #bf9148;border-radius:999px;background:rgba(13,12,11,.82);color:#ede8df;font:600 var(--fs-small,.8125rem)/1 var(--M,"Manrope","Manrope Fallback",sans-serif);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.cmap-go{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;min-height:44px;padding:10px 20px;border:1px solid #bf9148;border-radius:999px;background:rgba(13,12,11,.82);color:#ede8df;font:600 var(--fs-small,.8125rem)/1 var(--ff);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .cmap-go:hover,.cmap-go:focus-visible{background:#bf9148;color:#0d0c0b}
 .cmap-go[hidden],.cmap-fly[hidden]{display:none}
 .cmap-loading::after{content:"";position:absolute;left:50%;top:50%;width:28px;height:28px;margin:-14px 0 0 -14px;border:2px solid rgba(191,145,72,.3);border-top-color:#bf9148;border-radius:50%;animation:cmap-spin .9s linear infinite;z-index:3}
@@ -30,7 +30,7 @@
 @media (min-width:900px){.pmap-grid{grid-template-columns:minmax(0,1fr) 320px}.pmap .cmap{aspect-ratio:16/10}.pmap .cmap-list{height:0;min-height:100%;overflow:auto}}
 /* Маркер офісу */
 .cmap-pin{position:relative;width:46px;height:46px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#bf9148;box-shadow:0 0 0 6px rgba(191,145,72,.25),0 6px 18px rgba(0,0,0,.5);display:grid;place-items:center;cursor:pointer;margin-bottom:8px}
-.cmap-pin b{transform:rotate(45deg);font:700 12px/1 var(--M,"Manrope","Manrope Fallback",sans-serif);letter-spacing:.08em;color:#0d0c0b}
+.cmap-pin b{transform:rotate(45deg);font:700 12px/1 var(--ff);letter-spacing:.08em;color:#0d0c0b}
 /* Попап і контроли MapLibre у темі сайту (селектори .cmap … сильніші за ліниво підвантажений vendor CSS) */
 .cmap .maplibregl-popup-content{background:#14110e;color:#ede8df;border:1px solid rgba(191,145,72,.45);border-radius:4px;padding:0;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.55)}
 .cmap .maplibregl-popup-anchor-bottom .maplibregl-popup-tip,.cmap .maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,.cmap .maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip{border-top-color:#bf9148}
@@ -38,7 +38,7 @@
 .cmap .maplibregl-popup-anchor-left .maplibregl-popup-tip{border-right-color:#bf9148}
 .cmap .maplibregl-popup-anchor-right .maplibregl-popup-tip{border-left-color:#bf9148}
 .cmap .maplibregl-popup-close-button{width:32px;height:32px;font-size:20px;color:#ede8df;background:rgba(13,12,11,.7);border-radius:0 0 0 4px;z-index:1}
-.cmap-card{display:flex;flex-direction:column;font-family:var(--M,"Manrope","Manrope Fallback",sans-serif)}
+.cmap-card{display:flex;flex-direction:column;font-family:var(--ff)}
 .cmap-card img{display:block;width:100%;height:120px;object-fit:cover}
 .cmap-card-t{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px}
 .cmap-card-t b{font-family:var(--C,"Cormorant Garamond",serif);font-size:20px;font-weight:600;line-height:1.15}
@@ -53,7 +53,7 @@
 .cmap .maplibregl-ctrl-group button+button{border-top-color:rgba(191,145,72,.25)}
 .cmap .maplibregl-ctrl-group button .maplibregl-ctrl-icon{filter:invert(.92) sepia(.35)}
 .cmap .maplibregl-ctrl.maplibregl-ctrl-attrib,.cmap .maplibregl-ctrl-attrib.maplibregl-compact-show,.cmap .maplibregl-ctrl-attrib.maplibregl-compact{background:rgba(13,12,11,.8);color:#a99f90;font-size:11px}.cmap .maplibregl-ctrl.maplibregl-ctrl-attrib a{color:#cbb48a}.cmap .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button{filter:invert(.9);background-color:transparent}
-.cmap .maplibregl-cooperative-gesture-screen{font-family:var(--M,"Manrope","Manrope Fallback",sans-serif);background:rgba(13,12,11,.6);color:#ede8df}
+.cmap .maplibregl-cooperative-gesture-screen{font-family:var(--ff);background:rgba(13,12,11,.6);color:#ede8df}
 @media (prefers-reduced-motion:reduce){.cmap-poster{transition:none}.cmap-loading::after{animation-duration:2.4s}}
 /* кнопки масштабу на сенсорних — ≥44 px (аудит 08.11.2026) */
 @media (pointer:coarse){.cmap .maplibregl-ctrl-group button{width:44px;height:44px}}

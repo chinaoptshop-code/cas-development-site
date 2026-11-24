@@ -12,7 +12,7 @@
 .kf-bar{position:absolute;left:clamp(16px,3vw,40px);bottom:clamp(16px,3vh,32px);z-index:3;display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:calc(100% - 460px)}
 .kf-glass{background:rgba(16,14,12,.58);-webkit-backdrop-filter:blur(18px) saturate(1.25);backdrop-filter:blur(18px) saturate(1.25);border:1px solid rgba(191,145,72,.24);box-shadow:0 12px 40px rgba(0,0,0,.35)}
 .kf-rooms{display:inline-flex;padding:4px;border-radius:999px;gap:2px}
-.kf-rooms button,.kf-tool{font:600 var(--fs-small)/1 "Manrope","Manrope Fallback",system-ui,sans-serif;color:var(--tx);background:none;border:0;cursor:pointer;min-height:40px;padding:0 16px;border-radius:999px;transition:background .25s,color .25s}
+.kf-rooms button,.kf-tool{font:600 var(--fs-small)/1 var(--ff);color:var(--tx);background:none;border:0;cursor:pointer;min-height:40px;padding:0 16px;border-radius:999px;transition:background .25s,color .25s}
 .kf-rooms button[aria-pressed=true]{background:var(--ac);color:#140f08}
 .kf-rooms button:not([aria-pressed=true]):hover{background:rgba(255,255,255,.08)}
 .kf-tools{display:inline-flex;gap:6px;padding:4px;border-radius:999px}
@@ -27,20 +27,20 @@
 .kf-lbl{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 10px;font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase;color:var(--mu);font-weight:600}
 .kf-lbl b{letter-spacing:0;text-transform:none;color:var(--tx);font-weight:600;font-size:var(--fs-small);text-align:right}
 .kf-zones{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.kf-zones button{position:relative;font:500 13px/1 "Manrope","Manrope Fallback",system-ui,sans-serif;color:#cfc7bb;background:rgba(255,255,255,.03);border:1px solid rgba(191,145,72,.24);border-radius:999px;min-height:36px;padding:0 13px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.kf-zones button{position:relative;font:500 13px/1 var(--ff);color:#cfc7bb;background:rgba(255,255,255,.03);border:1px solid rgba(191,145,72,.24);border-radius:999px;min-height:36px;padding:0 13px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .kf-zones button:hover{border-color:var(--ac);color:var(--tx)}
 .kf-zones button[aria-selected=true]{background:var(--ac);border-color:var(--ac);color:#140f08;font-weight:600}
 .kf-zones i{position:absolute;top:3px;right:5px;width:6px;height:6px;border-radius:50%;background:var(--ac)}
 .kf-zones button[aria-selected=true] i{background:#140f08}
 .kf-sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px 2px;margin-bottom:22px}
-.sw{display:grid;justify-items:center;align-content:start;gap:7px;background:none;border:0;padding:6px 2px;color:var(--mu);cursor:pointer;font:500 12px/1.25 "Manrope","Manrope Fallback",system-ui,sans-serif;border-radius:12px}
+.sw{display:grid;justify-items:center;align-content:start;gap:7px;background:none;border:0;padding:6px 2px;color:var(--mu);cursor:pointer;font:500 12px/1.25 var(--ff);border-radius:12px}
 .sw-i{width:52px;height:52px;border-radius:50%;background-color:#2a2622;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 3px 10px rgba(0,0,0,.4);transition:transform .35s cubic-bezier(.2,.9,.25,1.25),box-shadow .3s}
 .sw-n{text-align:center;max-width:100%;overflow-wrap:anywhere}
 .sw:hover .sw-i{transform:translateY(-2px) scale(1.07)}
 .sw[aria-pressed=true]{color:var(--tx)}
 .sw[aria-pressed=true] .sw-i{transform:scale(1.04);box-shadow:0 0 0 2px #16130f,0 0 0 3.5px var(--ac),0 8px 20px rgba(0,0,0,.5);animation:kf-pop .45s cubic-bezier(.2,.9,.25,1.3)}
 @keyframes kf-pop{0%{transform:scale(.86)}100%{transform:scale(1.04)}}
-.kf-h3{font:600 var(--fs-small)/1.3 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin:0 0 10px}
+.kf-h3{font:600 var(--fs-small)/1.3 var(--ff);letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin:0 0 10px}
 .kf-ps{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px}
 .ps{text-align:left;background:rgba(255,255,255,.03);border:1px solid rgba(191,145,72,.2);border-radius:14px;padding:10px 11px 11px;color:var(--tx);cursor:pointer;display:grid;gap:4px;font-family:inherit;transition:border-color .2s,background .2s,transform .25s}
 .ps:hover{border-color:var(--ac);transform:translateY(-1px)}
@@ -54,7 +54,7 @@
 .kf-sum span{color:var(--mu)}
 .kf-sum b{font-weight:600;text-align:right}
 .kf-cta{width:100%;text-align:center;font-size:var(--fs-body);padding:15px 22px}
-.kf-reset{background:none;border:0;color:var(--mu);font:500 var(--fs-small) "Manrope","Manrope Fallback",system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:10px 8px 0;min-height:44px;display:block;margin:0 auto}
+.kf-reset{background:none;border:0;color:var(--mu);font:500 var(--fs-small) var(--ff);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:10px 8px 0;min-height:44px;display:block;margin:0 auto}
 .kf-note{font-size:12px;color:var(--mu);margin:12px 0 0;line-height:1.5}
 /* до/після */
 .kf-split{position:absolute;top:0;bottom:0;left:50%;width:44px;margin-left:-22px;z-index:4;background:none;border:0;padding:0;cursor:ew-resize;touch-action:none}
@@ -62,7 +62,7 @@
 .kf-split span{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(16,14,12,.7);border:1.5px solid #fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .kf-split span::before,.kf-split span::after{content:'';position:absolute;top:50%;width:7px;height:7px;border:solid #fff;border-width:0 0 1.5px 1.5px;margin-top:-4px}
 .kf-split span::before{left:12px;transform:rotate(45deg)}.kf-split span::after{right:12px;transform:rotate(-135deg)}
-.kf-split em,.kf-split strong{position:absolute;top:calc(50% + 34px);font:600 11px/1 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-style:normal;padding:5px 8px;border-radius:999px;background:rgba(16,14,12,.6);white-space:nowrap}
+.kf-split em,.kf-split strong{position:absolute;top:calc(50% + 34px);font:600 11px/1 var(--ff);letter-spacing:.14em;text-transform:uppercase;color:#fff;font-style:normal;padding:5px 8px;border-radius:999px;background:rgba(16,14,12,.6);white-space:nowrap}
 .kf-split em{right:30px}.kf-split strong{left:30px}
 .kf-tip{position:absolute;left:0;top:0;z-index:4;pointer-events:none;padding:6px 11px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--tx)}
 .kf-toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;z-index:9995;padding:12px 18px;border-radius:999px;font-size:var(--fs-small);font-weight:600;pointer-events:none;transition:opacity .3s,transform .3s}
