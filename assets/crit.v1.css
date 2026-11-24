@@ -183,6 +183,7 @@ html:lang(zh) body,html:lang(zh) body *{font-family:var(--ff1),"PingFang SC","Hi
 html:lang(zh) :is(h1,h2,h3,.price,.facts b){font-family:"Cormorant Garamond","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif!important;font-weight:400}
 html:lang(zh) .sch-nav a,html:lang(zh) .sch-cta{letter-spacing:.06em}
 html:lang(ar) body,html:lang(ar) body *{font-family:"CAS NN","Cormorant Garamond Text","Noto Naskh Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif!important}
+html:lang(ar) .sch-logo,html:lang(ar) .sch-logo *,html:lang(zh) .sch-logo,html:lang(zh) .sch-logo *{font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif!important}
 html:lang(ar) :is(h1,h2,h3){font-weight:600;line-height:1.35}
 html:lang(ar) body{line-height:1.8}
 html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{letter-spacing:0}
