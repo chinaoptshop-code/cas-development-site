@@ -861,8 +861,10 @@
     function pick(i) {
       i = Math.max(0, Math.min(N - 1, i)); if (i === cur && i === ext) return;
       show(i); want = i;
-      if (!raf) raf = requestAnimationFrame(function () { raf = 0; if (want !== ext) o.go(want); });
+      // спершу кадр із ручкою на новому місці, а перебудова сцени — наступною задачею після нього (INP: тап далеко — багато шарів одразу)
+      if (!raf) raf = requestAnimationFrame(function () { setTimeout(function () { raf = 0; if (want !== ext) o.go(want); }, 0); });
     }
+    function pick2() { if (!raf) raf = requestAnimationFrame(function () { setTimeout(function () { raf = 0; o.go(want); }, 0); }); }
     function at(x) { var r = e.getBoundingClientRect(), f = (x - r.left) / Math.max(1, r.width); if (rtl()) f = 1 - f; return Math.round(Math.max(0, Math.min(1, f)) * (N - 1)); }
     e.addEventListener('pointerdown', function (ev) {
       if (ev.button) return; pt = ev.pointerType; x0 = ev.clientX; y0 = ev.clientY; drag = pt === 'mouse' ? 2 : 1; // тач: спершу 1 — чекаємо, горизонталь це чи прокрутка
@@ -888,12 +890,12 @@
       var c = drag ? cur : ext, t = k === 'Home' ? 0 : k === 'End' ? N - 1 : j ? c + j : -1;
       if (t < 0 || ev.altKey || ev.ctrlKey || ev.metaKey) return;
       ev.preventDefault(); ev.stopPropagation(); // casGest на блоці не робить другого кроку
-      if (t >= 0 && t < N && t !== c) { show(t); want = t; o.go(t); }
+      if (t >= 0 && t < N && t !== c) { show(t); want = t; pick2(); }
     });
     e.addEventListener('wheel', function (ev) {
       var dl = Math.abs(ev.deltaX) > Math.abs(ev.deltaY) ? ev.deltaX * (rtl() ? -1 : 1) : ev.deltaY; if (!dl || ev.ctrlKey) return;
       var k = dl > 0 ? 1 : -1, t = ext + k; if (t < 0 || t >= N) return; // край — сторінка гортається
-      ev.preventDefault(); var n0 = Date.now(); if (n0 - tw < 350) return; tw = n0; show(t); want = t; o.go(t);
+      ev.preventDefault(); var n0 = Date.now(); if (n0 - tw < 350) return; tw = n0; show(t); want = t; pick2();
     }, { passive: false });
     setN(o.n); show(0);
     e.__go = function (i) { show(i); want = i; o.go(i); }; // тести (interact.mjs): перейти на етап i
