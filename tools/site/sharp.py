@@ -67,10 +67,11 @@ def w_covers(vw):
 
 
 def w_split(vw):
+    """Фото + текст (sections.v1.css, 24.11.2026): з 768 px — дві рівні колонки 50/50 з gap 2rem, фото object-fit:cover на всю висоту
+    блоку (≥ clamp(18rem, 30vw, 32rem)) — ширина слота = половина ряду."""
     c = cont(vw)
     if vw <= 767: return c
-    if vw <= 1023: return (c - 80) / 2
-    return (c - 6.25 * rem(vw)) / 2
+    return (c - 2 * rem(vw)) / 2
 
 
 def w_svc(vw, i, n, home):

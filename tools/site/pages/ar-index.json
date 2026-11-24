@@ -124,6 +124,7 @@
   },
   {
    "t": "svc",
+   "icons": true,
    "h2": "خدماتنا",
    "more": [
     "/ar/services",

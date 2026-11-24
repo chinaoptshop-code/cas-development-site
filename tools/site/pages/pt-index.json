@@ -124,6 +124,7 @@
   },
   {
    "t": "svc",
+   "icons": true,
    "h2": "O que fazemos",
    "more": [
     "/pt/servicos",

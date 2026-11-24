@@ -484,7 +484,9 @@ def section_html(lang, x):
     if x.get('kicker') or x.get('link') or x.get('cls'):
         s = ''.join(o)
         if x.get('kicker'):
-            s = s.replace('<h2', f'<p class="kick">{e(x["kicker"])}</p><h2', 1)
+            # "kicker" над H2 не показуємо (Михайло 24.11.2026: повторював заголовок — rich.head); секція лишається звичайною секцією,
+            # як і з ним (ux._tile_ok не робить з неї плитку, бо H2 не перший у блоці), — тому мітка <!--nt--> на його місці
+            s = s.replace('<h2', '<!--nt--><h2', 1)
         if x.get('link'):
             k = s.rfind('</div></section>')
             s = s[:k] + richsec.link(x) + s[k:]

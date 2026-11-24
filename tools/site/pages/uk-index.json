@@ -781,6 +781,7 @@
   },
   {
    "t": "svc",
+   "icons": true,
    "h2": "Що ми робимо",
    "more": [
     "/services",

@@ -124,6 +124,7 @@
   },
   {
    "t": "svc",
+   "icons": true,
    "h2": "业务范围",
    "more": [
     "/zh/services",

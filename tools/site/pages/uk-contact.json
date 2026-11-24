@@ -254,20 +254,8 @@
    "h2": "Корисне",
    "items": [
     [
-     "/kalkuliator-remontu",
-     "Калькулятор вартості"
-    ],
-    [
-     "/dogovir-garantiya-oplata",
-     "Договір, гарантія, оплата"
-    ],
-    [
      "/services",
      "Усі послуги"
-    ],
-    [
-     "/about",
-     "Про студію"
     ],
     [
      "/pytannya",

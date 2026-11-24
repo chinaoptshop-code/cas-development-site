@@ -89,7 +89,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 @media(prefers-reduced-motion:reduce){.xs-st>a img{transition:none!important}.xs-st>a:hover img{transform:none}}
 /* фото + текст */
 .xs-sp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px;align-items:center}
-.xs-pic{position:relative}.xs-pic img{display:block;width:100%;height:auto;border:1px solid var(--ln)}
+.xs-pic{position:relative;border-radius:14px;overflow:hidden}.xs-pic img{display:block;width:100%;height:auto;border:1px solid var(--ln);border-radius:14px}
 .xs-badge{position:absolute;inset-inline-start:16px;bottom:16px;margin:0;background:rgba(8,7,9,.88);border:1px solid var(--ln);padding:12px 16px}
 .xs-badge b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3);color:var(--ac)}
 .xs-badge span{font-size:var(--fs-small);color:var(--mu)}
@@ -217,3 +217,45 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-bl.mq-run{-webkit-mask-image:linear-gradient(90deg,transparent,#000 1.5rem,#000 calc(100% - 1.5rem),transparent);mask-image:linear-gradient(90deg,transparent,#000 1.5rem,#000 calc(100% - 1.5rem),transparent)}
 @media(max-width:767px){.xs-bl>li{font-size:1.3125rem;padding-inline-end:2rem}.xs-bl>li::after{inset-inline-end:.84375rem}}
 @media(prefers-reduced-motion:reduce){.xs-bl{flex-wrap:wrap;overflow:visible}.xs-bl>li{padding-block:0;padding-inline-end:1.75rem;font-size:1.125rem;line-height:1.875rem}.xs-bl>li::after{inset-inline-end:.71875rem}}
+/* «Що ми робимо» на головних — іконки замість фото (rich.svc_icons, Михайло 24.11.2026: «щоб влізло все відразу без прогортування
+   і всі фото замінити на іконки… щоб відразу було зрозуміло, що це за послуга»): усі картки видно одразу — без каруселі, стрілок,
+   автопрокрутки й перетягування; ПК (≥ 1100 px) — один ряд, планшет — по 3 у ряд по центру (5 = 3 + 2, 6 = 3 + 3), телефон — список
+   «іконка · назва й ціна · ›» на один екран. Картка — посилання цілком (h3 a::after), hover — лише рамка й колір назви. */
+.xs-svi{content-visibility:visible}
+.xs-si{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.xs-si>.xs-c{flex:0 0 calc((100% - 2rem) / 3);box-sizing:border-box;align-items:center;text-align:center;gap:.9rem;padding:1.6rem 1rem 1.4rem;border-radius:14px;transition:border-color .2s}
+.xs-ico{display:block;width:3rem;height:3rem;flex:none;fill:none;stroke:var(--ac,#BF9148);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.xs-si .xs-cb{padding:0;gap:.4rem;align-items:center;flex:0 1 auto}
+.xs-si h3{margin:0;font-size:clamp(1.2rem,1.05rem + .35vw,1.45rem);line-height:1.2;overflow-wrap:break-word;hyphens:auto}
+.xs-si h3 a{color:var(--tx);transition:color .2s}
+.xs-si .xs-pr{font-family:inherit;font-size:var(--fs-small);line-height:1.45;color:var(--ac,#BF9148)}
+.xs-si h3 a:focus-visible{outline:none}.xs-si>.xs-c:has(a:focus-visible){outline:2px solid var(--ac,#BF9148);outline-offset:3px}
+@media(hover:hover){.xs-si>.xs-c:hover{border-color:var(--ac,#BF9148)}.xs-si>.xs-c:hover h3 a{color:var(--ac,#BF9148)}}
+@media(min-width:1100px){.xs-si{flex-wrap:nowrap}.xs-si>.xs-c{flex:1 1 0;min-width:0}}
+@media(max-width:767px){
+  .xs-si{flex-direction:column;flex-wrap:nowrap;gap:.5rem}
+  .xs-si>.xs-c{flex:none;flex-direction:row;align-items:center;text-align:start;gap:.9rem;min-height:3.75rem;padding:.65rem 1rem}
+  .xs-si>.xs-c::after{content:"";flex:none;width:.5rem;height:.5rem;margin-inline-start:auto;border:solid var(--mu);border-width:0 1.5px 1.5px 0;transform:rotate(-45deg)}
+  [dir=rtl] .xs-si>.xs-c::after{transform:rotate(135deg)}
+  .xs-ico{width:2.1rem;height:2.1rem}
+  .xs-si .xs-cb{align-items:flex-start;gap:.15rem;flex:1 1 auto;min-width:0}
+  .xs-si h3{font-size:1.15rem}
+  .xs-si .xs-pr{font-size:.8125rem;line-height:1.35}
+}
+@media(prefers-reduced-motion:reduce){.xs-si>.xs-c,.xs-si h3 a{transition:none}}
+/* «Про студію» та інші сторінки (Михайло 24.11.2026, «прибирай дублювання… повиправляй, поадаптовуй»): факти — рівні клітинки в один ряд
+   (3 після ±5 %, що лишився в гарантіях і FAQ), на телефоні — колонкою «число · підпис»; фото + текст — два рівні блоки 50/50 однакової висоти */
+@media(min-width:600px){.xs-facts:not(.xs-trust) .facts{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}}
+@media(max-width:599px){.xs-facts:not(.xs-trust) .facts{grid-template-columns:1fr}
+  .xs-facts:not(.xs-trust) .facts>div{display:flex;align-items:baseline;gap:1rem;padding:14px 18px}
+  .xs-facts:not(.xs-trust) .facts b{flex:0 0 6.5rem}}
+@media(min-width:768px){
+  .xs-sp{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:stretch}
+  .xs-pic{min-height:clamp(16rem,22vw,26rem)}
+  .xs-pic>img,.xs-pic>a,.xs-pic>a>img,.xs-pic picture,.xs-pic picture>img{display:block;width:100%;height:100%}
+  .xs-pic img{position:absolute;inset:0;object-fit:cover;border:0}
+  .xs-pic>a{position:absolute;inset:0}
+  .xs-tx{--xp:clamp(1.5rem,3vw,2.75rem);display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;padding:var(--xp);border:1px solid var(--ln);border-radius:14px;background:var(--bg2)}
+  .xs-tx>:first-child{margin-top:0}.xs-tx>:last-child{margin-bottom:0}
+  .js .xs-tx[data-c]{padding-bottom:calc(var(--xp) + 60px)}.xs-tx>.c-b{bottom:var(--xp);inset-inline-start:var(--xp)} /* «Читати далі» — у рамці, місце під неї зарезервоване (без зсуву) */
+}

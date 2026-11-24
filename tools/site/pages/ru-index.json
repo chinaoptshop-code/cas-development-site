@@ -353,6 +353,7 @@
   },
   {
    "t": "svc",
+   "icons": true,
    "h2": "Что мы делаем",
    "more": [
     "/ru/uslugi",

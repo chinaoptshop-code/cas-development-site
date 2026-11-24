@@ -124,7 +124,9 @@ def btns(bs):
 
 
 def head(x, tag='h2'):
-    k = f'<p class="kick">{e(x["kicker"])}</p>' if x.get('kicker') else ''
+    # "kicker" (рядок над H2: «Команда», «Питання», «Цифри»…) не показуємо (Михайло 24.11.2026: «прибирай дублювання і лишній текст»):
+    # він лише повторював заголовок; ключ у JSON лишається (used() за ним вмикає sections.v1.css)
+    k = ''
     if x.get('h2_sr'):  # заголовок лише для скрінрідерів і порядку H1→H2→H3 (сітка карток без видимого H2)
         return k + f'<{tag} class="mo-sr">{e(x["h2_sr"])}</{tag}>'
     if not x.get('h2'):
@@ -145,7 +147,32 @@ def wrap(x, inner, cls):
     return f'<section class="{c}"{sid}><div class="w">{inner}{link(x)}</div></section>\n'
 
 
+# «Що ми робимо» на головних (Михайло 24.11.2026: «щоб влізло все відразу без прогортування і всі фото замінити на іконки логотипи
+# мінімалістичні, щоб відразу було зрозуміло, що це за послуга»): "icons": true у секції svc <мова>-index.json — замість фото
+# лінійна іконка Lucide зі спрайта /assets/icons.v1.svg (ключ — за фото картки img/svc-<послуга>-…), назва й ціна; картка — посилання цілком.
+# Без каруселі, стрілок, автопрокрутки й перетягування (клас ряду .xs-si, не .xs-sv). /services та інші сторінки — з фото, як були.
+SVC_ICON = {'design': 'de', 'implementation': 'hh', 'renovation': 're', 'construction': 'ho', 'furnishing': 'fu', 'landscape': 'la', 'commercial': 'cs'}
+
+
+def _sprite():
+    import ux
+    return ux.SPRITE + '?v=' + ux._ver()
+
+
+def svc_icons(x):
+    sp, cards = _sprite(), []
+    for c in x['items']:
+        k = SVC_ICON.get((re.search(r'svc-([a-z]+)-', c.get('img', '')) or [0, ''])[1], 'os')
+        href = c.get('href') or next((u for u, _ in (c.get('links') or [])), '#')
+        cards.append(f'<article class="xs-c"><svg class="xs-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="{sp}#{k}"/></svg>'
+                     f'<div class="xs-cb"><h3><a href="{a(href)}">{e(c["h"])}</a></h3>'
+                     + (f'<p class="xs-pr">{e(c["price"])}</p>' if c.get('price') else '') + '</div></article>')
+    return wrap(x, head(x) + f'<div class="xs-si" style="--n:{len(cards)}">' + ''.join(cards) + '</div>', 'xs-svc xs-svi')
+
+
 def svc(x):
+    if x.get('icons'):
+        return svc_icons(x)
     cards = []
     for c in x['items']:
         # картка з фото — посилання цілком (CLAUDE.md «Фото: що відкривається»): без "href" — перше посилання картки
@@ -257,7 +284,8 @@ def team(x):
         cr = x['crew']
         if not any(g.get('people') for g in cr['groups']):
             # без імен (Михайло 08.11.2026): лише відділи й групи — компактні плашки, опис у title і в DOM
-            return wrap(x, o + f'<h3 class="xs-crew-h">{e(cr["h3"])}</h3><p class="xs-crew-p">{e(cr["p"])}</p><ul class="xs-crew-c">' + ''.join(
+            # без речення «Штатні прораби, меблярі й фахівці…» над плашками (Михайло 24.11.2026: дублювало самі плашки)
+            return wrap(x, o + f'<h3 class="xs-crew-h">{e(cr["h3"])}</h3><ul class="xs-crew-c">' + ''.join(
                 f'<li title="{a(g.get("p", ""))}"><b>{e(g["label"])}</b>' + (f'<span>{e(g["p"])}</span>' if g.get('p') else '') + '</li>' for g in cr['groups']) + '</ul>', 'xs-team')
         o += f'<h3 class="xs-crew-h">{e(cr["h3"])}</h3><p class="xs-crew-p">{e(cr["p"])}</p><div class="xs-crew">' + ''.join(
             f'<div><p class="kick">{e(g["label"])}</p>' + (f'<p>{e(g["p"])}</p>' if g.get('p') else '') + '<ul>'
@@ -273,7 +301,10 @@ def _wd(c):
 
 
 def project(x):
-    meta = (f'<p class="xs-meta"><span class="xs-stat">{e(x["status"])}</span>{e(x["meta"])} · <a href="{a(x["href"])}">{e(x["open"])}</a></p>')
+    # «· сторінка проєкту →» у рядку статусу — лише коли біля H2 немає кнопки «Відкрити →»: H2, кнопка й це посилання вели на одну сторінку
+    # (Михайло 24.11.2026: «прибирай дублювання»)
+    op = '' if x.get('btn') else f' · <a href="{a(x["href"])}">{e(x["open"])}</a>'
+    meta = f'<p class="xs-meta"><span class="xs-stat">{e(x["status"])}</span>{e(x["meta"])}{op}</p>'
     o = (f'<div class="xs-head"><h2><a href="{a(x["href"])}">{e(x["h2"])}</a></h2>'
          + (f'<a href="{a(x["href"])}">{e(x["btn"])}</a>' if x.get('btn') else '') + '</div>' + meta + ''.join(f'<p>{rich(p)}</p>' for p in x.get('p', [])))
     o += (f'<div class="xs-st" tabindex="0" role="region" aria-label="{a(x["label"])}">'

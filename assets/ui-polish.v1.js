@@ -91,7 +91,7 @@ function imgFade(){
    фокусі, тачі/колесі (9 с); кнопки паузи немає ніде (Михайло 23.11.2026: «прибери… з зупинкою анімації»; під hero — з 11.11.2026); prefers-reduced-motion — статично. Висота блоку не змінюється (CLS 0). Михайло 03.11.2026. */
 function marquee(){
  if(RM||!('IntersectionObserver' in W)||!W.requestAnimationFrame)return;
- var list=$$('.xs-st,.vgrid,.strip,.xs-cv,.hx-home~.xs-svc .xs-sv,.xs-bl');if(!list.length)return; // .xs-bl — «Бренди, з якими працюємо» (rich.py brands, 21.11.2026)
+ var list=$$('.xs-st,.vgrid,.strip,.xs-cv,.xs-bl');if(!list.length)return; // .xs-bl — «Бренди, з якими працюємо» (rich.py brands, 21.11.2026)
  var st=d.createElement('style');
  st.textContent='.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
  d.head.appendChild(st);
@@ -140,7 +140,7 @@ function marquee(){
   new IntersectionObserver(function(es){live=es[es.length-1].isIntersecting;if(live&&!setup())live=false;go()},{rootMargin:'0px 0px -10% 0px'}).observe(sc);
  });
 }
-/* Карусель «Наші проєкти» на головних (.xs-cv, Михайло 05.11.2026) і «Що ми робимо» на головних (.hx-home~.xs-svc .xs-sv, Михайло 08.11.2026):
+/* Карусель «Наші проєкти» на головних (.xs-cv, Михайло 05.11.2026); «Що ми робимо» з 24.11.2026 — не карусель, а іконки, усе видно одразу (rich.svc_icons):
    один ряд, scroll-snap, свайп/тачпад; стрілки ‹ › (44 px, aria-label) — З БОКІВ ряду поверх фото, ліворуч і праворуч (Михайло 23.11.2026:
    «стрілочки перенеси… щоб справа зліва були, а не знизу»; ряду кнопок під каруселлю й кнопки паузи більше немає). .cv-nav — смужка нульової
    висоти ПЕРЕД рядом (висота секції не змінюється), кнопки — absolute на рівні середини фото (--cvy ставить ResizeObserver, без примусової верстки).
@@ -148,12 +148,10 @@ function marquee(){
 function carousel(){
  var lg=(d.documentElement.lang||'uk').slice(0,2),
  LP=({uk:['Попередні проєкти','Наступні проєкти'],ru:['Предыдущие проекты','Следующие проекты'],en:['Previous projects','Next projects'],es:['Proyectos anteriores','Proyectos siguientes'],
-  zh:['上一组项目','下一组项目'],pl:['Poprzednie projekty','Następne projekty'],de:['Vorherige Projekte','Nächste Projekte'],fr:['Projets précédents','Projets suivants'],pt:['Projetos anteriores','Projetos seguintes'],ar:['المشاريع السابقة','المشاريع التالية']})[lg]||['Previous','Next'],
- LS=({uk:['Попередні послуги','Наступні послуги'],ru:['Предыдущие услуги','Следующие услуги'],en:['Previous services','Next services'],es:['Servicios anteriores','Servicios siguientes'],
-  zh:['上一项服务','下一项服务'],pl:['Poprzednie usługi','Następne usługi'],de:['Vorherige Leistungen','Nächste Leistungen'],fr:['Services précédents','Services suivants'],pt:['Serviços anteriores','Serviços seguintes'],ar:['الخدمات السابقة','الخدمات التالية']})[lg]||['Previous','Next'];
- $$('.xs-cv,.hx-home~.xs-svc .xs-sv').forEach(function(sc){
+  zh:['上一组项目','下一组项目'],pl:['Poprzednie projekty','Następne projekty'],de:['Vorherige Projekte','Nächste Projekte'],fr:['Projets précédents','Projets suivants'],pt:['Projetos anteriores','Projetos seguintes'],ar:['المشاريع السابقة','المشاريع التالية']})[lg]||['Previous','Next'];
+ $$('.xs-cv').forEach(function(sc){
   if(sc.__cv)return;sc.__cv=1;
-  var L=sc.classList.contains('xs-sv')?LS:LP;
+  var L=LP;
   var nav=d.createElement('div');nav.className='cv-nav';
   [[-1,'‹',L[0]],[1,'›',L[1]]].forEach(function(x){
    var b=d.createElement('button');b.type='button';b.className='cv-b '+(x[0]<0?'cv-l':'cv-r');b.setAttribute('aria-label',x[2]);b.title=x[2];b.innerHTML='<span aria-hidden="true">'+x[1]+'</span>';

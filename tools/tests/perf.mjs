@@ -118,7 +118,7 @@ const ACTS = [
   { name: 'калькулятор: цифра в полі площі', path: '/kalkuliator-remontu', prep: async p => { await center(p, '#cArea'); await p.locator('#cArea').focus(); }, key: '7' },
   { name: 'FAQ: відкрити питання', path: '/about', prep: async p => { await center(p, 'details summary'); await p.waitForTimeout(300); }, sel: 'main details:not(.sch-ld) > summary', opt: true },
   { name: '«Читати далі» (.c-b)', path: '/blog/avtorskyi-nahliad-navishcho', prep: async p => { await center(p, 'main .c-b'); await p.waitForTimeout(300); }, sel: 'main .c-b', opt: true },
-  { name: 'карусель «Що ми робимо»: →', path: '/', prep: async p => { await p.mouse.wheel(0, 300); await p.waitForTimeout(400); await center(p, '.xs-svc'); await p.waitForTimeout(600); }, sel: '.xs-svc .ui-next, .xs-svc [class*="next"], .xs-svc button >> nth=-1', opt: true },
+  { name: 'карусель «Наші проєкти»: →', path: '/', prep: async p => { await p.mouse.wheel(0, 300); await p.waitForTimeout(400); await center(p, '.xs-covers'); await p.waitForTimeout(600); }, sel: '.xs-covers .cv-r', opt: true }, // «Що ми робимо» — без каруселі з 24.11.2026 (іконки, усе видно одразу)
 ];
 async function inpOne(a, p) {
   const ctx = await browser.newContext({ viewport: p.viewport, deviceScaleFactor: p.deviceScaleFactor, isMobile: !!p.isMobile, hasTouch: !!p.hasTouch });

@@ -98,22 +98,39 @@ for (const w of [402, 1440]) await test('плитки data-c="x": розгорт
   must(t2 > -10 && t2 < 900, `після згортання заголовок поза екраном (${Math.round(t2)})`);
   void y0;
 });
-for (const w of [402, 1440]) await test('карусель «Що ми робимо»: стрілки гортають', '/', w, async p => {
+// Михайло 24.11.2026: «Що ми робимо» на головних — усі послуги одразу, без прогортування; іконки замість фото (rich.svc_icons)
+for (const [path, w] of [['/', 402], ['/', 1440], ['/ar/', 402], ['/de/', 402], ['/de/', 1440], ['/', 820]]) await test('«Що ми робимо»: усі картки видно одразу, іконки, без каруселі', path, w, async p => {
   await wakeup(p);
-  const row = p.locator('.xs-sv').first();
-  await row.scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
-  const nx = p.locator('.xs-svc .cv-r').first();
-  must(await nx.count(), 'немає кнопок каруселі');
-  const box = await nx.boundingBox(); must(box && box.width >= 43.5 && box.height >= 43.5, 'кнопка каруселі < 44px');
-  const s0 = await row.evaluate(e => e.scrollLeft);
-  await nx.click(); await p.waitForTimeout(900);
-  const s1 = await row.evaluate(e => e.scrollLeft);
-  must(Math.abs(s1 - s0) > 20, `→ не гортає (${s0}→${s1})`);
+  const row = p.locator('.hx-home~.xs-svc .xs-si').first();
+  must(await row.count(), 'немає ряду .xs-si');
+  await row.evaluate(e => e.closest('section').scrollIntoView({ block: 'start' })); await p.waitForTimeout(600);
+  const st = await row.evaluate(e => {
+    const sec = e.closest('section'), r = e.getBoundingClientRect(), cards = [...e.children];
+    return { sw: e.scrollWidth, cw: e.clientWidth, secH: sec.getBoundingClientRect().height, vh: innerHeight, n: cards.length,
+      oldRow: sec.querySelectorAll('.xs-sv, .cv-b, .cv-nav, img').length,
+      cards: cards.map(c => { const b = c.getBoundingClientRect(), a = c.querySelector('h3 a[href]'), ab = a && getComputedStyle(a, '::after');
+        return { inside: b.left >= r.left - 1 && b.right <= r.right + 1 && b.top >= r.top - 1 && b.bottom <= r.bottom + 1, w: b.width, h: b.height,
+          icon: !!c.querySelector('svg use'), img: c.querySelectorAll('img').length, link: !!a, cover: !!ab && ab.position === 'absolute' }; }) };
+  });
+  must(st.n >= 5, 'карток менше 5: ' + st.n);
+  must(st.sw <= st.cw, `ряд прокручується вбік (${st.sw} > ${st.cw})`);
+  must(st.oldRow === 0, 'лишились фото, стрілки або карусель .xs-sv');
+  st.cards.forEach((c, i) => {
+    must(c.inside, `картка ${i + 1} виходить за межі ряду`);
+    must(c.icon && !c.img, `картка ${i + 1}: має бути іконка (svg use) і без <img>`);
+    must(c.link && c.cover, `картка ${i + 1}: не посилання цілком`);
+    must(c.h >= 44 && c.w >= 44, `картка ${i + 1} < 44 px`);
+  });
+  if (w >= 1100) must(new Set(st.cards.map(c => Math.round(c.w))).size === 1, 'на ПК картки різної ширини');
+  if (w < 768) must(st.secH <= st.vh, `на телефоні блок вищий за екран (${Math.round(st.secH)} > ${st.vh})`);
+  const s0 = await row.evaluate(e => e.scrollLeft); await p.waitForTimeout(1500);
+  must(await row.evaluate(e => e.scrollLeft) === s0, 'ряд рухається сам');
+  const hs = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth); must(hs <= 0, `горизонтальна прокрутка сторінки ${hs}px`);
 });
 // Михайло 23.11.2026: стрілки каруселей — з боків ряду поверх фото (ліворуч і праворуч), не під рядом; кнопки паузи немає ніде
 for (const [path, w] of [['/', 402], ['/', 1440], ['/ar/', 402]]) await test('каруселі: стрілки з боків на фото, без ряду кнопок і паузи', path, w, async p => {
   await wakeup(p);
-  for (const sel of ['.xs-sv', '.xs-cv']) {
+  for (const sel of ['.xs-cv']) { // «Що ми робимо» — без каруселі з 24.11.2026 (тест вище)
     const row = p.locator(sel).first();
     await row.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(700);
     const st = await row.evaluate(e => {
@@ -154,7 +171,7 @@ await test('карусель «Наші проєкти»: під курсоро�
   const s2 = await row.evaluate(e => e.scrollLeft);
   must(s1 - a0 > 20 && s1 - s2 > 20, `стрілки не гортають (${a0}→${s1}→${s2})`);
 });
-for (const [path, sel] of [['/', '.hx-home~.xs-strip .xs-st'], ['/', '.xs-sv'], ['/', '.xs-cv'], ['/about', '.xs-bl'], ['/ar/', '.xs-cv']]) await test('перетягування мишкою тягне ряд, клік після нього не відкриває посилання: ' + sel, path, 1440, async p => {
+for (const [path, sel] of [['/', '.hx-home~.xs-strip .xs-st'], ['/', '.xs-cv'], ['/about', '.xs-bl'], ['/ar/', '.xs-cv']]) await test('перетягування мишкою тягне ряд, клік після нього не відкриває посилання: ' + sel, path, 1440, async p => {
   await wakeup(p);
   const row = p.locator(sel).first();
   await row.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(1200);

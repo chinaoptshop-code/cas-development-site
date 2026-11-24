@@ -153,7 +153,7 @@ def projects_html(lang='uk'):
         li.append(f'<li><a href="{href}" data-ll="{lng},{lat}" data-z="{z}" data-img="{img}" data-st="{st}" data-place="{e(place)}"'
                   + (' data-ok' if ok else '') + f'><b>{e(name)}</b><span>{e(place)} · {st}</span></a>'
                   f'<button type="button" class="cmap-fly" hidden aria-label="{t["fly"]}: {e(name)}">{PIN}</button></li>')
-    return (f'<section class="pmap" id="karta" aria-labelledby="pmap-h"><div class="lbl">{t["lbl"]}</div>'
+    return (f'<section class="pmap" id="karta" aria-labelledby="pmap-h">'
             f'<h2 class="pmap-h" id="pmap-h">{t["h2"]}</h2>'
             f'<p class="pmap-sub">{e(t["sub"])}</p>'  # без інструкції «натисніть на точку…» (08.11.2026, менше тексту)
             f'<div class="pmap-grid"><div class="cmap" data-cas-map="projects" data-load="visible" data-lang="{lang}" data-list="pmap-list" data-more="{e(t["more"])}">'
