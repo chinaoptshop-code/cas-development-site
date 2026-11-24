@@ -61,13 +61,17 @@ jobs:
           try: print(next((d['uuid'] for d in json.load(sys.stdin) if d['name']=='cas-shop'),''))
           except Exception: print('')")
           fi
-          if [ -n "$ID" ] && sed -i "s/__D1_ID__/$ID/" wrangler.toml && npx wrangler@3 d1 migrations apply cas-shop --remote; then
-            echo "D1 cas-shop: $ID"
+          # 24.11.2026: база Є, але міграції не застосувались (добовий ліміт D1, тимчасова відмова) — серверну частину НЕ прибираємо:
+          # інакше весь /api/* (форма заявки, чат, кабінет, CRM) віддає 404 до наступної викладки. Код без нової таблиці відповідає 503
+          # лише в новій функції; міграції застосує наступна викладка. Без кабінетів деплоїмо тільки коли бази немає зовсім (немає прав).
+          if [ -n "$ID" ] && sed -i "s/__D1_ID__/$ID/" wrangler.toml; then
+            if npx wrangler@3 d1 migrations apply cas-shop --remote; then echo "D1 cas-shop: $ID"
+            else echo "::warning::D1 cas-shop: міграції не застосовано (добовий ліміт чи тимчасова відмова бази) — викладаємо з серверною частиною, міграції застосує наступна викладка"; fi
             for K in TELEGRAM_BOT_TOKEN TELEGRAM_BOT_USERNAME GOOGLE_CLIENT_ID ADMIN_TG_IDS ADMIN_EMAILS OWNER_TG_ID OWNER_EMAIL GITHUB_CONTENT_TOKEN LEAD_INGEST_KEY LEADBOT_KEY SESSION_SECRET; do
               V="${!K}"; [ -n "$V" ] && printf '%s' "$V" | npx wrangler@3 pages secret put "$K" --project-name=cas-development-site >/dev/null 2>&1 && echo "secret $K ok"
             done
           else
-            echo "::warning::D1 недоступна (дозволи токена?) — деплой без кабінетів"
+            echo "::warning::D1 недоступна: базу cas-shop не знайдено й не створено (дозволи токена?) — деплой без кабінетів"
             rm -rf functions wrangler.toml
           fi
           exit 0
