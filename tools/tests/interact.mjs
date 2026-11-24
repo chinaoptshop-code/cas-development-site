@@ -1512,6 +1512,10 @@ for (const [path, w] of [['/en/', 1440], ['/', 402], ['/ar/', [820, 1180]]]) awa
   const r = await p.evaluate(async () => {
     const sec = document.querySelector('section.bz[data-js], section.bz'); if (!sec) return { skip: 1 };
     const jumped = new Promise(ok => { const mo = new MutationObserver(() => { if (sec.hasAttribute('data-bz-on')) { mo.disconnect(); scrollTo({ top: 0, behavior: 'instant' }); ok(true); } }); mo.observe(sec, { attributes: true }); setTimeout(() => ok(false), 9000); });
+    // форма тепер у вікні (24.11.2026) — сторінка коротша, і на високому екрані низ сцени лишався б у кадрі (тоді збірка за правилом чекає наступної прокрутки);
+    // запас унизу тримає сцену повністю над екраном, як раніше під секцією форми
+    const b0 = sec.getBoundingClientRect().bottom - (document.documentElement.scrollHeight - innerHeight - scrollY);
+    if (b0 > -40) { const sp = document.createElement('div'); sp.style.height = Math.ceil(b0 + 40) + 'px'; document.body.appendChild(sp); }
     scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }); // перша прокрутка вантажить скрипт сцени; сцена — вище екрана, збірка стартує
     const built = await jumped; await new Promise(r => setTimeout(r, 1500));
     return { built, y: Math.round(scrollY) };
