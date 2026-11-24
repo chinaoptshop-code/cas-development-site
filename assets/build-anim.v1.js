@@ -1304,7 +1304,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       layers.forEach(function (l) { l.k = -1; }); if (sc) render(cur);
       if (user) cl('build_anim_xray', v ? 'on' : 'off');
     }
-    ctl.appendChild(prev); if (!enc) ctl.appendChild(nav); ctl.appendChild(pb); ctl.appendChild(next); hd.appendChild(xb);
+    ctl.appendChild(prev); if (!enc) ctl.appendChild(nav); ctl.appendChild(pb); ctl.appendChild(next);
     var btns = [];
     nav.addEventListener('keydown', function (e) {
       var i = btns.indexOf(d.activeElement); if (i < 0) return;
@@ -1328,6 +1328,8 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       mats.innerHTML = (cpt && ui.sc ? grp('', 's', ['house', 'flat'], scene, ui.sc) : '') +
         (scene === 'house' ? (ui.cfg ? '<button type="button" class="bz-cb" aria-expanded="' + cfgOpen + '" aria-controls="' + cfg.id + '"><span aria-hidden="true">⚙</span> ' + esc(summ()) + '</button>' : grp(ui.mat, 'm', MATS, mat, ui.m)) :
           ui.fl ? grp(ui.fl.v, 'v', data.fv || ['new', 'old'], fv, ui.fl) : '');
+      // «Рентген мереж» — у тому самому ряду налаштувань сцени, не біля лінії прогресу (Михайло 24.11.2026 «окремі налаштування фічі на усі сторінки»)
+      mats.appendChild(xb);
       cfgHtml();
     }
     // конфігуратор будинку: технологія, тип, опції, стиль, площа + підказка про сумісність і орієнтир цін (лише «від» з CLAUDE.md)
@@ -1381,7 +1383,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       if (!mob && cfgOpen) setCfgOpen(false);
     }
     mats.addEventListener('click', function (e) {
-      var b = e.target.closest && e.target.closest('button'); if (!b || b.getAttribute('aria-pressed') === 'true') return;
+      var b = e.target.closest && e.target.closest('button'); if (!b || b === xb || b.getAttribute('aria-pressed') === 'true') return;
       if (b.hasAttribute('data-m') && scene === 'house') { C.m = b.getAttribute('data-m'); hint = hfix(C, 'm'); mat = C.m; fade = 1; rebuild(); cl('build_anim_mat', mat); return; }
       if (b.hasAttribute('data-m')) setMat(b.getAttribute('data-m'), 1);
       else if (b.hasAttribute('data-v')) { fv = b.getAttribute('data-v'); rebuild(); cl('build_anim_var', fv); }
