@@ -860,7 +860,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=09f142ca"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=f56769db"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; j.onerror = function () { [].forEach.call(d.querySelectorAll('section.bz[data-js]'), function (x) { if (x.getAttribute('data-js') === s) x.classList.add('bz-no'); }); }; d.head.appendChild(j); } // скрипт сцени не завантажився — без резерву висоти
@@ -1091,7 +1091,7 @@
    після тапу по іконці — сама ніколи. CHAT_PUBLIC (tools/site/flags.py) = True — іконки ставить генератор; поки False — нічого немає, крім
    режиму перевірки ?chat=1 (запамʼятовується в sessionStorage cas_chat): тоді іконки додає цей блок у ті самі ряди. Кабінет — без чату. */
 (function (W, d) {
-  /*chat:v*/var CHV = {js: "a77e47bd", css: "2c51cef0"};/*/chat:v*/
+  /*chat:v*/var CHV = {js: "a77e47bd", css: "c7b206c1"};/*/chat:v*/
   var on = false, ss = null;
   try { ss = W.sessionStorage; } catch (e) { /* noop */ }
   if (/[?&]chat=1(?:&|$)/.test(location.search)) { on = true; try { ss.setItem('cas_chat', '1'); } catch (e) { /* noop */ } }
