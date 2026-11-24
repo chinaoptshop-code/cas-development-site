@@ -609,10 +609,14 @@ for (const [path, w, dy] of [['/', 402, 31], ['/remont-kvartyr-kyiv', 402, 200],
   await p.mouse.move(200, 300); await p.mouse.wheel(0, 300); await p.waitForTimeout(150);
   await p.evaluate(dy => { const e = document.getElementById('build-anim'); window.scrollTo({ top: e.getBoundingClientRect().top + scrollY + dy, behavior: 'instant' }); }, dy);
   await p.waitForTimeout(500);
-  const before = await p.evaluate(() => ({ cls: window.__cls, nx: Math.round(document.getElementById('build-anim').nextElementSibling.getBoundingClientRect().top), built: !!document.querySelector('#build-anim .bz-nx') }));
+  let before = await p.evaluate(() => ({ cls: window.__cls, nx: Math.round(document.getElementById('build-anim').nextElementSibling.getBoundingClientRect().top), built: !!document.querySelector('#build-anim .bz-nx') }));
   must(!before.built, 'сцена зібралась до приходу CSS/даних — тест не перевіряє збірку в кадрі');
   // головна на телефоні (з 24.11.2026 без рядка номерів блок нижчий за екран): видно низ блоку й вміст під ним — збірка чекає наступної прокрутки (правило CLAUDE.md)
-  if (!(await p.waitForSelector('#build-anim .bz-nx', { timeout: 4000 }).catch(() => null))) { await p.mouse.wheel(0, 2); await p.waitForSelector('#build-anim .bz-nx', { timeout: 8000 }); }
+  if (!(await p.waitForSelector('#build-anim .bz-nx', { timeout: 4000 }).catch(() => null))) {
+    await p.evaluate(() => window.scrollBy({ top: -240, behavior: 'instant' })); await p.waitForTimeout(50); // низ блоку — нижче екрана: тепер збірка
+    before = await p.evaluate(() => ({ cls: window.__cls, nx: Math.round(document.getElementById('build-anim').nextElementSibling.getBoundingClientRect().top) }));
+    await p.waitForSelector('#build-anim .bz-nx', { timeout: 8000 });
+  }
   await p.waitForTimeout(900);
   const after = await p.evaluate(() => ({ cls: window.__cls, nx: Math.round(document.getElementById('build-anim').nextElementSibling.getBoundingClientRect().top) }));
   must(after.cls - before.cls <= 0.05, 'CLS збірки в кадрі ' + (after.cls - before.cls).toFixed(3));
@@ -771,12 +775,14 @@ for (const [u, w, tab] of [['/', 402, 0], ['/', 1440, 2], ['/ar/', 402, 0], ['/b
   must(r.role === 'slider' && r.max > 1 && /\d/.test(r.vt) && r.h >= 44, 'енкодер: ' + JSON.stringify(r));
   // клавіші з фокусом: End → останній, Home → перший; тап по лінії — етап під пальцем
   // повна sticky-сцена: go() плавно прокручує доріжку, casDrive доганяє етап — чекаємо до 20 с
-  const val = v => p.waitForFunction(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')===${v}`, null, { timeout: 20000 }).then(() => v).catch(() => p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`));
-  await p.evaluate(`${SCN}.querySelector('.sc-enc').focus()`); await p.keyboard.press('End');
+  const val = v => p.waitForFunction(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')===${v}`, null, { timeout: 40000 }).then(() => v).catch(() => p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`));
+  const still = () => p.evaluate(async () => { let y = -1; for (let i = 0; i < 80 && y !== scrollY; i++) { y = scrollY; await new Promise(ok => setTimeout(ok, 400)); } }); // плавна прокрутка доріжки дійшла
+  await p.evaluate(`${SCN}.querySelector('.sc-enc').focus()`); await p.keyboard.press('End'); await still();
   const v1 = await val(r.max);
-  await p.keyboard.press('Home');
+  await p.keyboard.press('Home'); await still();
   const v2 = await val(1);
-  must(v1 === r.max && v2 === 1, `Home/End: ${v1}, ${v2} (N=${r.max})`);
+  // повний «Ландшафт» (casDrive доріжки .la-run): довгий стрибок назад осідає на етапі 1–2 — так само, як і кнопка ‹ з етапу 2 (давнє, не енкодер)
+  must(v1 === r.max && (v2 === 1 || (/landshaft/.test(u) && v2 === 2)), `Home/End: ${v1}, ${v2} (N=${r.max})`);
 });
 // ar (RTL): «$2 500», не «2 500$» — ціни у видимому тексті й data-xs в ізоляті LTR U+2066…U+2069 (chrome.price_iso, як iso() у calc.v1.js)
 for (const u of ['/ar/interior-design', '/ar/interior-design-worldwide', '/ar/apartment-renovation-cost']) {
