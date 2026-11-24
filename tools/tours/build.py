@@ -148,7 +148,7 @@ INDEX = '''<!doctype html>
 <section class="tl-cta">
 <h2>{x[i_cta_h]}</h2>
 <p>{x[i_cta_p]}</p>
-<div class="tl-btns"><a class="tl-btn" href="{x[contact]}#zayavka">{x[i_cta_a]}</a><a class="tl-btn ghost" href="tel:+380978667755">+380 97 866 77 55</a></div>
+<div class="tl-btns"><a class="tl-btn" href="{x[contact]}#zayavka">{x[i_cta_a]}</a><a class="tl-btn ghost" href="tel:+380978667755">{x[call]}</a></div>
 </section>
 </main>
 </body></html>
@@ -489,6 +489,14 @@ X = {  # підписи сторінок мовою
                i_cta_h='هل تريد جولة ثلاثية الأبعاد <em>لعقارك</em>؟', i_cta_p='نصوّر بزاوية 360° ونجهّز جولة للبيع أو الإيجار أو لمعرض الأعمال، أو ننفّذ مشروع تصميم يمكن التجول فيه بالطريقة نفسها.',
                i_cta_a='أرسل طلبًا', i_empty='الجولات قريبًا.'),
 }
+# «Подзвонити» мовою сторінки замість номера телефону (Михайло 24.11.2026; номер текстом — лише на /contact)
+def _call_lbl(lang):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools/site')); import leadform
+    return html.escape(leadform._call(lang)[0])
+
+
+for _l in X:
+    X[_l].setdefault('call', _call_lbl(_l))
 
 
 def pre(lang):
@@ -559,7 +567,7 @@ def _info(t, a, related, lang):
             f'<nav class="ti-links" aria-label="{x["rel_aria"]}">' + ''.join(f'<a href="{html.escape(u)}">{html.escape(l)}</a>' for u, l in links) + '</nav>\n'
             + (f'<h2 class="ti-h">{x["others"]}</h2>\n<ul class="ti-rel">{rel}</ul>\n' if rel else '') +
             f'<p class="ti-cta">{x["cta"]}'
-            f'<a href="{x["contact"]}#zayavka">{x["cta_a"]}</a> · <a href="tel:+380978667755">+380 97 866 77 55</a>'
+            f'<a href="{x["contact"]}#zayavka">{x["cta_a"]}</a> · <a href="tel:+380978667755">{x["call"]}</a>'
             ' · <a href="https://t.me/+380978667755" target="_blank" rel="noopener">Telegram</a> · <a href="https://wa.me/380978667755" target="_blank" rel="noopener">WhatsApp</a>'
             ' · <a href="viber://chat?number=%2B380978667755">Viber</a></p>\n'
             '</main>')

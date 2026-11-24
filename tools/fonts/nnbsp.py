@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Шрифт з одного гліфа: вузький нерозривний пробіл U+202F завширшки 0.2em — роздільник тисяч у цінах («$1 100/м²»).
 
-Навіщо: у Cormorant Garamond (і Manrope кабінету) гліфа U+202F немає, Chrome (HarfBuzz) підставляє пів звичайного пробілу —
+Навіщо: у Manrope гліфа U+202F немає, Chrome (HarfBuzz) підставляє пів звичайного пробілу —
 ~0.1em (1.6 px при 16 px), і «$1 100» читається як «$1100». Символ у тексті не міняємо (правило власника 16.11.2026):
 окремі @font-face з unicode-range:U+202F у ТИХ САМИХ сімействах дають йому свій гліф — font-family ніде не змінюється.
 
@@ -9,7 +9,7 @@
   python3 tools/fonts/nnbsp.py --check   # блок на місці, шрифт у ньому читається, U+202F = 0.2em (код 1, якщо ні)
 
 Шрифт (≈ 0.3 КБ) вбудований у CSS як data:-URI (font-src 'self' data: у _headers): він є вже з критичним CSS, без запиту
-й без другого перемальовування цін після завантаження. Правила мусять стояти ПІСЛЯ @font-face Cormorant
+й без другого перемальовування цін після завантаження. Правила мусять стояти ПІСЛЯ @font-face Manrope / "Manrope H"
 (<style id="cas-fonts"> у <head> — раніше за crit.v1.css): серед граней одного сімейства з перетином unicode-range
 виграє оголошена останньою. Арабська (свій системний стек) — сімейство "CAS NN" першим у стеку html:lang(ar).
 Вертикальні метрики (0.7 / −0.2) менші за обидва шрифти сайту — гліф не збільшує висоту рядка.
@@ -22,10 +22,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 CSS = os.path.join(ROOT, 'assets', 'site-chrome.v1.css')
 RX = re.compile(r'/\*nn\*/.*?/\*/nn\*/', re.S)
 # сімейство, font-style, діапазон font-weight — ті самі, що в основних граней (chrome.FONTS_CSS)
-# публічний сайт — один шрифт (24.11.2026): Cormorant Garamond (заголовки) і "Cormorant Garamond Text" (текст, size-adjust у chrome.py);
-# грань без size-adjust — 0.2em обчисленого font-size (≈ 0.17em видимого гліфа тексту — як тонкий пробіл); Manrope кабінету — chrome.KAB_FONTS_CSS
-FACES = (('Cormorant Garamond', '', '300 700'), ('Cormorant Garamond', 'italic', '300 700'),
-         ('Cormorant Garamond Text', '', '300 700'), ('Cormorant Garamond Text', 'italic', '300 700'), ('CAS NN', '', ''))
+# один шрифт — Manrope (24.11.2026): текст Manrope і заголовки 'Manrope H' (chrome.FONTS_CSS); Cormorant — лише логотип, цін там немає
+FACES = (('Manrope', '', '200 800'), ('Manrope H', '', '500 800'), ('CAS NN', '', ''))
 UPM, ADV = 1000, 200          # 0.2em — типовий thin space
 ASC, DESC = 700, -200
 

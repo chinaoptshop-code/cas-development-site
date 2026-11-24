@@ -9,10 +9,10 @@
 .okd-badge{flex:none;border:1px solid var(--ac);color:var(--ac);border-radius:999px;padding:2px 10px;font-size:11px;letter-spacing:.14em;font-weight:700}
 .okd-head{padding:18px 18px 4px;display:grid;gap:10px}
 .okd-eb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);font-weight:700;margin:0}
-.okd-head h3{margin:0;font-size:var(--fs-h3);font-weight:400;font-family:"Cormorant Garamond","Cormorant Fallback",serif;line-height:1.15}
+.okd-head h3{margin:0;font-size:var(--fs-h3);font-weight:400;font-family:var(--fh);line-height:1.15}
 .okd-top{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:flex-end;justify-content:space-between}
-.okd-big{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:clamp(2.2rem,1.8rem + 1.4vw,3rem);line-height:1;color:var(--ac)}
-.okd-big small{display:block;font-family:inherit;font-size:var(--fs-small);color:var(--mu);font-family:var(--ff);margin-bottom:4px}
+.okd-big{font-family:var(--fh);font-size:clamp(2.2rem,1.8rem + 1.4vw,3rem);line-height:1;color:var(--ac)}
+.okd-big small{display:block;font-family:inherit;font-size:var(--fs-small);color:var(--mu);font-family:"Manrope","Manrope Fallback",sans-serif;margin-bottom:4px}
 .okd-chips{display:flex;flex-wrap:wrap;gap:6px}
 .okd-chips span{border:1px solid var(--ln);border-radius:999px;padding:4px 11px;font-size:var(--fs-small);color:var(--mu)}
 .okd-chips b{color:var(--tx)}
@@ -46,7 +46,7 @@
 .okd-feed{list-style:none;margin:0;padding:0;display:grid;gap:16px}
 .okd-feed>li{display:grid;grid-template-columns:62px 1fr;gap:14px}
 .okd-feed>li+li{border-top:1px solid var(--ln);padding-top:16px}
-.okd-fd b{display:block;font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:1.35rem;font-weight:500;line-height:1.1;color:var(--ac)}
+.okd-fd b{display:block;font-family:var(--fh);font-size:1.35rem;font-weight:500;line-height:1.1;color:var(--ac)}
 .okd-fd small{color:var(--mu);font-size:12px}
 .okd-fb{min-width:0;display:grid;gap:8px}
 .okd-fb p{margin:0;color:var(--mu);font-size:var(--fs-small)}

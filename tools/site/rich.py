@@ -166,7 +166,8 @@ def svc_icons(x):
         href = c.get('href') or next((u for u, _ in (c.get('links') or [])), '#')
         cards.append(f'<article class="xs-c"><svg class="xs-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="{sp}#{k}"/></svg>'
                      f'<div class="xs-cb"><h3><a href="{a(href)}">{e(c["h"])}</a></h3>'
-                     + (f'<p class="xs-pr">{e(c["price"])}</p>' if c.get('price') else '') + '</div></article>')
+                     # ціна лише в $ (Михайло 24.11.2026: «де перекреслив залиш ціну лише в долларах»): data-nofx — fx.py не дописує «(≈ …)»
+                     + (f'<p class="xs-pr"><span data-nofx>{e(c["price"])}</span></p>' if c.get('price') else '') + '</div></article>')
     return wrap(x, head(x) + f'<div class="xs-si" style="--n:{len(cards)}">' + ''.join(cards) + '</div>', 'xs-svc xs-svi')
 
 

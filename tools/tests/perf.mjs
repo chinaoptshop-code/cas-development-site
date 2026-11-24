@@ -89,7 +89,7 @@ const center = (p, sel, n = 0) => p.locator(sel).nth(n).evaluate(e => e.scrollIn
 const sceneReady = async (p, sel) => {
   await p.mouse.wheel(0, 300); await p.waitForTimeout(400);
   await p.locator(sel).scrollIntoViewIfNeeded(); await p.waitForSelector(sel + ' .bz-nx', { timeout: 15000 }); await p.waitForTimeout(1200);
-  const ap = p.locator(sel + ' .bz-ap').first(); if (await ap.count() && await ap.isVisible()) { await ap.click().catch(() => {}); await p.waitForTimeout(400); } // пауза автопрогравання
+  await p.evaluate(sel => { const e = document.querySelector(sel + ' .sc-enc'); if (e && e.getAttribute('data-st') === 'on') e.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true })); }, sel); await p.waitForTimeout(400); // пауза автопрогравання (пробіл на енкодері, 24.11.2026)
   await center(p, sel + ' .bz-nx');
 };
 const ACTS = [
@@ -99,6 +99,7 @@ const ACTS = [
   { name: 'бургер: відкрити', path: '/', only: 'phone', sel: '.sch-burger' },
   { name: 'бургер: закрити', path: '/', only: 'phone', prep: async (p, hit) => { await hit('.sch-burger'); await p.waitForTimeout(600); }, sel: '.sch-burger' },
   { name: 'перемикач мови: меню', path: '/services', sel: '.sch-ld summary' },
+  { name: 'сцена (головна): енкодер — тап на етап', path: '/', prep: p => sceneReady(p, '#build-anim'), sel: '#build-anim .sc-enc' },
   { name: 'сцена (головна): наступний етап', path: '/', prep: p => sceneReady(p, '#build-anim'), sel: '#build-anim .bz-nx', twice: true },
   { name: 'сцена (головна): попередній етап', path: '/', prep: async (p, hit) => { await sceneReady(p, '#build-anim'); await hit('#build-anim .bz-nx'); await p.waitForTimeout(900); }, sel: '#build-anim .bz-pv' },
   { name: 'сцена (головна): → з клавіатури', path: '/', only: 'desktop', prep: async p => { await sceneReady(p, '#build-anim'); await p.locator('#build-anim .bz-nx').focus(); }, key: 'ArrowRight' },

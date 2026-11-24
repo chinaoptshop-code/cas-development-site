@@ -1273,7 +1273,11 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     var run = el('div', 'bz-run'), pin = el('div', 'bz-pin'), side = el('div', 'bz-side'), fig = el('div', 'bz-fig');
     var skip = el('a', 'bz-skip'); skip.href = '#' + cta.id; skip.textContent = ui.skip;
     var hd = el('div', 'bz-hd'), ct = el('p', 'bz-ct'); ct.setAttribute('aria-hidden', 'true');
-    var bar = el('div', 'bz-bar', '<i></i>'), bi = bar.firstChild; hd.appendChild(ct); hd.appendChild(bar);
+    var bar = el('div', 'bz-bar', '<i></i>'), bi = bar.firstChild;
+    // Михайло 24.11.2026 «лиши тільки стрілки і лінію прогресу» → «замість нумерації постав енкодер»: лічильник «01 / N», рядок номерів і пауза
+    // не показуються; лінія прогресу — енкодер casEnc (site-chrome.v1.js). ct/bar/nav лишаються поза DOM (старий код їх оновлює без шкоди)
+    var enc = W.casEnc ? W.casEnc({ n: 2, go: function (i) { go(i); }, title: function (i) { var li = lis && lis[i]; return i < 0 ? (sec.querySelector('h2') || {}).textContent || '' : li ? li.querySelector('b').textContent : ''; }, label: (sec.querySelector('h2') || {}).textContent || '' }) : null;
+    if (enc) { hd.appendChild(enc.el); hd.appendChild(enc.sr); } else { hd.appendChild(ct); hd.appendChild(bar); }
     bar.addEventListener('click', function (e) { // прогрес-лінія клікабельна: етап за позицією
       var r = bar.getBoundingClientRect(), f = (e.clientX - r.left) / Math.max(1, r.width); if (d.documentElement.dir === 'rtl') f = 1 - f;
       go(Math.max(0, Math.min(n - 1, Math.floor(f * n))));
@@ -1300,7 +1304,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       layers.forEach(function (l) { l.k = -1; }); if (sc) render(cur);
       if (user) cl('build_anim_xray', v ? 'on' : 'off');
     }
-    ctl.appendChild(prev); ctl.appendChild(nav); ctl.appendChild(pb); ctl.appendChild(next); hd.appendChild(xb);
+    ctl.appendChild(prev); if (!enc) ctl.appendChild(nav); ctl.appendChild(pb); ctl.appendChild(next); hd.appendChild(xb);
     var btns = [];
     nav.addEventListener('keydown', function (e) {
       var i = btns.indexOf(d.activeElement); if (i < 0) return;
@@ -1480,7 +1484,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
         nav.appendChild(b);
         return b;
       });
-      run.style.setProperty('--n', n);
+      run.style.setProperty('--n', n); if (enc) enc.setN(n);
       C.m = mat;
       OV = null; // кадр (viewBox, резерв) — завжди з типового вигляду; повернутий огляд накладає orbRe() у кінці build()
       if (pre && pre.k === preKey()) { sc = pre.sc; bb = pre.bb; wb = pre.wb; } // геометрію вже пораховано окремою задачею (pregen)
@@ -1656,6 +1660,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       }
       bi.style.transform = 'scaleX(' + clamp(s / n).toFixed(4) + ')';
       var a = Math.min(n - 1, Math.max(0, Math.floor(s)));
+      if (enc) enc.set(a, n > 1 ? clamp(s / (n - 1)) : 1);
       if (a !== act) {
         act = a;
         ct.innerHTML = '<b>' + ('0' + (a + 1)).slice(-2) + '</b> / ' + ('0' + n).slice(-2);

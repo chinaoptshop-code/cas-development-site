@@ -70,23 +70,23 @@ PHONE, PHONE_TXT = '+380978667755', '+380 97 866 77 55'
 SKIP = {'privacy.html', 'terms.html'}
 
 
-# Власні шрифти (/fonts/, OFL). Один шрифт на весь публічний сайт — Cormorant Garamond (Михайло 24.11.2026: «чи можна зробити
-# весь шрифт однаковий на всьому сайті такий як наприклад шрифт назви компанії cas development» → «Один шрифт на весь сайт»).
-# Заголовки й логотип — "Cormorant Garamond" як і раніше; текст (абзаци, кнопки, меню, поля, ціни) — "Cormorant Garamond Text":
-# ті самі файли (браузер вантажить їх один раз), але з size-adjust TXT_ADJ — у Cormorant мала x-висота (0.386 em проти 0.54
-# у Manrope), тож при тих самих font-size (rem-токени, px сцен) текст інакше став би дрібним. Обчислений font-size не
-# змінюється (поля ≥ 16 px, --fs-small ≥ 13 px), більшає лише видимий гліф. Стек тексту — змінна --ff (site-chrome.v1.css).
-# Кабінет (/kabinet…) лишається на Manrope: свій блок KAB_FONTS_CSS із --ff = Manrope (рішення координатора 24.11.2026).
+# Власні шрифти (/fonts/, OFL). Один шрифт на весь сайт — Manrope (Михайло 24.11.2026: «Зроби всюди такий шрифт» → «Усе рівним
+# шрифтом»: заголовки, ціни, меню й увесь текст без засічок; попередній варіант «усе Cormorant» скасовано того ж дня).
+# Cormorant Garamond — лише логотип CAS.DEVELOPMENT (.sch-logo, латиниця): одна грань cormorant-latin.
+# Текст — var(--ff) = Manrope як до 24.11.2026. Заголовки й великі цифри — var(--fh) = "Manrope H": ті самі файли Manrope,
+# але size-adjust H_ADJ (розміри заголовків у CSS лишились під Cormorant — у Manrope при тому ж кеглі гліф ширший і вищий)
+# і font-weight 500…800 (вага 300/400, розрахована на Cormorant, затиснута до 500 — варіативна вісь wght).
 # Підмножини cyrillic / latin / latin-ext (pl: ą ć ę ł ń ś ź ż; de/fr/es вміщуються в latin U+0000-00FF). Браузер вантажить
-# файл лише коли на сторінці є символи з його unicode-range, тож uk/ru-сторінки latin-ext не тягнуть. Блок <style id="cas-fonts">
-# (cyrillic + latin) нормалізує apply() на всіх сторінках; @font-face latin-ext — у /assets/site-chrome.v1.css.
+# файл лише коли на сторінці є символи з його unicode-range. Блок <style id="cas-fonts"> (cyrillic + latin) нормалізує apply()
+# на всіх сторінках; @font-face latin-ext — у /assets/site-chrome.v1.css.
 _CYR = 'U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116'
 _LAT = ('U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, '
         'U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD')
 _LATX = ('U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, '
          'U+2020, U+20A0-20AB, U+20AD-20B3, U+20B5-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF')  # без ₴ (U+20B4): інакше uk-сторінки з цінами тягнуть latin-ext
-TXT = 'Cormorant Garamond Text'
-TXT_ADJ = 118  # %: видимий розмір тексту Cormorant відносно font-size (підібрано по знімках 24.11.2026; та сама цифра — у site-chrome.v1.css latin-ext)
+H_ADJ = 82  # %: видимий розмір заголовків Manrope відносно font-size (та сама цифра — latin-ext "Manrope H" у site-chrome.v1.css і nnbsp.py)
+FF = '"Manrope","Manrope Fallback",system-ui,sans-serif'
+FH = '"Manrope H","Manrope H Fallback",system-ui,sans-serif'
 
 
 def _face(fam, style, wght, f, rng, adj=''):
@@ -96,47 +96,20 @@ def _face(fam, style, wght, f, rng, adj=''):
             f'src:url(/fonts/{f}.woff2);unicode-range:{rng}{adj}}}')
 
 
-_COR = (('Cormorant Garamond', 'normal', '300 700', 'cormorant', ''), ('Cormorant Garamond', 'italic', '300 700', 'cormorant-italic', ''),
-        (TXT, 'normal', '300 700', 'cormorant', f';size-adjust:{TXT_ADJ}%'), (TXT, 'italic', '300 700', 'cormorant-italic', f';size-adjust:{TXT_ADJ}%'))
-_COR_FB = ('@font-face{font-family:"Cormorant Fallback";src:local("Times New Roman"),local("Times"),local("Liberation Serif");'
-           'size-adjust:96.1%;ascent-override:96.1%;descent-override:29.9%;line-gap-override:0%}'
-           # той самий запасний шрифт для тексту, збільшений як "Cormorant Garamond Text" (overrides множаться на size-adjust)
-           '@font-face{font-family:"Cormorant Text Fallback";src:local("Times New Roman"),local("Times"),local("Liberation Serif");'
-           f'size-adjust:{round(96.1 * TXT_ADJ / 100, 1)}%;ascent-override:96.1%;descent-override:29.9%;line-gap-override:0%}}')
-# основний текст — вага 500 (400 Cormorant на темному тлі затонка), цифри — лінійні (у Cormorant типово старого стилю: «$550» скакав)
-_TXT_BASE = 'body{font-weight:500;font-variant-numeric:lining-nums}'
 FONTS_CSS = ''.join(
-    _face(fam, st, w, f'{base}-{sub}', rng, adj)
-    for fam, st, w, base, adj in _COR
+    _face(fam, 'normal', w, f'manrope-{sub}', rng, adj)
+    for fam, w, adj in (('Manrope', '200 800', ''), ('Manrope H', '500 800', f';size-adjust:{H_ADJ}%'))
     for sub, rng in (('cyrillic', _CYR), ('latin', _LAT))
-) + _COR_FB + _TXT_BASE
-FONTS_TAG = f'<style id="cas-fonts">{FONTS_CSS}</style>'
-
-
-def _nn_manrope():
-    """Грань U+202F 0.2em для Manrope (кабінет): той самий вбудований шрифт, що в блоці /*nn*/ site-chrome.v1.css."""
-    try:
-        css = open(os.path.join(ROOT, 'assets', 'site-chrome.v1.css'), encoding='utf-8').read()
-        m = re.search(r'/\*nn\*/.*?src:(url\(data:font/woff2;base64,[A-Za-z0-9+/=]+\))', css, re.S)
-    except OSError:
-        m = None
-    return f'@font-face{{font-family:"Manrope";font-weight:200 800;src:{m.group(1)};unicode-range:U+202F}}' if m else ''
-
-
-# Кабінет клієнта, кабінет працівника й адмінка — без змін: Manrope (текст) + Cormorant Garamond (заголовки), --ff = Manrope;
-# latin-ext і роздільник тисяч Manrope тут (у спільному site-chrome.v1.css Manrope більше немає)
-KAB_FONTS_CSS = ''.join(
-    _face(fam, st, w, f'{base}-{sub}', rng)
-    for fam, st, w, base in (('Manrope', 'normal', '200 800', 'manrope'), ('Cormorant Garamond', 'normal', '300 700', 'cormorant'),
-                             ('Cormorant Garamond', 'italic', '300 700', 'cormorant-italic'))
-    for sub, rng in (('cyrillic', _CYR), ('latin', _LAT))
-) + _face('Manrope', 'normal', '200 800', 'manrope-latin-ext', _LATX) + _nn_manrope() + (
+) + _face('Cormorant Garamond', 'normal', '300 700', 'cormorant-latin', _LAT) + (
     '@font-face{font-family:"Manrope Fallback";src:local("Arial"),local("Helvetica"),local("Liberation Sans");size-adjust:96.5%;'
     'ascent-override:110.5%;descent-override:31.1%;line-gap-override:0%}'
+    # той самий запасний шрифт для заголовків, зменшений як "Manrope H" (overrides множаться на size-adjust)
+    '@font-face{font-family:"Manrope H Fallback";src:local("Arial"),local("Helvetica"),local("Liberation Sans");'
+    f'size-adjust:{round(96.5 * H_ADJ / 100, 1)}%;ascent-override:110.5%;descent-override:31.1%;line-gap-override:0%}}'
     '@font-face{font-family:"Cormorant Fallback";src:local("Times New Roman"),local("Times"),local("Liberation Serif");'
     'size-adjust:96.1%;ascent-override:96.1%;descent-override:29.9%;line-gap-override:0%}'
-    ':root:root{--ff:"Manrope","Manrope Fallback",system-ui,sans-serif;--ff1:"Manrope";--nav-w:500;--nav-ls:.18em}')
-KAB_FONTS_TAG = f'<style id="cas-fonts">{KAB_FONTS_CSS}</style>'
+    f':root{{--ff:{FF};--fh:{FH}}}')
+FONTS_TAG = f'<style id="cas-fonts">{FONTS_CSS}</style>'
 FONTS_RX = re.compile(r'<style id="cas-fonts">.*?</style>', re.S)
 
 
@@ -243,10 +216,9 @@ def nbsp_prices(s, lang=None):
     return head + ''.join(parts)
 
 
-def fonts_block(s, rel=''):
-    """Єдиний блок @font-face (див. FONTS_CSS) на сторінці; кабінет — свій (KAB_FONTS_CSS, Manrope)."""
-    tag = KAB_FONTS_TAG if rel.startswith('kabinet') else FONTS_TAG
-    return FONTS_RX.sub(lambda m: tag, s, count=1)
+def fonts_block(s):
+    """Єдиний блок @font-face (див. FONTS_CSS) на сторінці."""
+    return FONTS_RX.sub(lambda m: FONTS_TAG, s, count=1)
 
 import i18n  # реєстр мов, hreflang-кластери (tools/site/i18n.py)
 import oztext  # тексти про Оздобу, поки вона прихована (tools/site/oztext.py)
@@ -450,6 +422,14 @@ CALC_SHORT = {'uk': 'Калькулятор', 'ru': 'Калькулятор', 'e
               'fr': 'Calculateur', 'pt': 'Calculadora', 'de': 'Rechner', 'zh': '计算器', 'ar': 'الحاسبة'}
 
 
+def _call_l(lang):
+    """«Подзвонити» мовою сторінки (leadform._call) — підпис іконки дзвінка в шапці, мобільному меню й футері замість номера
+    (Михайло 24.11.2026: «Номери етапів під сценою, і номери телефонів — лиши тільки стрілки…»); номер текстом — лише на /contact."""
+    import leadform
+    c = leadform._call(lang)
+    return html.escape(c[0] if c else 'Call', quote=True)
+
+
 def header(lang, path, alts, tools='', cta_href=None):
     t = T[lang]
     items = ''.join(f'<a href="{h}"' + (' aria-current="page"' if current(lang, path, h) else '') + f'>{n}</a>' for h, n in _live(t['nav']))
@@ -485,7 +465,7 @@ def header(lang, path, alts, tools='', cta_href=None):
         f'  <nav class="sch-nav" aria-label="{t["nav_label"]}">{nav_items}</nav>\n'
         f'  <div class="sch-act">{tools_html}'
         f'<div class="sch-lang" role="group" aria-label="{t["lang_label"]}">{lang_menu(lang, alts, t["lang_label"])}</div>{kab}'
-        f'<a class="sch-tel" href="tel:{PHONE}">{PHONE_SVG}<span>{PHONE_TXT}</span></a>'
+        f'<a class="sch-tel" href="tel:{PHONE}" aria-label="{_call_l(lang)}" title="{_call_l(lang)}">{PHONE_SVG}</a>'
         f'<a class="sch-cta" href="{cta}">{t["cta"]}</a>'
         f'<button class="sch-burger" type="button" aria-expanded="false" aria-controls="sch-menu" aria-label="{t["menu_open"]}"'
         f' data-open="{t["menu_open"]}" data-close="{t["menu_close"]}">{BURGER}</button></div>\n'
@@ -494,7 +474,7 @@ def header(lang, path, alts, tools='', cta_href=None):
         f'  <div class="sch-mq">{quick}</div>\n'
         f'  <nav class="sch-mnav" aria-label="{t["nav_label"]}">{items}</nav>\n'
         f'  <div class="sch-mlang" role="group" aria-label="{t["lang_label"]}">{lang_links(lang, alts, "sch-lang")}</div>\n'
-        f'  <div class="sch-mcta"><a class="sch-cta" href="{cta}">{t["cta"]}</a><a class="sch-mtel" href="tel:{PHONE}">{PHONE_SVG}{PHONE_TXT}</a></div>\n'
+        f'  <div class="sch-mcta"><a class="sch-cta" href="{cta}">{t["cta"]}</a><a class="sch-mtel" href="tel:{PHONE}">{PHONE_SVG}{_call_l(lang)}</a></div>\n'
         f'  <div class="sch-mmsg" role="group" aria-label="{t["msg"]}">{msg}</div>\n'
         '</div></div>\n'
         '</header><!--/chrome:h-->'
@@ -516,7 +496,9 @@ def footer(lang, alts, cta=None):
     # без видимого підпису «Месенджери» — лише іконки (Михайло 21.11.2026), підпис лишається в aria-label групи
     soc_l = t.get('soc') or SOC_LABEL.get(lang, SOC_LABEL['en'])
     row = [x for x in MSG if x[0] not in SOCIAL_K] + SOCIAL
-    soc = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank"' if u.startswith('http') else '')
+    # дзвінок — перша іконка ряду (Михайло 24.11.2026: «номери телефонів… прибери»): номер текстом лише на /contact, tel: той самий
+    soc = f'<a class="bi bi-tel" href="tel:{PHONE}" aria-label="{_call_l(lang)}" title="{_call_l(lang)}"></a>'
+    soc += ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank"' if u.startswith('http') else '')
                   + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}" title="{n}"></a>' for k, n, u in row)
     soc += flags.chat_icon(lang)  # чат на сайті — ще одна іконка ряду, коли CHAT_PUBLIC (tools/site/flags.py)
     groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
@@ -531,7 +513,7 @@ def footer(lang, alts, cta=None):
         '  <div class="scf-top">\n'
         # без підпису студії й заголовка «Контакти» (Михайло 24.11.2026): логотип, адреса й телефон — один блок, «Контакти» — aria-label групи
         f'    <div class="scf-brand">{LOGO.format(home=HOME[lang], label=t["home_label"])}'
-        f'<div class="scf-col" role="group" aria-label="{t["contacts"]}"><address>{t["address"]}</address><a class="scf-tel" href="tel:{PHONE}">{PHONE_TXT}</a></div></div>\n'
+        f'<div class="scf-col" role="group" aria-label="{t["contacts"]}"><address>{t["address"]}</address></div></div>\n'
         + (f'    <a class="btn main scf-cta" href="{cta}">{FOOT_CTA.get(lang, FOOT_CTA["en"])}</a>\n' if cta else '')
         + f'    <div class="scf-col scf-ms"><div class="scf-soc" role="group" aria-label="{t["msg"]} · {soc_l}">{soc}</div></div>\n'
         '  </div>\n'
@@ -755,7 +737,7 @@ MBAR_CSS = ('<!--m-fix--><style id="m-fix">\n.mbar{display:none}\n@media(max-wid
             'padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(14,13,12,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);'
             'border-top:1px solid rgba(191,145,72,.25)}\n'
             '.mbar a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:46px;border-radius:12px;'
-            'font:600 var(--fs-small)/1 var(--ff);text-decoration:none;color:#f3eee6;border:1px solid rgba(191,145,72,.35)}\n'
+            'font:600 var(--fs-small)/1 "Manrope","Manrope Fallback",system-ui,sans-serif;text-decoration:none;color:#f3eee6;border:1px solid rgba(191,145,72,.35)}\n'
             '.mbar a.mb-call{background:#bf9148;color:#14120f;border-color:#bf9148}\n.mbar svg{width:18px;height:18px;flex:none}\n.mbar img{width:32px;height:32px;flex:none}\n}\n</style>')
 _PHONE_SVG = ('<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 '
               '.6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>')
@@ -1218,7 +1200,7 @@ def apply(s, rel):
     import lbox  # один лайтбокс фото (tools/site/lbox.py → /assets/lightbox.v1.js): data-lb з ширинами, без інлайн-лайтбоксів
     s = lbox.apply(s, rel)
     s = versions(s)
-    s = fonts_block(s, rel)
+    s = fonts_block(s)
     s = call_label(s, lang)
     s = nbsp_prices(s, lang)
     s = prices_all(s, lang)

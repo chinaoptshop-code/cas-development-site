@@ -13,7 +13,7 @@ function casCost(k, R, a, t) { var i = R ? 1 : 0, v = casRate(k, R, t); if (v ==
 /* число з поля вводу: кома або крапка, пробіли між тисячами; NaN — не число */
 function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202f]/g, '').replace(',', '.'); return /^[-+]?(\d+\.?\d*|\.\d+)$/.test(s) ? +s : NaN; }
 /*/rates*/
-  var sdU = null; // casSide (site-chrome.v1.js): панель компактної сцени головної — лічильник, прогрес, номери етапів
+  var sdU = null, enc = null; // casSide (site-chrome.v1.js): панель компактної сцени головної — лічильник, прогрес, номери етапів
   var W = window, d = document, sec = d.querySelector('section.la[data-la]');
   if (!sec || sec.__la) return; sec.__la = 1;
   var drive = null, RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -291,7 +291,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     if (i !== shown || force) {
       shown = i;
       cap.innerHTML = '<b>' + esc(ST[i][0]) + '</b><span>' + esc(ST[i][1]) + '</span>';
-      cnt.textContent = (i + 1) + ' ' + ui.of + ' ' + N; if (sdU) sdU(i);
+      if (enc) enc.set(i); else cnt.textContent = (i + 1) + ' ' + ui.of + ' ' + N; if (sdU) sdU(i);
       live.textContent = (i + 1) + '/' + N + ': ' + ST[i][0];
       vbT = target(i);
       if (i === N - 1) cl('la_end');
@@ -354,7 +354,9 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     var nav = el('div', 'la-nav'), pb = el('button', 'la-prev', '‹') /* RTL: Unicode сам віддзеркалює ‹ › (Bidi_Mirrored), тож символи ті самі, що в LTR */, nb = el('button', 'la-next', '›');
     pb.type = nb.type = 'button'; pb.setAttribute('aria-label', ui.prev); nb.setAttribute('aria-label', ui.next);
     pb.addEventListener('click', function () { go(shown - 1); }); nb.addEventListener('click', function () { go(shown + 1); });
-    cnt = el('span', 'la-cnt'); cap = el('p', 'la-cap'); live = el('span', 'la-live'); live.setAttribute('aria-live', 'polite');
+    cnt = el('span', 'la-cnt');
+    // повна сцена: замість лічильника «3 з 16» — енкодер етапів (casEnc, Михайло 24.11.2026); компактна — енкодер у casSide
+    if (!RM && !d.querySelector('.hx-home') && W.casEnc) { enc = W.casEnc({ n: N, go: function (i) { go(i); }, title: function (i) { return i < 0 ? sec.querySelector('h2').textContent : (ST[i] || [''])[0]; }, label: sec.querySelector('h2').textContent }); cnt = enc.el; } cap = el('p', 'la-cap'); live = el('span', 'la-live'); live.setAttribute('aria-live', 'polite');
     nav.appendChild(pb); nav.appendChild(cnt); nav.appendChild(nb);
     stick.appendChild(svg); stick.appendChild(cap); stick.appendChild(nav); stick.appendChild(live);
     var estEl = el('p', 'la-est'); estEl.textContent = est();

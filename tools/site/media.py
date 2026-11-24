@@ -40,7 +40,7 @@ T = {
                vid='Videos from our sites', vid_p='Videos from our YouTube channel.', chan='CAS on YouTube →', play='Play video', yt='YouTube'),
 }
 e = lambda s: html.escape(s, quote=True)
-H2 = 'font-family:\'Cormorant Garamond\',\'Cormorant Fallback\',Georgia,serif;font-weight:300;font-size:var(--fs-h2);line-height:1.15;margin:0 0 10px'
+H2 = 'font-family:var(--fh);font-weight:300;font-size:var(--fs-h2);line-height:1.15;margin:0 0 10px'
 SEC = 'padding:56px 16px;border-top:1px solid var(--ln,rgba(191,145,72,.18))'
 LEAD = 'color:var(--mu);margin:0 0 22px;max-width:34.2em'
 

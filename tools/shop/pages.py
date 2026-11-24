@@ -32,7 +32,7 @@ CSS = """
 .ord{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--surface)}
 .ord+.ord{margin-top:12px}
 .ord-h{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;justify-content:space-between}
-.ord-h b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h3)}
+.ord-h b{font-family:var(--fh);font-size:var(--fs-h3)}
 .st{border:1px solid var(--brass);color:var(--glow);border-radius:999px;padding:3px 10px;font-size:var(--fs-small)}
 .ord ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:var(--fs-small)}
 .ord .tot{margin-top:8px;font-weight:700;color:var(--glow)}

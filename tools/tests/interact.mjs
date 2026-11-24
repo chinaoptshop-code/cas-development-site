@@ -100,6 +100,9 @@ for (const w of [402, 1440]) await test('плитки data-c="x": розгорт
 });
 // Михайло 24.11.2026: «Що ми робимо» на головних — усі послуги одразу, без прогортування; іконки замість фото (rich.svc_icons)
 for (const [path, w] of [['/', 402], ['/', 1440], ['/ar/', 402], ['/de/', 402], ['/de/', 1440], ['/', 820]]) await test('«Що ми робимо»: усі картки видно одразу, іконки, без каруселі', path, w, async p => {
+  // ціна лише в $ (Михайло 24.11.2026: «де перекреслив залиш ціну лише в долларах»): без «(≈ …)» і без слова «проєкт» у мінімумі
+  const fx = await p.evaluate(() => [...document.querySelectorAll('.xs-svi .xs-pr')].map(e => e.textContent));
+  must(fx.length && !fx.some(t => /≈/.test(t)) && !/проєкт|Mindestprojekt|minimum project/i.test(fx.join(' ')), '«Що ми робимо»: друга валюта або «проєкт» у ціні: ' + fx.join(' | '));
   await wakeup(p);
   const row = p.locator('.hx-home~.xs-svc .xs-si').first();
   must(await row.count(), 'немає ряду .xs-si');
@@ -237,8 +240,8 @@ for (const w of [402, 1440]) await test('сцена на головній: кл�
   await wakeup(p);
   const sec = p.locator('#build-anim');
   await sec.scrollIntoViewIfNeeded(); await p.waitForTimeout(1500);
-  await p.waitForSelector('#build-anim .bz-nav .bz-b', { timeout: 10000 });
-  const cur = () => p.evaluate(() => [...document.querySelectorAll('#build-anim .bz-nav .bz-b')].findIndex(b => b.getAttribute('aria-current') === 'step'));
+  await p.waitForSelector('#build-anim .sc-enc', { timeout: 10000 });
+  const cur = () => p.evaluate(() => (+(document.querySelector('#build-anim .sc-enc')||{getAttribute:()=>0}).getAttribute('aria-valuenow')-1));
   const pause = p.locator('#build-anim .la-play, #build-anim [class*="play"]').first();
   if (await pause.count()) { const pr = await pause.getAttribute('aria-pressed'); if (pr !== 'true') await pause.click().catch(() => {}); }
   await p.waitForTimeout(300);
@@ -261,14 +264,14 @@ for (const w of [402, 1440]) await test('сцена на головній: кл�
 // сцени головних (QA 18.11.2026): активна сцена — секція з перемикачем вкладок; кнопки номерів етапів — .sc-n (casSide) або .bz-nav (Будинок/Квартира)
 const SCN = `(()=>{const ss=[...document.querySelectorAll('section.bz')].filter(s=>s.offsetParent&&s.getBoundingClientRect().height>50);return ss.find(x=>x.querySelector('nav.la-tab'))||ss[0]})()`;
 const scTab = async (p, i) => { const a = p.locator('section.bz nav.la-tab a').nth(i); await a.scrollIntoViewIfNeeded(); await a.click(); await p.waitForTimeout(2500); await p.evaluate(`${SCN}.scrollIntoView({block:'start'})`); await p.waitForTimeout(600); };
-const scGo = (p, k) => p.evaluate(`(()=>{const b=[...${SCN}.querySelectorAll('.sc-n,.bz-nav button')];b.at(${k}).click();return b.length})()`);
+const scGo = (p, k) => p.evaluate(`(()=>{const e=${SCN}.querySelector('.sc-enc'),n=+e.getAttribute('aria-valuemax'),i=${k}<0?n+${k}:${k};e.__go(i);return n})()`);
 // перемикач сцен головної не рухає сторінку (19.11.2026): H2 і панелі вкладок різної висоти давали стрибок до ~70 px (телефон) і ~50 px (ПК).
 // Тепер: спільний відступ H2 і 2 рядки під H2 на телефоні (site-chrome.v1.css) + секція тримає висоту найвищої показаної вкладки (завантажувач сцен).
 // Перше коло — блок може лише підрости (≤ 30 px телефон, ≤ 60 px ПК: довга назва на 2 рядки); друге коло — висота не змінюється зовсім.
 for (const w of [402, 1440]) await test('перемикач сцен головної: висота блоку не стрибає між вкладками', '/', w, async p => {
   await wakeup(p);
   await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
-  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 }); await p.waitForTimeout(800);
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .sc-enc', { timeout: 10000 }); await p.waitForTimeout(800);
   const H = () => p.evaluate(`Math.round(${SCN}.getBoundingClientRect().height)`);
   const tab = async i => { const a = p.locator('section.bz nav.la-tab a').nth(i); await a.scrollIntoViewIfNeeded(); await a.click(); await p.waitForFunction(i => { const n = document.querySelector('section.bz nav.la-tab'); return n && n.getAttribute('aria-busy') !== 'true' && n.querySelectorAll('a')[i].hasAttribute('aria-current'); }, i, { timeout: 10000 }); await p.waitForTimeout(1800); return H(); };
   const n = await p.locator('section.bz nav.la-tab a').count(); must(n === 6, 'вкладок перемикача: ' + n);
@@ -285,7 +288,7 @@ for (const w of [402, 1440]) await test('перемикач сцен голов�
 for (const vp of [[852, 393], [932, 430]]) await test('компактна сцена на альбомному телефоні: кадр і панель — у межах екрана', '/', vp, async p => {
   await wakeup(p);
   await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
-  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 }); await p.waitForTimeout(800);
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .sc-enc', { timeout: 10000 }); await p.waitForTimeout(800);
   const fit = () => p.evaluate(`(()=>{const r=${SCN}.querySelector('.bz-pin,.la-stick,.rp-grid').getBoundingClientRect(),hd=document.querySelector('header').getBoundingClientRect().height;return {row:Math.round(r.height),avail:Math.round(innerHeight-hd),next:!!${SCN}.querySelector('.bz-nx,.sc-next,.la-next')}})()`);
   for (const i of [0, 2, 3]) {
     if (i) { const a = p.locator('section.bz nav.la-tab a').nth(i); await a.scrollIntoViewIfNeeded(); await a.click(); await p.waitForTimeout(2600); }
@@ -300,10 +303,10 @@ await test('компактна сцена: рестарт після виход�
   await wakeup(p);
   await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
   await p.locator('#build-anim').scrollIntoViewIfNeeded();
-  await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
+  await p.waitForSelector('#build-anim .sc-enc', { timeout: 10000 });
   await p.evaluate(() => document.querySelector('#build-anim .bz-fig').scrollIntoView({ block: 'center' }));
-  await p.waitForFunction(() => +(document.querySelector('#build-anim .bz-ct').textContent.slice(0, 2)) >= 3, null, { timeout: 12000 }); // автопрогравання: 1.6 с + 3.5 с на етап
-  await p.evaluate(() => { const c = document.querySelector('#build-anim .bz-ct'); window.__ct = []; new MutationObserver(() => window.__ct.push(c.textContent.slice(0, 2))).observe(c, { childList: true, subtree: true, characterData: true }); });
+  await p.waitForFunction(() => +document.querySelector('#build-anim .sc-enc').getAttribute('aria-valuenow') >= 3, null, { timeout: 12000 }); // автопрогравання: 1.6 с + 3.5 с на етап
+  await p.evaluate(() => { const c = document.querySelector('#build-anim .sc-enc'); window.__ct = []; new MutationObserver(() => window.__ct.push(('0' + c.getAttribute('aria-valuenow')).slice(-2))).observe(c, { attributes: true, attributeFilter: ['aria-valuenow'] }); });
   await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(4800);
   const away = await p.evaluate(() => window.__ct.splice(0));
   must(!away.length, 'сцена поза кадром перемикала етапи: ' + away.join(' '));
@@ -315,7 +318,7 @@ await test('компактна сцена: рестарт після виход�
 //    перетягування обертає (не етап), «скинути» — рівно та сама розмітка кадру, вертикальний свайп — сторінка, щипок і Ctrl+колесо — масштаб моделі
 //    (масштаб сторінки — 1), тап у чверті — етап, кнопки + − ↺ і клавіші, повернута модель будує наступні етапи без помилок, RTL, reduced-motion, інші сцени — як були
 const orb = p => p.evaluate(() => { const s = document.querySelector('#build-anim'); return s && s.__bzOrb ? s.__bzOrb() : null; });
-const bzStep = p => p.evaluate(() => [...document.querySelectorAll('#build-anim .bz-nav .bz-b')].findIndex(b => b.getAttribute('aria-current') === 'step'));
+const bzStep = p => p.evaluate(() => (+(document.querySelector('#build-anim .sc-enc')||{getAttribute:()=>0}).getAttribute('aria-valuenow')-1));
 // розмітка кадру без пулу частинок (координати хмарок пилу випадкові): камера, viewBox, візерунки
 const bzSnap = p => p.evaluate(() => { const s = document.querySelector('#build-anim .bz-fig > svg'), c = s.querySelector('g.bz-cam').cloneNode(true); c.querySelectorAll('.bz-pfs').forEach(e => e.remove()); return c.innerHTML + '|' + s.getAttribute('viewBox') + '|' + s.querySelector('defs').innerHTML; });
 const bzNodes = p => p.evaluate(() => { const c = document.querySelector('#build-anim .bz-fig > svg g.bz-cam'); return c.querySelectorAll('*').length - c.querySelectorAll('.bz-pfs, .bz-pfs *').length; });
@@ -323,8 +326,8 @@ async function bzReady(p) {
   await wakeup(p);
   await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
   await p.locator('#build-anim').scrollIntoViewIfNeeded();
-  await p.waitForSelector('#build-anim .bz-nav .bz-b', { timeout: 15000 });
-  await p.evaluate(() => { const a = document.querySelector('#build-anim .bz-ap'); if (a && a.getAttribute('data-st') === 'on') a.click(); });
+  await p.waitForSelector('#build-anim .sc-enc', { timeout: 15000 });
+  await p.evaluate(() => { const a = document.querySelector('#build-anim .sc-enc'); if (a && a.getAttribute('data-st') === 'on') a.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true })); });
   await p.evaluate(() => document.querySelector('#build-anim .bz-fig').scrollIntoView({ block: 'center', behavior: 'instant' }));
   let a = '', b = await bzSnap(p); // доливання шарів (fillLazy) — у простої: чекаємо, поки розмітка кадру стане
   for (let i = 0; i < 20 && a !== b; i++) { await p.waitForTimeout(400); a = b; b = await bzSnap(p); }
@@ -418,9 +421,9 @@ for (const w of [402, 1440]) await test('модель: повернута мод
   if (w > 600) await drag(p, bb.x + bb.width / 2, bb.y + bb.height / 2, bb.width * 0.25, -bb.height * 0.1);
   else { const g = await touches(p); await g.swipe(bb.x + bb.width * 0.35, bb.y + bb.height / 2, bb.x + bb.width * 0.65, bb.y + bb.height / 2); }
   must((await orb(p)).rot, 'модель не повернулась');
-  const n = await p.locator('#build-anim .bz-nav .bz-b').count();
+  const n = await p.evaluate(() => +document.querySelector('#build-anim .sc-enc').getAttribute('aria-valuemax'));
   for (const k of [3, Math.floor(n / 2), n - 1]) {
-    await p.locator('#build-anim .bz-nav .bz-b').nth(k).evaluate(e => e.click()); await p.waitForTimeout(w > 600 ? 2200 : 900);
+    await p.evaluate(k => document.querySelector('#build-anim .sc-enc').__go(k), k); await p.waitForTimeout(w > 600 ? 2200 : 900);
     await p.evaluate(() => document.querySelector('#build-anim .bz-fig').scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(600);
   }
   must((await orb(p)).rot, 'кут скинувся під час етапів');
@@ -451,8 +454,8 @@ await test('модель: інші сцени (Ландшафт) — свайп,
   await bzReady(p);
   await scTab(p, 2);
   const svg = p.locator(`section.bz:has(nav.la-tab) .la-svg`).first(); await svg.scrollIntoViewIfNeeded(); await p.waitForTimeout(400);
-  await p.evaluate(`(()=>{const b=${SCN}.querySelector('.sc-ap');if(b&&b.getAttribute('data-st')==='on')b.click()})()`);
-  const st = () => p.evaluate(`[...${SCN}.querySelectorAll('.sc-n')].findIndex(b=>b.hasAttribute('aria-current'))`);
+  await p.evaluate(`(()=>{const b=${SCN}.querySelector('.sc-enc');if(b&&b.getAttribute('data-st')==='on')b.dispatchEvent(new KeyboardEvent('keydown',{key:' ',bubbles:true}))})()`);
+  const st = () => p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')-1`);
   const bb = await svg.boundingBox(), s0 = await st(), g = await touches(p);
   await g.swipe(bb.x + bb.width * 0.75, bb.y + bb.height / 2, bb.x + bb.width * 0.25, bb.y + bb.height / 2);
   await p.waitForTimeout(400);
@@ -462,7 +465,7 @@ await test('модель: інші сцени (Ландшафт) — свайп,
 // «Ресторан з нуля», етап «Гості»: силуети були сірі під нічним шаром і їх майже не було видно — етап виглядав порожнім
 await test('сцена «Ресторан»: на етапі «Гості» видно гостей (≥ 10 світлих силуетів)', '/', 1440, async p => {
   await wakeup(p);
-  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .sc-enc', { timeout: 10000 });
   await scTab(p, 5); await p.waitForSelector('section.bz .rs-svg', { timeout: 10000 });
   await scGo(p, -1); await p.waitForTimeout(1500);
   const r = await p.evaluate(() => { const s = [...document.querySelectorAll('.rs-svg .rs-e.on .rs-sil')]; const l = s.map(e => { const f = getComputedStyle(e).fill.match(/\d+/g).map(Number); return (0.2126 * f[0] + 0.7152 * f[1] + 0.0722 * f[2]) / 255; }); return { n: s.length, lum: +Math.max(0, ...l).toFixed(2) }; });
@@ -471,7 +474,7 @@ await test('сцена «Ресторан»: на етапі «Гості» ви
 // «Будинок на воді», етап «Здача»: був без видимої зміни відносно «Вечора» — знак «ключі» в кадрі лише на останньому етапі
 await test('сцена «Будинок на воді»: на етапі «Здача» — знак «ключі» в межах кадру', '/', 402, async p => {
   await wakeup(p);
-  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .sc-enc', { timeout: 10000 });
   await scTab(p, 4); await p.waitForSelector('section.bz .wh-svg', { timeout: 10000 });
   await scGo(p, -2); await p.waitForTimeout(1200);
   const on = () => p.evaluate(() => { const k = document.querySelector('.wh-svg .wh-key'), g = k && k.closest('.wh-e'), s = document.querySelector('.wh-svg').getBoundingClientRect(), r = k && k.getBoundingClientRect(); return k ? { on: g.classList.contains('on'), op: +getComputedStyle(g).opacity, inF: r.left >= s.left && r.right <= s.right && r.top >= s.top && r.bottom <= s.bottom && r.width > 20 } : null; });
@@ -482,11 +485,11 @@ await test('сцена «Будинок на воді»: на етапі «Зд�
 // «Комплекс»: кадр (генплан) фокусується, ←/→ з фокусом крокують зупинками — як у решти сцен (раніше SVG без tabindex: після кліку по кадру стрілки не працювали)
 await test('сцена «Комплекс»: фокус на кадрі, → / ← крокують зупинками', '/', 1440, async p => {
   await wakeup(p);
-  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .sc-enc', { timeout: 10000 });
   await scTab(p, 3); await p.waitForSelector('section.bz .rp-svg', { timeout: 10000 });
-  await p.evaluate(`(()=>{const b=${SCN}.querySelector('.sc-ap');if(b&&b.dataset.st==='on')b.click()})()`);
+  await p.evaluate(`(()=>{const b=${SCN}.querySelector('.sc-enc');if(b&&b.dataset.st==='on')b.dispatchEvent(new KeyboardEvent('keydown',{key:' ',bubbles:true}))})()`);
   await scGo(p, 2); await p.waitForTimeout(600);
-  const cur = () => p.evaluate(`[...${SCN}.querySelectorAll('.sc-n')].findIndex(b=>b.getAttribute('aria-current')==='step')`);
+  const cur = () => p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')-1`);
   must(await p.evaluate(() => document.querySelector('.rp-svg').tabIndex === 0), 'кадр «Комплексу» не фокусується (tabindex)');
   await p.evaluate(() => document.querySelector('.rp-svg').focus());
   const c0 = await cur(); await p.keyboard.press('ArrowRight'); await p.waitForTimeout(500);
@@ -720,34 +723,57 @@ await test('роздільник тисяч U+202F видно: 0.2em у сумі
     must(!bad.length, `${u || 'калькулятор'}: U+202F ${bad.slice(0, 4).join(', ')}em — має бути 0.2em (блок /*nn*/ у site-chrome.v1.css після основних @font-face)`);
   }
 });
-// Один шрифт на публічному сайті (Михайло 24.11.2026): видимий текст (p, a, button, input, li, span…) — Cormorant Garamond
-// (текст — "Cormorant Garamond Text", заголовки — "Cormorant Garamond"); zh — Cormorant перед CJK, ar — "CAS NN", далі Cormorant;
-// жодного запиту manrope-*.woff2 (Manrope — лише кабінет, chrome.KAB_FONTS_CSS)
-await test('один шрифт: видимий текст — Cormorant Garamond, без запитів manrope (uk, послуги, лендинг, блог, проєкт, en, zh, ar)', '/', 402, async p => {
-  for (const u of ['/', '/services', '/remont-kvartyr-kyiv', '/blog/avtorskyi-nahliad-navishcho', '/proekty/monpark', '/en/', '/zh/', '/ar/']) {
+// Один шрифт — Manrope (Михайло 24.11.2026: «Зроби всюди такий шрифт» → «Усе рівним шрифтом»): видимий текст і заголовки — Manrope
+// (текст — "Manrope", заголовки — "Manrope H": ті самі файли з size-adjust); zh — Manrope перед CJK, ar — "CAS NN", далі Manrope;
+// Cormorant Garamond — лише логотип (.sch-logo); жодного запиту cormorant-cyrillic / cormorant-italic; кабінет — теж Manrope
+await test('один шрифт: текст і заголовки — Manrope, Cormorant лише в логотипі (uk, послуги, лендинг, блог, проєкт, en, zh, ar, кабінет)', '/', 402, async p => {
+  for (const u of ['/', '/services', '/remont-kvartyr-kyiv', '/blog/avtorskyi-nahliad-navishcho', '/proekty/monpark', '/about', '/en/', '/de/', '/zh/', '/ar/', '/kabinet']) {
     if (u !== '/') { await p.goto(BASE + u, { waitUntil: 'load' }); await p.waitForTimeout(200); }
     const r = await p.evaluate(async () => {
       await document.fonts.ready;
-      const ar = document.documentElement.lang === 'ar', bad = [];
-      let n = 0;
-      for (const e of document.querySelectorAll('p, a, button, input, textarea, select, li, span, label, summary, small, b, strong, h1, h2, h3, figcaption, td, th, dd, dt')) {
+      const ar = document.documentElement.lang === 'ar', bad = [], logo = [];
+      let n = 0, h = 0;
+      for (const e of document.querySelectorAll('p, a, button, input, textarea, select, li, span, label, summary, small, b, strong, em, h1, h2, h3, h4, figcaption, td, th, dd, dt')) {
         if (e.closest('svg, script, style, template, noscript') || !e.getClientRects().length) continue;
         const own = e.matches('input, textarea, select') ? 'x' : [...e.childNodes].filter(c => c.nodeType === 3).map(c => c.nodeValue).join('');
         if (!/[\p{L}\p{N}]/u.test(own)) continue; // лише символи-іконки (‹ › ✕) — свій стек
         const cs = getComputedStyle(e);
         if (cs.visibility === 'hidden' || +cs.opacity === 0) continue;
-        n++;
         const ff = cs.fontFamily.replace(/["']/g, '').split(',').map(x => x.trim());
         const first = ar && ff[0] === 'CAS NN' ? ff[1] : ff[0];
-        if (!/^Cormorant Garamond/.test(first || '')) bad.push(`${e.tagName.toLowerCase()}.${e.className || ''}: ${cs.fontFamily.slice(0, 50)}`);
+        if (e.closest('.sch-logo')) { if (!/^Cormorant Garamond$/.test(ff[0])) logo.push(cs.fontFamily.slice(0, 40)); continue; }
+        n++; if (/^H\d$/.test(e.tagName)) h++;
+        if (!/^Manrope/.test(first || '')) bad.push(`${e.tagName.toLowerCase()}.${e.className || ''}: ${cs.fontFamily.slice(0, 50)}`);
+        if (cs.fontStyle === 'italic') bad.push(`${e.tagName.toLowerCase()}.${e.className || ''}: курсив (у Manrope його немає — синтетичний нахил)`);
       }
-      const fonts = performance.getEntriesByType('resource').map(x => x.name).filter(x => /manrope/i.test(x));
-      return { n, bad, fonts };
+      const fonts = performance.getEntriesByType('resource').map(x => x.name).filter(x => /cormorant-(cyrillic|italic)/i.test(x));
+      return { n, h, bad, logo, fonts };
     });
-    must(r.n > 20, `${u}: замало видимих текстових елементів (${r.n})`);
-    must(!r.bad.length, `${u}: не Cormorant — ${[...new Set(r.bad)].slice(0, 4).join(' | ')}`);
-    must(!r.fonts.length, `${u}: вантажиться Manrope — ${r.fonts.join(', ')}`);
+    must(r.n > 10, `${u}: замало видимих текстових елементів (${r.n})`);
+    must(!r.bad.length, `${u}: не Manrope — ${[...new Set(r.bad)].slice(0, 4).join(' | ')}`);
+    must(!r.logo.length, `${u}: логотип не Cormorant — ${r.logo[0]}`);
+    must(!r.fonts.length, `${u}: вантажиться ${r.fonts.join(', ')}`);
   }
+});
+// Сцени (Михайло 24.11.2026 «Номери етапів під сценою… лиши тільки стрілки і лінію прогресу» → «замість нумерації постав енкодер»):
+// у панелі — ← → і енкодер (role=slider, aria-valuetext «Етап i з N: назва»); немає рядка номерів, кнопки паузи й лічильника «01 / N»
+for (const [u, w, tab] of [['/', 402, 0], ['/', 1440, 2], ['/ar/', 402, 0], ['/budivnytstvo-budynkiv-kyiv', 1440, -1], ['/landshaftnyi-dyzain-kyiv', 1440, -1]]) await test('сцена: лише стрілки й енкодер — без номерів, паузи й лічильника', u, w, async p => {
+  await wakeup(p);
+  await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
+  await p.locator('section.bz').first().scrollIntoViewIfNeeded(); await p.waitForSelector('section.bz .sc-enc', { timeout: 15000 });
+  if (tab > 0) await scTab(p, tab);
+  const r = await p.evaluate(`(()=>{const s=${SCN},e=s.querySelector('.sc-enc'),vis=q=>[...s.querySelectorAll(q)].filter(x=>x.getClientRects().length&&getComputedStyle(x).visibility!=='hidden');
+    const r=e.getBoundingClientRect();return {nums:vis('.sc-n,.bz-nav .bz-b,.bz-nav').length,pause:vis('.sc-ap,.bz-ap,.la-play').length,ct:vis('.sc-ct,.bz-ct,.la-cnt').length,
+    arrows:vis('.bz-nx,.sc-next,.la-next,.bz-pv,.sc-prev,.la-prev').length,role:e.getAttribute('role'),vt:e.getAttribute('aria-valuetext')||'',h:Math.round(r.height),max:+e.getAttribute('aria-valuemax')}})()`);
+  must(!r.nums && !r.pause && !r.ct, 'у панелі сцени лишились номери/пауза/лічильник: ' + JSON.stringify(r));
+  must(r.arrows >= 2, 'немає стрілок ← →: ' + JSON.stringify(r));
+  must(r.role === 'slider' && r.max > 1 && /\d/.test(r.vt) && r.h >= 44, 'енкодер: ' + JSON.stringify(r));
+  // клавіші з фокусом: End → останній, Home → перший; тап по лінії — етап під пальцем
+  await p.evaluate(`${SCN}.querySelector('.sc-enc').focus()`); await p.keyboard.press('End'); await p.waitForTimeout(u === '/' || u === '/ar/' ? 700 : 3000);
+  const v1 = await p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`);
+  await p.keyboard.press('Home'); await p.waitForTimeout(u === '/' || u === '/ar/' ? 700 : 3000);
+  const v2 = await p.evaluate(`+${SCN}.querySelector('.sc-enc').getAttribute('aria-valuenow')`);
+  must(v1 === r.max && v2 === 1, `Home/End: ${v1}, ${v2} (N=${r.max})`);
 });
 // ar (RTL): «$2 500», не «2 500$» — ціни у видимому тексті й data-xs в ізоляті LTR U+2066…U+2069 (chrome.price_iso, як iso() у calc.v1.js)
 for (const u of ['/ar/interior-design', '/ar/interior-design-worldwide', '/ar/apartment-renovation-cost']) {
@@ -1407,7 +1433,11 @@ await test('WeChat на /contact (en): лише іконки з Behance і WeCha
 // Іконки месенджерів і соцмереж — лише у футері праворуч (Михайло 24.11.2026: «вони дублюються по 3 рази»); у меню кружечка й мобільному меню шапки — як і раніше.
 // Футер без підпису студії й заголовка «Контакти» (10 мов), кнопка «Розрахувати проєкт» відкриває вікно; ✕/Esc/тло/«Назад», фокус назад на кнопку
 const NOTAG = /Студія дизайну|Студия дизайна|design, renovation and turnkey|Estudio|设计|Studio projektowe|Studio für|Studio de|Estúdio|استوديو/;
-for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 1440], ['/ar/', 402], ['/ar/', 1440], ['/zh/', 402], ['/de/', 1440], ['/pl/', 402], ['/fr/', 1440], ['/es/', 402], ['/pt/', 1440], ['/ru/', 402]]) await test('футер: лише логотип, адреса й телефон; кнопка «Розрахувати проєкт» → вікно; іконки — лише у футері', path, w, async p => {
+for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 1440], ['/ar/', 402], ['/ar/', 1440], ['/zh/', 402], ['/de/', 1440], ['/pl/', 402], ['/fr/', 1440], ['/es/', 402], ['/pt/', 1440], ['/ru/', 402]]) await test('футер: лише логотип і адреса (номера текстом немає, дзвінок — перша іконка); кнопка «Розрахувати проєкт» → вікно; іконки — лише у футері', path, w, async p => {
+  // номери телефонів (Михайло 24.11.2026 «…і номери телефонів — лиши тільки стрілки…»): у шапці й футері номера текстом немає; дзвінок — іконка tel: з підписом мовою сторінки
+  const ph = await p.evaluate(() => { const t = [document.querySelector('header.sch'), document.querySelector('footer.scf')].map(x => x.innerText).join(' '), f = document.querySelector('.scf-soc a');
+    return { num: /866[\s\u00a0]?77[\s\u00a0]?55/.test(t), first: f && f.getAttribute('href'), lab: f && f.getAttribute('aria-label'), hd: !!document.querySelector('header .sch-tel[href^="tel:"][aria-label]') }; });
+  must(!ph.num && /^tel:/.test(ph.first || '') && ph.lab && ph.hd, 'номер текстом у шапці/футері або немає іконки дзвінка: ' + JSON.stringify(ph));
   const r = await p.evaluate(() => { const f = document.querySelector('.scf-top'), b = f.querySelector('.scf-cta'), br = b.getBoundingClientRect(), lg = f.querySelector('.sch-logo').getBoundingClientRect(), ad = f.querySelector('address').getBoundingClientRect();
     return { txt: f.innerText, p: f.querySelectorAll('.scf-brand p, .scf-col > b').length, h: Math.round(br.height), bg: getComputedStyle(b).backgroundColor, href: b.getAttribute('href'), lab: b.textContent.trim(), lx: Math.round(lg.left), ax: Math.round(ad.left), lr: Math.round(lg.right), ar: Math.round(ad.right), rtl: document.documentElement.dir === 'rtl',
       icons: [...document.querySelectorAll('a.bi')].filter(a => a.offsetParent && !a.closest('.scf, .sch-menu, .mbar')).length, sw: document.documentElement.scrollWidth <= innerWidth + 1 }; });

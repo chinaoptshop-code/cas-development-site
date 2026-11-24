@@ -462,8 +462,8 @@ PP_CSS = """
 .pp-expo figcaption{color:var(--muted);font-size:var(--fs-small);margin-top:8px}
 .pp-info .sub{color:var(--muted);font-size:var(--fs-small);margin:0 0 6px}
 .pp-info h1{font-size:clamp(2rem,1.5rem + 2vw,3rem);line-height:1.08;margin:0 0 12px}
-.pp-price{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--glow);margin:0 0 10px}
-.pp-price small{font-family:var(--ff);font-size:var(--fs-small);color:var(--muted)}
+.pp-price{font-family:var(--fh);font-size:var(--fs-h2);color:var(--glow);margin:0 0 10px}
+.pp-price small{font-family:"Manrope","Manrope Fallback",sans-serif;font-size:var(--fs-small);color:var(--muted)}
 .pp-sw i{width:22px;height:22px}
 .pp-btns{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 22px}
 .pp-btns .btn{width:auto;margin:0;padding:15px 22px;text-decoration:none}

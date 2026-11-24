@@ -14,13 +14,13 @@
 .bz-g+.bz-g{margin-left:8px;padding-left:10px;border-left:1px solid var(--ln,rgba(191,145,72,.22))}
 .bz-gl{margin-right:2px}
 .bz-mats button{min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.22));background:rgba(16,14,12,.72);color:var(--tx,#EDE8DF);
-  font:500 12px/1 var(--ff);letter-spacing:.02em;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
+  font:500 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
 .bz-mats button[aria-pressed="true"]{border-color:var(--ac,#BF9148);color:var(--ac,#BF9148);background:rgba(191,145,72,.14)}
 .bz-mats button:focus-visible,.bz-pie button:focus-visible,.bz-ctl button:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
 @media(hover:hover){.bz-mats button:hover{border-color:var(--ac,#BF9148)}}
 .bz-side{position:relative;display:flex;flex-direction:column;gap:12px;min-width:0}
 .bz-hd{display:flex;align-items:center;gap:14px}
-.bz-ct{margin:0;flex:none;min-width:4.2em;font-variant-numeric:tabular-nums;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;color:var(--mu,#938c84);font-size:var(--fs-h3,1.4rem);line-height:1;letter-spacing:.04em}
+.bz-ct{margin:0;flex:none;min-width:4.2em;font-variant-numeric:tabular-nums;font-family:var(--fh);color:var(--mu,#938c84);font-size:var(--fs-h3,1.4rem);line-height:1;letter-spacing:.04em}
 .bz-ct b{font-weight:300;color:var(--ac,#BF9148);font-size:1.7em;margin-right:.08em}
 .bz-bar{flex:1;height:2px;background:var(--ln,rgba(191,145,72,.22));overflow:hidden;border-radius:2px}
 .bz-bar i{display:block;height:100%;background:var(--ac,#BF9148);transform-origin:0 50%;transform:scaleX(0)}
@@ -40,7 +40,7 @@
 .bz-pe{margin:2px 0}
 .bz-pie ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
 .bz-pie ul button{width:100%;display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:26px;padding:2px 8px 2px 2px;border:0;border-radius:6px;
-  background:transparent;color:#c9c1b6;font:500 .8125rem/1.25 var(--ff);text-align:left;cursor:pointer;transition:background .25s,color .25s}
+  background:transparent;color:#c9c1b6;font:500 .8125rem/1.25 'Manrope','Manrope Fallback',system-ui,sans-serif;text-align:left;cursor:pointer;transition:background .25s,color .25s}
 .bz-pie ul button i{display:block;height:14px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25);transition:transform .3s var(--ease-out)}
 .bz-pie ul button em{font-style:normal;color:var(--mu,#938c84);font-size:.75rem;white-space:nowrap}
 .bz-pie ul button[aria-pressed="true"]{background:rgba(191,145,72,.12);color:var(--tx,#EDE8DF)}
@@ -56,7 +56,7 @@
 .bz-ctl{display:flex;align-items:center;gap:6px}
 .bz-nav{display:flex;flex-wrap:wrap;gap:4px;flex:1;min-width:0}
 .bz-b,.bz-pv,.bz-nx{width:28px;height:28px;border-radius:50%;border:1px solid var(--ln,rgba(191,145,72,.22));background:transparent;color:var(--mu,#938c84);
-  font:500 11px/1 var(--ff);cursor:pointer;padding:0;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease-out)}
+  font:500 11px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;padding:0;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease-out)}
 .bz-pv,.bz-nx{width:36px;height:36px;font-size:15px;flex:none;color:var(--tx,#EDE8DF)}
 .bz-pv:disabled,.bz-nx:disabled{opacity:.35;cursor:default}
 .bz-b.is-done{color:var(--ac,#BF9148);border-color:rgba(191,145,72,.55)}
@@ -90,7 +90,7 @@
   .bz-ctl{justify-content:space-between}
   .bz-pv,.bz-nx{width:44px;height:44px}
   .bz-pb{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--ac,#BF9148);background:transparent;color:var(--ac,#BF9148);
-    font:600 13px/1 var(--ff);cursor:pointer;visibility:hidden}
+    font:600 13px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;visibility:hidden}
   .bz-pb.is-on{visibility:visible}
   .bz-pb[aria-expanded="true"]{background:var(--ac,#BF9148);color:#080709}
   .bz-fig>.bz-pie{position:absolute;left:0;right:0;top:38px;bottom:0;z-index:3;overflow:auto;overscroll-behavior:contain;background:rgba(16,14,12,.96);display:none}
@@ -118,7 +118,7 @@
   .bz-on-l{display:block!important}.bz-on-l li{opacity:1!important;visibility:visible!important;transform:none!important;margin:0 0 8px}}
 
 /* ── SVG-сцена (деталі — aria-hidden у role="img") */
-.bz-fig text{font:500 9px var(--ff);fill:var(--mu,#938c84);letter-spacing:.06em}
+.bz-fig text{font:500 9px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:var(--mu,#938c84);letter-spacing:.06em}
 .bz-fig polyline,.bz-fig path.dra{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .bz-fig polygon,.bz-fig path{stroke-linejoin:round}
 .bz:not(.bz-far) .bz-fig .bz-l{will-change:opacity} /* .bz-far — сцена поза екраном (build-anim.v1.js): без 225 шарів композитора */
@@ -227,8 +227,8 @@
 .bz-fig .lp{stroke:#2b2a2e;stroke-width:1.4}.bz-fig .lpg,.bz-fig .pool,.bz-fig .glo{fill:var(--rg)}
 .bz-fig .bulb{fill:#ffe2a8}
 .bz-fig .seal .sl1{fill:#BF9148}.bz-fig .seal .sl2{fill:none;stroke:#080709;stroke-width:.8;stroke-dasharray:2 2}
-.bz-fig .seal .sl3{font:300 20px 'Cormorant Garamond','Cormorant Fallback',Georgia,serif;fill:#080709;text-anchor:middle;letter-spacing:0}
-.bz-fig .seal .sl4{font:600 5.6px var(--ff);fill:#080709;text-anchor:middle;text-transform:uppercase;letter-spacing:.12em}
+.bz-fig .seal .sl3{font:300 20px var(--fh);fill:#080709;text-anchor:middle;letter-spacing:0}
+.bz-fig .seal .sl4{font:600 5.6px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:#080709;text-anchor:middle;text-transform:uppercase;letter-spacing:.12em}
 /* інтерʼєр */
 .bz-fig .kw.t,.bz-fig .kb.t{fill:#ece6dc}.bz-fig .kw.r,.bz-fig .kb.r{fill:#b9b0a2}.bz-fig .kw.l,.bz-fig .kb.l{fill:#d2cabd}
 .bz-fig .ct.t{fill:#3a383d}.bz-fig .ct.r{fill:#222125}.bz-fig .ct.l{fill:#2c2b2f}
@@ -274,7 +274,7 @@
 
 /* ── «Ремонт з нуля» v3: рентген мереж (кнопка, легенда), варіанти квартири */
 .bz-xb{flex:none;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid rgba(127,211,217,.5);background:transparent;color:#bfe9ec;
-  font:600 12px/1 var(--ff);cursor:pointer;transition:background .3s,color .3s,opacity .3s}
+  font:600 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;transition:background .3s,color .3s,opacity .3s}
 .bz-xb[aria-pressed="true"]{background:#7fd3d9;border-color:#7fd3d9;color:#080709}
 .bz-xb:disabled{opacity:.35;cursor:default}
 .bz-xb[hidden],.bz-lg[hidden]{display:none!important}
@@ -282,7 +282,7 @@
 .bz-lg{position:absolute;left:0;right:0;bottom:2px;z-index:2;display:none;flex-wrap:wrap;gap:4px;pointer-events:none}
 .bz-xr .bz-lg{display:flex}
 .bz-lg button{pointer-events:auto;display:inline-flex;align-items:center;gap:6px;min-height:26px;padding:0 9px;border-radius:999px;border:1px solid rgba(127,211,217,.28);
-  background:rgba(16,14,12,.82);color:var(--tx,#EDE8DF);font:500 11px/1 var(--ff);cursor:pointer}
+  background:rgba(16,14,12,.82);color:var(--tx,#EDE8DF);font:500 11px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer}
 .bz-lg button i{width:14px;height:3px;border-radius:2px}
 .bz-lg button[aria-pressed="true"]{border-color:#7fd3d9;background:rgba(127,211,217,.16)}
 @media(max-width:767px){.bz-xb{min-height:36px;padding:0 12px}.bz-lg{top:38px;bottom:auto}.bz-lg button{min-height:28px;font-size:10.5px;padding:0 7px}}
@@ -322,8 +322,8 @@
 .bz-fig .rib2{stroke:rgba(0,0,0,.18);stroke-width:.7}
 .bz-fig .pln{stroke:#BF9148;stroke-width:1;stroke-dasharray:4 2.5}
 .bz-fig .plf{stroke:#e8e2d6;stroke-width:.7;stroke-dasharray:2 2;opacity:.7}
-.bz-fig .rl{font:600 7.5px var(--ff);fill:#ecd6aa;text-anchor:middle;letter-spacing:.03em}
-.bz-fig .ra{font:500 6.5px var(--ff);fill:#BF9148;text-anchor:middle}
+.bz-fig .rl{font:600 7.5px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:#ecd6aa;text-anchor:middle;letter-spacing:.03em}
+.bz-fig .ra{font:500 6.5px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:#BF9148;text-anchor:middle}
 .bz-fig .dt{text-anchor:middle}
 .bz-fig .rl.rs{font-size:6px}.bz-fig .ra.rs{font-size:5.5px}
 .f-new .pw.l,.f-old .pw.l{fill:#bdb6aa}.f-new .pw.r,.f-old .pw.r{fill:#aaa296}
@@ -374,7 +374,7 @@
 .bz-cfg[hidden],.bz-cap[hidden]{display:none!important}
 .bz-cr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 0}
 .bz-cfg button{min-height:30px;padding:0 9px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.22));background:rgba(16,14,12,.72);color:var(--tx,#EDE8DF);
-  font:500 12px/1 var(--ff);letter-spacing:.02em;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
+  font:500 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
 .bz-cfg button[aria-pressed="true"]{border-color:var(--ac,#BF9148);color:var(--ac,#BF9148);background:rgba(191,145,72,.14)}
 .bz-cfg button:focus-visible,.bz-cb:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
 @media(hover:hover){.bz-cfg button:hover{border-color:var(--ac,#BF9148)}}
@@ -386,13 +386,13 @@
 .bz-prc{margin:0;color:var(--mu,#938c84);font-size:.6875rem;letter-spacing:.02em}
 .bz-cx,.bz-cb{display:none}
 .bz-cap{position:absolute;left:0;bottom:4px;z-index:1;margin:0;padding:4px 10px;border-radius:999px;background:rgba(16,14,12,.72);border:1px solid var(--ln,rgba(191,145,72,.22));
-  color:var(--tx,#EDE8DF);font:500 12px/1.3 var(--ff);font-variant-numeric:tabular-nums;pointer-events:none}
+  color:var(--tx,#EDE8DF);font:500 12px/1.3 'Manrope','Manrope Fallback',system-ui,sans-serif;font-variant-numeric:tabular-nums;pointer-events:none}
 .bz-fig svg.bz-out{transition:opacity .45s var(--ease-out);pointer-events:none;z-index:1}
 .bz-fig svg.bz-in{animation:bz-in .5s var(--ease-out) both}
 @keyframes bz-in{from{opacity:.25}to{opacity:1}}
 @media(max-width:767px){
   .bz-cb{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--ac,#BF9148);background:rgba(16,14,12,.72);color:var(--ac,#BF9148);
-    font:600 12px/1 var(--ff);cursor:pointer;white-space:nowrap}
+    font:600 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
   .bz-cb[aria-expanded="true"]{background:var(--ac,#BF9148);color:#080709}
   .bz-mats{left:0;overflow:hidden}.bz-mats .bz-cb{display:block;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;line-height:28px} /* ряд вміщується в ширину: «Будинок» не зсувається за край, довгий підсумок — з «…» */
   .bz-cfg{display:none;top:38px;bottom:0;overflow:auto;overscroll-behavior:contain;padding:10px 10px 12px;box-sizing:border-box;background:rgba(16,14,12,.96);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;z-index:4}
@@ -418,7 +418,7 @@
   .bz:not(.bz-cmp):not(.bz-rm) .bz-side{justify-content:flex-start}
   .bz:not(.bz-cmp) .bz-fig{padding-top:38px}
   .bz-cb{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--ac,#BF9148);background:rgba(16,14,12,.72);color:var(--ac,#BF9148);
-    font:600 12px/1 var(--ff);cursor:pointer;white-space:nowrap}
+    font:600 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
   .bz-cb[aria-expanded="true"]{background:var(--ac,#BF9148);color:#080709}
   .bz-mats{flex-wrap:nowrap;overflow:hidden;right:0}.bz-mats .bz-cb{display:block;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;line-height:28px}
   .bz-cfg{display:none;top:38px;bottom:0;overflow:auto;overscroll-behavior:contain;padding:10px 10px 12px;box-sizing:border-box;background:rgba(16,14,12,.96);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;z-index:4}

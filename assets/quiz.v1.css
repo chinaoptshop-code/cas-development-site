@@ -17,7 +17,7 @@ body.light .qz-ro input:checked+span{color:#FBF8F3}
 .qz-bar{height:3px;border-radius:3px;background:var(--ln,rgba(191,145,72,.22));overflow:hidden}
 .qz-bar i{display:block;height:100%;width:0;background:var(--ac,#BF9148);transition:width .3s ease}
 .qz-st{border:0;margin:0;padding:0;min-width:0}
-.qz-q{display:block;padding:0;margin:0 0 16px;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3,1.5rem);line-height:1.2;color:var(--tx,#EDE8DF);outline-offset:4px}
+.qz-q{display:block;padding:0;margin:0 0 16px;font-family:var(--fh);font-weight:400;font-size:var(--fs-h3,1.5rem);line-height:1.2;color:var(--tx,#EDE8DF);outline-offset:4px}
 .qz-os{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
 .qz-o{position:relative;display:flex;align-items:center;min-height:52px;padding:12px 16px;border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:10px;cursor:pointer;font-size:var(--fs-body,1rem);color:var(--tx,#EDE8DF);transition:border-color .2s,background .2s}
 .qz-o[hidden]{display:none}

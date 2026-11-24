@@ -519,7 +519,7 @@
     var s = render(true), x = s.x, w = s.w, h = s.h, f = Math.round(w / 60);
     var g = x.createLinearGradient(0, h - f * 4, 0, h); g.addColorStop(0, 'rgba(8,7,9,0)'); g.addColorStop(1, 'rgba(8,7,9,.6)');
     x.fillStyle = g; x.fillRect(0, h - f * 4, w, f * 4);
-    x.fillStyle = '#EDE8DF'; x.font = '600 ' + f + 'px "Cormorant Garamond Text", Georgia, serif'; x.textBaseline = 'bottom';
+    x.fillStyle = '#EDE8DF'; x.font = '600 ' + f + 'px Manrope, system-ui, sans-serif'; x.textBaseline = 'bottom';
     var p = st.preset[st.room];
     x.fillText('CAS Development · ' + name(C.rooms[st.room]) + (p ? ' · ' + name(C.presets[p]) : ''), f * 1.4, h - f * 1.2);
     x.textAlign = 'right'; x.fillStyle = '#BF9148'; x.fillText('cas-develop.com' + location.pathname.replace(/\.html$/, ''), w - f * 1.4, h - f * 1.2);

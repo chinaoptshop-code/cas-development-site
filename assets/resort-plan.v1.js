@@ -359,6 +359,10 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       sdU = W.casSide({ stick: stage0, cap: cap, nav: sn, foot: foot, n: NST, go: goStop, title: function (i) { return i < 0 ? sec.querySelector('h2').textContent : i ? D.o[STOPS[i - 1]] : planT(); } });
       cap.innerHTML = '<b>' + esc(planT()) + '</b><span>' + esc(U.tap) + '</span>';
     }
+    else if (!RM && W.casEnc) { // повна сторінка: той самий енкодер зупинок (генплан → обʼєкти), що й на головних; кнопки паузи немає (24.11.2026)
+      var en = W.casEnc({ n: NST, go: function (i) { clearInterval(timer); goStop(i); }, title: function (i) { return i < 0 ? sec.querySelector('h2').textContent : i ? D.o[STOPS[i - 1]] : planT(); }, label: sec.querySelector('h2').textContent });
+      apw.classList.add('rp-enc'); apw.appendChild(en.el); apw.appendChild(en.sr); sdU = function (k, f) { en.set(k, f); };
+    }
     sec.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && focus) close(); });
     sec.classList.add('rp-on');
     layout(); price();

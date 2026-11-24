@@ -54,7 +54,7 @@ async function open(lang, built, seen, H) {
     await p.waitForSelector('#build-anim .bz-nx', { timeout: 20000 });
     await p.waitForFunction(() => !document.getElementById('build-anim').style.minHeight, null, { timeout: 20000 });
     // зупиняємо автопрогравання (кроки етапів не змінюють висоту — усі li в одній клітинці сітки, але менше роботи між замірами)
-    await p.evaluate(() => { const b = document.querySelector('#build-anim .bz-ap'); if (b && b.getAttribute('aria-pressed') !== 'true') b.click(); });
+    await p.evaluate(() => { const b = document.querySelector('#build-anim .sc-enc'); if (b && b.getAttribute('data-st') === 'on') b.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true })); });
   } else {
     await p.waitForTimeout(300);
     if (!(await p.evaluate(() => { const s = document.getElementById('build-anim'); return !s.hasAttribute('data-bz-on') && !s.classList.contains('bz-no'); }))) throw new Error(lang + ': резерв не тримається (сцена зібралась або .bz-no)');

@@ -209,10 +209,10 @@ def head_bits():
 
 BASE_CSS = (':root{--bg:#080709;--bg2:#100e0c;--tx:#EDE8DF;--mu:#938c84;--ac:#BF9148;--ln:rgba(191,145,72,.22)}'
             '*{box-sizing:border-box}html{scroll-behavior:smooth}'
-            'body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--ff);line-height:1.65;font-size:var(--fs-body)}'
+            'body{margin:0;background:var(--bg);color:var(--tx);font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;line-height:1.65;font-size:var(--fs-body)}'
             'a{color:inherit}.w{max-width:1080px;margin:0 auto;padding:0 16px}'
             '.crumbs{font-size:var(--fs-small);color:var(--mu);padding:14px 0 0}.crumbs a{text-decoration:none}'
-            'h1,h2,h3{font-family:\'Cormorant Garamond\',\'Cormorant Fallback\',Georgia,serif;font-weight:300;line-height:1.15;margin:0}'
+            'h1,h2,h3{font-family:var(--fh);font-weight:300;line-height:1.15;margin:0}'
             '.btn{display:inline-block;text-decoration:none;border:1px solid var(--ac);padding:13px 22px;border-radius:999px;font-size:var(--fs-small);font-weight:600;cursor:pointer;background:none;color:var(--tx);font-family:inherit}'
             '.btn.main{background:var(--ac);color:#140f08}'
             'section{padding:56px 0;border-top:1px solid var(--ln)}section h2{font-size:var(--fs-h2);margin-bottom:24px}'
@@ -220,7 +220,7 @@ BASE_CSS = (':root{--bg:#080709;--bg2:#100e0c;--tx:#EDE8DF;--mu:#938c84;--ac:#BF
             '.card p{color:var(--mu);font-size:var(--fs-body);margin:0}'
             'ol.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}'
             'ol.steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start;border-bottom:1px solid var(--ln);padding-bottom:12px}'
-            'ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:\'Cormorant Garamond\',\'Cormorant Fallback\',Georgia,serif;font-size:var(--fs-h3);color:var(--ac);line-height:1.15}'
+            'ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--fh);font-size:var(--fs-h3);color:var(--ac);line-height:1.15}'
             'ol.steps b{display:block}ol.steps span{color:var(--mu);font-size:var(--fs-body)}'
             'form{display:grid;gap:12px;max-width:520px}label{font-size:var(--fs-small);color:var(--mu)}'
             'input,textarea{width:100%;background:var(--bg);border:1px solid var(--ln);color:var(--tx);padding:13px 14px;font:inherit;border-radius:6px}'
@@ -264,8 +264,8 @@ def page(lang, v):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 {fonts}
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>
 <style>{BASE_CSS}</style>

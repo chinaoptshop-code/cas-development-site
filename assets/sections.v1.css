@@ -49,7 +49,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-c>picture{display:block}.xs-c>img,.xs-c>picture>img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}@media(max-width:767px){.xs-c>img,.xs-c>picture>img{aspect-ratio:16/9;max-height:220px}}
 .xs-cb{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
 .xs-cb h3{font-size:var(--fs-h3)}.xs-cb h3 a{text-decoration:none}
-.xs-pr{color:var(--ac);font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:1.2em;margin:0}
+.xs-pr{color:var(--ac);font-family:var(--fh);font-size:1.2em;margin:0}
 .xs-cb p,.xs-cb li{color:var(--mu);margin:0}.xs-cb ul{margin:0;padding-inline-start:18px}
 .xs-cb details{padding:10px 0 0;border-bottom:0;border-top:1px solid var(--ln)}.xs-cb details ul{margin-top:10px}
 .xs-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px!important}.xs-tags span{border:1px solid var(--ln);border-radius:999px;padding:4px 10px;font-size:var(--fs-small)}
@@ -72,7 +72,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-cv a{position:relative;display:block;text-decoration:none;overflow:hidden;border:1px solid var(--ln)}
 .xs-cv img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
 .xs-cv span{position:absolute;inset:auto 0 0;padding:56px 16px 14px;background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.72) 45%,rgba(8,7,9,.94));text-shadow:0 1px 3px rgba(0,0,0,.7)}
-.xs-cv b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3);line-height:1.15}
+.xs-cv b{display:block;font-family:var(--fh);font-weight:400;font-size:var(--fs-h3);line-height:1.15}
 .xs-cv small{color:#cfc8bd;font-size:var(--fs-small)}
 /* стрічка фото */
 .xs-st{display:grid;grid-auto-flow:column;grid-auto-columns:min(66vw,280px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:10px;scrollbar-width:thin}
@@ -91,7 +91,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-sp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px;align-items:center}
 .xs-pic{position:relative;border-radius:14px;overflow:hidden}.xs-pic img{display:block;width:100%;height:auto;border:1px solid var(--ln);border-radius:14px}
 .xs-badge{position:absolute;inset-inline-start:16px;bottom:16px;margin:0;background:rgba(8,7,9,.88);border:1px solid var(--ln);padding:12px 16px}
-.xs-badge b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3);color:var(--ac)}
+.xs-badge b{display:block;font-family:var(--fh);font-weight:400;font-size:var(--fs-h3);color:var(--ac)}
 .xs-badge span{font-size:var(--fs-small);color:var(--mu)}
 .xs-tx p{color:var(--mu)}.xs-tx .xs-lead{color:var(--tx);font-size:var(--fs-lead)}.xs-tx .btns{margin-top:18px}
 .xs-vals{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
@@ -99,7 +99,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 @media(max-width:767px){.xs-sp{grid-template-columns:1fr;gap:20px}}
 /* заклик, рейтинг, месенджери */
 .xs-cta{text-align:center}.xs-cta p{color:var(--mu);margin-inline:auto;max-width:46ch}.xs-cta .btns{justify-content:center;margin-top:20px}
-.xs-score{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:var(--fs-h1)!important;line-height:1.1;color:var(--tx)!important;margin:0 auto 8px!important}
+.xs-score{font-family:var(--fh);font-size:var(--fs-h1)!important;line-height:1.1;color:var(--tx)!important;margin:0 auto 8px!important}
 .xs-score span{color:var(--ac)}
 .xs-msg{display:flex;flex-wrap:wrap;gap:.5rem;margin:20px 0 0}.xs-cta .xs-msg{justify-content:center}
 /* лише іконки, як у футері (Михайло 21.11.2026): квадратні кнопки ≥ 44 px, назва — aria-label/title */
@@ -116,7 +116,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-rev{margin:16px 0 0}.xs-rev a{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;text-decoration:underline;text-decoration-color:var(--ln);text-underline-offset:4px}.xs-rev .ic{color:var(--ac,#BF9148)}
 .xs-contacts .xs-lead{color:var(--mu);max-width:46em;margin:0 0 22px}
 /* команда */
-.xs-tm .xs-av{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid var(--ac);border-radius:50%;color:var(--ac);font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:1.3em;margin-bottom:10px}
+.xs-tm .xs-av{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid var(--ac);border-radius:50%;color:var(--ac);font-family:var(--fh);font-size:1.3em;margin-bottom:10px}
 .xs-role{color:var(--ac)!important;font-size:var(--fs-small)!important;letter-spacing:.02em;margin:0 0 8px!important}
 .xs-crew-h{font-size:var(--fs-h3);margin:40px 0 6px}.xs-crew-p{color:var(--mu)}
 .xs-crew{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;margin-top:16px}
@@ -210,7 +210,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-brw{position:relative}
 .xs-bl{display:flex;flex-wrap:nowrap;list-style:none;margin:0;padding:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
 .xs-bl::-webkit-scrollbar{display:none}
-.xs-bl>li{flex:none;position:relative;margin:0;padding-block:.25rem;padding-inline:0 2.5rem;white-space:nowrap;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:500;font-size:1.5rem;line-height:2.25rem;color:var(--tx,#EDE8DF)}
+.xs-bl>li{flex:none;position:relative;margin:0;padding-block:.25rem;padding-inline:0 2.5rem;white-space:nowrap;font-family:var(--fh);font-weight:500;font-size:1.5rem;line-height:2.25rem;color:var(--tx,#EDE8DF)}
 .xs-bl>li::after{content:'';position:absolute;top:50%;inset-inline-end:1.09375rem;width:.3125rem;height:.3125rem;margin-top:-.15625rem;border-radius:50%;background:var(--ac,#BF9148);opacity:.7}
 .xs-bl>li:last-child::after{content:none}
 .xs-bl:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:4px;border-radius:4px}

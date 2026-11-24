@@ -132,7 +132,7 @@
 "html:lang(zh) :is(h1,h2,h3,.price,.facts b)",
 "html:lang(zh) .sch-nav a,html:lang(zh) .sch-cta",
 "html:lang(ar) body,html:lang(ar) body *",
-"html:lang(ar) .sch-logo,html:lang(ar) .sch-logo *,html:lang(zh) .sch-logo,html:lang(zh) .sch-logo *",
+"html:lang(ar) .sch-logo,html:lang(ar) .sch-logo *",
 "html:lang(ar) :is(h1,h2,h3)",
 "html:lang(ar) body",
 "html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary",

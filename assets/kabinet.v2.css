@@ -3,7 +3,7 @@
 .kb *{box-sizing:border-box}
 .kb .kb-h1{font-size:clamp(2rem,1.5rem + 2vw,3rem);margin:8px 0 14px;line-height:1.1}
 .kb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.kb h2{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-weight:400;font-size:var(--fs-h3);line-height:1.15;margin:0}
+.kb h2{font-family:var(--fh);font-weight:400;font-size:var(--fs-h3);line-height:1.15;margin:0}
 .kb h3{font-size:var(--fs-body);font-weight:700;margin:0}
 .kb p{margin:0}
 .kb a{color:inherit}
@@ -47,7 +47,7 @@
 .kb-card .kb-ch h2{font-size:clamp(1.3rem,1.1rem + .6vw,1.6rem)}
 .kb-card.glow{background:radial-gradient(120% 140% at 100% 0,rgba(191,145,72,.16),transparent 55%),var(--surface)}
 .kb-eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700}
-.kb-big{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:clamp(2rem,1.6rem + 1.4vw,2.8rem);line-height:1;color:var(--glow)}
+.kb-big{font-family:var(--fh);font-size:clamp(2rem,1.6rem + 1.4vw,2.8rem);line-height:1;color:var(--glow)}
 
 /* поява карток */
 @media(prefers-reduced-motion:no-preference){
@@ -67,7 +67,7 @@
 /* привітання */
 .kb-hero{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .kb-ava{width:72px;height:72px;border-radius:50%;flex:none;display:grid;place-items:center;overflow:hidden;
-  background:linear-gradient(135deg,#d9b277,#8a6630);color:#1B1408;font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:30px;font-weight:600;
+  background:linear-gradient(135deg,#d9b277,#8a6630);color:#1B1408;font-family:var(--fh);font-size:30px;font-weight:600;
   box-shadow:0 0 0 2px var(--ink),0 0 0 3px var(--brass)}
 .kb-ava img{width:100%;height:100%;object-fit:cover;display:block}
 .kb-ava.sm{width:44px;height:44px;font-size:19px}
@@ -88,7 +88,7 @@ a.kb-chip:hover{border-color:var(--brass)}
 .kb-ring circle{fill:none;stroke-width:8}
 .kb-ring circle.t{stroke:rgba(191,145,72,.15)}
 .kb-ring circle.v{stroke:var(--glow);stroke-linecap:round}
-.kb-ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:24px;color:var(--cream)}
+.kb-ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--fh);font-size:24px;color:var(--cream)}
 .kb-todo{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:var(--fs-small)}
 .kb-todo li{display:flex;gap:8px;align-items:center;color:var(--muted)}
 .kb-todo li::before{content:"";width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line);flex:none}
@@ -144,7 +144,7 @@ a.kb-chip:hover{border-color:var(--brass)}
 .kb-ord{display:grid;gap:10px;border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--surface);text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
 a.kb-ord:hover{border-color:var(--brass)}
 .kb-ord-h{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;justify-content:space-between}
-.kb-ord-h b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h3);font-weight:500}
+.kb-ord-h b{font-family:var(--fh);font-size:var(--fs-h3);font-weight:500}
 .kb-ord-m{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:var(--fs-small);color:var(--muted)}
 .kb-ord-m strong{color:var(--cream)}
 .kb-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
@@ -313,7 +313,7 @@ a.kb-ord:hover{border-color:var(--brass)}
 .kb-feed{list-style:none;margin:0;padding:0;display:grid;gap:16px}
 .kb-feed>li{display:grid;grid-template-columns:64px 1fr;gap:14px}
 .kb-feed>li+li{border-top:1px solid var(--line);padding-top:16px}
-.kb-feed-d b{display:block;font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:1.35rem;font-weight:500;line-height:1.1;color:var(--glow)}
+.kb-feed-d b{display:block;font-family:var(--fh);font-size:1.35rem;font-weight:500;line-height:1.1;color:var(--glow)}
 .kb-feed-d small{font-size:12px}
 .kb-feed-b{min-width:0}
 .kb-feed .kb-rep-h{align-items:center;flex-wrap:wrap}

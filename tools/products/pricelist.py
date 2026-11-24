@@ -30,8 +30,8 @@ DESC = 'Прайс Оздоби по категоріях: меблі, світ�
 CSS = """:root{--ink:#080709;--surface:#100e0c;--line:rgba(191,145,72,.22);--brass:#BF9148;--glow:#E2C08A;--cream:#EDE8DF;--muted:#938c84;
 --bg:#080709;--bg2:#100e0c;--tx:#EDE8DF;--mu:#938c84;--ac:#BF9148;--ln:rgba(191,145,72,.22)}
 *{box-sizing:border-box}html,body{margin:0}
-body{background:var(--ink);color:var(--cream);font-family:var(--ff);font-size:var(--fs-body,1rem);line-height:1.5}
-h1,h2{font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;font-weight:500;margin:0}
+body{background:var(--ink);color:var(--cream);font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;font-size:var(--fs-body,1rem);line-height:1.5}
+h1,h2{font-family:var(--fh);font-weight:500;margin:0}
 a{color:var(--glow)}
 .w{max-width:1100px;margin:0 auto;padding:0 16px}
 .crumbs{font-size:var(--fs-small,.8rem);color:var(--muted);padding-top:16px}.crumbs a{color:var(--muted)}
@@ -43,7 +43,7 @@ a{color:var(--glow)}
 .pr-terms{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:0 0 18px;background:var(--surface)}
 .pr-terms ul{margin:0;padding:0 0 0 18px;color:var(--muted);font-size:var(--fs-small,.85rem);line-height:1.6}
 .pr-toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}.pr-toc a{border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--cream);text-decoration:none;font-size:var(--fs-small,.85rem)}
-.pr-cat{margin:34px 0 0}.pr-cat h2{font-size:var(--fs-h2,2rem);margin:0 0 10px}.pr-cat h2 small{font:500 var(--fs-small,.8rem) var(--ff);color:var(--muted);margin-left:8px}
+.pr-cat{margin:34px 0 0}.pr-cat h2{font-size:var(--fs-h2,2rem);margin:0 0 10px}.pr-cat h2 small{font:500 var(--fs-small,.8rem) Manrope,"Manrope Fallback",sans-serif;color:var(--muted);margin-left:8px}
 .pr-tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:var(--fs-small,.85rem)}
 th{text-align:left;color:var(--muted);font-weight:600;padding:8px 6px;border-bottom:1px solid var(--line)}
@@ -61,8 +61,8 @@ tr{break-inside:avoid;page-break-inside:avoid}
 @page{size:A4;margin:12mm}
 @media print{body{background:#fff!important;color:#1d1a16;font-size:10.5pt;padding:0!important}
 .sch,.scf,.mbar,.skip,.pr-act,.pr-toc,.crumbs,#cookie,[class*="lq"]{display:none!important}
-.w{max-width:none;padding:0}.pr-print{display:block;font:600 18pt "Cormorant Garamond",Georgia,serif;border-bottom:2px solid #BF9148;padding-bottom:6px;margin-bottom:8px}
-.pr-print em{color:#BF9148;font-style:normal}.pr-print small{display:block;font:9pt "Cormorant Garamond Text",Georgia,serif;color:#5a534b}
+.w{max-width:none;padding:0}.pr-print{display:block;font:600 18pt var(--fh);border-bottom:2px solid #BF9148;padding-bottom:6px;margin-bottom:8px}
+.pr-print em{color:#BF9148;font-style:normal}.pr-print small{display:block;font:9pt Manrope,Arial,sans-serif;color:#5a534b}
 .pr-hero h1{font-size:20pt;color:#17120e}.pr-hero p,.pr-terms ul,.pr-note,.pr-cta p,th,td:nth-child(2),td:nth-child(4){color:#3a342d}
 .pr-terms,.pr-cta{background:#faf6ef;border-color:#d9cfbf}.pr-cat{margin-top:14pt}.pr-cat h2{font-size:15pt;color:#17120e;break-after:avoid}
 td,th{border-color:#e4dccf;padding:3px 5px}td a{color:#17120e}td:last-child{color:#17120e}td img{width:32px;height:32px;background:#f6f2ec}
@@ -123,8 +123,8 @@ def build(b=None):
 <meta property="og:locale" content="uk_UA">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <style id="cas-fonts"></style>
 <style>{CSS}</style>
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
