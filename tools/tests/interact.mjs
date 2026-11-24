@@ -1373,7 +1373,7 @@ for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 1440], ['/ar/', 402],
   const btn = p.locator('.scf-cta');
   await openFd(p);
   const d = await p.evaluate(() => { const g = document.querySelector('dialog.fdl'), c = g.querySelector('.fdl-c').getBoundingClientRect(), x = g.querySelector('.fdl-x').getBoundingClientRect(), t = document.getElementById(g.getAttribute('aria-labelledby'));
-    return { modal: g.matches(':modal'), lab: t && t.textContent.trim(), foc: document.activeElement.id, c: [c.left, c.right, c.bottom, innerWidth, innerHeight], x: [x.width, x.height], html: getComputedStyle(document.documentElement).overflow + getComputedStyle(document.body).overflow,
+    return { modal: g.open && g.getAttribute('aria-modal') === 'true' && getComputedStyle(g).position === 'fixed' && +getComputedStyle(g).zIndex > 1e6, lab: t && t.textContent.trim(), foc: document.activeElement.id, c: [c.left, c.right, c.bottom, innerWidth, innerHeight], x: [x.width, x.height], html: getComputedStyle(document.documentElement).overflow + getComputedStyle(document.body).overflow,
       top: (() => { const e = document.elementFromPoint(c.left + 20, c.bottom - 20); return e && !!e.closest('dialog.fdl'); })(), fs: parseFloat(getComputedStyle(document.getElementById('oPhone')).fontSize) }; });
   must(d.modal && d.lab && d.foc === 'oPhone', 'вікно: ' + JSON.stringify(d));
   must(d.x[0] >= 44 && d.x[1] >= 44 && d.top && d.fs >= 16 && d.c[0] >= 0 && d.c[1] <= d.c[3] + 0.5 && d.c[2] <= d.c[4] + 1.5, 'вікно: ✕ < 44, щось поверх, поле < 16 px або за краєм: ' + JSON.stringify(d));

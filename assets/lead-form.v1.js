@@ -457,7 +457,8 @@
      Секцію <section id="zayavka"> з JS ховає CSS («Вікно заявки» у site-chrome.v1.css, є й у crit.v1.css); тут її вміст (H2, form#of, #oOk) переїздить
      у <dialog class="fdl"> у кінці <body> — форма та сама одна (data-service/data-source, успіх лише після 2xx). Вікно відкривають усі посилання
      на #zayavka (обробник 3: кнопка футера, «Заявка» в шапці, «Залишити номер», .lq-go, сцени, калькулятор, «Гід з цінами») і адреса …#zayavka.
-     showModal — top layer над шапкою, кружечками й cookies; фокус усередині й назад на кнопку; ✕, Esc, тло, «Назад» браузера (pushState, як лайтбокс).
+     Вікно — шар на весь екран над шапкою, кружечками й cookies (атрибут open + z-index, aria-modal; без showModal — див. нижче); фокус усередині (Tab по колу)
+     й назад на кнопку; ✕, Esc, тло, «Назад» браузера (pushState, як лайтбокс).
      Прокрутка сторінки під вікном — без overflow:hidden на <html>: вікно саме — прокручуваний шар на весь екран (вміст на 1 px вищий + overscroll-behavior).
      Без <dialog> — html.nofd: секція на місці, як раніше. Реферальна (data-fd="0"), Оздоба (.ozd-sec) і конфігуратор (свій dialog) — без змін. */
   var XL = { uk: 'Закрити', ru: 'Закрыть', en: 'Close', es: 'Cerrar', zh: '关闭', pl: 'Zamknij', de: 'Schließen', fr: 'Fermer', pt: 'Fechar', ar: 'إغلاق' };
@@ -467,7 +468,7 @@
   if (fdOn && !canDlg) { fdOn = false; H.classList.add('nofd'); }
   function fdPush() { try { if (!pushed) { history.pushState({ fdl: 1 }, ''); pushed = true; } } catch (x) {} }
   if (fdOn) {
-    dlg = el('dialog', 'fdl');
+    dlg = el('dialog', 'fdl'); dlg.setAttribute('aria-modal', 'true');
     var fin = el('div', 'fdl-in'), card = el('div', 'fdl-c'), fx = el('button', 'fdl-x', '×');
     fx.type = 'button'; fx.setAttribute('aria-label', XL[lang] || XL.en); fx.title = XL[lang] || XL.en;
     var sw = sec.querySelector('.w') || sec, h2 = sw.querySelector('h2');
@@ -478,10 +479,23 @@
     fx.addEventListener('click', function () { fdClose(); });
     // тло: клік поза карткою (саме вікно на весь екран або обгортка)
     dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target === fin) fdClose(); });
+    // відкрите вікно — атрибут open (не showModal/show: їхній вбудований фокус і inert перераховують стилі всієї сторінки, на телефоні CPU ×4 ~130 мс у кліку);
+    // тому модальність — своя: шар на весь екран над усім (z-index), aria-modal, Esc і Tab по колу всередині вікна
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); fdClose(); return; }
+      if (e.key !== 'Tab') return;
+      var fs = [].filter.call(dlg.querySelectorAll('a[href],button:not([disabled]),input:not([type=hidden]):not([name=hp]),select,textarea,summary,[tabindex]:not([tabindex="-1"])'), function (x) { return x.offsetParent !== null; });
+      if (!fs.length) return;
+      var first = fs[0], last = fs[fs.length - 1], ae = document.activeElement;
+      if (e.shiftKey && (ae === first || !dlg.contains(ae))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && (ae === last || !dlg.contains(ae))) { e.preventDefault(); first.focus(); }
+    });
+    // фокус поза вікном (напр. клік у порожнє місце) — назад у вікно
+    document.addEventListener('focusin', function (e) { if (dlg.open && !dlg.contains(e.target)) { try { fx.focus({ preventScroll: true }); } catch (x) {} } });
     dlg.addEventListener('close', function () {
       H.classList.remove('fdl-on');
       var b = opener && opener.isConnected && opener.offsetParent !== null ? opener : null; opener = null;
-      if (b) try { b.focus({ preventScroll: true }); } catch (x) {}
+      if (b) setTimeout(function () { try { b.focus({ preventScroll: true }); } catch (x) {} }, 0);
       if (pushed) { pushed = false; if (!byPop) try { popWait = true; history.back(); } catch (x) { popWait = false; } }
       byPop = false;
     });
@@ -496,14 +510,15 @@
     if (!dlg) return false;
     if (!dlg.open) {
       opener = a && a.focus ? a : document.activeElement;
-      try { dlg.showModal(); } catch (x) { return false; }
+      dlg.setAttribute('open', '');
       H.classList.add('fdl-on');
       dlg.scrollTop = 0;
       if (!popWait) fdPush();
       clarity('lead_open', (a && (a.getAttribute('data-form') || a.className)) || 'link', 'lead_open_from');
     }
+    // фокус — після кадру з вікном: інакше focus() у тому ж обробнику кліку примусово перераховує стилі й макет усієї сторінки (INP)
     var ph = $('oPhone'), ok = $('oOk'), t0 = form.style.display === 'none' && ok ? ok : ph;
-    if (t0) try { t0.focus({ preventScroll: true }); } catch (x) { t0.focus(); }
+    if (t0) requestAnimationFrame(function () { setTimeout(function () { if (dlg.open) try { t0.focus({ preventScroll: true }); } catch (x) { t0.focus(); } }, 0); });
     return true;
   }
   window.casLeadOpen = fdOpen;

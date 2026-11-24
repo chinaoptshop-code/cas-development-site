@@ -1091,16 +1091,16 @@ a[data-lb]{cursor:zoom-in}
 .gal figure{position:relative}.gal figcaption a::after{content:"";position:absolute;inset:0}
 
 /* ══ Вікно заявки (Михайло 24.11.2026: «прибрати… і збоку зробити кнопку "Розрахувати проєкт", після натискання якої відкриється вже вікно
-   розрахунку»): секція #zayavka з JS схована (правило й у crit.v1.css — без мигання), її вміст lead-form.v1.js переносить у dialog.fdl;
+   розрахунку»): секція #zayavka з JS схована (правило й у crit.v1.css — без мигання), її вміст lead-form.v1.js переносить у dialog.fdl
+   (відкривається атрибутом open, не showModal — фокус і inert showModal коштували ~130 мс INP; тло вікна — його власний фон, ::backdrop немає);
    без JS і без <dialog> (html.nofd) — секція на місці; реферальна (data-fd="0") і Оздоба (.ozd-sec) — без вікна. Відкрите вікно — top layer
    (над шапкою, кружечками й cookies); прокрутка сторінки під ним — без overflow:hidden на <html>: саме вікно — шар на весь екран із прокруткою,
    вміст на 1 px вищий за вікно + overscroll-behavior:contain (колесо й свайп не йдуть на сторінку). ПК — картка 34rem по центру, телефон — нижня
    шторка на всю ширину з safe-area; поля ≥ 16 px (загальне правило), ✕ 44 px; reduced-motion — без анімації. */
 .js:not(.nofd) #zayavka:not([data-fd="0"]):not(.ozd-sec):not(dialog){display:none}
 html body dialog.fdl{position:fixed;inset:0;z-index:2147483000;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;box-sizing:border-box;
-  background:transparent;color:var(--tx,#ede8df);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  background:rgba(6,5,5,.76);color:var(--tx,#ede8df);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 html body dialog.fdl:not([open]){display:none}
-dialog.fdl::backdrop{background:rgba(6,5,5,.76)}
 .fdl-in{display:grid;place-items:center;min-height:calc(100% + 1px);box-sizing:border-box;
   padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .fdl-c{position:relative;width:min(100%,34rem);box-sizing:border-box;padding:1.75rem 1.75rem 1.75rem;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:14px;
@@ -1123,10 +1123,10 @@ dialog.fdl::backdrop{background:rgba(6,5,5,.76)}
 }
 @media(prefers-reduced-motion:no-preference){
   dialog.fdl[open] .fdl-c{animation:fdlIn .22s cubic-bezier(.2,.7,.2,1)}
-  dialog.fdl[open]::backdrop{animation:fdlBg .22s ease-out}
+  html body dialog.fdl[open]{animation:fdlBg .22s ease-out}
 }
 @keyframes fdlIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes fdlBg{from{opacity:0}to{opacity:1}}
+@keyframes fdlBg{from{background-color:rgba(6,5,5,0)}to{background-color:rgba(6,5,5,.76)}}
 /* кнопка «Розрахувати проєкт» у футері (chrome.footer, FOOT_CTA) — заливка, ≥ 44 px; стилі свої (футер є й на сторінках без .btn шаблону) */
 .scf a.scf-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.625rem;box-sizing:border-box;border:1px solid var(--c-ac);border-radius:999px;
   background:var(--c-ac);color:#140f08;font-size:.875rem;font-weight:600;letter-spacing:.02em;line-height:1.2;text-align:center;text-decoration:none;white-space:nowrap;transition:filter .18s ease}
