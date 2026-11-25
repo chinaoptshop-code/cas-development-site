@@ -268,7 +268,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
    унизу кадру — градієнт як у плиток і маленький підпис (назва + місто · площа), як H1 + рядок hero, але дрібніше. Ken Burns (scale 1 → 1.08 за 9 с) — лише
    на видимому кадрі (.kb ставить spacious() у ui-polish.v1.js), лише transform; reduced-motion — без руху. Ширини кадрів — слот «sp» у tools/site/sharp.py */
 html body main>section.xs-spc>.w{max-width:none;padding-inline:0;margin-inline:0}
-.xs-spc .xs-head{box-sizing:border-box;width:min(100%,var(--cw,1200px));margin:0 auto 1.5rem;padding-inline:16px}
+.xs-spc .xs-head{box-sizing:border-box;width:100%;margin:0 0 1.5rem;padding-inline:max(16px,calc((100% - var(--cw,1200px)) / 2 + 16px))}
 .xs-spc .xs-cvsp{grid-auto-columns:100%;gap:0;scroll-padding-inline:0}
 .xs-cvsp>a{border:0;border-radius:0;height:72vh;height:72svh;min-height:22rem;max-height:52rem}
 .xs-cvsp img{height:100%;aspect-ratio:auto;object-fit:cover;transform:scale(1);transform-origin:50% 55%;transition:transform .8s ease-out;will-change:auto}

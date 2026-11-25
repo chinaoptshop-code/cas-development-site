@@ -68,10 +68,10 @@ def w_covers(vw):
 
 def w_sp(vw):
     """«Простора» карусель проєктів головних (sections.v1.css .xs-cvsp, 24.11.2026): телефон — кадр на всю ширину вікна × 72svh (типовий телефон —
-    висота ≈ 2.17 × ширина, кадр ≈ 0.62:1 — вужчий за файл 4:5, тож обрізка по ширині: × 0.8 / 0.62); ПК — 44 % ряду × 68svh (кадр ширший за 4:5 —
-    без обрізки по ширині). × 1.08 — запас під Ken Burns (scale до 1.08)."""
-    if vw <= 767: return vw * .8 / .62 * 1.08
-    return .44 * (vw - 32) * 1.08
+    висота ≈ 2.17 × ширина, кадр ≈ 0.62:1); планшет — 44 % ряду, кадр ≈ 0.5:1; ПК — 44 % × 68svh ≈ 1:1. → (ширина, пропорція слота);
+    обрізку object-fit:cover за пропорцією файла рахує cov() (альбомне фото в книжковому кадрі — ширший файл). × 1.08 — запас під Ken Burns."""
+    if vw <= 767: return vw, .62
+    return .44 * (vw - 32), (.5 if vw < 1200 else 1.05)  # планшети (книжкова орієнтація, вікно ≈ 1.3 × ширина) — кадр вужчий; ПК — ≈ 1:1
 
 
 def w_split(vw):
@@ -283,7 +283,7 @@ def fix(tag, slot, home, i=0, n=1):
         return tag
     if slot == 'strip': fn = lambda vw: cov(w_strip(vw, home), .8)
     elif slot == 'covers': fn = lambda vw: cov(w_covers(vw), .8)
-    elif slot == 'sp': fn = w_sp
+    elif slot == 'sp': fn = lambda vw: cov(*w_sp(vw)) * 1.08
     elif slot == 'split': fn = w_split
     elif slot == 'svc': fn = lambda vw: cov(*w_svc(vw, i, n, home))
     elif slot == 'gal':  # коротко (бюджет HTML лендингів 64 КБ): srcset лише коли src (900) замалий — «900w, найменша достатня»; × обрізка 4:3
