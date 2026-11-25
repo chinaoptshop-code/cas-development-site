@@ -183,11 +183,13 @@ for (const [path, sel] of [['/', '.xs-cv'], ['/about', '.xs-bl'], ['/ar/', '.xs-
   await p.mouse.move(cx, cy); await p.waitForTimeout(200);
   const info = await row.evaluate(e => { const c = e.querySelector('.mq-c'), f = e.firstElementChild; return { s: e.scrollLeft, half: c ? Math.abs(c.offsetLeft - f.offsetLeft) : 0, rtl: document.documentElement.dir === 'rtl' }; });
   await p.mouse.down();
-  for (let i = 1; i <= 8; i++) { await p.mouse.move(cx - i * 25, cy); await p.waitForTimeout(16); }
+  // RTL і ряд без кола (простора карусель): на старті scrollLeft = 0 — край; тягнемо в бік, куди ряд може йти
+  const dir = info.rtl && !info.half ? -1 : 1;
+  for (let i = 1; i <= 8; i++) { await p.mouse.move(cx - dir * i * 25, cy); await p.waitForTimeout(16); }
   const mid = await row.evaluate(e => ({ s: e.scrollLeft, dg: e.classList.contains('dg') }));
   must(mid.dg, 'під час перетягування немає класу .dg');
   // ряд пішов за курсором на ~200 px (нескінченна стрічка — з точністю до довжини кола)
-  let moved = mid.s - info.s - 200; if (info.half) moved = ((moved % info.half) + info.half) % info.half, moved = Math.min(moved, info.half - moved);
+  let moved = mid.s - info.s - 200 * dir; if (info.half) moved = ((moved % info.half) + info.half) % info.half, moved = Math.min(moved, info.half - moved);
   must(Math.abs(moved) <= 40, `ряд не пішов за курсором: ${info.s}→${mid.s} (коло ${info.half})`);
   await p.waitForTimeout(150); await p.mouse.up(); await p.waitForTimeout(700);
   must(p.url() === url, 'після перетягування відкрилось посилання: ' + p.url());
@@ -1195,6 +1197,7 @@ await test('курсор-супутник (ПК): зʼявляється піс�
   await p.mouse.move(cov.x + cov.width / 2, cov.y + cov.height / 2, { steps: 6 }); await p.waitForTimeout(450);
   c = await curSt(p); must(c.on && c.big && c.g === 'g' && c.w >= 50, 'над обкладинкою проєкту — велике кільце зі стрілкою: ' + JSON.stringify(c));
   must(await p.evaluate(() => /[→\u2192]/.test(getComputedStyle(document.querySelector('.cur'), '::after').content)), 'у кільці над обкладинкою немає «→»');
+  await p.evaluate(() => scrollTo({ top: 0, behavior: 'instant' })); await p.waitForTimeout(300); // далі — шапка й форма, як до каруселі під hero
   const nav = await p.locator('header .sch-nav a').first().boundingBox();
   await p.mouse.move(nav.x + nav.width / 2, nav.y + nav.height / 2, { steps: 6 }); await p.waitForTimeout(450);
   c = await curSt(p); must(c.on && c.big && !c.g && c.w >= 50, 'над посиланням меню — велике кільце без стрілки: ' + JSON.stringify(c));

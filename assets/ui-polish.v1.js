@@ -178,7 +178,8 @@ function spacious(){
   if(sc.__sp||RM||!('IntersectionObserver' in W))return;sc.__sp=1;
   var items=Array.prototype.filter.call(sc.children,function(c){return c.tagName==='A'}),rat=[],live=false,hold=0,kf=false;
   if(items.length<2)return;
-  function upd(){items.forEach(function(it,i){var on=live&&!d.hidden&&(rat[i]||0)>=.6;if(it.classList.contains('kb')!==on)it.classList.toggle('kb',on)})}
+  // Ken Burns — один кадр: найвидиміший (≥ 60 %; рівні — перший у ряду); на ПК видно 2 кадри — зумиться лише перший з них
+  function upd(){var k=-1,m=.6;rat.forEach(function(r,i){if(r>=m+.01||(k<0&&r>=m)){m=r;k=i}});items.forEach(function(it,i){var on=live&&!d.hidden&&i===k;if(it.classList.contains('kb')!==on)it.classList.toggle('kb',on)})}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){rat[items.indexOf(e.target)]=e.intersectionRatio});upd()},{root:sc,threshold:[0,.6,1]});
   items.forEach(function(it){io.observe(it)});
   new IntersectionObserver(function(es){live=es[es.length-1].intersectionRatio>=.4;upd()},{threshold:[0,.4,.8]}).observe(sc);
