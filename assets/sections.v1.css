@@ -17,7 +17,7 @@ html body .hx.hx-home .hero{min-height:min(68vh,38rem);padding-bottom:20px}
 .hx-home .hero .btns::after{content:none!important}
 .hx-home .hero>.price{display:none}.js .hx-home .hero:has(>.price)>[data-c=h]{display:block}
 .hx-home .hero>[data-c=h]{letter-spacing:.08em;margin-top:14px}
-@media(min-width:768px){.hx-home .hero h1{font-size:clamp(2.2rem,1.2rem + 2.2vw,3.4rem);max-width:22em!important;line-height:1.12}}
+@media(min-width:768px){.hx-home .hero h1{font-size:clamp(2.2rem,1.2rem + 2.2vw,3.4rem);max-width:17em!important;line-height:1.12}} /* 17em (було 22em, 24.11.2026): H1 на весь перший екран ПК — у два рядки, правий нижній кут вільний під плашку cookies */
 /* головні (Михайло 08.11.2026): hero без кнопок; на телефоні — фото на весь екран (від низу шапки до низу вікна), H1 + рядок унизу кадру на затемненні,
    над зоною пігулки «Зв'язатися» (76 px); стрічка фото — вже за першим екраном. На ПК — висота як була (≤ вікна). */
 @media(max-width:767px){

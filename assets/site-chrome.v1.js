@@ -1111,8 +1111,10 @@
     var r = box.getBoundingClientRect(), main = d.querySelector('main'), hero = main && main.firstElementChild;
     var els = [].slice.call(d.querySelectorAll('h1')).concat(hero ? [].slice.call(hero.querySelectorAll('a.btn,button,input,select,textarea')) : []);
     return els.some(function (e) {
-      var q = e.getBoundingClientRect();
-      return q.width > 1 && q.height > 1 && q.bottom > r.top && q.top < r.bottom && q.right > r.left && q.left < r.right;
+      // H1 — рядки самого тексту (блок H1 на всю ширину, а текст коротший: hero головних на ПК з 24.11.2026 — увесь екран, H1 унизу ліворуч, плашка — праворуч)
+      var qs = [e.getBoundingClientRect()];
+      if (e.tagName === 'H1') { var rg = d.createRange(); rg.selectNodeContents(e); qs = [].slice.call(rg.getClientRects()); }
+      return qs.some(function (q) { return q.width > 1 && q.height > 1 && q.bottom > r.top && q.top < r.bottom && q.right > r.left && q.left < r.right; });
     });
   }
   function place() {

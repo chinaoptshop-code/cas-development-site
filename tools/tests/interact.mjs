@@ -1207,6 +1207,7 @@ await test('курсор-супутник (ПК): зʼявляється піс�
   await p.mouse.move(f.x - 60, f.y - 70, { steps: 4 }); await p.waitForTimeout(450);
   c = await curSt(p); must(!c.on, 'над вікном заявки (top layer) кільце має бути сховане: ' + JSON.stringify(c));
   await p.keyboard.press('Escape'); await p.waitForTimeout(300); must(!(await fdOpen(p)), 'Esc не закрив вікно');
+  await p.evaluate(() => scrollTo({ top: 0, behavior: 'instant' })); await p.waitForTimeout(200); // відкриття вікна прокрутило сторінку до кнопки футера — над кадром сцени (з 24.11.2026 вона над футером) кільця й не має бути
   await p.mouse.move(f.x - 40, f.y - 90, { steps: 4 }); await p.waitForTimeout(450);
   c = await curSt(p); must(c.on, 'після вікна кільце не повернулось: ' + JSON.stringify(c));
   const y0 = c.y; await p.mouse.wheel(0, -300); await p.waitForTimeout(350);
@@ -1709,7 +1710,9 @@ for (const [path, w] of [['/en/services', 344], ['/en/services', 402], ['/en/', 
   must(s.b.length === 2 && s.b.every(x => x[1] >= 44) && s.b[0].join() === s.b[1].join(), 'кнопки не однакові або < 44 px: ' + JSON.stringify(s.b));
   must(s.r[1] <= (w < 768 ? 874 : 900) && s.r[2] >= 0, 'плашка поза вікном');
   if (w < 768) { const m = await p.locator('.mbar[data-one] .mb-tg').boundingBox(); must(m && s.r[1] <= m.y - 4, 'плашка накриває пігулку «Звʼязатися»'); }
-  const h1 = await p.locator('h1').boundingBox(); must(h1.y + h1.height <= s.r[0] || h1.y >= s.r[1], 'плашка накриває H1');
+  // H1 — рядки тексту (блок H1 на всю ширину; на ПК плашка в правому куті, H1 головних — ліворуч, 24.11.2026)
+  must(!(await p.evaluate(() => { const c = document.querySelector('.ck').getBoundingClientRect(), rg = document.createRange(); rg.selectNodeContents(document.querySelector('h1'));
+    return [...rg.getClientRects()].some(q => q.bottom > c.top && q.top < c.bottom && q.right > c.left && q.left < c.right); })), 'плашка накриває H1');
   for (let i = 0; i < 4; i++) { await p.mouse.wheel(0, 500); await p.waitForTimeout(250); }
   await p.keyboard.press('Escape'); await p.waitForTimeout(300);
   must(rq.length >= 1, 'Clarity не завантажився після прокрутки (згоди не чекаємо — Михайло 22.11.2026)');

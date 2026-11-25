@@ -1153,7 +1153,7 @@ html body .scf-top>.scf-brand{display:grid;gap:0;justify-items:start;min-width:0
 .ck-b button:focus-visible{outline:2px solid #f3d7a6;outline-offset:2px}
 .ck-b button[aria-pressed=true]{background:rgba(191,145,72,.22)}
 @media(max-width:767px){.ck.ck-up{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
-@media(min-width:768px){.ck{inset-inline-end:auto;max-width:25rem}}
+@media(min-width:768px){.ck{inset-inline-start:auto;max-width:25rem}} /* ПК — правий нижній кут (RTL — лівий): у лівому — H1 hero головних, що з 24.11.2026 займає весь перший екран (плашка ховалась би) */
 html.ck-p body::after{content:"";display:block;height:var(--ckh,0px)}
 @media(prefers-reduced-motion:reduce){.ck,.ck.on{transition:none;transform:none}}
 @media print{.ck{display:none}}
