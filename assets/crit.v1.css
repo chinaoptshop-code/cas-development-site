@@ -633,4 +633,22 @@ html body .scf-top>.scf-ms{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){.cur,.tap{display:none}}
 .bi-chat::before{background-image:url(/assets/brand/chat.svg)}
 :root{--bt-h:3rem;--bt-px:1.5rem;--bt-fs:.875rem;--bt-fw:600;--bt-r:999px;--bt-min:11rem;--chip-h:2.75rem;--chip-px:1rem;--chip-fs:.8125rem;--ic:2.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center}
+:is(main:not(.acc),.fdl,.scf) :is(.btn,.qz-b),#oBtn,#cSend,.lq-b,.scf a.scf-cta,main .bz .bz-go{box-sizing:border-box;min-height:var(--bt-h);padding:0 var(--bt-px);gap:.5rem;justify-content:center;
+  border:1px solid var(--ac,#BF9148);border-radius:var(--bt-r);font-family:var(--ff,inherit);font-size:var(--bt-fs);font-weight:var(--bt-fw);line-height:1.2;letter-spacing:0;text-align:center;text-decoration:none;cursor:pointer}
+:is(main:not(.acc),.fdl) :is(.btn,.qz-b){white-space:normal}
+:is(main:not(.acc),.fdl,.scf) .btn.main,#oBtn,#cSend,.lq-b,main .bz .bz-go,:is(main,.fdl) :is(.qz-nx,.qz-send),main .hero[data-xh] .btns>.btn:first-child{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
+:is(main:not(.acc),.fdl) :is(.btn:not(.main),.qz-b:not(.qz-nx):not(.qz-send)){background:transparent;color:var(--tx,#EDE8DF)}
+main .hero[data-xh] .btns>.btn:first-child{background:var(--ac,#BF9148)}
+@media(hover:hover){:is(main:not(.acc),.fdl) .btn.main:not(:disabled):hover,#oBtn:not(:disabled):hover,main .bz .bz-go:hover,:is(main,.fdl) :is(.qz-nx,.qz-send):not(:disabled):hover{filter:brightness(1.08)}
+:is(main:not(.acc),.fdl) :is(.btn:not(.main),.qz-b:not(.qz-nx):not(.qz-send)):not(:disabled):hover{background:rgba(191,145,72,.12)}}
+:is(main:not(.acc),.fdl,.scf) :is(.btn,.qz-b):focus-visible,#oBtn:focus-visible,.lq-b:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+:is(main:not(.acc),.fdl) :is(.btn,.qz-b):not(:disabled):active{transform:scale(.98)}
+@media(min-width:768px){:is(main:not(.acc),.fdl) .btn{min-width:var(--bt-min)}}
+@media(max-width:767px){:is(main:not(.acc),.fdl) .btn,main .bz .bz-go{width:100%;max-width:none}
+main .hero .btns{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:.625rem}
+main .hero .btns>.btn{width:auto;min-width:0;padding:0 .75rem}}
+@media(prefers-reduced-motion:reduce){:is(main:not(.acc),.fdl) :is(.btn,.qz-b):active{transform:none}}
+:is(main,.fdl) .seg button,main .la-tab a,main .c-b,main .cmp-more{min-height:var(--chip-h);font-family:var(--ff,inherit);font-size:var(--chip-fs);box-sizing:border-box}
 .sch-cta{min-height:var(--chip-h)}
+html body .scf a.scf-cta{font-size:var(--bt-fs);font-weight:var(--bt-fw);min-height:var(--bt-h)}
